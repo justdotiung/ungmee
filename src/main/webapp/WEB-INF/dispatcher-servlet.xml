@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-   <bean id="/index" class="com.newlecture.web.controller.IndexController"></bean>
-   <bean id="/notice/list" class="com.newlecture.web.controller.ListController"></bean>
-   <!-- <bean class="ex1.DefaultExam"/>-->
+   <bean id="/index" class="ungmee.web.controller.IndexController"/>
+   <bean id="/user/login" class="ungmee.web.controller.LoginController"/>
+   <bean id="/guest/signup" class="ungmee.web.controller.SignupController"/>
 </beans>
 

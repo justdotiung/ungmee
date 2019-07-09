@@ -1,0 +1,39 @@
+.d-none{
+   display: none;
+}
+/* ----header------------- */
+#header{
+   height: 300px;
+}
+/* ---body---------------- */
+#main{
+   display: flex;
+   margin: auto;
+}
+
+.login-form{
+}
+.login-id>form{
+   display: inline-block;
+}
+.login-id>form>input{
+   text-align: center;
+   width: 300px;
+   margin-bottom: 5px;
+   border: 1px solid gray;
+   border-radius: 7px / 6px;
+}
+
+.login-id>form>input:nth-child(3){
+  
+   background:  gray;
+}
+.api-login>ul{
+   display: flex;
+}
+#main .logo a img{
+   margin-left: 50px;
+   width: 50px;
+   margin: 0px;
+}
+/* ---footer-------------------------- */

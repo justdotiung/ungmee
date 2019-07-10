@@ -15,8 +15,8 @@
     <section id="header">
         <h1 class="logo"><img src="../WebContent/ungmee/ummo/logo.jpg">로고</a></h1>
         <div class="member">
-            <a href="/user/login">로그인</a>
-            <a href="/guest/signup">회원가입</a>
+            <a href="guest/login">로그인</a>
+            <a href="guest/signup">회원가입</a>
         </div>
     </section>
 
@@ -28,21 +28,21 @@
 
         <nav>
             <ul>
-                <li><a href="list?type=who">CourseWho</a></li>
-                <li><a href="list?type=what">CourseWhat</a></li>
-                <li><a href="list?type=where">CourseWhere</a></li>
-                <li><a href="list?type=search">CourseSearch</a></li>
+                <li><a href="course/list?type=who">CourseWho</a></li>
+                <li><a href="course/list?type=what">CourseWhat</a></li>
+                <li><a href="course/list?type=where">CourseWhere</a></li>
+                <li><a href="course/list?type=search">CourseSearch</a></li>
             </ul>
         </nav>
 
         <div id="Couple-Best">
             <h1>주간베스트커플</h1>
             <ul>
-                <li><a href="/course/who?id=1">묵은지부부 커플1</a></li>
-                <li><a href="/course/who?id=2">새내기부부 커플2</a></li>
-                <li><a href="/course/who?id=3">아무상관없는 커플3</a></li>
-                <li><a href="/course/who?id=4">이거의 지표는 좋아요갯수, 팔로워수</a></li>
-                <li><a href="/course/who?id=5">커플5</a></li>
+                <li><a href="member/detail?id=1">묵은지부부 커플1</a></li>
+                <li><a href="member/detail?id=2">새내기부부 커플2</a></li>
+                <li><a href="member/detail?id=3">아무상관없는 커플3</a></li>
+                <li><a href="member/detail?id=4">이거의 지표는 좋아요갯수, 팔로워수</a></li>
+                <li><a href="member/detail?id=5">커플5</a></li>
             </ul>
         </div>
 

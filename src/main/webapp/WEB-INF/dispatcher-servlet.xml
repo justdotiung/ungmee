@@ -4,8 +4,14 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-   <bean id="/index" class="ungmee.web.controller.IndexController"/>
-   <bean id="/user/login" class="ungmee.web.controller.LoginController"/>
-   <bean id="/guest/signup" class="ungmee.web.controller.SignupController"/>
+   <bean id="/index" class="ungmee.web.controller.guest.IndexController"/>
+   <bean id="/user/login" class="ungmee.web.controller.guest.LoginController"/>
+   <bean id="/guest/signup" class="ungmee.web.controller.guest.SignupController"/>
+   <bean id="list" class="ungmee.web.controller.member.course.WhoController">
+   
+   </bean>
+   <bean id="/course/what" class="ungmee.web.controller.member.course.WhatController"/>
+   <bean id="/course/where" class="ungmee.web.controller.member.course.WhereController"/>
+   <bean id="/course/search" class="ungmee.web.controller.member.course.SearchController"/>
 </beans>
 

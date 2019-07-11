@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+   
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
-
-   <bean id="/index" class="ungmee.web.controller.guest.IndexController"/>
-   <bean id="/login" class="ungmee.web.controller.guest.LoginController"/>
-   <bean id="/signup" class="ungmee.web.controller.guest.SignupController"/>
-   <bean id="/course/list" class="ungmee.web.controller.member.course.ListController"/>
-   <bean id="member/detail" class="ungmee.web.controller.member.DetailController"/>
-   <bean id="/course/where" class="ungmee.web.controller.member.course.WhereController"/>
-   <bean id="/course/search" class="ungmee.web.controller.member.course.SearchController"/>
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    
+    xsi:schemaLocation=
+    	"
+    	http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        ">
+        
+	<mvc:resources location="/resource/" mapping="/resource/**"/>
 </beans>
 

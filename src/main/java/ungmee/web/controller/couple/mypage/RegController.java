@@ -1,4 +1,4 @@
-package ungmee.web.controller.member.mypage;
+package ungmee.web.controller.couple.mypage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -15,7 +15,7 @@
     <section id="header">
         <h1 class="logo"><img src="../WebContent/ungmee/ummo/logo.jpg">로고</a></h1>
         <div class="member">
-            <a href="guest/login">로그인</a>
+            <a href="login">로그인</a>
             <a href="guest/signup">회원가입</a>
         </div>
     </section>

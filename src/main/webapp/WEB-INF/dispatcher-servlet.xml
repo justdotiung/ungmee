@@ -16,7 +16,8 @@
         http://www.springframework.org/schema/mvc
         https://www.springframework.org/schema/mvc/spring-mvc.xsd
         ">
-        
+     <context:component-scan base-package="ungmee.web.controller"></context:component-scan>
+    <mvc:annotation-driven/>
 	<mvc:resources location="/resource/" mapping="/resource/**"/>
 </beans>
 

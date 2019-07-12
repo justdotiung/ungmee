@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/couple")
-public class CoupleController {
+public class CourseController {
 
 
 }

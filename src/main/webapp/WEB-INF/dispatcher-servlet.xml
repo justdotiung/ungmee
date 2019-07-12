@@ -17,6 +17,8 @@
         https://www.springframework.org/schema/mvc/spring-mvc.xsd
         ">
      <context:component-scan base-package="ungmee.web.controller"></context:component-scan>
+     <context:component-scan base-package="ungmee.web.controller.admin"></context:component-scan>
+     <context:component-scan base-package="ungmee.web.controller.couple"></context:component-scan>
     <mvc:annotation-driven/>
 	<mvc:resources location="/resource/" mapping="/resource/**"/>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

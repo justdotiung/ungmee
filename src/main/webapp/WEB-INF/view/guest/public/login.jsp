@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +32,7 @@
                 </ul>
             </div>
             <div class="login-id">
-                <form action="../../index.html" method="GET">
+                <form action="/index" method="GET">
                     <input type="email" placeholder="이메일주소" >
                     <input type="password" placeholder="비밀번호">
                     <input type="submit" value="로그인">

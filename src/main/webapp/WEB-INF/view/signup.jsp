@@ -9,6 +9,9 @@
     <title>Document</title>
 </head>
 <body>
+<div>
+	<a href="index"><img src="css.sj"></a>
+</div>
     <section>
         <form>
             <input type="radio" name="type" value="1" checked><label>일반회원</label>

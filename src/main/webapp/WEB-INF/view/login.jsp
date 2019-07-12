@@ -41,7 +41,7 @@
         </section>
         
         <div class="logo">
-           <a href="../index.html"><img src="../../ungmee/ummo/logo.jpg"></a>
+           <a href="index"><img src="../../ungmee/ummo/logo.jpg"></a>
         </div>
     </section>
         

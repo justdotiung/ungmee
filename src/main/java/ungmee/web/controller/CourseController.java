@@ -15,7 +15,7 @@ public class CourseController {
 		if (t == null &&"".equals(t))
 			return "error";
 		else
-			return t;
+			return "course/"+t+"list";
 	}
 
 	@RequestMapping("/detail")

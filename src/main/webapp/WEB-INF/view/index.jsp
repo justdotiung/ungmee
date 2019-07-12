@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/member/index.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,8 @@
         <h1 class="logo"><img src="../WebContent/ungmee/ummo/logo.jpg">로고</a></h1>
         <div class="member">
             <a href="login">로그인</a>
-            <a href="guest/signup">회원가입</a>
+            <a href="signup">회원가입</a>
+            <a href="admin/index">관리자페이지</a>
         </div>
     </section>
 

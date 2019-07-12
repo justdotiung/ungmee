@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("admin/couple")
-public class CoupleController {
+public class CoupleMController {
 	
 	@RequestMapping("/edit")
 	public String edit() {

@@ -7,9 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<a href="/index"><img src="css.sj"></a>
-	</div>
+<!--header -->
+	<jsp:include page="../inc/header.jsp"/>
+<!--body -->
 	서치리스튼
+<!--footer-->
+	<jsp:include page="../inc/footer.jsp"/>
+
 </body>
 </html>

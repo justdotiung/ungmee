@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-		<a href="/index"><img src="css.sj"></a>
+		<a href="/index"><img src="/resource/images/ummo/logo.jpg"></a>
 	</div>
 	지도리스트
 </body>

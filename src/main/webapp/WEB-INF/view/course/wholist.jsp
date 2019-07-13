@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-		<a href="/index"><img src="css.sj"></a>
+		<a href="/index"><img src="/resource/images/ummo/logo.jpg"></a>
 	</div>
 	여기는 코스후 리스트
 </body>

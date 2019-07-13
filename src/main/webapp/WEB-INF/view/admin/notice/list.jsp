@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,18 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<section>
-		<table>
-			<thead>
-				<tr>
-					<td>가입일</td>
-					<td>아이디</td>
-					<td>회원분류</td>
-					<td>커플유형</td>
-					<td>블랙</td>
-				</tr>
-			</thead>
-		</table>
-	</section>
+<jsp:include page="../../inc/header.jsp"/>
+	<div>
+		<a href="">검색</a>	
+	</div>
+	<div>
+		<ul>
+			<li>공지타입</li>
+			<li>타이틀</li>
+			<li>공지일</li>
+			<li><a href="">펼쳐보기</a></li>
+			<li><a href="">수정하다</a></li>
+		</ul>
+		<div>
+			<textarea rows="" cols=""></textarea>
+		</div>
+	</div>
 </body>
 </html>

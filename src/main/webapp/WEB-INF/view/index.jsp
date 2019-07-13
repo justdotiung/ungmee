@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="/resource/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/member/index.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/member/index.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,14 +12,7 @@
 </head>
 <body>
     <!-- header -------------------------------------------------- -->
-    <section id="header">
-        <h1 class="logo"><img src="../WebContent/ungmee/ummo/logo.jpg">로고</a></h1>
-        <div class="member">
-            <a href="login">로그인</a>
-            <a href="signup">회원가입</a>
-            <a href="admin/index">관리자페이지</a>
-        </div>
-    </section>
+  <jsp:include page="inc/header.jsp"></jsp:include>
 
     <!-- body ---------------------------------------------------- -->
     <main>
@@ -89,14 +82,7 @@
         </section>
     </main>
     <!-- footer -------------------------------------------------- -->   
-    <section id="footer">
-        <div id="footer-logo">
-           <img src="../WebContent/ungmee/ummo/logo.jpg">
-        </div>
-
-        <div id="copyright">
-            "(주)UNG | 대표이사 : 장웅희 | 메일 : UNG1@UNG.COM" <br>
-        </div>
-    </section>
+  <jsp:include page="inc/footer.jsp"></jsp:include>
+  
 </body>
 </html>

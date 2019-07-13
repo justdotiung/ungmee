@@ -13,8 +13,8 @@
 	<div>
 		<ul>
 			<li><a href="/login">로그인</a></li>	
-			<li><a href="/login">회원가입</a></li>	
-			<li><a href="/login">마이페이지</a></li>	
+			<li><a href="/signup">회원가입</a></li>	
+			<li><a href="/couple/page/index">마이페이지</a></li>	
 			<li><a href="/login">로그아웃</a></li>	
 			<li><a href="/login">관리자페이지</a></li>	
 		</ul>

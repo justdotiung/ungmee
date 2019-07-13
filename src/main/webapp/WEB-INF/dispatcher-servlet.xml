@@ -20,6 +20,7 @@
      <context:component-scan base-package="ungmee.web.controller.admin"></context:component-scan>
      <context:component-scan base-package="ungmee.web.controller.couple"></context:component-scan>
     <mvc:annotation-driven/>
+	<mvc:default-servlet-handler/>
 	<mvc:resources location="/resource/" mapping="/resource/**"/>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/"/>

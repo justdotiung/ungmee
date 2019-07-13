@@ -17,7 +17,7 @@
     <!-- body ---------------------------------------------------- -->
     <main>
         <div id="weather">
-            <a href="">날씨API</a><img src="ungmee/img/2x/baseline_cloud_black_18dp.png">
+            <a href="">날씨API</a><img src="/resource/images/img/2x/baseline_cloud_black_18dp.png">
         </div>
 
         <nav>

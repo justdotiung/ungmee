@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../../css/guest/login.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/guest/login.css">
 </head>
 <body>
     <!-- header -------------------------------------------------- -->
@@ -41,9 +41,10 @@
         </section>
         
         <div class="logo">
-           <a href="index"><img src="../../ungmee/ummo/logo.jpg"></a>
+           <a href="index"><img src="resource/images/ummo/logo.jpg"></a>
         </div>
     </section>
-        
+    <!-- footer----------------------------------------------------- -->
+	 <jsp:include page="inc/footer.jsp"></jsp:include>
     </body>
 </html>

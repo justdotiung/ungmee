@@ -12,6 +12,6 @@ public class MemberController {
 	}
 	@RequestMapping("/withdraw")
 	public String withdraw() {
-		return "detail";
+		return "signout";
 	}
 }

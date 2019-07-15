@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.member-state ul{
+	display: flex;
+}
+.member-state ul li{
+	margin-left: 10px;
+}

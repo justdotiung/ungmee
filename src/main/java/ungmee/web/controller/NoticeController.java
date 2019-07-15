@@ -9,11 +9,11 @@ public class NoticeController  {
 	
 	@RequestMapping("/list")
 	public String name() {
-		return "list";
+		return "notice/list";
 	}
 	
 	@RequestMapping("/detail")
 	public String dfsf() {
-		return "detail";
+		return "notice/detail";
 	}
 }

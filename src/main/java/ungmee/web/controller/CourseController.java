@@ -20,6 +20,6 @@ public class CourseController {
 
 	@RequestMapping("/detail")
 	public String detail() {
-		return "detail";
+		return "course/detail";
 	}
 }

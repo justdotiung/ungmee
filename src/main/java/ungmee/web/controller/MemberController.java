@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
 	@RequestMapping("/logout")
 	public String logout() {
-		return "logout";
+		return "redirect:/index";
 	}
 	@RequestMapping("/withdraw")
 	public String withdraw() {
-		return "signout";
+		return "redirect:/index";
 	}
 }

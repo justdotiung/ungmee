@@ -10,7 +10,7 @@
 <!--header -->
 	<jsp:include page="../inc/header.jsp"/>
 <!--body -->
-	지도로보는리스트
+	서치리스튼
 <!--footer-->
 	<jsp:include page="../inc/footer.jsp"/>
 

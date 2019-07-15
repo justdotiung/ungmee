@@ -32,7 +32,7 @@
                 </ul>
             </div>
             <div class="login-id">
-                <form action="/index" method="GET">
+                <form action="index" method="GET">
                     <input type="email" placeholder="이메일주소" >
                     <input type="password" placeholder="비밀번호">
                     <input type="submit" value="로그인">

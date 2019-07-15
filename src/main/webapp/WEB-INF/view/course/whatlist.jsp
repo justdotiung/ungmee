@@ -7,9 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<a href="/index"><img src="/resource/images/ummo/logo.jpg"></a>
-	</div>
-	주제별리스트
+<!--header -->
+	<jsp:include page="../inc/header.jsp"/>
+<!--body -->
+ 주제별리스트
+<!--footer-->
+	<jsp:include page="../inc/footer.jsp"/>
+
+	
 </body>
 </html>

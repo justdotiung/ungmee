@@ -13,7 +13,5 @@
  주제별리스트
 <!--footer-->
 	<jsp:include page="../inc/footer.jsp"/>
-
-	
 </body>
 </html>

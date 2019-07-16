@@ -11,8 +11,9 @@
 	<jsp:include page="../../inc/header.jsp"></jsp:include>
 <!-- body ----------  -->
 <div>
-	<a href="history">우리커플이야기</a>
-	<a href="secret">우리만의비밀글</a>
+	<a href="">우리커플이야기</a>
+	<a href="">우리만의비밀글</a>
+	<a href="">내정보수정</a>
 </div>
 <!-- footer ----------  -->
 	<jsp:include page="../../inc/footer.jsp"></jsp:include>

@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!--header -->
+	<jsp:include page="../inc/header.jsp"/>
+<!--body -->
+	<div>
+		<a href="edit">수정하기</a>
+		<a href="/index">탈퇴하기</a>
+	</div>
+<!--footer-->
+	<jsp:include page="../inc/footer.jsp"/>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-package ungmee.web.controller;
+package ungmee.web.controller.guest;
 
 import javax.servlet.http.HttpServletRequest;
 

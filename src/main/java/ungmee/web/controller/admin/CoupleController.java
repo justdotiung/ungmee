@@ -3,9 +3,9 @@ package ungmee.web.controller.admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@Controller("AdminCoupleController")
 @RequestMapping("admin/couple")
-public class CoupleMController {
+public class CoupleController {
 	
 	@RequestMapping("/edit")
 	public String edit() {

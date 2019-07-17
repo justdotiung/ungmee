@@ -3,9 +3,9 @@ package ungmee.web.controller.couple;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@Controller("CoupleDiaryController")
 @RequestMapping("/couple/page/")
-public class PageController {
+public class DiaryController {
 	
 	@RequestMapping("index")
 	private String index() {
@@ -13,6 +13,6 @@ public class PageController {
 	}
 	@RequestMapping("detail")
 	private String detail() {
-		return "couple/page/index";
+		return "couple/page/detail";
 	}
 }

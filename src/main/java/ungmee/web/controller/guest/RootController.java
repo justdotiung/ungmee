@@ -1,4 +1,4 @@
-package ungmee.web.controller;
+package ungmee.web.controller.guest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +27,7 @@ public class RootController {
 			,String lDay
 			,String gender		
 			) {
+	
 		
 		System.out.println(type);
 		System.out.println(name);

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<!-- header -->
-	<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="../../inc/header.jsp" />
 	<div>
 		<ul>
 			<li>사장님들 공지사항</li>
@@ -28,6 +28,6 @@
 		</table>
 	</section>
 	<!-- footer -->
-	<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../../inc/footer.jsp" />
 </body>
 </html>

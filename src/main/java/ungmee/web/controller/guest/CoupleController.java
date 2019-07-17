@@ -1,26 +1,23 @@
-package ungmee.web.controller;
+package ungmee.web.controller.guest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/couple/")
+@Controller("CoupleController")
+@RequestMapping("/couplediary/")
 public class CoupleController {
 	@RequestMapping("list")
 	public String list() {
-		return "couple/list";
+		return "guest/couplediary/list";
 	}
 
 	@RequestMapping("detail")
 	public String detail() {
-		return "couple/detail";
+		return "guest/couplediary/detail";
 	}
 	
-	@GetMapping("edit")
-	public String edit(String eventchek, String phone) {
-		return "couple/edit";
-	}
+	
 	
 }

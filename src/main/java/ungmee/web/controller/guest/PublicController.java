@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-public class RootController {
+@RequestMapping("/guest/")
+public class PublicController {
 	@RequestMapping("login")
 	public String login() {
-		return "login";
+		return "guest/login";
 	}
 	@GetMapping("signup")
 	public String signup() {
-		return "signup";
+		return "guest/signup";
 	}
 	@PostMapping("signup")
 	public String signup(String type
@@ -39,11 +39,11 @@ public class RootController {
 		System.out.println(lDay);
 		System.out.println(gender);
 		
-		return "index";
+		return "guest/login";
 	}
 	
 	@RequestMapping("index")
 	public String index() {
-		return "index";
+		return "guest/index";
 	}
 }

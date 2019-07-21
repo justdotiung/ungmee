@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +16,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import ungmee.web.dao.CoupleDao;
+import ungmee.web.entity.Couple;
+
 @Controller
 @RequestMapping("/couple/info/")
 public class InfoController {
 
+	@Autowired
+	private CoupleDao coupleDao; 
+	
 	@GetMapping("edit")
-	public String edit() {
+	public String edit(Model model) {
+		Couple couple = coupleDao.get(1);
+		model.addAttribute("couple", couple);
 		return "couple/info/edit";
 	}
 	@PostMapping("edit")

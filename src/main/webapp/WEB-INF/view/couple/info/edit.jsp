@@ -19,15 +19,15 @@
 	<section id="myinfo">
 		<div>
 			<ul>
-				<li><span>아이디(이메일) : c1@c.com</span></li>
+				<li><span>아이디(이메일) : ${couple.id}</span></li>
 				<li><span>회원등급 : 데잘알</span></li>
 				<li><span>가입일 : 2018.01.01</span></li>
-				<li><span>사랑에빠진날 :</span><input type="date" value="2018-01-01" name="s-date"></li>
-				<li><span>핸드폰 :</span><input type="text" value="01000000000" name="phonenumber"></li>
+				<li><span>사랑에빠진날 :${couple.loveDay}</span><input type="date" value="2018-01-01" name="s-date"></li>
+				<li><span>핸드폰 :${couple.phone}</span><input type="text" value="01000000000" name="phonenumber"></li>
 				<li>
-					<span>이벤트 SNS</span>
+					<span>이벤트 SNS ${couple.sns}</span>
 					<input type="radio" checked="checked" name="agree" value="agree"><label>동의</label>
-					<input type="radio" checked="checked" name="disagree" value="disagree"><label>거부</label>
+					<input type="radio" name="disagree" value="disagree"><label>거부</label>
 				</li>
 			</ul>
 		</div>
@@ -36,7 +36,7 @@
 			<div>프로필사진<img src=""></div>
 			<input type="file" class="d-none">
 			<div class="triggerButton">프로필변경</div>
-			<div>커플명</div>
+			<div>${couple.cName}</div>
 			<input type="button">
 		</div>
 		

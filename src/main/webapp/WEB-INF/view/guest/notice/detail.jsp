@@ -2,13 +2,12 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+
 	<!-- header -->
 	<jsp:include page="../../inc/header.jsp" />
+	
+	
+	<main>
 	<div>
 		<ul>
 			<li>사장님들 공지사항</li>
@@ -27,7 +26,9 @@
 			</tr>
 		</table>
 	</section>
+	</main>
+	
 	<!-- footer -->
 	<jsp:include page="../../inc/footer.jsp" />
-</body>
+
 </html>

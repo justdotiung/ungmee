@@ -17,7 +17,7 @@
 		<ul>
 			<li><a href="/guest/login">로그인</a></li>
 			<li><a href="/guest/signup">회원가입</a></li>
-			<li><a href="/couple/page/index">커플페이지</a></li>
+			<li><a href="/couple/diary/index">커플페이지</a></li>
 			<li><a href="/couple/info/edit">정보수정</a></li>
 			<li><a href="/member/logout">로그아웃</a></li>
 			<li><a href="/admin/index">관리자페이지</a></li>

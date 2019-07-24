@@ -33,8 +33,9 @@
             </div>
             <div class="login-id">
                 <form action="index" method="GET">
-                    <input type="email" placeholder="이메일주소" >
-                    <input type="password" placeholder="비밀번호">
+                    <input type="email" name="username" placeholder="이메일주소" >
+                    <input type="password" name="password" placeholder="비밀번호">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                     <input type="submit" value="로그인">
                 </form>
             </div>

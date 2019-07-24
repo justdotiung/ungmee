@@ -29,8 +29,6 @@
 		</http>
 		<authentication-manager>
 			<authentication-provider>
-			
-			
 				<password-encoder hash="bcrypt"/>
 				<user-service>
 					<user name="mellome" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_ADMIN, ROLE_TEACHER, ROLE_STUDENT"/>

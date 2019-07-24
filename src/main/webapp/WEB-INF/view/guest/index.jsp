@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
+<c:set var="ctxName" value="${pageContext.request.contextPath}"/>
 <head>
-    <link rel="stylesheet" type="text/css" href="/resource/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/resource/css/member/index.css">
+    <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/member/index.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

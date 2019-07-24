@@ -1,17 +1,17 @@
-package ungmee.web.controller.guest;
+package ungmee.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("GuestDiaryController")
-@RequestMapping("/guest")
+@Controller("DiaryController")
+@RequestMapping("/diary")
 public class DiaryController {
 	@RequestMapping("list")
 	public String login() {
-		return "list";
+		return "diary/list";
 	}
 	@RequestMapping("detail")
 	public String signup() {
-		return "detail";
+		return "diary/detail";
 	}
 }

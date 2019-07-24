@@ -4,8 +4,8 @@ package ungmee.web.controller.guest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/course")
+@Controller("GuestCourseController")
+@RequestMapping("/guest/course")
 public class CourseController {
 
 	@RequestMapping("/list")

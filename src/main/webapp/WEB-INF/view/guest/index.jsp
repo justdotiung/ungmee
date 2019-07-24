@@ -60,4 +60,3 @@
             <div><a href="${ctxName}/notice/list">더보기</a></div>
         </section>
     </main>
-  

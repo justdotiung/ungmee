@@ -1,20 +1,28 @@
-package ungmee.web.controller.guest;
+package ungmee.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("GuestPublicController")
-@RequestMapping("/guest/")
+@Controller
+@RequestMapping("/")
 public class PublicController {
 	@RequestMapping("login")
 	public String login() {
-		return "guest/login";
+		return "login";
+	}
+	@RequestMapping("/logout")
+	public String logout() {
+		return "logout";
+	}
+	@RequestMapping("/withdraw")
+	public String withdraw() {
+		return "withdraw";
 	}
 	@GetMapping("signup")
 	public String signup() {
-		return "guest/signup";
+		return "signup";
 	}
 	@PostMapping("signup")
 	public String signup(String type
@@ -39,11 +47,11 @@ public class PublicController {
 		System.out.println(lDay);
 		System.out.println(gender);
 		
-		return "guest/login";
+		return "login";
 	}
 	
 	@RequestMapping("index")
 	public String index() {
-		return "root.index";
+		return "index";
 	}
 }

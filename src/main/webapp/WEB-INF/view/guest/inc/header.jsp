@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
 
@@ -23,11 +21,23 @@
 	</div>
 	<div class="member-state">
 		<ul>
-			<li><a href="${ctxName}/guest/login">로그인</a></li>
+		<security:authorize access="hasRole('ADMIN')">
+		웅쏭만 볼 수 있는 내용
+		</security:authorize>
+			
+			<security:authorize access="isAnonymous()">
+			<li><a href="${ctxName}/guest/login">로그인</a></li>			
+			</security:authorize>
 			<li><a href="${ctxName}/guest/signup">회원가입</a></li>
 			<li><a href="${ctxName}/couple/page/index">커플페이지</a></li>
 			<li><a href="${ctxName}/couple/info/edit">정보수정</a></li>
+			<security:authorize access="isAuthenticated()">
 			<li><a href="${ctxName}/member/logout">로그아웃</a></li>
+				<form action="${ctxName}/member/logout" method="post">
+					<input type="submit" value="로그아웃">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>			
+			</security:authorize>
 			<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
 			<li><a href="${ctxName}/member/withdraw">회원탈퇴</a></li>
 		</ul>

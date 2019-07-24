@@ -1,19 +1,19 @@
-package ungmee.web.controller.guest;
+package ungmee.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("GuestNoticeController")
-@RequestMapping("/guest/notice")
+@Controller
+@RequestMapping("/notice")
 public class NoticeController  {
 	
 	@RequestMapping("/list")
 	public String name() {
-		return "guest.notice.list";
+		return "notice.list";
 	}
 	
 	@RequestMapping("/detail")
 	public String dfsf() {
-		return "guest.notice.detail";
+		return "notice.detail";
 	}
 }

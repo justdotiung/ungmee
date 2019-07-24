@@ -25,6 +25,9 @@
 				login-page="/member/login"
 				default-target-url="/index"
 			/>
+			<logout logout-url="/member/logout"
+			logout-success-url="/index"
+			/>
 			<access-denied-handler error-page="/error/403"/>			
 		</http>
 		<authentication-manager>

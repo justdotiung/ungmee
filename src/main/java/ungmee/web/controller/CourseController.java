@@ -1,15 +1,15 @@
-package ungmee.web.controller.guest;
+package ungmee.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("GuestCourseController")
-@RequestMapping("/guest/course")
+@Controller
+@RequestMapping("/course/")
 public class CourseController {
 
-	@RequestMapping("/list")
+	@RequestMapping("list")
 	public String list(HttpServletRequest request) {
 		String t = request.getParameter("type");
 		if (t == null &&"".equals(t))
@@ -18,7 +18,7 @@ public class CourseController {
 			return "course/"+t+"list";
 	}
 
-	@RequestMapping("/detail")
+	@RequestMapping("detail")
 	public String detail() {
 		return "course/detail";
 	}

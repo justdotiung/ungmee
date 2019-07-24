@@ -4,16 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/notice")
+@RequestMapping("/guest/notice")
 public class NoticeController  {
 	
 	@RequestMapping("/list")
 	public String name() {
-		return "notice/list";
+		return "guest.notice.list";
 	}
 	
 	@RequestMapping("/detail")
 	public String dfsf() {
-		return "notice/detail";
+		return "guest.notice.detail";
 	}
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        
+        http://www.springframework.org/schema/security
+        https://www.springframework.org/schema/security/spring-security.xsd">
+		
+		<!-- 인증과 권한 체크 -->
+		<!-- <http auto-config="true"> -->
+		<http> 
+			<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+			 <form-login
+				login-page="/member/login"
+				default-target-url="/index"
+			/>
+			<access-denied-handler error-page="/error/403"/>			
+		</http>
+		<authentication-manager>
+			<authentication-provider>
+			
+			
+				<password-encoder hash="bcrypt"/>
+				<user-service>
+					<user name="mellome" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_ADMIN, ROLE_TEACHER, ROLE_STUDENT"/>
+					<user name="newlec" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_STUDENT"/>
+				</user-service>
+			</authentication-provider>
+		</authentication-manager>
+</beans:beans>

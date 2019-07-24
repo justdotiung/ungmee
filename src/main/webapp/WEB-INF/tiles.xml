@@ -15,10 +15,10 @@
 	<definition name="root.*"
 		template="/WEB-INF/view/inc/layout.jsp">
 		<put-attribute name="header"
-			value="/WEB-INF/view/guest/inc/header.jsp" />
+			value="/WEB-INF/view/inc/header.jsp" />
 		<put-attribute name="main"
-			value="/WEB-INF/view/guest/{1}.jsp" />
+			value="/WEB-INF/view/{1}.jsp" />
 		<put-attribute name="footer"
-			value="/WEB-INF/view/guest/inc/footer.jsp" />
+			value="/WEB-INF/view/inc/footer.jsp" />
 	</definition>
 </tiles-definitions>

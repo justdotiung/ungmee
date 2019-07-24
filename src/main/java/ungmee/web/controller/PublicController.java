@@ -52,6 +52,6 @@ public class PublicController {
 	
 	@RequestMapping("index")
 	public String index() {
-		return "index";
+		return "root.index";
 	}
 }

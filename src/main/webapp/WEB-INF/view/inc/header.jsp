@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/resource/css/inc/header.css">
+<link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/inc/header.css">
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/reset.css">
 
 </head>

@@ -7,23 +7,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class PublicController {
-	@RequestMapping("login")
+public class RootController {
+	@GetMapping("login")
 	public String login() {
-		return "login";
+		return "root.login";
 	}
-	@RequestMapping("/logout")
+	
+	@PostMapping("logout")
 	public String logout() {
-		return "logout";
+		return "root.login";
 	}
-	@RequestMapping("/withdraw")
+	@RequestMapping("withdraw")
 	public String withdraw() {
-		return "withdraw";
+		return "root.withdraw";
 	}
 	@GetMapping("signup")
 	public String signup() {
-		return "signup";
+		System.out.println(":durl");
+		return "root.signup";
 	}
+	
 	@PostMapping("signup")
 	public String signup(String type
 			,String name
@@ -35,7 +38,7 @@ public class PublicController {
 			,String lDay
 			,String gender		
 			) {
-	
+		System.out.println(":durldfdf");
 		
 		System.out.println(type);
 		System.out.println(name);
@@ -47,7 +50,7 @@ public class PublicController {
 		System.out.println(lDay);
 		System.out.println(gender);
 		
-		return "login";
+		return "redirect:login";
 	}
 	
 	@RequestMapping("index")

@@ -17,9 +17,9 @@
 <body>
 	<div>
 
-		<a href="/index"><img
+		<a href="${ctxName}/index"><img
 			src="${ctxName}/resource/images/ummo/logo.jpg"></a>
-r
+
 	</div>
 	<div class="member-state">
 		<ul>
@@ -29,21 +29,22 @@ r
 		</security:authorize>
 			
 			<security:authorize access="isAnonymous()">
-			<li><a href="${ctxName}/guest/login">로그인</a></li>			
+			<li><a href="${ctxName}/login">로그인</a></li>			
+			<li><a href="${ctxName}/signup">회원가입</a></li>
 			</security:authorize>
-			<li><a href="${ctxName}/guest/signup">회원가입</a></li>
-			<li><a href="${ctxName}/couple/page/index">커플페이지</a></li>
-			<li><a href="${ctxName}/couple/info/edit">정보수정</a></li>
 			<security:authorize access="isAuthenticated()">
-			<li><a href="${ctxName}/member/logout">로그아웃</a></li>
-				<form action="${ctxName}/member/logout" method="post">
+			<li><a href="${ctxName}/user/info/detail">정보수정</a></li>
+			<li><a href="${ctxName}/user/couple/index">커플페이지</a></li>
+			<li><a href="${ctxName}/member/withdraw">회원탈퇴</a></li>
+				<form action="${ctxName}/logout" method="post">
 					<input type="submit" value="로그아웃">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>			
 			</security:authorize>
-
-			<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
-			<li><a href="${ctxName}/member/withdraw">회원탈퇴</a></li>
+			<security:authorize access="hasRole('ADMIN')">
+				<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
+				관리자만 보기
+			</security:authorize>
 		</ul>
 	</div>
 	<nav>

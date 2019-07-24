@@ -4,6 +4,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/reset.css">
- <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/guest/login.css"> 
+
 <title>Document</title>
 </head>
 <body>

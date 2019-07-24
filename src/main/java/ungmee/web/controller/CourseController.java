@@ -10,16 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CourseController {
 
 	@RequestMapping("list")
-	public String list(HttpServletRequest request) {
-		String t = request.getParameter("type");
-		if (t == null &&"".equals(t))
-			return "error";
-		else
-			return "course/"+t+"list";
+	public String list(String type) {
+		System.out.println("type:"+type);
+			return "course."+type;
 	}
 
 	@RequestMapping("detail")
 	public String detail() {
-		return "course/detail";
+		return "course.detail";
 	}
 }

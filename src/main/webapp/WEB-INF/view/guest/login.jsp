@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxName" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="/resource/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/resource/css/guest/login.css">
+    <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/guest/login.css">
 </head>
 <body>
     <!-- header -------------------------------------------------- -->
@@ -42,7 +43,7 @@
         </section>
         
         <div class="logo">
-           <a href="index"><img src="resource/images/ummo/logo.jpg"></a>
+           <a href="index"><img src="${ctxName}/resource/images/ummo/logo.jpg"></a>
         </div>
     </section>
     <!-- footer----------------------------------------------------- -->

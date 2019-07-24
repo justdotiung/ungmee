@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="ctxName" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
-<c:set var="ctxName" value="${pageContext.request.contextPath}"/>
 <head>
-    <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/member/index.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/member/index.css">
     <title>Document</title>
 </head>
 <body>
@@ -74,7 +76,7 @@
             		<li> <a href="/notice/detail">공지글1</a></li>
             	</ul>
             </div>
-            <div><a href="/notice/list">더보기</a></div>
+            <div><a href="${ctxName}/notice/list">더보기</a></div>
         </section>
     </main>
     <!-- footer -------------------------------------------------- -->   

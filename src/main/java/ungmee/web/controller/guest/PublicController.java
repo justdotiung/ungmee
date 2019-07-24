@@ -44,6 +44,6 @@ public class PublicController {
 	
 	@RequestMapping("index")
 	public String index() {
-		return "guest/index";
+		return "root.index";
 	}
 }

@@ -56,19 +56,19 @@ section div{
 	height: 150px;
 }
 #Couple-Best li:nth-child(1) a{
-   background: url("/resource/images/index/c1.jpg") no-repeat center;
+   background: url("../../images/index/c1.jpg") no-repeat center;
 }
 #Couple-Best li:nth-child(2) a{
-   background: url("/resource/images/index/c2.jpg") no-repeat center;
+   background: url("../../images/index/c2.jpg") no-repeat center;
 }
 #Couple-Best li:nth-child(3) a{
-   background: url("/resource/images/index/커플3.jpg") no-repeat center;
+   background: url("../../images/index/커플3.jpg") no-repeat center;
 }
 #Couple-Best li:nth-child(4) a{
-   background: url("/resource/images/index/c4.jpg") no-repeat center;
+   background: url("../../images/index/c4.jpg") no-repeat center;
 }
 #Couple-Best li:nth-child(5) a{
-   background: url("/resource/images/index/c5.jpg") no-repeat center;
+   background: url("../../images/index/c5.jpg") no-repeat center;
 }
 
 #Event{

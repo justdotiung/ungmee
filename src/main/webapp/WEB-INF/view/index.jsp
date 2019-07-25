@@ -4,15 +4,20 @@
 <c:set var="ctxName" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/member/index.css">
+
     <main>
+    	<div id="title">
+    	<h1>현재 100쌍의 커플이 열렬히 데이트 중입니다요 :)</h1>
+    	</div>
+    
         <div id="Couple-Best">
-            <h1>주간베스트커플</h1>
+            <h1>Weekly Best Couple</h1>
             <ul>
-                <li><a href="${ctxName}/couple/detail">묵은지부부 커플1</a></li>
-                <li><a href="couple/detail">새내기부부 커플2</a></li>
-                <li><a href="couple/detail">아무상관없는 커플3</a></li>
-                <li><a href="couple/detail">이거의 지표는 좋아요갯수, 팔로워수</a></li>
-                <li><a href="couple/detail">커플5</a></li>
+                <li><a href="${ctxName}/couple/detail">1</a></li>
+                <li><a href="couple/detail">2</a></li>
+                <li><a href="couple/detail">3</a></li>
+                <li><a href="couple/detail">4</a></li>
+                <li><a href="couple/detail">5</a></li>
             </ul>
         </div>
 
@@ -21,7 +26,6 @@
             <h1>주간베스트코스</h1>
             <ul>
             <!--다오만들때 뷰 best 아이디 값으로 넣준다.  -->
-            
                 <li><a href="course/list">더보기</a></li>
                 <li><a href="course/detail">코스1</a></li>
                 <li><a href="course/detail">코스2</a></li>
@@ -33,13 +37,31 @@
 
         <section id="partner">
             <h1>제휴사 딜</h1>
-             <div>
+             <div id="first-deal">
              	<ul>
              		<li>노보텔엠배서더 시울 동대문</li>
-             		<li>잠못이루는 서울의 밤으로 초대합니다</li>
+             		<li>카테고리/주제<li>
+             		<li>잠못이루는 서울의 밤으로 초대합니다.</li>
              		<li><a href="">예약</a></li>
              		<li><a href="">티켓</a></li>
-             		<li>256</li>
+             	</ul>
+             </div>
+             <div id="second-deal">
+             	<ul>
+             		<li>인터컨티넨탈 서울 코엑스</li>
+             		<li>카테고리/주제<li>
+             		<li>코엑스의 로비라운지 파티가 펼쳐집니다.</li>
+             		<li><a href="">예약</a></li>
+             		<li><a href="">티켓</a></li>
+             	</ul>
+             </div>
+                <div id="third-deal">
+             	<ul>
+             		<li>자체휴강사네마</li>
+             		<li>카테고리/주제<li>
+             		<li>독립,단편 영화관입니다.</li>
+             		<li><a href="">예약</a></li>
+             		<li><a href="">티켓</a></li>
              	</ul>
              </div>
         </section>

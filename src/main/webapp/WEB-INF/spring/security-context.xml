@@ -21,12 +21,14 @@
 		<!-- <http auto-config="true"> -->
 		<http> 
 			<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+			<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')"/>
 			 <form-login
-				login-page="/member/login"
+				login-page="/login"
 				default-target-url="/index"
 			/>
-			<logout logout-url="/member/logout"
-			logout-success-url="/index"
+			<logout
+			 	logout-url="/logout"
+				logout-success-url="/index"
 			/>
 			<access-denied-handler error-page="/error/403"/>			
 		</http>
@@ -34,8 +36,8 @@
 			<authentication-provider>
 				<password-encoder hash="bcrypt"/>
 				<user-service>
-					<user name="mellome" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_ADMIN, ROLE_TEACHER, ROLE_STUDENT"/>
-					<user name="newlec" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_STUDENT"/>
+					<user name="mellome" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_ADMIN"/>
+					<user name="newlec" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_USER"/>
 				</user-service>
 			</authentication-provider>
 		</authentication-manager>

@@ -9,7 +9,7 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String edit() {
-		return "admin/index";
+		return "admin.index";
 	}
 
 }

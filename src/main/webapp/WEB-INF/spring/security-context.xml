@@ -35,10 +35,14 @@
 		<authentication-manager>
 			<authentication-provider>
 				<password-encoder hash="bcrypt"/>
-				<user-service>
+				<jdbc-user-service data-source-ref="dataSource"
+								users-by-username-query="SELET ID ,PW PASSWORD , ENAVLED MEMBER WHERE ID = ?"			
+								authorities-by-username-query="SELECT ID, AUTHORITY FROM MEMBER WHERE ID = ?"
+				/>
+				<!-- <user-service>
 					<user name="mellome" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_ADMIN"/>
 					<user name="newlec" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" authorities="ROLE_USER"/>
-				</user-service>
+				</user-service> -->
 			</authentication-provider>
 		</authentication-manager>
 </beans:beans>

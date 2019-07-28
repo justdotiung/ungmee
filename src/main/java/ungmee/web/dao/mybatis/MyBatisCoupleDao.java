@@ -21,7 +21,7 @@ public class MyBatisCoupleDao implements CoupleDao {
 
 	@Override
 	public int edit(Couple couple) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

@@ -1,16 +1,23 @@
 package ungmee.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ungmee.web.dao.MemberDao;
+import ungmee.web.dao.mybatis.MyBatisMemberDao;
+import ungmee.web.entity.Member;
+
 @Controller
 @RequestMapping("/")
 public class RootController {
 	@Autowired
-	private user
+	private MemberDao memberDao;
+	
 	
 	@GetMapping("login")
 	public String login() {
@@ -27,34 +34,24 @@ public class RootController {
 	}
 	@GetMapping("signup")
 	public String signup() {
-		System.out.println(":durl");
+		System.out.println("Ff");
 		return "root.signup";
 	}
 	
 	@PostMapping("signup")
-	public String signup(String type
-			,String name
-			,String email
-			,String pw
-			,String terms1
-			,String terms2
-			,String bDay
-			,String lDay
-			,String gender		
-			) {
-		System.out.println(":durldfdf");
+	public String signup(Member member ,String echeck) {
+		if(echeck == null)
+			member.setEcheck("ºñµ¿ÀÇ");
+		String pwd = member.getPw();
+		System.out.println(pwd);
+		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+		pwd = pwdEncoder.encode(pwd);
 		
-		System.out.println(type);
-		System.out.println(name);
-		System.out.println(email);
-		System.out.println(pw);
-		System.out.println(terms1);
-		System.out.println(terms2);
-		System.out.println(bDay);
-		System.out.println(lDay);
-		System.out.println(gender);
+		member.setPw(pwd);
+
+		memberDao.insert(member);
+		return "redirect:/index" ; 
 		
-		return "redirect:login";
 	}
 	
 	@RequestMapping("index")

@@ -8,7 +8,8 @@
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/reset.css">
 <link rel="stylesheet" type="text/css"
-	href="${ctxName}/resource/css/guest/login.css">
+	href="${ctxName}/resource/css/root/login.css">
+<script src="${ctxName}/resource/js/root/login.js"></script>
 
 <section id="main">
 	<section class="login-form">
@@ -20,12 +21,13 @@
 				<li><a href="naver"><img src="">네이버</a></li>
 			</ul>
 		</div>
-		<div class="login-id">
+		<div class="login-form">
 			<form action="login" method="post">
 				<input type="text" name="username" placeholder="이메일주소">
-				 <input type="password" name="password" placeholder="비밀번호">
-				  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				<input type="submit" value="로그인">
+				<input type="password" name="password" placeholder="비밀번호">
+				 ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+ 				<input type="submit" value="로그인" class = "login-button">
 			</form>
 		</div>
 	</section>

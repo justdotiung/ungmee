@@ -10,8 +10,11 @@ public class Member {
     private int enabled;
     private String authority;
     private String gender;
-    private int echeck;
-
+    private String echeck;
+    private String name;
+    private int birthday;
+    private String profile;
+    
     public Member() {
 	
     }
@@ -72,13 +75,46 @@ public class Member {
 		this.gender = gender;
 	}
 
-	public int getEcheck() {
+	public String getEcheck() {
 		return echeck;
 	}
 
-	public void setEcheck(int echeck) {
+	public void setEcheck(String echeck) {
 		this.echeck = echeck;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(int birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", email=" + email + ", pw=" + pw + ", regdate=" + regdate + ", enabled=" + enabled
+				+ ", authority=" + authority + ", gender=" + gender + ", echeck=" + echeck + ", name=" + name
+				+ ", birthday=" + birthday + ", profile=" + profile + "]";
+	}
+
+
+	
 	
 }

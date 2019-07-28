@@ -28,10 +28,10 @@
 		웅쏭만 볼 수 있는 내용
 		</security:authorize>
 			
-			<security:authorize access="isAnonymous()">
+			
 			<li><a href="${ctxName}/login">로그인</a></li>			
 			<li><a href="${ctxName}/signup">회원가입</a></li>
-			</security:authorize>
+			
 			<security:authorize access="isAuthenticated()">
 			<li><a href="${ctxName}/user/info/detail">정보수정</a></li>
 			<li><a href="${ctxName}/user/couple/index">커플페이지</a></li>
@@ -41,10 +41,9 @@
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>			
 			</security:authorize>
-			<security:authorize access="hasRole('ADMIN')">
+			
 				<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
-				관리자만 보기
-			</security:authorize>
+		
 		</ul>
 	</div>
 	<nav>

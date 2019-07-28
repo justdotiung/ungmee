@@ -10,7 +10,7 @@
     	<h1>현재 100쌍의 커플이 열렬히 데이트 중입니다요 :)</h1>
     	</div>
     
-        <div id="Couple-Best">
+        <div id="couple-best">
             <h1>Weekly Best Couple</h1>
             <ul>
                 <li><a href="${ctxName}/couple/detail">1</a></li>
@@ -22,7 +22,7 @@
         </div>
 
 
-        <section id="Course-Best">
+        <section id="course-best">
             <h1>주간베스트코스</h1>
             <ul>
             <!--다오만들때 뷰 best 아이디 값으로 넣준다.  -->
@@ -66,7 +66,7 @@
              </div>
         </section>
 
-        <section id="Event">
+        <section id="event">
             <h1>이벤트</h1>
             <ul>
                 <li><a href="/notice/detail">사내이벤트1</a></li>
@@ -77,7 +77,7 @@
             <div><a href="/notice/list">더보기</a></div>
         </section>
 
-        <section id="Notice">
+        <section id="notice">
             <h1>공지사항</h1>
             <div>
             	<ul>

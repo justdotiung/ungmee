@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="ungmee.web.dao.MemberDao">
+ 	<insert id="insert" parameterType="ungmee.web.entity.Member">
+ 		INSERT INTO member 
+ 			(email, pw, gender, echeck, name, birthday)
+ 		 VALUES 
+ 		 	(#{email},#{pw},#{gender},#{echeck},#{name},#{birthday})
+ 	</insert>
+ </mapper>

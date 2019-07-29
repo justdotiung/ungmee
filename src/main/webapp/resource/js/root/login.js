@@ -6,7 +6,7 @@ window.addEventListener("load",function(){
     var formData = new FormData();
    
 
-    loginBtn.onclick = function(){
+/*    loginBtn.onclick = function(){
         alert("로그인");
         var parameter = 'username'+id.value+'$password'+pw.value;
         alert(parameter);
@@ -20,5 +20,5 @@ window.addEventListener("load",function(){
         }
         request.send(parameter);
         alert("로그인1");
-    };
+    };*/
 });

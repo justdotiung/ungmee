@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctxName" value="${pageContext.request.contextPath}"></c:set>
+<script src="${ctxName}/resource/js/root/signup.js"></script>
+
 <section id="body">
      <form action="signup" method="post">
          <div>
@@ -16,11 +20,13 @@
          </div>
          <div>
          	<label>비밀번호 확인</label>
-         	<input type="password" name="pw2">
+         	<input type="password" name="pw-check"><span id="same"></span>
          </div>
          <div>
-         	<label>생년월일</label>
+         	<label>생년월일</label>         	
          	<input type="text" name="birthday" placeholder="월 일 만 입력 ex)0513">
+			
+         	
          </div>
            <div>
          	<label>이벤트 동의(선택)</label>

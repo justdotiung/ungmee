@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="../../inc/header.jsp"/>
 	<div>
 		<a href="">검색</a>	
 	</div>

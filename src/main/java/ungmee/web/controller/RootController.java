@@ -24,17 +24,12 @@ public class RootController {
 		return "root.login";
 	}
 	
-	@PostMapping("logout")
-	public String logout() {
-		return "root.login";
-	}
 	@RequestMapping("withdraw")
 	public String withdraw() {
 		return "root.withdraw";
 	}
 	@GetMapping("signup")
 	public String signup() {
-		System.out.println("Ff");
 		return "root.signup";
 	}
 	

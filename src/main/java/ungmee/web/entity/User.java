@@ -2,7 +2,7 @@ package ungmee.web.entity;
 
 import java.util.Date;
 
-public class Member {
+public class User {
     private int id;
     private String email;
     private String pw;
@@ -15,7 +15,7 @@ public class Member {
     private int birthday;
     private String profile;
     
-    public Member() {
+    public User() {
 	
     }
 

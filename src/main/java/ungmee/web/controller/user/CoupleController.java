@@ -16,15 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import ungmee.web.dao.CoupleDao;
-import ungmee.web.entity.Couple;
 
 @Controller("UserCoupleController")
 @RequestMapping("/user/couple/")
 public class CoupleController {
-	@Autowired
-	private CoupleDao coupleDao;
-
+	
 	@GetMapping("index")
 	public String index() {
 		return "user/couple/index";
@@ -48,8 +44,6 @@ public class CoupleController {
 	
 	@GetMapping("edit")
 	public String edit(Model model) {
-		Couple couple = coupleDao.get(1);
-		model.addAttribute("couple", couple);
 		return "user/couple/edit";
 	}
 

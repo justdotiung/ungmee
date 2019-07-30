@@ -1,11 +1,13 @@
-window.addEventListener("load",function(e){
+window.addEventListener("load",function(){
     var section = document.querySelector("#body");
     var pw = section.querySelector("input[name=pw]");
     var pwCheck = section.querySelector("input[name=pw-check]");
     var loginBtn = section.querySelector("input[type=submit]");
     var same = section.querySelector("#same");
     
-    pwCheck.oninput =function(e){
+   
+    
+    pwCheck.oninput =function(){
         if(pw.value != pwCheck.value)
             same.innerText="비밀번호가 일치하지 않습니다.";
         else

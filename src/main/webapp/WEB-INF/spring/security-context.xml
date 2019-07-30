@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans
 	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns="http://www.springframework.org/schema/security"
+
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+
 
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
@@ -15,23 +17,34 @@
         http://www.springframework.org/schema/security
         https://www.springframework.org/schema/security/spring-security.xsd">
 
+	<beans:bean id="customUserDetailsService" class="ungmee.web.security.CustomUserDetailsService"/>
+	<!-- 에러페이지 access-denied-handler 구현체 빈등록 -->
+	<beans:bean id="customAccessDeniedHandler" class="ungmee.web.security.CustomAccessDeniedHandler"></beans:bean>
+	
 	<!-- 인증과 권한 체크 -->
 	<!-- <http auto-config="true"> -->
 	<http>
 		<intercept-url pattern="/admin/**"
 			access="hasRole('ROLE_ADMIN')" />
-		<form-login login-page="/login" default-target-url="/index" />
-		<logout logout-url="/logout" logout-success-url="/index" />
+		<intercept-url pattern="/user/**"
+			access="hasRole('ROLE_USER')" />
+		<form-login login-page="/login" 
+					default-target-url="/index" />
 		
-		<access-denied-handler error-page="/url"/>
-		
+		<logout logout-url="/logout" 
+				logout-success-url="/index"
+				 />
+		 
+<!-- 		<access-denied-handler error-page="/error/access"/> -->
+		<access-denied-handler ref="customAccessDeniedHandler"/>		
 	</http>
 	<authentication-manager>
-		<authentication-provider>
+		<authentication-provider user-service-ref="customUserDetailsService" > <!-- 사용자 확장형시 바꿔준다. -->
 			<password-encoder hash="bcrypt" />
-			<jdbc-user-service data-source-ref="dataSource"
+		
+			<!-- <jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="SELECT EMAIL userName, PW PASSWORD, ENABLED FROM MEMBER WHERE EMAIL =?"
-				authorities-by-username-query="SELECT EMAIL userName , AUTHORITY FROM MEMBER WHERE EMAIL =?" />
+				authorities-by-username-query="SELECT EMAIL userName , AUTHORITY FROM MEMBER WHERE EMAIL =?" /> -->
 			<!-- <user-service> <user name="newlec" password="123" authorities="ROLE_ADMIN"/> 
 				<user name="dragon" password="$2a$10$7FzvomZgbNzRXm2th/xDpe3463k1WONaZ8wUxzVL7W.SS1Cw/W04G" 
 				authorities="ROLE_STUDENT"/> </user-service> -->

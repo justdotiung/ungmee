@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import ungmee.web.dao.MemberDao;
-import ungmee.web.dao.mybatis.MyBatisMemberDao;
-import ungmee.web.entity.Member;
+import ungmee.web.dao.UserDao;
+import ungmee.web.dao.mybatis.MyBatisUserDao;
+import ungmee.web.entity.User;
 
 @Controller
 @RequestMapping("/")
 public class RootController {
 	@Autowired
-	private MemberDao memberDao;
+	private UserDao memberDao;
 	
 	
 	@GetMapping("login")
@@ -34,7 +34,7 @@ public class RootController {
 	}
 	
 	@PostMapping("signup")
-	public String signup(Member member ,String echeck) {
+	public String signup(User member ,String echeck) {
 		if(echeck == null)
 			member.setEcheck("ºñµ¿ÀÇ");
 		String pwd = member.getPw();

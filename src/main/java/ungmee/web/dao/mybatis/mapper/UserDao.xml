@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="ungmee.web.dao.UserDao">
+ 	<select id="getEmail" resultType="ungmee.web.entity.User">
+ 		select * from member where email = #{email}
+ 	</select>
+
+ 	<select id="get" resultType="ungmee.web.entity.User">
+ 		select * from member where id = ?
+ 	</select>
+
+ 	<insert id="insert" parameterType="ungmee.web.entity.User">
+ 		INSERT INTO member 
+ 			(email, pw, gender, echeck, name, birthday)
+ 		 VALUES 
+ 		 	(#{email},#{pw},#{gender},#{echeck},#{name},#{birthday})
+ 	</insert>
+	<update id="edit" parameterType="ungmee.web.entity.User">
+		UPDATE MEMBER SET
+			  email = #{email}, pw= #{pw}, regdate= #{regdate}, enabled= #{enabled}, authority= #{authority},
+  			  gender= #{gender}, echeck= #{echeck}, name= #{name}, birthday= #{birthday}, profile= #{profile}
+  			where id = #{id} 
+    </update>
+	<update id="delet" parameterType="ungmee.web.entity.User">
+		UPDATE MEMBER SET
+			  email = #{email}, pw= #{pw}, regdate= #{regdate}, enabled= #{enabled}, authority= #{authority},
+  			  gender= #{gender}, echeck= #{echeck}, name= #{name}, birthday= #{birthday}, profile= #{profile}
+  			where id = #{id} 
+    </update>
+
+
+ 	
+ </mapper>

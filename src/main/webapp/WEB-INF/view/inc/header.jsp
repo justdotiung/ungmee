@@ -28,7 +28,7 @@
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
 				<security:authorize access="hasRole('USER')">
-				<li><a href="${ctxName}/user/info/detail">정보수정</a></li>
+				<li><a href="${ctxName}/user/detail">정보수정</a></li>
 				<li><a href="${ctxName}/user/couple/index">커플페이지</a></li>
 				<li><a href="${ctxName}/member/withdraw">회원탈퇴</a></li>			
 				</security:authorize>

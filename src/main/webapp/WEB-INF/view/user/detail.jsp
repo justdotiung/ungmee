@@ -24,14 +24,14 @@
 		</div>
 		<div>
 			<span>아이디</span>
-			<span>c1c@.com</span>
+			<span>${user.email }</span>
 		</div>
 		<div class="pw">
 			<span>비밀번호</span>
 			<input type="button" value="변경하기">
 		</div>
 		<div class="couple-state">
-			<span>커플상태</span>
+			<span>커플상태${user.cState }</span>
 			<input type="button" value="신청하기">
 		</div>
 		<div class="event-check">

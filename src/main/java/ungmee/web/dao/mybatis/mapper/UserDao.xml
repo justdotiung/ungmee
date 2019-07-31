@@ -3,12 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="ungmee.web.dao.UserDao">
+ 	<resultMap type="ungmee.web.entity.User" id="userMap">
+ 		<result column="C_STATE" javaType="INTEGER" jdbcType="NUMERIC" property="cState"/>
+ 	</resultMap>
+ 	
  	<select id="getEmail" resultType="ungmee.web.entity.User">
  		select * from member where email = #{email}
  	</select>
 
- 	<select id="get" resultType="ungmee.web.entity.User">
- 		select * from member where id = ?
+ 	<select id="get" resultMap="userMap">
+ 		select * from member where id = #{id}
  	</select>
 
  	<insert id="insert" parameterType="ungmee.web.entity.User">

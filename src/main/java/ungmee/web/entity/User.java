@@ -14,8 +14,11 @@ public class User {
     private String name;
     private int birthday;
     private String profile;
+    private int cState;
     
-    public User() {
+
+
+	public User() {
 	
     }
 
@@ -107,14 +110,20 @@ public class User {
 		this.profile = profile;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [id=" + id + ", email=" + email + ", pw=" + pw + ", regdate=" + regdate + ", enabled=" + enabled
-				+ ", authority=" + authority + ", gender=" + gender + ", echeck=" + echeck + ", name=" + name
-				+ ", birthday=" + birthday + ", profile=" + profile + "]";
+	public int getcState() {
+		return cState;
+	}
+	
+	public void setcState(int cState) {
+		this.cState = cState;
 	}
 
-
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", pw=" + pw + ", regdate=" + regdate + ", enabled=" + enabled
+				+ ", authority=" + authority + ", gender=" + gender + ", echeck=" + echeck + ", name=" + name
+				+ ", birthday=" + birthday + ", profile=" + profile + ", cState=" + cState + "]";
+	}
 	
 	
 }

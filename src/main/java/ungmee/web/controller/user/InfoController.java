@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,9 +25,11 @@ public class InfoController {
 	private UserDao userdao;
 	
 	@GetMapping("detail")
-	private String index(Principal principal) {
-		//System.out.println(principal.getName());
-		
+	private String index(Model model,Authentication auth) {
+		CustomUserDetails cUser = (CustomUserDetails) auth.getPrincipal();
+		User user = userdao.get(cUser.getId());
+		System.out.println(user);
+		model.addAttribute("user", user);
 		return "user/detail";
 	}
 	

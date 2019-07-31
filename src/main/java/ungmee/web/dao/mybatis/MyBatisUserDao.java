@@ -23,8 +23,8 @@ public class MyBatisUserDao implements UserDao{
 
 	@Override
 	public User get(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		UserDao dao = sqlSession.getMapper(UserDao.class);
+		return dao.get(id);
 	}
 	
 	@Override

@@ -3,12 +3,16 @@ package ungmee.web.controller.user;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.AuthenticatedPrincipal;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.User;
+import ungmee.web.security.CustomUserDetails;
 
 
 
@@ -27,15 +31,12 @@ public class InfoController {
 	}
 	
 	@GetMapping("delete")
-	private String delete(Principal principal) {
-		//System.out.println(principal.getName());
-		principal.getName();
-		System.out.println(principal.getName());
-		User user =	userdao.getEmail(principal.getName());
-		user.setProfile("1");
-		System.out.println(user);
-		userdao.edit(user);
-		return "redirect:/index";
+	@ResponseBody
+	private String delete(Authentication auth) {
+		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
+		int id = custom.getId();
+		//return "redirect:/index";
+		return ""+id;
 	}
 	
 }

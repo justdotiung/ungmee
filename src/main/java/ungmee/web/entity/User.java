@@ -6,12 +6,12 @@ public class User {
     private int id;
     private String email;
     private String pw;
-    private Date regdate;
+    private Date regDate;
     private int enabled;
     private String authority;
     private String gender;
     private String echeck;
-    private String name;
+    private String nickName;
     private int birthday;
     private String profile;
     private int cState;
@@ -46,12 +46,12 @@ public class User {
 		this.pw = pw;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regdate) {
+		this.regDate = regdate;
 	}
 
 	public int getEnabled() {
@@ -86,12 +86,12 @@ public class User {
 		this.echeck = echeck;
 	}
 
-	public String getName() {
-		return name;
+	public String getnickName() {
+		return nickName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setnickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public int getBirthday() {
@@ -120,8 +120,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", pw=" + pw + ", regdate=" + regdate + ", enabled=" + enabled
-				+ ", authority=" + authority + ", gender=" + gender + ", echeck=" + echeck + ", name=" + name
+		return "User [id=" + id + ", email=" + email + ", pw=" + pw + ", regdate=" + regDate + ", enabled=" + enabled
+				+ ", authority=" + authority + ", gender=" + gender + ", echeck=" + echeck + ", nickName=" + nickName
 				+ ", birthday=" + birthday + ", profile=" + profile + ", cState=" + cState + "]";
 	}
 	

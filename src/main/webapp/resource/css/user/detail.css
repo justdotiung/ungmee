@@ -1,0 +1,7 @@
+@charset "UTF-8";
+.d-none{
+	display: none;
+}
+#profile .profile{
+	width: 100px;
+}

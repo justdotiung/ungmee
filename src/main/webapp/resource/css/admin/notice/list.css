@@ -1,0 +1,28 @@
+.notice-list {
+	border: 1px solid gray;
+}
+
+.d-none {
+	display: none;
+}
+
+.content{
+	
+	--transform-origin: center top;
+	--transform:translateY(-1);
+	--transform: scaleY(0);
+	height: 0%;
+	overflow: hidden;
+	transition: height 500ms;
+	
+
+}
+
+.content.current {
+	height: 100%;
+	--transform:translateY(0);
+	--transform: scaleY(1);
+}
+
+.btn-detail{
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="ungmee.web.dao.NoticeDao">
+
+ 	<select id="get" resultType="ungmee.web.entity.Notice">
+		SELECT * FROM NOTICE WHERE id = #{id}
+	</select>
+	<select id="getList" resultType="ungmee.web.entity.Notice">
+		SELECT * FROM NOTICE ORDER BY REGDATE DESC
+	</select>
+	
+ 	<insert id="insert" parameterType="ungmee.web.entity.Notice">
+		<selectKey keyProperty="id" resultType="Integer">
+		select nvl(id,0)+1 id from (select * from NOTICE order by regDate desc) where rownum = 1
+		</selectKey>
+		INSERT INTO NOTICE(ID,CATEGORY,TITLE,CONTENT,ADMIN_ID)
+		VALUES(#{id},#{category},#{title},#{content},#{adminId})
+	</insert>
+	
+	<update id="update" parameterType="ungmee.web.entity.Notice">
+		UPDATE NOTICE 
+		SET 
+			title=#{title}, 
+			content=#{content}, 
+			WHERE ID =${id}
+	</update>
+
+ </mapper>

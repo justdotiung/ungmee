@@ -86,11 +86,11 @@ public class User {
 		this.echeck = echeck;
 	}
 
-	public String getnickName() {
+	public String getNickName() {
 		return nickName;
 	}
 
-	public void setnickName(String nickName) {
+	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
 

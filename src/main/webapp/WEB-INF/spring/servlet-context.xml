@@ -19,8 +19,8 @@
 		base-package="ungmee.web.controller"></context:component-scan>
 	<context:component-scan
 		base-package="ungmee.web.controller.admin"></context:component-scan>
-	<context:component-scan
-		base-package="ungmee.web.controller.couple"></context:component-scan>
+		<context:component-scan
+		base-package="ungmee.web.controller.user"></context:component-scan>
 	<mvc:annotation-driven />
 
 	<!-- 타일즈 설정 -->

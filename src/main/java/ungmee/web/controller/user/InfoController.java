@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,47 +38,14 @@ public class InfoController {
 	public String index(Model model,Authentication auth) {
 		CustomUserDetails cUser = (CustomUserDetails) auth.getPrincipal();
 		User user = userdao.get(cUser.getId());
-		System.out.println(user);
 		model.addAttribute("user", user);
 		return "user.detail";
 	}
-	
-	
-	@GetMapping("delete")
-	@ResponseBody
-	public String delete(Authentication auth) {
-		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
-		int id = custom.getId();
-		//return "redirect:/index";
-		return ""+id;
-	}
-	
-	@PostMapping("change")
-	@ResponseBody
-	public String password(String pwd,Authentication auth) {
-		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
-		User user = userdao.get(details.getId());
-		user.setPw(pwd);
-		userdao.edit(user);
-		
-		return "변경되었습니다.";
-	}
-	
-	@GetMapping("name")
-	@ResponseBody
-	public String name(String nickName ,Authentication auth) {
-		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
-		User user = userdao.get(details.getId());
-		user.setnickName(nickName);
-		userdao.edit(user);
-		
-		return "변경되었습니다.";
-	}
-	
-	
+
 	@PostMapping("upload")
 	@ResponseBody
 	public String upload(MultipartFile file,HttpServletRequest request,Authentication authentication) throws IOException {
+		System.out.println(file);
 		String urlPath="/upload";
 		String realPath =request.getServletContext().getRealPath(urlPath);
 		String fileName=file.getOriginalFilename();
@@ -123,12 +91,65 @@ public class InfoController {
 		fis.close();
 		CustomUserDetails details = (CustomUserDetails) authentication.getPrincipal();
 		System.out.println(fileName);
+		System.out.println(details.getId());
+		System.out.println("qlalfqjsgh"+details.getPw());
+		
 		User user = userdao.get(details.getId());
 		System.out.println(user.toString());
 		user.setProfile(fileName);
 		userdao.edit(user);
 		return "변경되었습니다.";
 	}
+	
+	@GetMapping("nickname")
+	@ResponseBody
+	public String name(String nickName ,Authentication auth) {
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		User user = userdao.get(details.getId());
+		user.setNickName(nickName);
+		userdao.edit(user);
+		System.out.println(user);
+		
+		return "변경되었습니다.";
+	}
+	
+	@PostMapping("changepw")
+	@ResponseBody
+	public String password(String pwd,Authentication auth) {
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		User user = userdao.get(details.getId());
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		pwd = passwordEncoder.encode(pwd);
+		user.setPw(pwd);
+		System.out.println(user.getPw());
+		System.out.println(user);
+		userdao.edit(user);
+		return "변경되었습니다.";
+	}
+	
+	@GetMapping("changeev")
+	@ResponseBody
+	public String event(String eCheck ,Authentication auth) {
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		User user = userdao.get(details.getId());
+		user.setEcheck(eCheck);
+		userdao.edit(user);
+		System.out.println(user);
+		
+		return "변경되었습니다.";
+	}
+	
+	
+//	@GetMapping("delete")
+//	@ResponseBody
+//	public String delete(Authentication auth) {
+//		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
+//		int id = custom.getId();
+//		//return "redirect:/index";
+//		return ""+id;
+//	}
+	
+	
 	
 	
 }

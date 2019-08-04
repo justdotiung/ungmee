@@ -34,6 +34,7 @@
 		<logout logout-url="/logout" 
 				logout-success-url="/index"
 				 />
+		<!-- <csrf disabled="true" /> -->
 		 
 <!-- 		<access-denied-handler error-page="/error/access"/> -->
 		<access-denied-handler ref="customAccessDeniedHandler"/>		

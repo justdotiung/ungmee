@@ -17,9 +17,9 @@
 
  	<insert id="insert" parameterType="ungmee.web.entity.User">
  		INSERT INTO member 
- 			(email, pw, gender, echeck, name, birthday)
+ 			(email, pw, gender, echeck, nickname, birthday)
  		 VALUES 
- 		 	(#{email},#{pw},#{gender},#{echeck},#{name},#{birthday})
+ 		 	(#{email},#{pw},#{gender},#{echeck},#{nickName},#{birthday})
  	</insert>
 	<update id="edit" parameterType="ungmee.web.entity.User">
 		UPDATE MEMBER SET

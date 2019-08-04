@@ -16,7 +16,7 @@ import ungmee.web.entity.User;
 @RequestMapping("/")
 public class RootController {
 	@Autowired
-	private UserDao memberDao;
+	private UserDao userDao;
 	
 	
 	@GetMapping("login")
@@ -34,17 +34,18 @@ public class RootController {
 	}
 	
 	@PostMapping("signup")
-	public String signup(User member ,String echeck) {
+	public String signup(User user ,String echeck) {
 		if(echeck == null)
-			member.setEcheck("비동의");
-		String pwd = member.getPw();
+			user.setEcheck("비동의");
+		user.setNickName("gd");
+		String pwd = user.getPw();
 		System.out.println(pwd);
 		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		pwd = pwdEncoder.encode(pwd);
 		
-		member.setPw(pwd);
+		user.setPw(pwd);
 
-		memberDao.insert(member);
+		userDao.insert(user);
 		return "redirect:/index" ; 
 		
 	}

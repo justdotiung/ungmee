@@ -8,7 +8,7 @@
      <form action="signup" method="post">
          <div>
          	<label>이름 입력</label>
-         	<input type="text" name="nikcName">
+         	<input type="text" name="nickName">
          </div>
          <div>
          	<label>이메일입력</label>

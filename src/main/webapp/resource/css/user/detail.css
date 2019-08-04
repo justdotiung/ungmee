@@ -1,7 +1,24 @@
 @charset "UTF-8";
+.error{
+	color: red;
+}
+.error.reverse{
+	color: rgb(83, 121, 27);
+}
 .d-none{
 	display: none;
+}
+.d-none.current{
+	display: block;
 }
 #profile .profile{
 	width: 100px;
 }
+
+#nickname .eraser{
+	width: 30px;
+}
+#change .chage-button{
+	height: 100%;
+}
+

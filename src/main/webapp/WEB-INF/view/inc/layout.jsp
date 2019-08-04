@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/reset.css">
- <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/guest/login.css"> 
+ 
 <title>Document</title>
 </head>
 <body>

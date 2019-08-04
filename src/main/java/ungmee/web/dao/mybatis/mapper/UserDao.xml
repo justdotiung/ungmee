@@ -23,14 +23,14 @@
  	</insert>
 	<update id="edit" parameterType="ungmee.web.entity.User">
 		UPDATE MEMBER SET
-			  email = #{email}, pw= #{pw}, regdate= #{regdate}, enabled= #{enabled}, authority= #{authority},
-  			  gender= #{gender}, echeck= #{echeck}, name= #{name}, birthday= #{birthday}, profile= #{profile}
+			  email = #{email}, pw= #{pw}, regdate= #{regDate}, enabled= #{enabled}, authority= #{authority},
+  			  gender= #{gender}, echeck= #{echeck}, nickname= #{nickName}, birthday= #{birthday}, profile= #{profile}
   			where id = #{id} 
     </update>
 	<update id="delet" parameterType="ungmee.web.entity.User">
 		UPDATE MEMBER SET
-			  email = #{email}, pw= #{pw}, regdate= #{regdate}, enabled= #{enabled}, authority= #{authority},
-  			  gender= #{gender}, echeck= #{echeck}, name= #{name}, birthday= #{birthday}, profile= #{profile}
+			  email = #{email}, pw= #{pw}, regdate= #{regDate}, enabled= #{enabled}, authority= #{authority},
+  			  gender= #{gender}, echeck= #{echeck}, nickname= #{nickName}, birthday= #{birthday}, profile= #{profile}
   			where id = #{id} 
     </update>
 

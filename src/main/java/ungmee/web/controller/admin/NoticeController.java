@@ -42,18 +42,19 @@ public class NoticeController {
 	@GetMapping("edit")
 	public String edit(Integer id, Model model) {
 		model.addAttribute("notice",noticeDao.get(id));
-		
+		System.out.println(noticeDao.get(id));
 		return "admin/notice/edit";
 	}
 	@PostMapping("edit")
 	public String edit(Notice notice) {
 		
 		Notice n = noticeDao.get(notice.getId());
+		n.setCategory(notice.getCategory());
 		n.setTitle(notice.getTitle());
 		n.setContent(notice.getContent());
 		
 		noticeDao.update(n);
-		return "redirect:detail?id="+notice.getId();
+		return "redirect:list";
 	}
 	@RequestMapping("list")
 	public String list(Model model) {
@@ -63,12 +64,18 @@ public class NoticeController {
 		
 		return "admin/notice/list";
 	}
-	@GetMapping("detail")
-	public String detail(Integer id, Model model) {
+	@GetMapping("del")
+	public String del(Integer id, Model model) {
+		model.addAttribute("notice",noticeDao.get(id));
 		
-		Notice notice = noticeDao.get(id);
-		model.addAttribute("notice",notice);
-		
-		return "admin/notice/detail";
+		return "admin/notice/list";
 	}
+	@PostMapping("del")
+	public String del(Notice notice) {
+		
+		Notice n = noticeDao.get(notice.getId());
+		noticeDao.delete(notice);
+		return "redirect:list";
+	}
+	
 }

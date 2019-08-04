@@ -22,9 +22,14 @@
 	<update id="update" parameterType="ungmee.web.entity.Notice">
 		UPDATE NOTICE 
 		SET 
+			category=#{category},
 			title=#{title}, 
 			content=#{content}, 
 			WHERE ID =${id}
 	</update>
 
+	<delete id="delete" parameterType="ungmee.web.entity.Notice">
+		DELETE FROM NOTICE
+		WHERE ID=${id}
+	</delete>
  </mapper>

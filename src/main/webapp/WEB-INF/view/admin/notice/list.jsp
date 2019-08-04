@@ -33,6 +33,10 @@
 					</div>
 					<div class="content">${n.content}</div>
 					<div>
+					<form action="del" method="post">
+						<input type="hidden" name="did" value="${n.id}"> 
+						<input type="submit" value="삭제">
+					</form>
 						<a href="edit?eid=${n.id}">수정</a>
 					</div>
 				</div>

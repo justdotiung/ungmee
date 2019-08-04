@@ -15,7 +15,7 @@ public class User {
     private int birthday;
     private String profile;
     private int cState;
-    
+   
 
 
 	public User() {

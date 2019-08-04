@@ -31,7 +31,7 @@ public class NoticeController {
 			/*,Authentication auth*/) {
 		notice.setAdminId(61);
 		//CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		//notice.setAdminId(userDetails.getId()); //����� �α��� ����
+		//notice.setAdminId(userDetails.getId()); //占쏙옙占쏙옙占� 占싸깍옙占쏙옙 占쏙옙占쏙옙
 		//UserDetails p.640
 		//System.out.println(principal.getName());
 		System.out.println(notice);
@@ -40,9 +40,9 @@ public class NoticeController {
 		return "redirect:list";
 	}
 	@GetMapping("edit")
-	public String edit(Integer id, Model model) {
-		model.addAttribute("notice",noticeDao.get(id));
-		System.out.println(noticeDao.get(id));
+	public String edit(Integer eid, Model model) {
+		model.addAttribute("notice",noticeDao.get(eid));
+		System.out.println(noticeDao.get(eid));
 		return "admin/notice/edit";
 	}
 	@PostMapping("edit")

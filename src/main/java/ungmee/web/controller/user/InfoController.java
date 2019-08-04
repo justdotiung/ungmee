@@ -139,6 +139,15 @@ public class InfoController {
 		return "변경되었습니다.";
 	}
 	
+	@GetMapping("propose")
+	public String propose() {
+		return "user/propose";
+	}
+	
+	@PostMapping("propose")
+	public String propose() {
+		
+	}
 	
 //	@GetMapping("delete")
 //	@ResponseBody

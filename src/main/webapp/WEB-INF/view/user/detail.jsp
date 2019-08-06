@@ -37,15 +37,35 @@
 			</div>
 		</div>
 		<div id="couple-state">
-			<span>커플상태 </span><span>${user.cState}</span>
-			<input type="button" name="propose" value="신청하기">
-			<input type="button" name="leave" value="헤어지기"> 
-			<a href="propose">신청하기</a>			
+			<div>
+				<span>커플상태 </span><span class="propose-button">신청하기</span>
+			</div>
+			<!-- <input type="button" name="leave" value="헤어지기">  -->			
+			<div id="propose-page" class="d-none">
+				<form class ="propose-data" name ="propose-datas" method="post">
+				<ul>
+					<li><input type="text" name="name" placeholder="커플명 입력"></li>
+					<li><input type="email" name="email" placeholder="상대방 이메일 입력"></li>
+					<li><input type="date" name="date" placeholder="만나기 시작한날 "></li>
+					<li><input type="text" name="message" placeholder="상태메세지"></li>
+				</ul>
+				<div><input type="submit" value="보내기"></div>
+				</form>
+			</div>
 		</div>
 		
 		<div id="event-check">
 			<span>이벤트</span>
-			<span class="event-state">${user.echeck }</span>
+			<span class="event-state">
+			<c:choose>
+				<c:when test="${user.echeck eq 'T'}">
+					동의
+				</c:when>
+				<c:when test="${user.echeck eq 'F'}">
+					비동의
+				</c:when>
+			</c:choose>
+			</span>
 			<input type="hidden" value="${user.echeck }">
 			<input type="button" value="변경하기">
 		</div>

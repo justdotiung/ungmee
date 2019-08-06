@@ -54,4 +54,5 @@ public class RootController {
 	public String index() {
 		return "root.index";
 	}
+	
 }

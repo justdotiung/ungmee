@@ -9,6 +9,13 @@
 	<packaging>war</packaging>
 	<dependencies>
 
+	<!-- gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -85,13 +92,13 @@
 			<artifactId>tiles-jsp</artifactId>
 			<version>3.0.8</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 			<version>5.1.5.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
@@ -102,6 +109,24 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>5.1.5.RELEASE</version>
 		</dependency>
+
+		<!-- 스프링 웹소켓 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+		<!-- 웹소켓 api -->
+		<!-- https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<properties>

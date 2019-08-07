@@ -25,9 +25,8 @@
 		base-package="ungmee.web.controller.admin"></context:component-scan>
 	<context:component-scan
 		base-package="ungmee.web.controller.user"></context:component-scan>
-	<context:component-scan
-		base-package="ungmee.web.practice"></context:component-scan>
-	<mvc:annotation-driven />
+	
+	
 	<!-- 웹소켓 설정 -->
 	<bean id="replyEchoHandler" class="ungmee.web.websocket.ReplyEchoHandler"/>
 	

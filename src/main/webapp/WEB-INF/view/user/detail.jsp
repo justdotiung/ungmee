@@ -36,20 +36,43 @@
 				</ul>
 			</div>
 		</div>
+		<tamplate id="cst">
+			<div class="clone"></div>
+		</tamplate>
 		<div id="couple-state">
+			
 			<div>
-				<span>커플상태 </span><span class="propose-button">신청하기</span>
+				<div>커플상태 </div>
+				<div>
+				<c:choose>
+					<c:when test="${user.cState eq 1 }">
+						<span>사랑중</span>
+					</c:when>
+					<c:when test="${user.cState eq 0 }">
+						<span class="wait">사랑대기중입니다.</span><input name="propose-cancel" type="button" value="취소하기">
+					</c:when>
+					 <c:when test="${user.cState eq -1 }">
+						<span class="propose-button">신청하기</span>
+					</c:when>
+				</c:choose>
+				</div>
 			</div>
 			<!-- <input type="button" name="leave" value="헤어지기">  -->			
 			<div id="propose-page" class="d-none">
-				<form class ="propose-data" name ="propose-datas" method="post">
+				<form class ="propose-data" name="propose-data" method="post">
 				<ul>
-					<li><input type="text" name="name" placeholder="커플명 입력"></li>
-					<li><input type="email" name="email" placeholder="상대방 이메일 입력"></li>
-					<li><input type="date" name="date" placeholder="만나기 시작한날 "></li>
-					<li><input type="text" name="message" placeholder="상태메세지"></li>
+					<li><input type="text"  name="name" placeholder="커플명 입력"></li>
+					<li>
+						<input type="email" placeholder="상대방 이메일 입력">
+						<input type="button" value="찾아보기">
+					</li>
+					<li><input type="date" placeholder="만나기 시작한날  변경이 불가능하니 신중히 적어주세요."></li>
+					<li><input type="text" placeholder="상태메세지"></li>
+					<li><input type="hidden" value="${user.id }"></li>
 				</ul>
-				<div><input type="submit" value="보내기"></div>
+				<div>
+					<input type="submit" value="보내기">
+				</div>
 				</form>
 			</div>
 		</div>

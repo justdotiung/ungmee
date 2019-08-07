@@ -9,7 +9,7 @@ public interface UserDao {
 	public List<User> getList();
 	
 	public User get(Integer id);
-	public User getEmail(String id);
+	public User getEmail(String email);
 	
 	public int insert(User user);
 	public int edit(User user);

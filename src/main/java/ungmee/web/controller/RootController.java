@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ungmee.web.dao.UserDao;
-import ungmee.web.dao.mybatis.MyBatisUserDao;
 import ungmee.web.entity.User;
 
 @Controller
@@ -36,8 +35,7 @@ public class RootController {
 	@PostMapping("signup")
 	public String signup(User user ,String echeck) {
 		if(echeck == null)
-			user.setEcheck("ºñµ¿ÀÇ");
-		user.setNickName("gd");
+			user.setEcheck("F");
 		String pwd = user.getPw();
 		System.out.println(pwd);
 		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();

@@ -6,10 +6,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,14 +20,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 
+import ungmee.web.dao.CoupleDao;
 import ungmee.web.dao.UserDao;
-import ungmee.web.entity.ExDao;
+import ungmee.web.entity.Couple;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
 
@@ -37,15 +40,31 @@ import ungmee.web.security.CustomUserDetails;
 public class InfoRestController {
 	@Autowired
 	private UserDao userdao;
+	@Autowired
+	private CoupleDao coupledao;
 
 	
-	@GetMapping("event/get")
+	@GetMapping("get")
 	public String get(Authentication auto) {
 		CustomUserDetails details = (CustomUserDetails) auto.getPrincipal();
 		User user = userdao.get(details.getId());
 		Gson gson = new Gson();
 		String json = gson.toJson(user);
-		System.out.println(json);
+		System.out.println("내정보 :"+json);
+		
+		return json;
+	}
+	
+	@GetMapping("partner")
+	public String get(String email) {
+		System.out.println("상대방 email :"+email);
+		User user = userdao.getEmail(email);
+		if(user == null)
+			return null;
+		System.out.println("상대방 user :"+user);
+		Gson gson = new Gson();
+		String json = gson.toJson(user);
+		
 		return json;
 	}
 	
@@ -144,16 +163,39 @@ public class InfoRestController {
 	}
 	
 	@PostMapping("propose")
-	public String propose(ExDao dao) {
-	System.out.println(dao.toString());
+	public String propose(Couple couple,String email,@DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate, Authentication auth) {
+		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
+		User user = userdao.getEmail(custom.getEmail());
+		User aUser = userdao.getEmail(email);
 		
-		return "달라졌다.";
+		couple.setAccepterId(aUser.getId());
+	
+		couple.setLoveDate(sloveDate);
+		coupledao.insert(couple);
+		
+		
+		user.setcState(0);
+		userdao.edit(user);
+		System.out.println("신청자 프로포즈 신청 상황 :"+user.getcState());
+		
+		return "완료";
 	}
-//	
-//	@PostMapping("propose")
-//	public String propose() {
-//		
-//	}
+	
+	@GetMapping("propose/cancel")
+	public String proposeCancel(Authentication auth) {
+		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
+		User user = userdao.getEmail(custom.getEmail());
+		coupledao.delete(user.getId());
+				
+		user.setcState(-1);
+		userdao.edit(user);
+		System.out.println("신청자 프로포즈 취소 상황 :"+user.getcState());
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(user);
+		
+		return json;
+	}
 	
 //	@GetMapping("delete")
 //	@ResponseBody

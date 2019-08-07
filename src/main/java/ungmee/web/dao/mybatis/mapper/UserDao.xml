@@ -24,7 +24,8 @@
 	<update id="edit" parameterType="ungmee.web.entity.User">
 		UPDATE MEMBER SET
 			  email = #{email}, pw= #{pw}, regdate= #{regDate}, enabled= #{enabled}, authority= #{authority},
-  			  gender= #{gender}, echeck= #{echeck}, nickname= #{nickName}, birthday= #{birthday}, profile= #{profile}
+  			  gender= #{gender}, echeck= #{echeck}, nickname= #{nickName}, birthday= #{birthday}, profile= #{profile},
+  			  c_state = #{cState}
   			where id = #{id} 
     </update>
 	<update id="delet" parameterType="ungmee.web.entity.User">

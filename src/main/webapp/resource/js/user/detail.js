@@ -1,3 +1,41 @@
+// var token = null;
+// var header = null;
+
+// //프로필 변경 이벤트
+// window.addEventListener("load", function() {
+// 	token = this.document.querySelector("input[name=token]").value;
+// 	header = this.document.querySelector("input[name=header]").value;
+
+// 	//var x;
+
+// 	token = 3;
+
+// });
+
+// window.addEventListener("load", function() {
+
+// 	//프로필 변경
+// 	var editProfile1 = function(){
+
+// 	};
+
+// 	//프로필 변경
+// 	var editProfile2 = function(){
+		
+// 	};
+
+// 	//프로필 변경
+// 	var editProfile3 = function(){
+		
+// 	};
+
+// 	editProfile1();
+// 	editProfile2();
+// 	editProfile3();
+
+// });
+
+
 //프로필 변경 이벤트
 window.addEventListener("load", function() {
 	var profile = this.document.querySelector("#profile");
@@ -89,13 +127,16 @@ window.addEventListener("load", function() {
 	var changeBtn = change.querySelector("input[type=button]");
 	var token = this.document.querySelector("input[name=token]").value;
 	var header = this.document.querySelector("input[name=header]").value;
+	
 	var isValide = false;
 	// var div = select.parentElement.nextSibling;
 	this.console.log(select.nodeType);
 
 	select.onclick = function() {
-		div.classList.add("current");
-		
+		if(div.className !='d-none current')
+			div.classList.add("current");
+		else
+			div.classList.remove("current");
 		pwEquel.oninput = function() {
 			console.log(pw.value);
 			if (pw.value != pwEquel.value) {
@@ -129,47 +170,100 @@ window.addEventListener("load", function() {
 				pwEquel.value="";
 				div.classList.remove("current");
 			});
-			request.open("post","password/update");
+			request.open("POST","password/update");
 			request.setRequestHeader(header,token);
-			request.send(formData);
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			//post를 쿼리스트링으로 보낸다.
+			request.send("pwd="+pwd);
 		}
 	}
 });
-//커플 신청 이벤트
+
+//커플 신청 관리 코드 =========================================
 window.addEventListener("load",function(){
-	var section = this.document.querySelector("#couple-state");
-	var proposeBtn = section.querySelector(".propose-button");
-	var proposePage = section.querySelector("#propose-page");
-	var couplename = section.querySelector("input[name=name]");
-	var email = section.querySelector("input[name=email]");
-	var date = section.querySelector("intput[name=date]");
-	var message = section.querySelector("input[name=message]");
 	var token = this.document.querySelector("input[name=token]").value;
 	var header = this.document.querySelector("input[name=header]").value;
-	var proposeData = this.document.querySelector(".propose-data");
-	var proposeDatas= this.document.forms["propose-datas"];
-	proposeBtn.onclick = function(){
-		if(proposePage.className == 'd-none')
-			proposePage.classList.add("current");
-		else
-			proposePage.classList.remove("current");
-	}
-	//var formData = new FormData(proposeData);
 	
+	var section = this.document.querySelector("#couple-state");
+	var proposeData = this.document.querySelector(".propose-data");
+	
+	var proposeBtn = section.querySelector(".propose-button");
+	var proposePage = section.querySelector("#propose-page");
+	var wait = section.querySelector(".wait");
+	var proposeCancel = section.querySelector("input[name=propose-cancel]");
+	if(proposeBtn != null){
+		proposeBtn.onclick = function(){
+			proposePage.classList.add("current");
+		}
+	}
+	
+	//상대방 유효성 검사정보 알아보기
+	proposeData[2].onclick =function(){
+		var request = new XMLHttpRequest();
+		request.addEventListener("load",function(){
+			if(request.responseText != '')
+				alert("유효한 아이디입니다.");
+			else
+				alert("존재하지않는 아이디입니다.");
+		});
+		request.open("GET","partner?email="+proposeData[1].value);
+		request.send();
+	}
+	//커플정보 넣기
 	proposeData.onsubmit = function(e){
 		e.preventDefault();
-		console.log(typeof proposeDatas);
-		console.log(proposeDatas.name.value)
-		alert(token);
-		alert(header);
-		alert("gkdl");
-		var request = new XMLHttpRequest();
-		request.open("post","propose");
-		request.setRequestHeader(header,token);
-		request.send(proposeDatas);
 
+		var queryString = "coupleName="+proposeData[0].value+
+						"&email="+proposeData[1].value+
+						"&sloveDate="+proposeData[3].value+
+						"&message="+proposeData[4].value+
+						"&proposeId="+proposeData[5].value;					;
+		alert(queryString);
+		
+		var request = new XMLHttpRequest();
+		request.addEventListener("load",function(){
+			
+			// 내정보 알아보기
+			var xhr = new XMLHttpRequest();
+			xhr.addEventListener("load",function(){
+				console.log(xhr.responseText);
+				var json = JSON.parse(xhr.responseText);
+				if(json.cState == 1) 
+					wait.innerText="사랑대기중입니다.";
+			});
+			xhr.open("GET","get");
+			xhr.send();
+			
+			// 상대방 정보 알아보기
+			var xhr2 = new XMLHttpRequest();
+			xhr2.addEventListener("load",function(){
+				//console.log(xhr.responseText);
+				var json = JSON.parse(xhr.responseText);
+				accepterId = json.id;
+			});
+			xhr2.open("GET","partner?email="+proposeData[1].value);
+			xhr2.send();
+
+			proposePage.classList.remove("current");
+			alert("신청완료");
+		});
+		request.open("POST","propose");
+		request.setRequestHeader(header,token);
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send(queryString);
 	}
-	
+	//프러포즈 취소
+	if(proposeCancel != null){
+		proposeCancel.onclick = function(){
+			var request = new XMLHttpRequest();
+			request.addEventListener("load",function(){
+				alert("프로포즈 실패");
+			});
+			request.open("GET","propose/cancel");
+			request.send()
+		}
+	}
+		
 });
 	//이벤트동의변경 이벤트
 window.addEventListener("load", function() {
@@ -197,7 +291,7 @@ window.addEventListener("load", function() {
 				eventState.innerText='동의';
 				alert('변경되었습니다.');
 			});
-			xhr.open("get","event/get");
+			xhr.open("get","get");
 			xhr.send();
 		})
 		request.open("GET", "event/update?e=" + eState);

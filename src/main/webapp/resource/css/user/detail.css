@@ -2,6 +2,10 @@
 .error{
 	color: red; 
 }
+.d-none.error{
+	display: block;
+	color: :red;
+}
 .error.reverse{
 	color: rgb(83, 121, 27);
 }

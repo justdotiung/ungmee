@@ -191,6 +191,11 @@ window.addEventListener("load",function(){
 	var proposePage = section.querySelector("#propose-page");
 	var wait = section.querySelector(".wait");
 	var proposeCancel = section.querySelector("input[name=propose-cancel]");
+	
+	var isValide =false; //유효성 변수
+	var nameCheck = document.querySelector("#name-check");
+	var emailCheck = document.querySelector("#id-check");
+	var dateCheck = this.document.querySelector("#date-check")
 	if(proposeBtn != null){
 		proposeBtn.onclick = function(){
 			proposePage.classList.add("current");
@@ -201,32 +206,82 @@ window.addEventListener("load",function(){
 	proposeData[2].onclick =function(){
 		var request = new XMLHttpRequest();
 		request.addEventListener("load",function(){
-			if(request.responseText != '')
+			if(request.responseText != ''){
+				emailCheck.classList.remove("error");
+				isValide=true;
 				alert("유효한 아이디입니다.");
-			else
+			}
+			else{
+				emailCheck.classList.add("error");
+				isValide=false;
 				alert("존재하지않는 아이디입니다.");
+			}
 		});
 		request.open("GET","partner?email="+proposeData[1].value);
 		request.send();
 	}
+	//이메일 입력 검사
+	function idValide(){
+		if(!proposeData[1].value){
+			proposeData[1].focus();
+			emailCheck.classList.add("error");
+			isValide=false;
+			return ;
+		}
+		else{
+			emailCheck.classList.remove("error");
+			isValide= true;
+		}
+	}	
+	//커플이름 검사 검사. 유니크키로 바꾸기
+	function nameValide(){
+		if(!proposeData[0].value){
+			proposeData[0].focus();
+			nameCheck.classList.add("error");
+			isValide=false;
+			return ;
+		}
+		else{
+			nameCheck.classList.remove("error");
+			isValide= true;
+		}
+	}
+	//커플일자 유효성 검사
+	function dateValide(){
+		if(!proposeData[3].value){
+			proposeData[3].focus();
+			dateCheck.classList.add("error");
+			isValide=false;
+			return ;
+		}
+		else{
+			dateCheck.classList.remove("error");
+			isValide= true;
+			return ;
+		}
+	}
 	//커플정보 넣기
 	proposeData.onsubmit = function(e){
 		e.preventDefault();
-
 		var queryString = "coupleName="+proposeData[0].value+
 						"&email="+proposeData[1].value+
 						"&sloveDate="+proposeData[3].value+
 						"&message="+proposeData[4].value+
 						"&proposeId="+proposeData[5].value;					;
 		alert(queryString);
-		
+	
+		nameValide();
+		idValide();
+		dateValide();
 		var request = new XMLHttpRequest();
 		request.addEventListener("load",function(){
-			
+			if(!isValide){
+				return false;
+			}
 			// 내정보 알아보기
 			var xhr = new XMLHttpRequest();
 			xhr.addEventListener("load",function(){
-				console.log(xhr.responseText);
+				//console.log('내정보 : '+xhr.responseText);
 				var json = JSON.parse(xhr.responseText);
 				if(json.cState == 1) 
 					wait.innerText="사랑대기중입니다.";
@@ -237,7 +292,7 @@ window.addEventListener("load",function(){
 			// 상대방 정보 알아보기
 			var xhr2 = new XMLHttpRequest();
 			xhr2.addEventListener("load",function(){
-				//console.log(xhr.responseText);
+				//console.log('남정보 : '+xhr2.responseText);
 				var json = JSON.parse(xhr.responseText);
 				accepterId = json.id;
 			});

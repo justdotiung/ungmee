@@ -162,24 +162,7 @@ public class InfoRestController {
 		return "변경되었습니다.";
 	}
 	
-	@PostMapping("propose")
-	public String propose(Couple couple,String email,@DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate, Authentication auth) {
-		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
-		User user = userdao.getEmail(custom.getEmail());
-		User aUser = userdao.getEmail(email);
-		
-		couple.setAccepterId(aUser.getId());
 	
-		couple.setLoveDate(sloveDate);
-		coupledao.insert(couple);
-		
-		
-		user.setcState(0);
-		userdao.edit(user);
-		System.out.println("신청자 프로포즈 신청 상황 :"+user.getcState());
-		
-		return "완료";
-	}
 	
 	@GetMapping("propose/cancel")
 	public String proposeCancel(Authentication auth) {

@@ -61,12 +61,19 @@
 			<div id="propose-page" class="d-none">
 				<form class ="propose-data" name="propose-data" method="post">
 				<ul>
-					<li><input type="text"  name="name" placeholder="커플명 입력"></li>
+					<li>
+						<input type="text"  name="name" placeholder="커플명 입력">
+						<span id="name-check" class="d-none">커플명을 입력해주세요.</span>
+					</li>
 					<li>
 						<input type="email" placeholder="상대방 이메일 입력">
+						<span id="id-check" class="d-none">이메일을 입력해주세요.</span>
 						<input type="button" value="찾아보기">
 					</li>
-					<li><input type="date" placeholder="만나기 시작한날  변경이 불가능하니 신중히 적어주세요."></li>
+					<li>
+						<input type="date" placeholder="만나기 시작한날  변경이 불가능하니 신중히 적어주세요.">
+						<span id="date-check" class="d-none">날짜를 선택해주세요.</span>
+					</li>
 					<li><input type="text" placeholder="상태메세지"></li>
 					<li><input type="hidden" value="${user.id }"></li>
 				</ul>

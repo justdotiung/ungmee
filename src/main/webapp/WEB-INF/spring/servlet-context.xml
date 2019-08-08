@@ -4,6 +4,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 
 	xsi:schemaLocation="
     	http://www.springframework.org/schema/beans
@@ -12,22 +13,35 @@
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd
         
-        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/websocket
+        https://www.springframework.org/schema/websocket/spring-websocket.xsd
+        
+         http://www.springframework.org/schema/mvc
         https://www.springframework.org/schema/mvc/spring-mvc.xsd
         ">
 	<context:component-scan
 		base-package="ungmee.web.controller"></context:component-scan>
 	<context:component-scan
 		base-package="ungmee.web.controller.admin"></context:component-scan>
-		<context:component-scan
+	<context:component-scan
 		base-package="ungmee.web.controller.user"></context:component-scan>
-	<mvc:annotation-driven />
+	
+	
+	<!-- 웹소켓 설정 -->
+	<bean id="replyEchoHandler" class="ungmee.web.websocket.ReplyEchoHandler"/>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="replyEchoHandler" path="/replyEcho"/>
+		<websocket:handshake-interceptors>
+			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor">
+			</bean>
+		</websocket:handshake-interceptors>
+	</websocket:handlers>
 
 	<!-- 타일즈 설정 -->
 	<bean
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions" value="/WEB-INF/tiles.xml" />
-
 	</bean>
 
 	<!-- 타일즈뷰리졸버 : url 사용자 요청이 오면 지시서에 따라 뷰를 찾아준다/컨트롤러에서 return되는 페이지 지시서에 없는 
@@ -64,5 +78,8 @@
 		<!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="314572800" />
 	</bean>
+	
+	
+	
 </beans>
 

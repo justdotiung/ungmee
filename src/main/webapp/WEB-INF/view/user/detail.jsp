@@ -36,16 +36,66 @@
 				</ul>
 			</div>
 		</div>
+		<tamplate id="cst">
+			<div class="clone"></div>
+		</tamplate>
 		<div id="couple-state">
-			<span>커플상태 </span><span>${user.cState}</span>
-			<input type="button" name="propose" value="신청하기">
-			<input type="button" name="leave" value="헤어지기"> 
-			<a href="propose">신청하기</a>			
+			
+			<div>
+				<div>커플상태 </div>
+				<div>
+				<c:choose>
+					<c:when test="${user.cState eq 1 }">
+						<span>사랑중</span>
+					</c:when>
+					<c:when test="${user.cState eq 0 }">
+						<span class="wait">사랑대기중입니다.</span><input name="propose-cancel" type="button" value="취소하기">
+					</c:when>
+					 <c:when test="${user.cState eq -1 }">
+						<span class="propose-button">신청하기</span>
+					</c:when>
+				</c:choose>
+				</div>
+			</div>
+			<!-- <input type="button" name="leave" value="헤어지기">  -->			
+			<div id="propose-page" class="d-none">
+				<form class ="propose-data" name="propose-data" method="post">
+				<ul>
+					<li>
+						<input type="text"  name="name" placeholder="커플명 입력">
+						<span id="name-check" class="d-none">커플명을 입력해주세요.</span>
+					</li>
+					<li>
+						<input type="email" placeholder="상대방 이메일 입력">
+						<span id="id-check" class="d-none">이메일을 입력해주세요.</span>
+						<input type="button" value="찾아보기">
+					</li>
+					<li>
+						<input type="date" placeholder="만나기 시작한날  변경이 불가능하니 신중히 적어주세요.">
+						<span id="date-check" class="d-none">날짜를 선택해주세요.</span>
+					</li>
+					<li><input type="text" placeholder="상태메세지"></li>
+					<li><input type="hidden" value="${user.id }"></li>
+				</ul>
+				<div>
+					<input type="submit" value="보내기">
+				</div>
+				</form>
+			</div>
 		</div>
 		
 		<div id="event-check">
 			<span>이벤트</span>
-			<span class="event-state">${user.echeck }</span>
+			<span class="event-state">
+			<c:choose>
+				<c:when test="${user.echeck eq 'T'}">
+					동의
+				</c:when>
+				<c:when test="${user.echeck eq 'F'}">
+					비동의
+				</c:when>
+			</c:choose>
+			</span>
 			<input type="hidden" value="${user.echeck }">
 			<input type="button" value="변경하기">
 		</div>

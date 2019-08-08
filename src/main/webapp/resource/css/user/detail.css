@@ -1,6 +1,10 @@
 @charset "UTF-8";
 .error{
-	color: red;
+	color: red; 
+}
+.d-none.error{
+	display: block;
+	color: :red;
 }
 .error.reverse{
 	color: rgb(83, 121, 27);

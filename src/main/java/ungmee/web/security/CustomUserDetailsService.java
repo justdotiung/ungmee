@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		CustomUserDetails details = null;
 		User user = userDao.getEmail(username);
 		details = new CustomUserDetails(user);
-		System.out.println("details"+details.getEmail());
+		System.out.println("CustomUserDetails : "+details.getEmail());
 		return details;
 	}
 }

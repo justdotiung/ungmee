@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="ungmee.web.dao.CoupleDao">
+ 	<insert id="insert" parameterType="ungmee.web.entity.Couple">
+ 		INSERT INTO couple
+ 		(
+		    	PROPOSE_ID, ACCEPTER_ID, 
+		    	couple_name,	message, lovedate
+		)
+		VALUES
+		(	#{proposeId}, #{accepterId},	
+				#{coupleName}, #{message}, #{loveDate}
+		)
+ 	</insert>
+ 	
+ 	<delete id="delete">
+		delete couple where id = #{id} 	
+ 	</delete>
+ </mapper>

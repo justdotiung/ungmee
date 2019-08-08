@@ -30,7 +30,7 @@
          </div>
            <div>
          	<label>이벤트 동의(선택)</label>
-         	<input type="checkbox" name="echeck" value="동의">
+         	<input type="checkbox" name="echeck" value="T">
          </div>
            <div>
          	<span>성별</span>

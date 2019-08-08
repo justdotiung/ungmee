@@ -15,7 +15,7 @@
 		)
  	</insert>
  	
- 	<delete id="delete">
-		delete couple where id = #{id} 	
+ 	<delete id="delete" parameterType="integer">
+		delete couple where propose_id = #{proposeId} 	
  	</delete>
  </mapper>

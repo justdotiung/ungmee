@@ -12,15 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -146,38 +143,54 @@ public class InfoRestController {
 		pwd = passwordEncoder.encode(pwd);
 		user.setPw(pwd);
 		System.out.println(user.getPw());
-		System.out.println(user);
 		userdao.edit(user);
 		return "변경되었습니다.";
 	}
 	
-	@GetMapping("event/update")
-	public String event(String e ,Authentication auth) {
-		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
-		User user = userdao.get(details.getId());
-		user.setEcheck(e);
-		userdao.edit(user);
-		System.out.println(user);
+	
+	@PostMapping("propose")
+	public String propose(Couple couple,@DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate, Authentication auth,Model model) {
+		System.out.println("propose couple : "+couple.toString());
 		
-		return "변경되었습니다.";
+		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
+		User user = userdao.getEmail(custom.getEmail());
+	
+		couple.setLoveDate(sloveDate);
+		coupledao.insert(couple);
+		
+		user.setcState(0);
+		userdao.edit(user);
+		System.out.println("신청자 프로포즈 신청 상황 :"+user.getcState());
+		model.addAttribute("user", user);
+		return "check";
 	}
-	
-	
 	
 	@GetMapping("propose/cancel")
 	public String proposeCancel(Authentication auth) {
 		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
 		User user = userdao.getEmail(custom.getEmail());
-		coupledao.delete(user.getId());
-				
+		System.out.println("proposeId : "+user.getId());
+		//coupledao.delete(user.getId());
+		System.out.println("durlskdhskdy?");		
 		user.setcState(-1);
 		userdao.edit(user);
 		System.out.println("신청자 프로포즈 취소 상황 :"+user.getcState());
+			
+		return "check";
+	}
+	@GetMapping("event/update")
+	public String event(String e ,Authentication auth) {
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		User user = userdao.get(details.getId());
+		if(e.contentEquals("T"))
+			user.setEcheck("F");
+		else
+			user.setEcheck("T");
 		
-		Gson gson = new Gson();
-		String json = gson.toJson(user);
+		userdao.edit(user);
+		System.out.println("이벤트값 : "+user.getEcheck());
 		
-		return json;
+		return "변경되었습니다.";
 	}
 	
 //	@GetMapping("delete")

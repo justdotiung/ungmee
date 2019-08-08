@@ -12,5 +12,5 @@ public interface CoupleDao {
 //	public int edit(User user);
 //	public int delete(Integer id);
 
-	public int delete(int id);
+	public int delete(int proposeId);
 }

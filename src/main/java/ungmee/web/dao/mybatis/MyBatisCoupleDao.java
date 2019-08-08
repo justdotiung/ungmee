@@ -22,9 +22,9 @@ public class MyBatisCoupleDao implements CoupleDao{
 	}
 
 	@Override
-	public int delete(int id) {
+	public int delete(int proposeid) {
 		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
-		return coupleDao.delete(id);
+		return coupleDao.delete(proposeid);
 	}
 
 	

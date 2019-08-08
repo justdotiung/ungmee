@@ -1,0 +1,36 @@
+/* ------------------edit------------------ */
+.regform{
+	border: 1px solid lightgray;
+	width: 700px;
+	height: 500px;
+	display:inline-block ;
+}
+
+.title{
+	border: 1px dotted lightgray;
+	min-height: 50px;
+	min-width:700px;
+	display:inline-block flex;
+	justify-content: center;
+	text-align: center;
+}
+.title input{
+	text-align: center;
+	min-height:inherit;
+	min-width:inherit;
+}
+.content{
+	border: 1px dotted lightgray;
+	min-width:700px;
+	min-height: 500px;
+	display:inline-block flex;
+	text-align: center;
+}
+.content input{
+	text-align: center;
+	min-height:inherit;
+	min-width:inherit;
+}
+.button-box{
+	float: right;
+}

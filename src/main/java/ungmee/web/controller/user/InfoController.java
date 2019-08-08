@@ -98,7 +98,7 @@ public class InfoController {
 		System.out.println(user.toString());
 		user.setProfile(fileName);
 		userdao.edit(user);
-		return "º¯°æµÇ¾ú½À´Ï´Ù.";
+		return "ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 	}
 	
 	@GetMapping("nickname")
@@ -110,7 +110,7 @@ public class InfoController {
 		userdao.edit(user);
 		System.out.println(user);
 		
-		return "º¯°æµÇ¾ú½À´Ï´Ù.";
+		return "ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 	}
 	
 	@PostMapping("changepw")
@@ -124,7 +124,7 @@ public class InfoController {
 		System.out.println(user.getPw());
 		System.out.println(user);
 		userdao.edit(user);
-		return "º¯°æµÇ¾ú½À´Ï´Ù.";
+		return "ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 	}
 	
 	@GetMapping("changeev")
@@ -136,18 +136,18 @@ public class InfoController {
 		userdao.edit(user);
 		System.out.println(user);
 		
-		return "º¯°æµÇ¾ú½À´Ï´Ù.";
+		return "ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 	}
 	
-	@GetMapping("propose")
-	public String propose() {
-		return "user/propose";
-	}
-	
-	@PostMapping("propose")
-	public String propose() {
-		
-	}
+//	@GetMapping("propose")
+//	public String propose() {
+//		return "user/propose";
+//	}
+//	
+//	@PostMapping("propose")
+//	public String propose() {
+//		
+//	}
 	
 //	@GetMapping("delete")
 //	@ResponseBody

@@ -49,9 +49,9 @@
          	<label>광고 동의(선택)</label>
          	<input type="checkbox" class="check-sns" value="T">
           </div>
-           
-         </div>
+          
     	  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
           <input type="submit" value="가입">
+     
      </form>
  </section>

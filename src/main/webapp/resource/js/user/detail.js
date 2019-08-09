@@ -124,7 +124,7 @@ window.addEventListener("load", function() {
 	var pw = change.querySelector(".pw-button");
 	var pwEquel = change.querySelector(".pw-button1");
 	var error = change.querySelector(".error");
-	var changeBtn = change.querySelector("input[type=button]");
+	var changeBtn = change.querySelector(".btn");
 	var token = this.document.querySelector("input[name=token]").value;
 	var header = this.document.querySelector("input[name=header]").value;
 	
@@ -184,59 +184,35 @@ window.addEventListener("load",function(){
 	var token = this.document.querySelector("input[name=token]").value;
 	var header = this.document.querySelector("input[name=header]").value;
 	
-	var section = this.document.querySelector("#couple-state");
-	var proposeData = this.document.querySelector(".propose-data");
+	var infoDiv = this.document.querySelector("#info-div");
+	var coupleName = infoDiv.querySelector(".couple-name");//커플명
+	var Receiver = infoDiv.querySelector(".receiver");//상대방이메일
+	var findReceiver = infoDiv.querySelector(".find-receiver");//상대방이메일찾기버튼
+	var loveDate = infoDiv.querySelector(".love-date");//사귄날짜
+	var message = infoDiv.querySelector(".message");//커플상태메세지
+	var proposeId = infoDiv.querySelector(".hidden").value;//내아이디
+	var submitBtn = infoDiv.querySelector(".btn");//보내기
 	
-	var proposeBtn = section.querySelector(".propose-button");
-	var proposePage = section.querySelector("#propose-page");
-	var wait = section.querySelector(".wait");
-	var proposeCancel = section.querySelector("input[name=propose-cancel]");
+	var proposeBtn = infoDiv.querySelector(".propose");//신청하기
+	var infoForm = infoDiv.querySelector("#info-form");//신청폼
 	
+	
+	var emailValide = false;//이메일 유효성
 	var isValide =false; //유효성 변수
 	var nameCheck = document.querySelector("#name-check");
-	var emailCheck = document.querySelector("#id-check");
-	var dateCheck = this.document.querySelector("#date-check")
+	var emailCheck = document.querySelector("#email-check");
+	var dateCheck = this.document.querySelector("#date-check");
+
 	if(proposeBtn != null){
 		proposeBtn.onclick = function(){
-			proposePage.classList.add("current");
+			infoForm.classList.add("current");
 		}
 	}
-	
-	//상대방 유효성 검사정보 알아보기
-	proposeData[2].onclick =function(){
-		var request = new XMLHttpRequest();
-		request.addEventListener("load",function(){
-			if(request.responseText != ''){
-				emailCheck.classList.remove("error");
-				isValide=true;
-				alert("유효한 아이디입니다.");
-			}
-			else{
-				emailCheck.classList.add("error");
-				isValide=false;
-				alert("존재하지않는 아이디입니다.");
-			}
-		});
-		request.open("GET","partner?email="+proposeData[1].value);
-		request.send();
-	}
-	//이메일 입력 검사
-	function idValide(){
-		if(!proposeData[1].value){
-			proposeData[1].focus();
-			emailCheck.classList.add("error");
-			isValide=false;
-			return ;
-		}
-		else{
-			emailCheck.classList.remove("error");
-			isValide= true;
-		}
-	}	
-	//커플이름 검사 검사. 유니크키로 바꾸기
+
+	//커플이름 검사 검사. 유니크키로 바꿀지 말지 생각.
 	function nameValide(){
-		if(!proposeData[0].value){
-			proposeData[0].focus();
+		if(!coupleName.value){
+			coupleName.focus();
 			nameCheck.classList.add("error");
 			isValide=false;
 			return ;
@@ -246,10 +222,60 @@ window.addEventListener("load",function(){
 			isValide= true;
 		}
 	}
+	coupleName.onblur = function(){
+		nameValide();
+	}
+
+	var partnerId = null; // 상대방아이디
+	
+
+	//상대방 이메일 입력 검사
+	function idValide(){
+		if(!Receiver.value){
+			Receiver.focus();
+			emailCheck.classList.add("error");
+			isValide=false;
+			return ;
+		}
+		else{
+			emailCheck.classList.remove("error");
+			isValide= true;
+		}
+	}
+	Receiver.onblur = function(){
+		idValide();
+	}	
+	//상대방 유효성 검사정보 알아보기
+	findReceiver.onclick =function(){
+		var request = new XMLHttpRequest();
+		request.addEventListener("load",function(){
+			if(request.responseText != ''){
+				emailCheck.classList.remove("error");
+				partnerId = JSON.parse(request.responseText).id;
+				//	alert("res:" + partnerId);
+				console.log("partnerid="+partnerId);
+				console.log("proposeid="+proposeId);
+				if(partnerId == proposeId){
+					alert("자신을 사랑하는것은 위반입니다.");	
+					return ;
+				}
+				emailValide=true;
+				alert("유효한 아이디입니다.");
+			}
+			else{
+				emailCheck.classList.add("error");
+				emailValide=false;
+				alert("존재하지않는 아이디입니다.");
+			}
+		});
+		request.open("GET","partner?email="+Receiver.value);
+		request.send();
+	}
+
 	//커플일자 유효성 검사
 	function dateValide(){
-		if(!proposeData[3].value){
-			proposeData[3].focus();
+		if(!loveDate.value){
+			loveDate.focus();
 			dateCheck.classList.add("error");
 			isValide=false;
 			return ;
@@ -260,126 +286,77 @@ window.addEventListener("load",function(){
 			return ;
 		}
 	}
-	//커플정보 넣기
-	proposeData.onsubmit = function(e){
-		e.preventDefault();
-		var queryString = "coupleName="+proposeData[0].value+
-						"&email="+proposeData[1].value+
-						"&sloveDate="+proposeData[3].value+
-						"&message="+proposeData[4].value+
-						"&proposeId="+proposeData[5].value;					;
-		alert(queryString);
+	loveDate.onblur = function(){
+		dateValide();
+	}
 	
+	//커플정보 보내기
+	submitBtn.onclick = function(e){
+		
+		//alert(partnerId);
+		
+		e.preventDefault();
 		nameValide();
 		idValide();
 		dateValide();
+		
+		if(!isValide){
+			return ;
+		}
+		if(!emailValide){
+			alert("찾아보기를 클릭해주세요");
+			return ;
+		}
+		var queryString = "coupleName="+coupleName.value+
+						"&accepterId="+partnerId+
+						"&sloveDate="+loveDate.value+
+						"&message="+message.value+
+						"&proposeId="+proposeId;
+		alert(queryString);
+		
 		var request = new XMLHttpRequest();
 		request.addEventListener("load",function(){
-			if(!isValide){
-				return false;
+	
+			infoForm.classList.remove("current");
+			if(request.responseText=='check'){
+				window.location.reload();
+				alert("신청완료");
 			}
-			// 내정보 알아보기
-			var xhr = new XMLHttpRequest();
-			xhr.addEventListener("load",function(){
-				//console.log('내정보 : '+xhr.responseText);
-				var json = JSON.parse(xhr.responseText);
-				if(json.cState == 1) 
-					wait.innerText="사랑대기중입니다.";
-			});
-			xhr.open("GET","get");
-			xhr.send();
-			
-			// 상대방 정보 알아보기
-			var xhr2 = new XMLHttpRequest();
-			xhr2.addEventListener("load",function(){
-				//console.log('남정보 : '+xhr2.responseText);
-				var json = JSON.parse(xhr.responseText);
-				accepterId = json.id;
-			});
-			xhr2.open("GET","partner?email="+proposeData[1].value);
-			xhr2.send();
-
-			proposePage.classList.remove("current");
-			alert("신청완료");
 		});
 		request.open("POST","propose");
 		request.setRequestHeader(header,token);
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send(queryString);
 	}
-	//프러포즈 취소
-	if(proposeCancel != null){
+	
+});
+//프러포즈 취소
+window.addEventListener("load",function(){
+	var proposeCancel = this.document.querySelector(".propose-cancel");//프로포즈취소
+	//if(proposeCancel != null){
 		proposeCancel.onclick = function(){
 			var request = new XMLHttpRequest();
 			request.addEventListener("load",function(){
+				//window.location.reload();
 				alert("프로포즈 실패");
 			});
 			request.open("GET","propose/cancel");
 			request.send()
 		}
-	}
-		
+//	}
 });
-	//이벤트동의변경 이벤트
+//이벤트동의변경 이벤트
 window.addEventListener("load", function() {
 	var eventDiv = this.document.querySelector("#event-check");
 	var changBtn = eventDiv.querySelector("input[type=button]");
 	var eState = eventDiv.querySelector("input[type=hidden]").value;
-	var eventState = eventDiv.querySelector(".event-state");
-	changBtn.onclick = function() {
-	
-		if(eState =='F')
-			eState = "T";
-		else
-			eState = "F";
-			
+	changBtn.onclick = function() {	
 		var request = new XMLHttpRequest();
 		request.addEventListener("load", function() {
-			var xhr = new XMLHttpRequest();
-			xhr.addEventListener("load",function(){
-				//alert("rksmd");
-				//alert(xhr.responseText);
-				var json = JSON.parse(xhr.responseText);
-				if(json.echeck =='F')
-				eventState.innerText='비동의';
-				else
-				eventState.innerText='동의';
-				alert('변경되었습니다.');
-			});
-			xhr.open("get","get");
-			xhr.send();
+			window.location.reload();
+			alert('변경되었습니다.');
 		})
 		request.open("GET", "event/update?e=" + eState);
 		request.send();
 	};
 });
-//연습 소켓 
-/*
-window.addEventListener("load",function(){
-	var cState = this.document.querySelector("#couple-state");
-	var proposeBtn = cState.querySelector("input[name=propose]");
-
-	proposeBtn.onclick = function(e){
-		e.preventDefault();
-	
-		var ws = new WebSocket("ws://localhost:8080/ungmeespring/user/detail");
-
-		ws.onopen = function(){
-			console.log("info : connection opend");
-			setTimeout(function(){connection();},1000)
-			//커넥션후에 들어오는 게 원칙
-			ws.onmessage = function(event){
-				console.log(event.data+'\n');
-			}
-	
-		}
-		//눈에 보이긴 쉽지만 커넥션이 되지도않았는데 메세지를 받을수 없다.
-		// ws.onmessage = function(event){
-		// 	console.log(event.data+'\n');
-		// }
-
-		ws.onclose = function(event) {console.log('info.closed')};
-		ws.onerror = function(err) {console.log('info error',err)};
-	}
-});
-*/

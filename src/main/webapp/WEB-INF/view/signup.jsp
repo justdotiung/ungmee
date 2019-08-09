@@ -5,6 +5,7 @@
 <script src="${ctxName}/resource/js/root/signup.js"></script>
 
 <section id="body">
+	
      <form action="signup" method="post">
          <div>
          	<label>이름 입력</label>
@@ -42,4 +43,7 @@
     	  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
           <input type="submit" value="가입">
      </form>
+     <div>
+     
+     </div>
  </section>

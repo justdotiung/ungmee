@@ -151,14 +151,11 @@ public class InfoRestController {
 	@PostMapping("propose")
 	public String propose(Couple couple,@DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate, Authentication auth,Model model) {
 		System.out.println("propose couple : "+couple.toString());
-		
 		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
-		User user = userdao.getEmail(custom.getEmail());
-	
+		User user = userdao.getEmail(custom.getEmail());	
 		couple.setLoveDate(sloveDate);
-		coupledao.insert(couple);
-		
-		user.setcState(0);
+		coupledao.insert(couple);		
+		user.setcState(0);//신청중 상태
 		userdao.edit(user);
 		System.out.println("신청자 프로포즈 신청 상황 :"+user.getcState());
 		model.addAttribute("user", user);
@@ -170,9 +167,8 @@ public class InfoRestController {
 		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
 		User user = userdao.getEmail(custom.getEmail());
 		System.out.println("proposeId : "+user.getId());
-		//coupledao.delete(user.getId());
-		System.out.println("durlskdhskdy?");		
-		user.setcState(-1);
+		coupledao.delete(user.getId());
+		user.setcState(-1);//대기중 상태
 		userdao.edit(user);
 		System.out.println("신청자 프로포즈 취소 상황 :"+user.getcState());
 			

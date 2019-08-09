@@ -209,10 +209,10 @@ window.addEventListener("load",function(){
 		}
 	}
 
-	//커플이름 검사 검사. 유니크키로 바꿀지 말지 생각.
+	//커플이름 검사 검사. 유니크키만들까말까?
 	function nameValide(){
 		if(!coupleName.value){
-			coupleName.focus();
+		//	coupleName.focus();
 			nameCheck.classList.add("error");
 			isValide=false;
 			return ;
@@ -232,7 +232,7 @@ window.addEventListener("load",function(){
 	//상대방 이메일 입력 검사
 	function idValide(){
 		if(!Receiver.value){
-			Receiver.focus();
+			//Receiver.focus();
 			emailCheck.classList.add("error");
 			isValide=false;
 			return ;
@@ -253,8 +253,8 @@ window.addEventListener("load",function(){
 				emailCheck.classList.remove("error");
 				partnerId = JSON.parse(request.responseText).id;
 				//	alert("res:" + partnerId);
-				console.log("partnerid="+partnerId);
-				console.log("proposeid="+proposeId);
+				// console.log("partnerid="+partnerId);
+				// console.log("proposeid="+proposeId);
 				if(partnerId == proposeId){
 					alert("자신을 사랑하는것은 위반입니다.");	
 					return ;
@@ -275,7 +275,7 @@ window.addEventListener("load",function(){
 	//커플일자 유효성 검사
 	function dateValide(){
 		if(!loveDate.value){
-			loveDate.focus();
+			//loveDate.focus();
 			dateCheck.classList.add("error");
 			isValide=false;
 			return ;
@@ -292,9 +292,6 @@ window.addEventListener("load",function(){
 	
 	//커플정보 보내기
 	submitBtn.onclick = function(e){
-		
-		//alert(partnerId);
-		
 		e.preventDefault();
 		nameValide();
 		idValide();
@@ -304,7 +301,7 @@ window.addEventListener("load",function(){
 			return ;
 		}
 		if(!emailValide){
-			alert("찾아보기를 클릭해주세요");
+			alert("찾아보기 클릭하기");
 			return ;
 		}
 		var queryString = "coupleName="+coupleName.value+
@@ -312,7 +309,7 @@ window.addEventListener("load",function(){
 						"&sloveDate="+loveDate.value+
 						"&message="+message.value+
 						"&proposeId="+proposeId;
-		alert(queryString);
+		//alert(queryString);
 		
 		var request = new XMLHttpRequest();
 		request.addEventListener("load",function(){
@@ -333,17 +330,17 @@ window.addEventListener("load",function(){
 //프러포즈 취소
 window.addEventListener("load",function(){
 	var proposeCancel = this.document.querySelector(".propose-cancel");//프로포즈취소
-	//if(proposeCancel != null){
+	if(proposeCancel != null){
 		proposeCancel.onclick = function(){
 			var request = new XMLHttpRequest();
 			request.addEventListener("load",function(){
-				//window.location.reload();
+				window.location.reload();
 				alert("프로포즈 실패");
 			});
 			request.open("GET","propose/cancel");
 			request.send()
 		}
-//	}
+	}
 });
 //이벤트동의변경 이벤트
 window.addEventListener("load", function() {

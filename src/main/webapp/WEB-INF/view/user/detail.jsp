@@ -114,6 +114,7 @@
 	
 		<div>
 			 <a href="delete">탈퇴하기</a>
+			 <a href="">제휴사신청하기</a>
 		</div>
 	</div>
 </body>

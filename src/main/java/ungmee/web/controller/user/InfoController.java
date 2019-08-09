@@ -31,6 +31,10 @@ public class InfoController {
 		model.addAttribute("user", user);
 		return "user.detail";
 	}
+	@GetMapping("propose")
+	public String propose() {
+		return "user.alert";
+	}
 }
 
 

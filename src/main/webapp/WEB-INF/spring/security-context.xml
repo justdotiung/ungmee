@@ -40,7 +40,7 @@
 		<access-denied-handler ref="customAccessDeniedHandler"/>		
 	</http>
 	<authentication-manager>
-		<authentication-provider user-service-ref="customUserDetailsService" > <!-- 사용자 확장형시 바꿔준다. -->
+		<authentication-provider user-service-ref="customUserDetailsService"> <!-- 사용자 확장형시 바꿔준다. -->
 			<password-encoder hash="bcrypt" />
 		
 			<!-- <jdbc-user-service data-source-ref="dataSource"

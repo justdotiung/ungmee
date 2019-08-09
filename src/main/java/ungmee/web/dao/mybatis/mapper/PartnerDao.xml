@@ -15,15 +15,15 @@
 
  	<insert id="insert" parameterType="ungmee.web.entity.Partner">
  		INSERT INTO PARTNER 
- 			(pName, pType, address, email, password, bName, phone )
+ 			(p_Name, p_Type, address, email, pw, b_Name, phone )
  		 VALUES 
- 		 	(#{pName}, #{pType}, #{address}, #{email}, #{password}, #{bName}, #{phone})
+ 		 	(#{pName}, #{pType}, #{address}, #{email}, #{pw}, #{bName}, #{phone})
  	</insert>
 	<update id="edit" parameterType="ungmee.web.entity.Partner">
 		UPDATE PARTNER SET
 			  email=#{email}, bName=#{bName}, pName=#{pName}, pType=#{pType},
 			  address=#{address}, dType={#dType}, startDate=#{startDate}, endDate=#{endDate},
-			  password=#{password}, regDate=#{regDate}, phone=#{phone}, conStatus=#{conStatus}
+			  password=#{pw}, regDate=#{regDate}, phone=#{phone}, conStatus=#{conStatus}
   			where id = #{id} 
     </update>
 

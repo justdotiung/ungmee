@@ -13,7 +13,7 @@
          </div>
          <div>
          	<label>비밀번호</label>
-         	<input type="password" name="password" maxlength="12" placeholder="비밀번호*(영문+숫자, 8~20자)">
+         	<input type="password" name="pw" maxlength="12" placeholder="비밀번호*(영문+숫자, 8~20자)">
          	<span id="pw-valid"></span>
          </div>
          <div>
@@ -35,7 +35,7 @@
          </div>
          <div>
          	<label>업종</label>         	
-         	<input type="text" name="partner-Type" placeholder="업종*">
+         	<input type="text" name="partner-type" placeholder="업종*">
          </div>
          <div>
          	<label>주소</label>         	

@@ -25,17 +25,23 @@ window.addEventListener("load",function(){
 //           
 //    }
 
-
     pw.onkeyup = function(e){
+    	//비밀번호 입력여부
+    	if(pw.value==""){
+    		alert("비밀번호를 입력해주세요")
+    		pw.focus();
+    	}
+    	
         //비밀번호 공백포함
-        if(pw.value.includes(" ")){
+        //if(pw.value.includes(" ")){
+        if(pw.value.indexOf(" ") >=0){
             pwVaild.innerText="공백을 제외하고 입력해주세요";
             pwVaild.style.color = "orangered";
             pw.focus();
             e.preventDefault();
         }
         else{
-        	pwValid.innerText=""
+        	pwValid.innerText="공백 제거 완료"
         }
         //비밀번호 영문+숫자, 4~12자 형식 검사
         var regPW = /^[a-zA-Z0-9]{4,12}$/;
@@ -47,8 +53,7 @@ window.addEventListener("load",function(){
         }
 
    }
-   
-    
+
     //비밀번호 일치여부
     pwCheck.oninput =function(e){
         if(pw.value != pwCheck.value){
@@ -61,6 +66,6 @@ window.addEventListener("load",function(){
    }
   
 
-
 });
+
 

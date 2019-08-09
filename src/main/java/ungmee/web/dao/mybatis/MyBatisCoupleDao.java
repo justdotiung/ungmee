@@ -1,6 +1,8 @@
 package ungmee.web.dao.mybatis;
 
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,6 +27,12 @@ public class MyBatisCoupleDao implements CoupleDao{
 	public int delete(int proposeid) {
 		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
 		return coupleDao.delete(proposeid);
+	}
+
+	@Override
+	public List<Couple> getProposeList(int accepterId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

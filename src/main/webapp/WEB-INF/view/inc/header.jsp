@@ -20,6 +20,15 @@
 			src="${ctxName}/resource/images/ummo/logo.jpg"></a>
 
 	</div>
+	
+	for(공지목록)
+	<tr></tr>
+	
+	for(이벤트목록)
+	<tr></tr>
+	
+	
+	
 	<div class="member-state">
 		<ul>
 			<security:authorize access="!isAuthenticated()">
@@ -30,7 +39,7 @@
 				<security:authorize access="hasRole('USER')">
 				<li><a href="${ctxName}/user/detail">정보수정</a></li>
 				<li><a href="${ctxName}/user/couple/index">커플페이지</a></li>
-				<li><a href="${ctxName}/user/propose">커플신청창</a></li>
+				<li><a href="${ctxName}/user/message">알림${couple.proposeList }</a></li>
 				<li><a href="${ctxName}/member/withdraw">회원탈퇴</a></li>			
 				</security:authorize>
 				<security:authorize access="hasRole('ADMIN')">

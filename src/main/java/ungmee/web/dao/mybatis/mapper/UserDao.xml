@@ -8,11 +8,11 @@
  	</resultMap>
  	
  	<select id="getEmail" resultType="ungmee.web.entity.User">
- 		select * from member where email = #{email}
+ 		select * from "USER" where email = #{email}
  	</select>
 
  	<select id="get" resultMap="userMap">
- 		select * from USER where id = #{id}
+ 		select * from "USER" where id = #{id}
  	</select>
 
  	<insert id="insert" parameterType="ungmee.web.entity.User">

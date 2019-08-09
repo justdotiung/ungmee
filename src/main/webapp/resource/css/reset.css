@@ -3,7 +3,7 @@
 html,head,body,ul,li,section,div,h1,input{
     margin: 0;
     padding: 0;
-    border: 0;
+    --border: 0;
     border-radius: 0;
     --background: none;
     font-size: 100%;

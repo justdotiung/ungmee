@@ -1,0 +1,233 @@
+@charset "utf-8";
+
+/* input[type='button']{
+	background: blue;
+} */
+
+.com.newlecture .hidden{
+	display: none;
+}
+
+.com.newlecture.single-editor{	
+	color:#000000;
+}
+
+.com.newlecture.single-editor>.toolbar .hidden{
+	display: none;
+}
+
+.com.newlecture.single-editor input{
+	width:auto;
+}
+
+.com.newlecture.single-editor>.html-area{
+	padding:10px;
+	line-height: normal;
+	min-height: 300px;
+	border-top: 1px solid #e9e9e9;
+	
+	overflow: hidden;
+}
+
+.com.newlecture.single-editor>.toolbar{
+	line-height: 30px;
+}
+
+.com.newlecture.single-editor>.toolbar>.panel{
+	margin-left:5px;
+	border-right: 1px solid #494949;
+}
+
+.com.newlecture.single-editor>.toolbar .btn{
+	color:#ffffff;
+	min-width: 30px;
+	display: inline-block;
+	text-align: center;
+	padding: 3px 8px;
+	/* border-radius: 4px; */
+	
+	/* input overrride */
+	border:0px;
+	cursor: pointer;
+	text-indent: -999px;
+}
+
+.com.newlecture.single-editor>.toolbar .btn:hover{
+	border:1px solid #8cba34;
+}
+
+.com.newlecture.single-editor>.toolbar .btn-text{
+	
+}
+
+.com.newlecture.single-editor>.toolbar .btn-img{
+	/* overriding for image button */
+	border-radius:0px;
+	text-indent:-999px;
+	overflow:hidden;
+}
+
+.com.newlecture.single-editor>.option-bar .btn-add-link {
+    min-width: 71px;
+    padding: 3px 8px;
+    color: #fff;
+    background-color: #759d2a;
+    border-color: #608618;
+    text-indent: 0px;
+}
+
+/* -------------------------------------------- */
+
+.com.newlecture.single-editor>.toolbar .btn-bold{
+	background: url("images/ic_format_bold_black_24px.svg") no-repeat center;		
+}
+
+.com.newlecture.single-editor>.toolbar .btn-underline{
+	background: url("images/ic_format_underlined_black_24px.svg") no-repeat center;		
+}
+
+.com.newlecture.single-editor>.toolbar .btn-italic{
+	background: url("images/ic_format_italic_black_24px.svg") no-repeat center;		
+}
+/* ----------------------------------------------------------- */
+.com.newlecture.single-editor>.toolbar .btn-left{
+	background: url("images/ic_format_align_left_black_24px.svg") no-repeat center;		
+}
+
+.com.newlecture.single-editor>.toolbar .btn-center{
+	background: url("images/ic_format_align_center_black_24px.svg") no-repeat center;		
+}
+
+.com.newlecture.single-editor>.toolbar .btn-right{
+	background: url("images/ic_format_align_right_black_24px.svg") no-repeat center;		
+}
+/* ----------------------------------------------------------- */
+.com.newlecture.single-editor>.toolbar .btn-font-size{
+	background: url("images/ic_format_size_black_24px.svg") no-repeat center;		
+}
+
+.com.newlecture.single-editor>.toolbar .btn-font-color{
+	background: url("images/ic_format_color_text_black_24px.svg") no-repeat center;		
+}
+
+
+/* ----------------------------------------------------------- */
+.com.newlecture.single-editor>.toolbar .btn-image{
+	background: url("images/ic_insert_photo_black_24px.svg") no-repeat center;		
+}
+
+.com.newlecture.single-editor>.toolbar .btn-link{
+	background: url("images/ic_insert_link_black_24px.svg") no-repeat center;		
+}
+
+.com.newlecture.single-editor>.toolbar .btn-html{
+	background: url("images/ic_format_bold_black_24px.svg") no-repeat center;		
+}
+
+/* ----------------------------------------------------------- */
+.com.newlecture.single-editor>.option-bar{
+	border-top: 1px solid #e9e9e9;
+	padding-bottom: 10px;
+}
+/* --- url-box ----------------------------------------------------------------- */
+.com.newlecture.single-editor>.option-bar>.url-box{
+	padding:5px;
+	width:600px;
+	margin-left:auto;
+	margin-right:auto;
+	border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+	
+	display: flex;
+	justify-content: space-between; /* 양끝쪽 아이템을 왼쪽과 오른쪽으로 붙이기 */	
+	align-items: center; /* cross 축(수직정렬) 정렬 */
+}
+
+.com.newlecture.single-editor>.option-bar>.url-box>label{
+	margin-left:5px;
+}
+
+.com.newlecture.single-editor>.option-bar>.url-box>input[type="text"].link-url{
+	flex-grow: 1;
+	margin-left:5px;
+	margin-right: 5px;
+}
+/* .com.newlecture.single-editor>.option-bar>.url-box>*{
+	justify-content: 
+}
+ */
+ 
+ /* --------------------------------------------------------------------- */
+ .com.newlecture.single-editor>.option-bar>.font-color-box,
+ .com.newlecture.single-editor>.option-bar>.font-size-box{ 	
+ 	padding:5px;
+	width:200px;
+	margin-left:auto;
+	margin-right:auto;
+	border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+	
+	display: flex;
+	justify-content:center;
+	align-items: center; /* cross 축(수직정렬) 정렬 */
+ }
+
+.com.newlecture.single-editor>.option-bar>.font-color-box .btn-color,
+.com.newlecture.single-editor>.option-bar>.font-size-box .btn-size{
+	background: #e9e9e9;
+	width:20px;
+	height: 20px;
+	margin-left: 5px;
+}
+
+ .com.newlecture.single-editor>.option-bar>.font-color-box>.btn-color-warning{
+ 	background: #ff0000;
+ }
+ 
+ .com.newlecture.single-editor>.option-bar>.font-color-box>.btn-color-notice{
+ 	background: #dd8a00;
+ }
+ 
+ .com.newlecture.single-editor>.option-bar>.font-color-box>.btn-color-highlight{
+ 	background: #709629;
+ }
+ 
+ .com.newlecture.single-editor>.option-bar>.font-color-box>.btn-color-normal{
+ 	background: #979797;
+ }
+
+ .com.newlecture.single-editor>.option-bar>.font-color-box>.btn-color-strong{
+ 	background: #000000;
+ }
+
+.com.newlecture.single-editor>.option-bar>.font-size-box .btn-size{
+	text-indent: 0px;
+	line-height: 20px;
+	text-align: center;
+}
+
+.com.newlecture.single-editor>.option-bar>.font-size-box .btn-size-sm{
+	font-size: 10px;
+}
+
+.com.newlecture.single-editor>.option-bar>.font-size-box .btn-size-md{
+	font-size: 11px;
+}
+
+.com.newlecture.single-editor>.option-bar>.font-size-box .btn-size-lg{
+	font-size: 15px;
+}
+
+.com.newlecture.single-editor>.option-bar>.font-size-box .btn-size-xlg{
+	font-size: 18px;
+}
+
+.com.newlecture.single-editor>.option-bar>.font-size-box .btn-size-xxlg{
+	font-size: 24px;
+}
+
+
+
+

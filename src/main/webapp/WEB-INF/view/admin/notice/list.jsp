@@ -2,18 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" type="text/css"
-	href="${ctxName}/resource/css/reset.css">
-	<link rel="stylesheet" type="text/css"
-	href="${ctxName}/resource/css/admin/notice/list.css">
-<script src="${ctxName}/resource/js/admin/notice.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="${ctxName}/resource/css/reset.css">
+<link rel="stylesheet" type="text/css"
+	href="${ctxName}/resource/css/admin/notice/list.css">
+<script src="${ctxName}/resource/js/admin/notice.js"></script>
 <title>관리자 공지사항 LIST 페이지</title>
 </head>
-
 
 <body>
 	<main id="notice">
@@ -33,10 +32,7 @@
 					</div>
 					<div class="content">${n.content}</div>
 					<div>
-					<form action="del" method="post">
-						<input type="hidden" name="did" value="${n.id}"> 
-						<input type="submit" value="삭제">
-					</form>
+						<a href="del?did=${n.id}">삭제a</a>
 						<a href="edit?eid=${n.id}">수정</a>
 					</div>
 				</div>

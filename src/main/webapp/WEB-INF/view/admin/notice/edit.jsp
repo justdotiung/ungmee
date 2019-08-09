@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/reset.css">
 	<link rel="stylesheet" type="text/css"
-	href="${ctxName}/resource/css/admin/notice/list.css">
+	href="${ctxName}/resource/css/admin/notice/edit.css">
 <script src="${ctxName}/resource/js/admin/notice.js"></script>
 <!DOCTYPE html>
 <html>

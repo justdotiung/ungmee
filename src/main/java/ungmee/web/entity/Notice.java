@@ -8,11 +8,10 @@ public class Notice {
 //	"CATEGORY" NVARCHAR2(2) NOT NULL ENABLE, 
 //	"TITLE" NVARCHAR2(300) NOT NULL ENABLE, 
 //	"CONTENT" CLOB, 
-//	"N_IMG" NVARCHAR2(300), 
 //	"REGDATE" DATE DEFAULT sysdate NOT NULL ENABLE, 
 //	 CONSTRAINT "ADMIN_BOARD_PK" PRIMARY KEY ("ID")
 	
-	private int id;
+	private Integer id;
 	private int adminId;
 	private String category;
 	private String title;
@@ -23,11 +22,11 @@ public class Notice {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

@@ -24,6 +24,9 @@
 	<!-- 인증과 권한 체크 -->
 	<!-- <http auto-config="true"> -->
 	<http>
+		<headers>
+			<frame-options disabled="true"/>
+		</headers>
 		<intercept-url pattern="/admin/**"
 			access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/**"

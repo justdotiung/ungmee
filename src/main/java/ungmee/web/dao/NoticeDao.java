@@ -10,8 +10,9 @@ public interface NoticeDao {
 	public int insert(Notice notice);
 	public int detail(Notice notice);
 	public int update(Notice notice);
-	public int delete(Notice notice);
+	public int delete(Integer id);
 	
 	List<Notice> getList();
+	
 	
 }

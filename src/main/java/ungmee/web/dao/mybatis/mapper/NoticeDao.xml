@@ -12,11 +12,11 @@
 	</select>
 	
  	<insert id="insert" parameterType="ungmee.web.entity.Notice">
-		<selectKey keyProperty="id" resultType="Integer">
+		<!-- <selectKey keyProperty="id" resultType="Integer">
 		select nvl(id,0)+1 id from (select * from NOTICE order by regDate desc) where rownum = 1
-		</selectKey>
-		INSERT INTO NOTICE(ID,CATEGORY,TITLE,CONTENT,ADMIN_ID)
-		VALUES(#{id},#{category},#{title},#{content},#{adminId})
+		</selectKey> -->
+		INSERT INTO NOTICE(CATEGORY,TITLE,CONTENT,ADMIN_ID)
+		VALUES(#{category},#{title},#{content},#{adminId})
 	</insert>
 	
 	<update id="update" parameterType="ungmee.web.entity.Notice">
@@ -24,12 +24,12 @@
 		SET 
 			category=#{category},
 			title=#{title}, 
-			content=#{content}, 
+			content=#{content}
 			WHERE ID =${id}
 	</update>
 
-	<delete id="delete" parameterType="ungmee.web.entity.Notice">
-		DELETE FROM NOTICE
-		WHERE ID=${id}
+	<delete id="delete" parameterType="Integer">
+		DELETE NOTICE
+		WHERE ID=#{id}
 	</delete>
  </mapper>

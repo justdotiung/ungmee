@@ -1,9 +1,12 @@
 package ungmee.web.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +16,7 @@ import ungmee.web.dao.PartnerDao;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Partner;
 import ungmee.web.entity.User;
+import ungmee.web.service.PushService;
 
 @Controller
 @RequestMapping("/")
@@ -21,6 +25,9 @@ public class RootController {
 	private UserDao userDao;
 	@Autowired
 	private PartnerDao partnerDao;
+
+	private PushService pushService;
+
 	
 	@GetMapping("login")
 	public String login() {
@@ -48,6 +55,7 @@ public class RootController {
 		user.setPw(pwd);
 
 		userDao.insert(user);
+		System.out.println(user.getId());
 		return "redirect:/index" ; 
 		
 	}
@@ -92,7 +100,15 @@ public class RootController {
 	}
 	
 	@RequestMapping("index")
-	public String index() {
+	public String index(Model model) {
+//		int count = pushService.getNewPushedCount();
+		
+//		Map<String, Object> map = pushService.getNewPushedList();
+//		model.addAttribute("eventList", map.get("eventList"));
+		
+		
+		
+		
 		return "root.index";
 	}
 	

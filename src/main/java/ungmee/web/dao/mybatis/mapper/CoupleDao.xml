@@ -18,4 +18,7 @@
  	<delete id="delete">
 		delete couple where propose_id = #{proposeId}
  	</delete>
+ 	<select id="getProposeList" parameterType="ungmee.web.entity.Couple">
+ 		SELECT * FROM COUPLE WHERE accepter_id = #{id}
+ 	</select>
  </mapper>

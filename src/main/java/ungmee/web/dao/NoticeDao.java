@@ -12,7 +12,6 @@ public interface NoticeDao {
 	public int update(Notice notice);
 	public int delete(Integer id);
 	
-	List<Notice> getList();
 	
 	
 }

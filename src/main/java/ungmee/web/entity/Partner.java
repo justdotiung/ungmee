@@ -1,9 +1,7 @@
 package ungmee.web.entity;
 
 public class Partner {
-//	"ID" NUMBER(20,0) DEFAULT "UNG"."PARTNER_SEQ"."NEXTVAL" NOT NULL ENABLE, 
-//	"EMAIL" NVARCHAR2(200) NOT NULL ENABLE, 
-//	"PW" NVARCHAR2(100) NOT NULL ENABLE, 
+//	"USER_ID" NUMBER(20,0) DEFAULT NULL NOT NULL ENABLE, 
 //	"B_NAME" NVARCHAR2(100) NOT NULL ENABLE, 
 //	"PHONE" NUMBER(20,0), 
 //	"P_NAME" NVARCHAR2(200), 
@@ -11,12 +9,10 @@ public class Partner {
 //	"ADDRESS" NVARCHAR2(500), 
 //	"D_TYPE" NVARCHAR2(20), 
 //	"STARTDATE" NUMBER(20,0), 
-//	"ENDDATE" NUMBER(20,0),  
+//	"ENDDATE" NUMBER(20,0), 
 //	"CON_STATUS" NVARCHAR2(100),
 	
-	private int id;
-	private String email;
-	private String pw;
+	private int userId;
 	private String bName;
 	private int phone;
 	private String pName;
@@ -26,33 +22,17 @@ public class Partner {
 	private int startDate;
 	private int endDate;
 	private String conStatus;
-	
+
 	public Partner() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
-		return id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPw() {
-		return pw;
-	}
-
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getbName() {
@@ -129,10 +109,13 @@ public class Partner {
 
 	@Override
 	public String toString() {
-		return "Partner [id=" + id + ", email=" + email + ", pw=" + pw + ", bName=" + bName + ", phone=" + phone
-				+ ", pName=" + pName + ", pType=" + pType + ", address=" + address + ", dDate=" + dDate + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", conStatus=" + conStatus + "]";
+		return "Partner [userId=" + userId + ", bName=" + bName + ", phone=" + phone + ", pName=" + pName + ", pType="
+				+ pType + ", address=" + address + ", dDate=" + dDate + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", conStatus=" + conStatus + "]";
 	}
 	
 	
-}
+	
+}	
+	
+	

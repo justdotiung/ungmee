@@ -52,6 +52,12 @@ public class MyBatisUserDao implements UserDao{
 		return dao.delete(id);
 	}
 
+	@Override
+	public int insertPartner(User user) {
+		UserDao dao = sqlSession.getMapper(UserDao.class);
+		return dao.insertPartner(user);
+	}
+
 
 
 

@@ -70,6 +70,10 @@
          	<span id="pwc-valid"></span>
          </div>
          <div>
+         	<label>닉네임</label>
+         	<input type="text" name="nickName" placeholder="웅미에서 활동할 닉네임*">
+         </div>
+         <div>
          	<label>사장님 이름</label>
          	<input type="text" name="boss-name" placeholder="이름*">
          </div>
@@ -78,8 +82,8 @@
          	<input type="text" name="phone" placeholder="휴대폰*">
          </div>
          <div>
-         	<label>업체명</label>         	
-         	<input type="text" name="partner-name" placeholder="업체명*">
+         	<label>상호명</label>         	
+         	<input type="text" name="partner-name" placeholder="상호명*">
          </div>
          <div>
          	<label>업종</label>         	

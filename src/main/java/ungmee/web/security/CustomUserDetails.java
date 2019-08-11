@@ -22,7 +22,6 @@ public class CustomUserDetails extends User implements UserDetails {
 		setPw(user.getPw());
 		setEnabled(user.getEnabled());
 		setAuthority(user.getAuthority());
-
 	}
 
 	@Override

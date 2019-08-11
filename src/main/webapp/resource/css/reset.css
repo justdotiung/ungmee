@@ -18,3 +18,10 @@ ul, li{
     list-style: none;
 }
 
+.d-none{
+    display: none;
+}
+
+.d-none.current{
+    display: block;
+}

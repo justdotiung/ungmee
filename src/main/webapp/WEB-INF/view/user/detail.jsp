@@ -77,7 +77,7 @@
 						<input type="date" class="love-date" placeholder="만나기 시작한날  변경이 불가능하니 신중히 적어주세요.">
 						<span id="date-check" class="d-none">날짜를 선택해주세요.</span>
 					</li>
-					<li><input type="text" class="message" placeholder="상태메세지"></li>
+					<li><input type="text" class="message" placeholder="커플 소개  20자  내외"></li>
 					<li><input type="hidden" class="hidden" value="${user.id }"></li>
 				</ul>
 				<div>

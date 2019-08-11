@@ -6,13 +6,12 @@ import ungmee.web.entity.Couple;
 
 public interface CoupleDao {
 //CoupleRepository (요즘유행)
-//	public List<User> getList();
-//	
-//	public User get(Integer id);
-//	public User getEmail(String id);
-	
+	public Couple get(int id);
 	public int insert(Couple couple);
-//	public int edit(User user);
 	public int delete(int proposeId);
+	public int edit(Couple couple);
+	
 	public List<Couple> getProposeList(int accepterId);
+	
+	public int getProposeCount(int accepterId);
 }

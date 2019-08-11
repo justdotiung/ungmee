@@ -3,6 +3,25 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="ungmee.web.dao.CoupleDao">
+ 	<select id="get" resultType="ungmee.web.entity.Couple">
+	 	SELECT
+		    id,
+		    propose_id proposeId,
+		    accepter_id accepterId,
+		    couple_name coupleName,
+		    message,
+		    lovedate,
+		    couple_profile coupleProfile,
+		    old_data oldData,
+		    ask,
+		    read,
+		    accept
+		FROM
+		    couple
+		WHERE 
+			ID = #{id}
+ 	</select>
+ 
  	<insert id="insert" parameterType="ungmee.web.entity.Couple">
  		INSERT INTO couple
  		(
@@ -18,7 +37,44 @@
  	<delete id="delete">
 		delete couple where propose_id = #{proposeId}
  	</delete>
- 	<select id="getProposeList" parameterType="ungmee.web.entity.Couple">
- 		SELECT * FROM COUPLE WHERE accepter_id = #{id}
+ 	
+ 	<update id="edit" parameterType="ungmee.web.entity.Couple">
+	 	UPDATE 
+	 		couple
+		SET
+		    couple_name = #{coupleName},
+	    <if test="message != null">
+		    message = #{message},
+	    </if>
+      	<if test="coupleProfile != null">
+		    couple_profile = #{coupleProfile} ,
+		</if>
+		    old_data = #{oldData},
+		    read = #{read},
+		    accept = #{accept}   
+		WHERE
+			id= #{id}
+ 	</update>
+ 	
+ 	<select id="getProposeList" resultType="ungmee.web.entity.Couple">
+ 		SELECT 
+ 		  id,
+	  	  propose_id proposeId,
+	      accepter_id accepterId,
+	      couple_name coupleName,
+	      message,
+	      lovedate,
+	      couple_profile coupleProfile,
+	      old_data oldData,
+	      ask,
+	      read,
+	      accept 
+ 		FROM COUPLE WHERE accepter_id = #{accepterId}
  	</select>
+ 	
+ 	<select id="getProposeCount" resultType="int">
+ 		SElECT COUNT(ID) count FROM COUPLE where accepter_id = #{id}
+ 	</select>
+ 	
+ 	
  </mapper>

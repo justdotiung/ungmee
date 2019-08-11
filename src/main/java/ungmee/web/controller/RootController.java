@@ -3,6 +3,7 @@ package ungmee.web.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.User;
+import ungmee.web.security.CustomUserDetails;
 import ungmee.web.service.PushService;
 
 @Controller
@@ -55,15 +57,19 @@ public class RootController {
 	}
 	
 	@RequestMapping("index")
-	public String index(Model model) {
-//		int count = pushService.getNewPushedCount();
+	public String index(Model model,Authentication auth) {
+
+		if(auth != null) {
+			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+			int userNum = user.getId();
+			int count = pushService.getNewPushCount(userNum);
 		
+			model.addAttribute("count", count);
+		}
+//		int count = pushService.getNewPushedCount();
+
 //		Map<String, Object> map = pushService.getNewPushedList();
 //		model.addAttribute("eventList", map.get("eventList"));
-		
-		
-		
-		
 		return "root.index";
 	}
 	

@@ -3,15 +3,21 @@ package ungmee.web.dao;
 import java.util.List;
 
 import ungmee.web.entity.Notice;
+import ungmee.web.entity.NoticeView;
 
 
 public interface NoticeDao {
-	public Notice get(int id);
+	public NoticeView get(int id);
 	public int insert(Notice notice);
 	public int detail(Notice notice);
 	public int update(Notice notice);
 	public int delete(Integer id);
+
+	public int getCount(Notice notice);
+
 	
+	public List<NoticeView> getList();
+	public List<NoticeView> getList(int page);
 	
 	
 }

@@ -42,9 +42,9 @@
 				<li><a href="${ctxName}/user/message">알림${couple.proposeList }</a></li>
 				<li><a href="${ctxName}/member/withdraw">회원탈퇴</a></li>			
 				</security:authorize>
-				<security:authorize access="hasRole('ADMIN')">
+				<%-- <security:authorize access="hasRole('ADMIN')"> --%>
 					<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
-				</security:authorize>
+				<%-- </security:authorize> --%>
 				<li>
 					<form action="${ctxName}/logout" method="post">
 						<input type="submit" value="로그아웃">

@@ -22,9 +22,9 @@
 
 	<div>
 		<div class="notice-lists">
-			<c:forEach var="n" items="${notice}">
+			<c:forEach var="n" items="${noticeView}">
 				<div class="notice-list">
-					<div>${n.category}</div>
+					<div>${n.categoryName}</div>
 					<div>${n.regDate}</div>
 					<div>${n.title}</div>
 					<div>
@@ -32,13 +32,15 @@
 					</div>
 					<div class="content">${n.content}</div>
 					<div>
-						<a href="del?did=${n.id}">삭제a</a>
-						<a href="edit?eid=${n.id}">수정</a>
+						<a href="del?id=${n.id}">삭제a</a>
+						<a href="edit?id=${n.id}">수정</a>
 					</div>
 				</div>
 			</c:forEach>
 		</div>
 	</div>
+	
+	
 	</main>
 </body>
 </html>

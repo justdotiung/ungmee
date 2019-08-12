@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import ungmee.web.dao.NoticeDao;
 import ungmee.web.entity.Notice;
+import ungmee.web.entity.NoticeView;
 
 
 @Repository
@@ -17,7 +18,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public Notice get(int id) {
+	public NoticeView get(int id) {
 		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		return noticeDao.get(id);
 	}
@@ -40,11 +41,7 @@ public class MyBatisNoticeDao implements NoticeDao{
 		return noticeDao.update(notice);
 	}
 
-	@Override
-	public List<Notice> getList() {
-		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
-		return noticeDao.getList();
-	}
+	
 
 	@Override
 	public int delete(Integer id) {
@@ -54,7 +51,24 @@ public class MyBatisNoticeDao implements NoticeDao{
 	}
 
 
+	@Override
+	public List<NoticeView> getList() {
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
+		return noticeDao.getList();
+	}
 
+	@Override
+	public List<NoticeView> getList(int page) {
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
+		return noticeDao.getList(page);
+	}
 
+	@Override
+	public int getCount(Notice notice) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
 
 }

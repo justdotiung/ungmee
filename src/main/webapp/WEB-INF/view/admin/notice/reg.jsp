@@ -17,7 +17,8 @@
 <script>
 window.addEventListener("load",function(){
 	var editor = new Editor("../../resource/lib/editor", ".textarea");
-	var editor2 = new Editor("../../resource/lib/editor", ".textarea2");
+	/*에디터 하나 더 추가하고 싶을 때 */
+	/* var editor2 = new Editor("../../resource/lib/editor", ".textarea2"); */
 });
 
 </script>
@@ -33,7 +34,8 @@ window.addEventListener("load",function(){
 			<option value="외부이벤트">외부이벤트</option>
 		</select>
 
-		<div>${n.regdate}</div>
+		<div>${n.regDate}</div>
+		<div>${n.writerId}</div>
 		<div class="title">
 			<input name="title" placeholder="제목 입력할꺼지?">
 		</div>
@@ -41,20 +43,16 @@ window.addEventListener("load",function(){
 			<input type="file" name="file">파일첨부
 		</div>
 		<div class="content">
-			<textarea class="textarea"
+			<textarea class="textarea" name="content"
 				style="width: 100%; height: 300px; border: 1px solid gray;"></textarea>
-
 		</div>
-		
-		<textarea class="textarea2"
-				style="width: 100%; height: 300px; border: 1px solid gray;"></textarea>
-</form>
+	</div>
+		<!-- <textarea class="textarea2"
+				style="width: 100%; height: 300px; border: 1px solid gray;"></textarea> -->
 <div class="button-box">
 	<input type="submit" value="저장"> <a href="list">취소</a>
 </div>
-
-
-
+</form>
 
 </main>
 </html>

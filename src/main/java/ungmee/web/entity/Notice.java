@@ -4,19 +4,24 @@ import java.sql.Date;
 
 public class Notice {
 //	"ID" NUMBER DEFAULT "UNG"."NOTICE_SEQ"."NEXTVAL" NOT NULL ENABLE, 
-//	"ADMIN_ID" NUMBER NOT NULL ENABLE, 
-//	"CATEGORY" NVARCHAR2(2) NOT NULL ENABLE, 
-//	"TITLE" NVARCHAR2(300) NOT NULL ENABLE, 
+//	"WRITER_ID" NUMBER DEFAULT 61 NOT NULL ENABLE, 
+//	"TITLE" NVARCHAR2(300), 
 //	"CONTENT" CLOB, 
 //	"REGDATE" DATE DEFAULT sysdate NOT NULL ENABLE, 
-//	 CONSTRAINT "ADMIN_BOARD_PK" PRIMARY KEY ("ID")
+//	"CATEGORY_ID" NUMBER(1,0), 
+//	"HIT" NUMBER
 	
 	private Integer id;
-	private int adminId;
-	private String category;
+	private int writerId;
 	private String title;
 	private String content;
 	private Date regDate;
+	private int categoryId;
+	private int hit;
+	private int startRowNum;
+	private int endRowNum;
+	private int prevNum;
+	private int nextNum;
 	
 	public Notice() {
 		// TODO Auto-generated constructor stub
@@ -30,20 +35,12 @@ public class Notice {
 		this.id = id;
 	}
 
-	public int getAdminId() {
-		return adminId;
+	public int getWriterId() {
+		return writerId;
 	}
 
-	public void setAdminId(int adminId) {
-		this.adminId = adminId;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
+	public void setWriterId(int writerId) {
+		this.writerId = writerId;
 	}
 
 	public String getTitle() {
@@ -70,12 +67,62 @@ public class Notice {
 		this.regDate = regDate;
 	}
 
-	@Override
-	public String toString() {
-		return "Notice [id=" + id + ", adminId=" + adminId + ", category=" + category + ", title=" + title
-				+ ", content=" + content + ", regDate=" + regDate + "]";
+	public int getCategoryId() {
+		return categoryId;
 	}
 
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public int getHit() {
+		return hit;
+	}
+
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
+	public int getPrevNum() {
+		return prevNum;
+	}
+
+	public void setPrevNum(int prevNum) {
+		this.prevNum = prevNum;
+	}
+
+	public int getNextNum() {
+		return nextNum;
+	}
+
+	public void setNextNum(int nextNum) {
+		this.nextNum = nextNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Notice [id=" + id + ", writerId=" + writerId + ", title=" + title + ", content=" + content
+				+ ", regDate=" + regDate + ", categoryId=" + categoryId + ", hit=" + hit + ", startRowNum="
+				+ startRowNum + ", endRowNum=" + endRowNum + ", prevNum=" + prevNum + ", nextNum=" + nextNum + "]";
+	}
+
+	
 
 	
 	}

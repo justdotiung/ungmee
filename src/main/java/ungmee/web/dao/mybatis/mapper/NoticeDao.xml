@@ -4,25 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="ungmee.web.dao.NoticeDao">
 
- 	<select id="get" resultType="ungmee.web.entity.Notice">
-		SELECT * FROM NOTICE WHERE id = #{id}
+ 	<select id="get" resultType="ungmee.web.entity.NoticeView">
+		SELECT * FROM NOTICE_VIEW WHERE id = #{id}
 	</select>
-	<select id="getList" resultType="ungmee.web.entity.Notice">
-		SELECT * FROM NOTICE ORDER BY REGDATE DESC
+	
+	<select id="getList" resultType="ungmee.web.entity.NoticeView">
+	<!-- 페이징처리구문 -->
+		SELECT * FROM NOTICE_VIEW ORDER BY REGDATE DESC
 	</select>
 	
  	<insert id="insert" parameterType="ungmee.web.entity.Notice">
 		<!-- <selectKey keyProperty="id" resultType="Integer">
 		select nvl(id,0)+1 id from (select * from NOTICE order by regDate desc) where rownum = 1
 		</selectKey> -->
-		INSERT INTO NOTICE(CATEGORY,TITLE,CONTENT,ADMIN_ID)
-		VALUES(#{category},#{title},#{content},#{adminId})
+		INSERT INTO NOTICE(CATEGORY_ID,TITLE,CONTENT,WRITER_Id)
+		VALUES(#{categoryId},#{title},#{content},#{writerId})
 	</insert>
 	
 	<update id="update" parameterType="ungmee.web.entity.Notice">
-		UPDATE NOTICE 
+		UPDATE NOTICE
 		SET 
-			category=#{category},
+			category_id=#{categoryId},
 			title=#{title}, 
 			content=#{content}
 			WHERE ID =${id}

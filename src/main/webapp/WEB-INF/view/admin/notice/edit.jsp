@@ -20,11 +20,10 @@
 	<form action="edit" method="post">
 		<input type="hidden" name="id" value="${notice.id}">
 		<div class="notice-list">
-			<select name="category">
-					<option value="공지사항">공지사항</option>
-					<option value="사내이벤트">사내이벤트</option>
-					<option value="외부이벤트">외부이벤트</option>
-				</select>
+			<select name="categoryId">
+					<option value="1">회원공지사항</option>
+					<option value="2">제휴사공지사항</option>
+			</select>
 			<div>${notice.regDate}</div>
 			<div><input type="text" name="title" value="${notice.title}"/></div>
 			<div class="content"><input type="text" name="content" value="${notice.content}"/></div>

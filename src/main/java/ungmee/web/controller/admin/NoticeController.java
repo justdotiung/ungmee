@@ -30,96 +30,91 @@ import ungmee.web.dao.NoticeDao;
 import ungmee.web.entity.Event;
 import ungmee.web.entity.EventFile;
 import ungmee.web.entity.Notice;
+import ungmee.web.entity.NoticeView;
 import ungmee.web.security.CustomUserDetails;
+import ungmee.web.service.NoticeService;
 
 @Controller("adminNoticeController")
 @RequestMapping("admin/notice/")
 public class NoticeController {
 	@Autowired
-	private NoticeDao noticeDao;
-
+//	private NoticeDao noticeDao;
+	private NoticeService noticeService;
 	@GetMapping("reg")
 	public String reg() {
 		return "admin/notice/reg";
 	}
 
 	@PostMapping("reg")
-	public String reg(Notice notice, String category, MultipartFile[] file, HttpServletRequest request)
+	public String reg(Notice notice)
 			throws IOException {
 		/* ,Authentication auth */
-		notice.setAdminId(61);
+		//notice.setAdminId(61);
 		// CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
 		// notice.setAdminId(userDetails.getId()); //占쏙옙占쏙옙占� 占싸깍옙占쏙옙 占쏙옙占쏙옙
 		// UserDetails p.640
 		// System.out.println(principal.getName());
+		//noticeDao.insert(notice);
 
-		System.out.println(notice);
-		noticeDao.insert(notice);
-
+		noticeService.regNotice(notice);
 		return "redirect:list";
 	}
 	
-	@PostMapping("upload")
-	@ResponseBody
-	public String upload(MultipartFile file, HttpServletRequest request)
-			throws IOException {
+	@GetMapping("edit")
+	public String edit(int id, Model model) {
+		//model.addAttribute("notice", noticeDao.get(eid));
+		//System.out.println(noticeDao.get(eid));
 		
-		String fileName;
-		String urlPath = "/upload";
-		String realPath = request.getServletContext().getRealPath(urlPath);
-
-		
-			fileName = file.getOriginalFilename();
-			String path = realPath + File.separator + fileName;
-
-			System.out.println(realPath);
-
-			File filePath = new File(realPath);
-			if (!filePath.exists())
-				filePath.mkdirs();
-
-			File sameFile = new File(path);
-			if (sameFile.exists()) {
-				int ne = fileName.lastIndexOf(".");
-				String name = fileName.substring(0, ne);
-				String suffix = fileName.substring(ne);
-				int parenS = name.lastIndexOf("(");
-				int parenE = name.lastIndexOf(")");
-
-				if (parenE == -1) {
-					fileName = name + "(" + 1 + ")" + suffix;
-					path = realPath + File.separator + fileName;
-					System.out.println(path);
-				} else {
-					String indexC = name.substring(parenS + 1, parenE);
-					int indexN = Integer.parseInt(indexC);
-					indexN++;
-					fileName = fileName.substring(0, parenS + 1) + indexN + ")" + suffix;
-					path = realPath + File.separator + fileName;
-					System.out.println(path);
-				}
-			
-			InputStream fis = file.getInputStream();
-			OutputStream fos = new FileOutputStream(path);
-
-			int j = 0;
-			byte[] arr = new byte[1024];
-
-			while ((j = fis.read(arr)) != -1) {
-				fos.write(arr, 0, j);
-			}
-			
-
-			fos.close();
-			fis.close();
-
-		       
-	
-
-		
-		}
-		return "/upload/"+ fileName;
+		model.addAttribute("notice",noticeService.getNotice(id));
+		return "admin/notice/edit";
 	}
+
+	@PostMapping("edit")
+	public String edit(Notice notice) {
+
+//		Notice n = noticeDao.get(notice.getId());
+//		n.setCategory(notice.getCategory());
+//		n.setTitle(notice.getTitle());
+//		n.setContent(notice.getContent());
+//		noticeDao.update(n);
+		
+		int result = noticeService.updateNotice(notice);
+		if(result == 1 )
+			return "redirect:list";
+		else  
+			return  "error";
+	} 
+
+	@RequestMapping("list")
+	public String list(Integer page, Model model) {
+
+//		List<Notice> notice = noticeDao.getList();
+//		model.addAttribute("notice", notice);
+		int p = 1;
+		if(page !=null)
+			p= page;
+		
+		model.addAttribute("noticeView",noticeService.getNoticeViewList(p));
+		return "admin/notice/list";
+	}
+
+	@GetMapping("del")
+	public String del(int id) {
+		noticeService.deleteNotice(id);
+//		System.out.println(noticeDao.get(did));
+//		noticeDao.delete(did);
+		return "redirect:list";
+	}
+	
+//	@PostMapping("upload")
+//	@ResponseBody
+//	public String upload(MultipartFile file, HttpServletRequest request)
+//			throws IOException {
+//		
+//		
+//		noticeService.upload(file, request);
+//		return "/upload/"+ fileName;
+//	}
 	
 	// 스마트에디터 파일
 //	@RequestMapping(value="/upload", method=RequestMethod.POST)
@@ -184,39 +179,6 @@ public class NoticeController {
 //	        return "";
 //	    }
 
-	@GetMapping("edit")
-	public String edit(Integer eid, Model model) {
-		model.addAttribute("notice", noticeDao.get(eid));
-		System.out.println(noticeDao.get(eid));
-		return "admin/notice/edit";
-	}
-
-	@PostMapping("edit")
-	public String edit(Notice notice) {
-
-		Notice n = noticeDao.get(notice.getId());
-		n.setCategory(notice.getCategory());
-		n.setTitle(notice.getTitle());
-		n.setContent(notice.getContent());
-
-		noticeDao.update(n);
-		return "redirect:list";
-	}
-
-	@RequestMapping("list")
-	public String list(Model model) {
-
-		List<Notice> notice = noticeDao.getList();
-		model.addAttribute("notice", notice);
-
-		return "admin/notice/list";
-	}
-
-	@GetMapping("del")
-	public String del(Integer did) {
-		System.out.println(noticeDao.get(did));
-		noticeDao.delete(did);
-		return "redirect:list";
-	}
+	
 
 }

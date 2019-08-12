@@ -1,6 +1,5 @@
 package ungmee.web.controller;
 
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -107,6 +106,7 @@ public class RootController {
 		if(auth != null) {
 			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 			int userNum = user.getId();
+			System.out.println("userNum"+userNum);
 			int count = pushService.getNewPushCount(userNum);
 		
 			model.addAttribute("count", count);

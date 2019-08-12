@@ -8,15 +8,10 @@ public class User {
     private String pw;
     private Date regDate;
     private int enabled;
-    private String authority;
-    private String gender;
+    private int roleId;
     private String echeck;
     private String nickName;
-    private int birthday;
     private String profile;
-    private int cState;
-   
-
 
 	public User() {
 	
@@ -62,20 +57,13 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public String getAuthority() {
-		return authority;
+	
+	public int getRoleId() {
+		return roleId;
 	}
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
 	}
 
 	public String getEcheck() {
@@ -94,14 +82,6 @@ public class User {
 		this.nickName = nickName;
 	}
 
-	public int getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(int birthday) {
-		this.birthday = birthday;
-	}
-
 	public String getProfile() {
 		return profile;
 	}
@@ -110,20 +90,12 @@ public class User {
 		this.profile = profile;
 	}
 
-	public int getcState() {
-		return cState;
-	}
-	
-	public void setcState(int cState) {
-		this.cState = cState;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", pw=" + pw + ", regdate=" + regDate + ", enabled=" + enabled
-				+ ", authority=" + authority + ", gender=" + gender + ", echeck=" + echeck + ", nickName=" + nickName
-				+ ", birthday=" + birthday + ", profile=" + profile + ", cState=" + cState + "]";
+		return "User [id=" + id + ", email=" + email + ", pw=" + pw + ", regDate=" + regDate + ", enabled=" + enabled
+				+ ", roleId=" + roleId + ", echeck=" + echeck + ", nickName=" + nickName + ", profile=" + profile
+				+ "]";
 	}
-	
+
 	
 }

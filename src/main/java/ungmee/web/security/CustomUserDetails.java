@@ -4,13 +4,24 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import ungmee.web.dao.RoleCategoryDao;
+import ungmee.web.entity.RoleCategory;
 import ungmee.web.entity.User;
 
 public class CustomUserDetails extends User implements UserDetails {
+
+	
+	private RoleCategoryDao categoryDao;
+
+
+	public void setCategoryDao(RoleCategoryDao categoryDao) {
+		this.categoryDao = categoryDao;
+	}
 
 	public CustomUserDetails() {
 		// TODO Auto-generated constructor stub
@@ -21,13 +32,16 @@ public class CustomUserDetails extends User implements UserDetails {
 		setEmail(user.getEmail());
 		setPw(user.getPw());
 		setEnabled(user.getEnabled());
-		setAuthority(user.getAuthority());
+		setRoleId(user.getRoleId());
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+		System.out.println(getRoleId());
+		RoleCategory category = categoryDao.get(getRoleId());
+		
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(getAuthority()));
+		authorities.add(new SimpleGrantedAuthority(category.getName()));
 		return authorities;
 	}
 

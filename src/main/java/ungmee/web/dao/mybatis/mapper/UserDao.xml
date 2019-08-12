@@ -8,33 +8,55 @@
  	</resultMap>
  	
  	<select id="getEmail" resultType="ungmee.web.entity.User">
- 		select * from "USER" where email = #{email}
+	  	 SELECT
+		    id,
+		    email,
+		    pw,
+		    regdate,
+		    enabled,
+		    role_id roleId,
+		    echeck,
+		    nickname,
+		    profile
+		 from "USER" where email = #{email}
  	</select>
 
  	<select id="get" resultMap="userMap">
- 		select * from "USER" where id = #{id}
+ 		select 
+ 			id,
+		    email,
+		    pw,
+		    regdate,
+		    enabled,
+		    role_id roleId,
+		    echeck,
+		    nickname,
+		    profile
+ 		 from "USER" where id = #{id}
  	</select>
 
  	<insert id="insert" parameterType="ungmee.web.entity.User">
  		INSERT INTO "USER" 
- 			(email, pw, gender, echeck, nickname, birthday)
+ 			(email, pw, echeck,ROLE_ID, nickname)
  		 VALUES 
- 		 	(#{email},#{pw},#{gender},#{echeck},#{nickName},#{birthday})
+ 		 	(#{email},#{pw},#{echeck},#{roleId},#{nickName})
  	</insert>
 	<update id="edit" parameterType="ungmee.web.entity.User">
 		UPDATE "USER" SET
 			  email = #{email}, pw= #{pw}, regdate= #{regDate}, enabled= #{enabled}, authority= #{authority},
-  			  gender= #{gender}, echeck= #{echeck}, nickname= #{nickName}, birthday= #{birthday},
+  			  echeck= #{echeck}, nickname= #{nickName}
   			  <if test="profile != null">
-  			   profile= #{profile},
+  			   ,profile= #{profile}
   			  </if>
-  			  c_state = #{cState}
   			where id = #{id} 
     </update>
 	<update id="delet" parameterType="ungmee.web.entity.User">
 		UPDATE "USER" SET
 			  email = #{email}, pw= #{pw}, regdate= #{regDate}, enabled= #{enabled}, authority= #{authority},
-  			  gender= #{gender}, echeck= #{echeck}, nickname= #{nickName}, birthday= #{birthday}, profile= #{profile}
+  			   nickname= #{nickName}
+  			   <if test="profile != null">
+  			   ,profile= #{profile}
+  			  </if>
   			where id = #{id} 
     </update>
 

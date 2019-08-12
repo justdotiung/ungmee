@@ -6,34 +6,36 @@
 <script src="${ctxName}/resource/js/root/signup.js"></script>
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/root/signup.css">
 
-<section id="body">
+<section id="section">
 	<div>
 		<ul>
-			<li><a href="#tag1" class="t">일반회원</a></li>
-			<li><a href="#tag2" class="d">사업자회원</a></li>
+			<li><a href="#tag1" class="user">일반회원</a></li>
+			<li><a href="#tag2" class="partner">사업자회원</a></li>
 		</ul>
 	</div>
 	<div id="tag1">
 	     <form action="signup" method="post">
 	         <div>
 	         	<label>이름 입력</label>
-	         	<input type="text" name="nickName">
+	         	<input type="text" class="nick-name" name="nickName">
 	         </div>
 	         <div>
 	         	<label>이메일입력</label>
-	         	<input type="email" name="email">
+	         	<input type="email" class="email" name="email">
 	         </div>
 	         <div>
 	         	<label>비밀번호입력</label>
-	         	<input type="password" name="pw">
+	         	<input type="password" class="pw" name="pw">
+	         	<span id="pw-valid" class="same"></span>
 	         </div>
 	         <div>
 	         	<label>비밀번호 확인</label>
-	         	<input type="password" name="pw-check"><span id="same"></span>
+	         	<input type="password" class="pw-check" name="pw-check">
+	         	<span id="same" class="same"></span>
 	         </div>
 	         <div>
 	         	<label>생년월일</label>         	
-	         	<input type="text" name="birthday" placeholder="월 일 만 입력 ex)0513">
+	         	<input type="text" class="birthday" name="birthday" placeholder="월 일 만 입력 ex)0513">
 				
 	         	
 	         </div>
@@ -48,10 +50,17 @@
 	         	<label>여자</label>
 	         	<input type="radio" name="gender" value="female">
 	         </div>
-	    	  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	          <input type="submit" value="가입">
+	         <div>
+	        	<input type="hidden" class = "header" value="${_csrf.headerName}"> 
+				<input type="hidden" class = "token" value="${_csrf.token}"> 
+	         	<input type="hidden" class="solo" value="2">
+	          	<input type="button" class="button" value="가입">
+	         </div>
 	     </form>
      </div>
+
+ <!--  사업자 가입 폼 --------------------------------->
+   
      <div id="tag2" class="d-none">
      	<form action="partner-signup" method="post">
          <div>

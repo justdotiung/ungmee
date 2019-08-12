@@ -11,8 +11,7 @@ public class RootRestController {
 
 	@PostMapping("solo/signup")
 	public String signUp() {
-		
-		
+			
 		return null;
 	}
 }

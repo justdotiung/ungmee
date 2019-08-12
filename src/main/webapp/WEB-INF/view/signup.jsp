@@ -18,6 +18,7 @@
 	         <div>
 	         	<label>이름 입력</label>
 	         	<input type="text" class="nick-name" name="nickName">
+	         	<span id="name-valid" class="same"></span>
 	         </div>
 	         <div>
 	         	<label>이메일입력</label>
@@ -36,8 +37,7 @@
 	         <div>
 	         	<label>생년월일</label>         	
 	         	<input type="text" class="birthday" name="birthday" placeholder="월 일 만 입력 ex)0513">
-				
-	         	
+				<span id="birthday-valied" class="same"></span>
 	         </div>
 	           <div>
 	         	<label>이벤트 동의(선택)</label>

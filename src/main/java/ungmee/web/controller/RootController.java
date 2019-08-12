@@ -26,7 +26,7 @@ public class RootController {
 	private UserDao userDao;
 	@Autowired
 	private PartnerDao partnerDao;
-
+	@Autowired
 	private PushService pushService;
 
 	

@@ -9,7 +9,7 @@ import ungmee.web.entity.User;
 
 
 @Service
-public class UserService {
+public class MemberShipService {
 	@Autowired
 	private UserDao userDao;
 	

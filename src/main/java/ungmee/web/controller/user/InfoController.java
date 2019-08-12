@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
-import ungmee.web.service.UserService;
+import ungmee.web.service.MemberShipService;
 
 @Controller
 @RequestMapping("/user/")
@@ -23,7 +23,7 @@ public class InfoController {
 	private UserDao userdao;
 	
 	@Autowired
-	private UserService userService;
+	private MemberShipService service;
 	
 	@GetMapping("detail")
 	public String detail(Model model,Authentication auth) {
@@ -35,7 +35,7 @@ public class InfoController {
 	}
 	@GetMapping("sender")
 	public String index(Model model,int id) {
-		User user = userService.getSenderDetails(id);
+		User user = service.getSenderDetails(id);
 		model.addAttribute("user", user);
 		return "user/sender";
 	}

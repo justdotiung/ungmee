@@ -9,12 +9,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.events.Event;
 
+import ungmee.web.dao.CoupleDao;
 import ungmee.web.dao.EventDao;
 import ungmee.web.dao.NoticeDao;
+import ungmee.web.dao.UserDao;
+import ungmee.web.entity.Couple;
 import ungmee.web.entity.Notice;
+import ungmee.web.entity.User;
+import ungmee.web.security.CustomUserDetails;
 
 @Service
 public class PushService {
@@ -22,7 +28,52 @@ public class PushService {
 	private NoticeDao noticeDao;
 	@Autowired
 	private EventDao eventDao;
+	@Autowired
+	private CoupleDao coupleDao;
+	@Autowired
+	private UserDao userDao;
+	
+	public User getSenderDetails(int id) {
+		User user = userDao.get(id);
+		
+		return user;
+	}
 
+	public Couple getProposeDetail(int id) {
+		Couple couple = coupleDao.get(id);
+		couple.setRead("T");
+		coupleDao.edit(couple);
+		couple = coupleDao.get(id);
+		return couple;
+	}
+	
+	public int getNewPushCount(int userNum) {	
+		System.out.println("service userNum : "+userNum);
+		int pCount = coupleDao.getProposeCount(userNum);
+		System.out.println("pCount : "+pCount);
+		return pCount;
+	}
+
+	public List<Map<String,Object>> getNewPushList(int userNum){
+		List<Map<String, Object>> list = new ArrayList<>();
+		User user = new User();
+	//	System.out.println("AccepterId : "+userNum);
+		List<Couple> coupleList = coupleDao.getProposeList(userNum);
+//		System.out.println("list : "+coupleList.get(0).getAccepterId());
+		Map<String,Object> couple ;
+		for(Couple c : coupleList) {
+			user = userDao.get(c.getProposeId());
+			couple = new HashMap<String, Object>();
+			couple.put("cName",c.getCoupleName());
+			couple.put("regDate",c.getAsk());
+			couple.put("id", c.getId());
+			couple.put("sender", user.getEmail());
+			couple.put("profile",user.getProfile());
+			couple.put("senderId", user.getId());
+			list.add(couple);
+		}
+		return list;
+	}
 //	public int getNewPushedCount() {
 //
 //		List<Notice> noticeList = noticeDao.getListByMemberId(1);
@@ -103,4 +154,5 @@ public class PushService {
 //		return list;
 //
 //}
+	
 }

@@ -28,7 +28,8 @@ public class Couple {
     private String read;
     private String accept;
 	
-    public Couple() {}
+
+	public Couple() {}
 
 	public int getId() {
 		return id;

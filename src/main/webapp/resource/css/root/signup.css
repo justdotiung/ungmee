@@ -1,9 +1,4 @@
-.d-none{
-   display: none;
-}
-.d-none.current{
-   display: block;
-}
+
 /* ----header------------- */
 #header{
    height: 300px;
@@ -12,6 +7,12 @@
 #main{
    display: flex;
    margin: auto;
+}
+.same.error{
+   color: red;
+}
+.same{
+   color: green;
 }
 
 .login-form{

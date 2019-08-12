@@ -31,9 +31,29 @@ public class MyBatisCoupleDao implements CoupleDao{
 
 	@Override
 	public List<Couple> getProposeList(int accepterId) {
-		// TODO Auto-generated method stub
-		return null;
+		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
+		return coupleDao.getProposeList(accepterId);
 	}
+
+	@Override
+	public int getProposeCount(int accepterId) {
+		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
+		return coupleDao.getProposeCount(accepterId);
+	}
+
+	@Override
+	public Couple get(int id) {
+		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
+		return coupleDao.get(id);
+	}
+
+	@Override
+	public int edit(Couple couple) {
+		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
+		return coupleDao.edit(couple);
+	}
+
+	
 
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import ungmee.web.dao.RoleCategoryDao;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.User;
 
@@ -15,11 +16,16 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserDao userDao;
 	
+	@Autowired
+	private RoleCategoryDao categoryDao;
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		CustomUserDetails details = null;
 		User user = userDao.getEmail(username);
 		details = new CustomUserDetails(user);
+		details.setCategoryDao(categoryDao);
+		
 		System.out.println("CustomUserDetails : "+details.getEmail());
 		return details;
 	}

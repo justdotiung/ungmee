@@ -44,6 +44,8 @@ h1{color:#333;font-size:14px;letter-spacing:-1px}
 </style>
 </head>
 <body>
+        <input type="hidden" class = "header" value="${_csrf.headerName}"> 
+        <input type="hidden" class = "token" value="${_csrf.token}"> 
 <div id="pop_wrap">
 	<!-- header -->
     <div id="pop_header">

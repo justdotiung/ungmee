@@ -331,19 +331,19 @@
      * 
      */
     function html5Upload() {	
-    	var tempFile,
-    		sUploadURL;
+		var tempFile,
+		sUploadURL;
     	
-    	//sUploadURL= '/ungmeespring/admin/event/upload';
-    	sUploadURL='/ungmeespring/admin/event/upload';
-    	//sUploadURL= 'file_uploader_html5.jsp'; 	//upload URL
+    	sUploadURL= '/ungmeespring/admin/event/upload';
+    	//sUploadURL= ''+header;
+    	sUploadURL= 'file_uploader_html5.jsp'; 	//upload URL
     	//sUploadURL='/comm/editorImageUpload';
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
-    		tempFile = htImageInfo['img'+j];
+			tempFile = htImageInfo['img'+j];
     		try{
-	    		if(!!tempFile){
-	    			//Ajax통신하는 부분. 파일과 업로더할 url을 전달한다.
+				if(!!tempFile){
+					//Ajax통신하는 부분. 파일과 업로더할 url을 전달한다.
 	    			callAjaxForHTML5(tempFile,sUploadURL);
 	    			//fn_multiUpload(sUploadURL,tempFile);
 	    			k += 1;
@@ -352,9 +352,12 @@
     		tempFile = null;
     	}
 	}
-
+	
     function callAjaxForHTML5 (tempFile, sUploadURL){
-    	
+		
+		var header = this.document.querySelector(".header").value;
+		var token = this.document.querySelector(".token").value;
+		console.log(token);
     	console.log(sUploadURL);
     	
     	var oAjax = jindo.$Ajax(sUploadURL, {
@@ -376,6 +379,7 @@
 			onerror :  jindo.$Fn(onAjaxError, this).bind()
 		});
 		oAjax.header("contentType","multipart/form-data");
+		oAjax.header(header,token);
 		oAjax.header("file-name",encodeURIComponent(tempFile.name));
 		oAjax.header("file-size",tempFile.size);
 		oAjax.header("file-Type",tempFile.type);
@@ -483,6 +487,8 @@
  	 * jindo에 파일 업로드 사용.(iframe에 Form을 Submit하여 리프레시없이 파일을 업로드하는 컴포넌트)
  	 */
  	function callFileUploader (){
+ 		var ctx = this.document.querySelector(".ctx-name").value;
+ 		console.log("여기"+ctx);
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
  			//sUrl  : location.href.replace(/\/[^\/]*$/, '') + '/file_uploader.jsp',	//샘플 URL입니다.
  			//sUrl  : '/file_uploader.jsp',
@@ -596,6 +602,7 @@
  	
  	// 2012.05 현재] jindo.$Ajax.prototype.request에서 file과 form을 지원하지 안함. 
  	jindo.$Ajax.prototype.request = function(oData) {
+	
  		this._status++;
  		var t   = this;
  		var req = this._request;
@@ -603,7 +610,10 @@
  		var data, v,a = [], data = "";
  		var _timer = null;
  		var url = this._url;
- 		this._is_abort = false;
+		 this._is_abort = false;
+//		 var header = null
+//			 var token =null;
+			 
 
  		if( opt.postBody && opt.type.toUpperCase()=="XHR" && opt.method.toUpperCase()!="GET"){
  			if(typeof oData == 'string'){
@@ -637,6 +647,7 @@
  			 * opera 10.60에서 XMLHttpRequest에 addEventListener기 추가되었지만 정상적으로 동작하지 않아 opera는 무조건 dom1방식으로 지원함.
  			 * IE9에서도 opera와 같은 문제가 있음.
  			 */
+	
  			if(this._loadFunc){ req.removeEventListener("load", this._loadFunc, false); }
  			this._loadFunc = function(rq){ 
  				clearTimeout(_timer);
@@ -659,6 +670,7 @@
  				 * 그래서 interval로 체크하여 timeout이벤트가 정상적으로 발생되도록 수정. 비동기 방식일때만
  		
  	             */
+	
  				if(window.navigator.userAgent.match(/(?:MSIE) ([0-9.]+)/)[1]==6&&opt.async){
  					var onreadystatechange = function(rq){
  						if(req.readyState == 4 && !t._is_abort){
@@ -683,8 +695,10 @@
  					};
  				}
  			}
- 		}
-
- 		req.send(data);
+		 }
+		var formData = new FormData();
+		formData.append("file",data)
+		req.open("POST",'/ungmeespring/admin/event/upload');
+ 		req.send(formData);
  		return this;
  	};

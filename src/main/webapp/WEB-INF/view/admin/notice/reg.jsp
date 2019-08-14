@@ -28,14 +28,13 @@ window.addEventListener("load",function(){
 	enctype="multipart/form-data">
 	<div class="regform">
 
-		<select name="category">
-			<option value="공지사항">공지사항</option>
-			<option value="사내이벤트">사내이벤트</option>
-			<option value="외부이벤트">외부이벤트</option>
+		<select name="categoryId" >
+			<option value="1">회원공지사항</option>
+			<option value="2">제휴사공지사항</option>
 		</select>
 
-		<div>${n.regDate}</div>
-		<div>${n.writerId}</div>
+		<div>${time}</div>
+		<div>${writer}</div>
 		<div class="title">
 			<input name="title" placeholder="제목 입력할꺼지?">
 		</div>
@@ -49,7 +48,7 @@ window.addEventListener("load",function(){
 	</div>
 		<!-- <textarea class="textarea2"
 				style="width: 100%; height: 300px; border: 1px solid gray;"></textarea> -->
-<div class="button-box">
+<div class="button-box">'
 	<input type="submit" value="저장"> <a href="list">취소</a>
 </div>
 </form>

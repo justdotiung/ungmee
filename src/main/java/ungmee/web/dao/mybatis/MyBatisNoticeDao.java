@@ -1,5 +1,6 @@
 package ungmee.web.dao.mybatis;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,11 +18,6 @@ public class MyBatisNoticeDao implements NoticeDao{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	@Override
-	public NoticeView get(int id) {
-		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
-		return noticeDao.get(id);
-	}
 
 	@Override
 	public int insert(Notice notice) {
@@ -54,11 +50,11 @@ public class MyBatisNoticeDao implements NoticeDao{
 	@Override
 	public List<NoticeView> getList() {
 		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
-		return noticeDao.getList();
+		return noticeDao.getList(1);
 	}
 
 	@Override
-	public List<NoticeView> getList(int page) {
+	public List<NoticeView> getList(Integer page) {
 		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
 		return noticeDao.getList(page);
 	}
@@ -67,6 +63,36 @@ public class MyBatisNoticeDao implements NoticeDao{
 	public int getCount(Notice notice) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public NoticeView getView(int id) {
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
+		return noticeDao.getView(id);
+	}
+
+	@Override
+	public Notice get(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<NoticeView> getList(Integer page, String field, String query) {
+		NoticeDao noticeDao = sqlSession.getMapper(NoticeDao.class);
+		return noticeDao.getList(page,"title","");
+	}
+
+	@Override
+	public Notice getPrev(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Notice getNext(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

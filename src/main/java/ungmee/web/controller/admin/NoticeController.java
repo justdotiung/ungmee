@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
@@ -22,9 +23,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.google.gson.Gson;
 
 import ungmee.web.dao.NoticeDao;
 import ungmee.web.entity.Event;
@@ -35,23 +39,33 @@ import ungmee.web.security.CustomUserDetails;
 import ungmee.web.service.NoticeService;
 
 @Controller("adminNoticeController")
-@RequestMapping("admin/notice/")
+@RequestMapping("/admin/notice/")
 public class NoticeController {
 	@Autowired
 //	private NoticeDao noticeDao;
 	private NoticeService noticeService;
 	@GetMapping("reg")
-	public String reg() {
+	public String reg(Model model, Authentication auth) {
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		String nickName = details.getNickName();
+		model.addAttribute("writer", nickName);
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		model.addAttribute("time",sdf.format(date));
+		//model.addAttribute("notice",notice);
 		return "admin/notice/reg";
 	}
 
 	@PostMapping("reg")
-	public String reg(Notice notice)
+	public String reg(Notice notice, Authentication auth)
 			throws IOException {
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		int id = details.getId();//유저아이디( 관리자 아이디 primaryKey )
+		notice.setWriterId(id); //notice 객체에  작성자 아이디 세팅 해줌.
 		/* ,Authentication auth */
 		//notice.setAdminId(61);
 		// CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		// notice.setAdminId(userDetails.getId()); //占쏙옙占쏙옙占� 占싸깍옙占쏙옙 占쏙옙占쏙옙
+		// notice.setAdminId(userDetails.getId()); 
 		// UserDetails p.640
 		// System.out.println(principal.getName());
 		//noticeDao.insert(notice);
@@ -65,7 +79,7 @@ public class NoticeController {
 		//model.addAttribute("notice", noticeDao.get(eid));
 		//System.out.println(noticeDao.get(eid));
 		
-		model.addAttribute("notice",noticeService.getNotice(id));
+		model.addAttribute("notice",noticeService.getNoticeView(id));
 		return "admin/notice/edit";
 	}
 
@@ -86,17 +100,51 @@ public class NoticeController {
 	} 
 
 	@RequestMapping("list")
-	public String list(Integer page, Model model) {
-
+	public String list(@RequestParam(name="p", defaultValue="1") Integer page, 
+			Model model, Authentication auth) {
+		
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		String nickName = details.getNickName();
+		model.addAttribute("writer", nickName);
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		model.addAttribute("time",sdf.format(date));
 //		List<Notice> notice = noticeDao.getList();
 //		model.addAttribute("notice", notice);
-		int p = 1;
-		if(page !=null)
-			p= page;
+//		int p = 1;
+//		if(page !=null)
+//			p= page;
+		List<NoticeView> pageList = noticeService.getNoticeViewList(page);
+		model.addAttribute("noticeView", pageList);
 		
-		model.addAttribute("noticeView",noticeService.getNoticeViewList(p));
 		return "admin/notice/list";
 	}
+	
+	@GetMapping("list-json")
+	@ResponseBody
+	public String listJson(@RequestParam(name="p", defaultValue="1") Integer page, 
+			Model model, Authentication auth) {
+		
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		String nickName = details.getNickName();
+		model.addAttribute("writer", nickName);
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		model.addAttribute("time",sdf.format(date));
+//		List<Notice> notice = noticeDao.getList();
+//		model.addAttribute("notice", notice);
+//		int p = 1;
+//		if(page !=null)
+//			p= page;
+		
+//		page =1;
+		List<NoticeView> noticeList = noticeService.getNoticeViewList(page);
+		Gson gson = new Gson();
+		
+		
+		return gson.toJson(noticeList);
+	}
+	
 
 	@GetMapping("del")
 	public String del(int id) {

@@ -39,14 +39,20 @@ public class EventController {
 	private EventFileDao eventFileDao;
 
 	@GetMapping("reg")
-	public String reg() {
+	public String reg(Model model, Authentication auth) {
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		String nickName = details.getNickName();
+		model.addAttribute("writer", nickName);
+		
 		return "admin/event/reg";
 	}
 
 	@PostMapping("reg")
-	public String reg(Event event, String category, MultipartFile[] file, HttpServletRequest request)
+	public String reg(Event event, Authentication auth, String category, MultipartFile[] file, HttpServletRequest request)
 			throws IOException {
-		
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		int id = details.getId();
+		event.setAdminId(id);
 		System.out.println(event);
 		eventDao.insert(event);
 

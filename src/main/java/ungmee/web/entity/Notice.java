@@ -12,7 +12,7 @@ public class Notice {
 //	"HIT" NUMBER
 	
 	private Integer id;
-	private int writerId;
+	private int writerId;//작성자 아이디
 	private String title;
 	private String content;
 	private Date regDate;

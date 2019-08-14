@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class NoticeView {
 	private Integer id;
+	private int writerId;
 	private String title;
 	private String content;
 	private Date regDate;
@@ -13,6 +14,14 @@ public class NoticeView {
 	
 	public NoticeView() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getWriterId() {
+		return writerId;
+	}
+
+	public void setWriterId(int writerId) {
+		this.writerId = writerId;
 	}
 
 	public Integer getId() {

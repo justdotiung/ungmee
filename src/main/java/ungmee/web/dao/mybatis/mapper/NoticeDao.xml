@@ -3,14 +3,44 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="ungmee.web.dao.NoticeDao">
-
- 	<select id="get" resultType="ungmee.web.entity.NoticeView">
-		SELECT * FROM NOTICE_VIEW WHERE id = #{id}
+ 	<select id="get" resultType="ungmee.web.entity.Notice">
+		SELECT   
+			ID
+			WRITER_ID as writerId
+			TITLE
+			CONTENT
+			REGDATE
+			CATEGORY_ID as categoryId
+			HIT
+   		FROM
+   			 NOTICE
+		WHERE 
+		 	id = #{id}
+	</select>
+ 	<select id="getView" resultType="ungmee.web.entity.NoticeView">
+		SELECT   
+			id,
+		    title,
+		    content,
+		    regdate,
+		    hit,
+		    name,
+		    nickname,
+	   		writer_id as writerId
+   		FROM
+   			 NOTICE_VIEW
+		WHERE 
+		 	id = #{id}
 	</select>
 	
-	<select id="getList" resultType="ungmee.web.entity.NoticeView">
+	<select id="getList" resultType="ungmee.web.entity.NoticeView" parameterType="Integer">
 	<!-- 페이징처리구문 -->
-		SELECT * FROM NOTICE_VIEW ORDER BY REGDATE DESC
+		SELECT * FROM NOTICE_VIEW 
+		
+		<if test="value != null">
+		WHERE NUM BETWEEN 1+(#{value}-1)*5 AND #{value}*5
+		</if>
+		
 	</select>
 	
  	<insert id="insert" parameterType="ungmee.web.entity.Notice">

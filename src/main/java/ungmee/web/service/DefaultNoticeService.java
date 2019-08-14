@@ -10,19 +10,23 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import ungmee.web.dao.NoticeCategoryDao;
 import ungmee.web.dao.NoticeDao;
+import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Notice;
 import ungmee.web.entity.NoticeCategory;
 import ungmee.web.entity.NoticeView;
 
 @Service
-public class NoticeServiceImpl implements NoticeService{
+public class DefaultNoticeService implements NoticeService{
 
+	@Autowired
+	private UserDao userDao;
 	@Autowired
 	private NoticeDao noticeDao;
 	@Autowired
@@ -33,32 +37,35 @@ public class NoticeServiceImpl implements NoticeService{
 		return null;
 	}
 	@Override
-	public List<NoticeView> getNoticeViewList(int page) {
-		List<NoticeView> noticeViewList = noticeDao.getList();
+	public List<NoticeView> getNoticeViewList(Integer page) {
+		List<NoticeView> noticeViewList = noticeDao.getList(page);
 		return noticeViewList;
 	}
 	@Override
 	public int deleteNotice(int id) {
 		return noticeDao.delete(id);
 	}
-	
-	@Override
-	public NoticeView getNotice(int id) {
-		NoticeView noticeView = noticeDao.get(id);
-		return noticeView;
-	}
 	@Override
 	public int updateNotice(Notice notice) {
 		//NoticeView noticeView1 = noticeDao.get(id);
-		noticeDao.update(notice);
-		System.out.println(notice);
-		
-		return 0;
+		return noticeDao.update(notice);
 	}
 	@Override
 	public int regNotice(Notice notice) {
 		return noticeDao.insert(notice);
 	}
+	@Override
+	public NoticeView getNoticeView(int id) {
+		NoticeView noticeView = noticeDao.getView(id);
+		return noticeView;
+	}
+	@Override
+	public List<NoticeView> getPageList(Integer page, String field, String query) {
+		// TODO Auto-generated method stub
+		return noticeDao.getList(page,"title","");
+	}
+
+}	
 
 	
 	
@@ -115,4 +122,4 @@ public class NoticeServiceImpl implements NoticeService{
 
 	
 	
-}
+

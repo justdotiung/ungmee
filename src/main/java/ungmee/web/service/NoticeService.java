@@ -17,12 +17,12 @@ import ungmee.web.entity.NoticeView;
 
 public interface NoticeService {
 	public List<NoticeCategory> getCategoryList(int id);
-	public List<NoticeView> getNoticeViewList(int page);
+	public List<NoticeView> getNoticeViewList(Integer page);
 	public int deleteNotice(int id);
-	public NoticeView getNotice(int id);
+	public NoticeView getNoticeView(int id);
 	public int updateNotice(Notice notice);
 	public int regNotice(Notice notice);
-	
+	public List<NoticeView> getPageList(Integer page, String field, String query);
 	
 	
 	

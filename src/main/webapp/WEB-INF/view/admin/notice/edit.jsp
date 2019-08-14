@@ -17,7 +17,7 @@
 
 <body>
 	<main id="notice">
-	<form action="edit" method="post">
+	<form action="edit?${_csrf.parameterName}=${_csrf.token}" method="post">
 		<input type="hidden" name="id" value="${notice.id}">
 		<div class="notice-list">
 			<select name="categoryId">

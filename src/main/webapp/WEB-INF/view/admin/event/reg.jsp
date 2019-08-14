@@ -14,8 +14,13 @@
 <script src="${ctxName}/resource/lib/SmartEditor/js/HuskyEZCreator.js"></script>
 <title>관리자 이벤트  REG 페이지</title>
 </head>
+<headers>
+  < frame-options policy="SAMEORIGIN" />
+  <hsts disable="true"/>
+</headers>
 	<main>
-	<input type="hidden" name="ctx-name" value="${ctxName}" class="ctx-name">
+	<input type="hidden" name="ctx-name" value="${ctxName}" class="ctx-nam
+	e">
 	<form action="reg?${_csrf.parameterName}=${_csrf.token}" method="post"
 		enctype="multipart/form-data">
 		<div class="regform">
@@ -27,6 +32,7 @@
 				</select>
 			
 			<div>${n.regDate}</div>
+			<div>${writer}</div>
 			<div class="file"><input type="file" name="file" multiple="multiple"></div>
 			<div class="content">
 				<textarea name="content" id="content"></textarea>

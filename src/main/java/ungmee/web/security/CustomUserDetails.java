@@ -33,6 +33,7 @@ public class CustomUserDetails extends User implements UserDetails {
 		setPw(user.getPw());
 		setEnabled(user.getEnabled());
 		setRoleId(user.getRoleId());
+		setNickName(user.getNickName());
 	}
 
 	@Override

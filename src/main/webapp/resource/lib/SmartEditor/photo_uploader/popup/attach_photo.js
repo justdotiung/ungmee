@@ -330,7 +330,7 @@
      * HTML5 DragAndDrop으로 사진을 추가하고, 확인버튼을 누른 경우에 동작한다.
      * 
      */
-    function html5Upload() {	
+    function html5Upload() {
     	var tempFile,
     		sUploadURL;
     	
@@ -354,9 +354,12 @@
 	}
 
     function callAjaxForHTML5 (tempFile, sUploadURL){
-    	
+    	//var header = this.document.querySelector(".header").value;
+    //	var token = this.document.querySelector(".token").value;
+//    	alert("durl");
     	console.log(sUploadURL);
     	
+    //	alert(header);
     	var oAjax = jindo.$Ajax(sUploadURL, {
 			type: 'xhr',
 			method : "post",
@@ -375,7 +378,10 @@
 			timeout : 3,
 			onerror :  jindo.$Fn(onAjaxError, this).bind()
 		});
+    	//alert("durl");
+    	console.log("wlskrka");
 		oAjax.header("contentType","multipart/form-data");
+		oAjax.header(header,token);
 		oAjax.header("file-name",encodeURIComponent(tempFile.name));
 		oAjax.header("file-size",tempFile.size);
 		oAjax.header("file-Type",tempFile.type);
@@ -596,6 +602,8 @@
  	
  	// 2012.05 현재] jindo.$Ajax.prototype.request에서 file과 form을 지원하지 안함. 
  	jindo.$Ajax.prototype.request = function(oData) {
+ 		var header = this.document.querySelector(".header").value;
+ 	    var token = this.document.querySelector(".token").value;
  		this._status++;
  		var t   = this;
  		var req = this._request;
@@ -684,7 +692,7 @@
  				}
  			}
  		}
-
+ 		req.setRequestHeader(header,token);
  		req.send(data);
  		return this;
  	};

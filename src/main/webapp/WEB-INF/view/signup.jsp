@@ -18,10 +18,12 @@
 	         <div>
 	         	<label>이름 입력</label>
 	         	<input type="text" class="nick-name" name="nickName">
+	         	<span id="name-valid" class="same"></span>
 	         </div>
 	         <div>
 	         	<label>이메일입력</label>
 	         	<input type="email" class="email" name="email">
+	         	<span id="email-valid" class="same"></span>
 	         </div>
 	         <div>
 	         	<label>비밀번호입력</label>
@@ -31,29 +33,28 @@
 	         <div>
 	         	<label>비밀번호 확인</label>
 	         	<input type="password" class="pw-check" name="pw-check">
-	         	<span id="same" class="same"></span>
+	         	<span id="same-valid" class="same"></span>
 	         </div>
 	         <div>
 	         	<label>생년월일</label>         	
 	         	<input type="text" class="birthday" name="birthday" placeholder="월 일 만 입력 ex)0513">
-				
-	         	
+				<span id="birthday-valied" class="same"></span>
 	         </div>
 	           <div>
 	         	<label>이벤트 동의(선택)</label>
-	         	<input type="checkbox" name="echeck" value="T">
+	         	<input type="checkbox" class="event" name="event" value="1">
 	         </div>
 	           <div>
 	         	<span>성별</span>
 	         	<label>남자</label>
-	         	<input type="radio" name="gender" value="male" checked="checked">
+	         	<input type="radio" class="gender" name="gender" value="1" checked="checked">
 	         	<label>여자</label>
-	         	<input type="radio" name="gender" value="female">
+	         	<input type="radio" class="gender" name="gender" value="2">
 	         </div>
 	         <div>
 	        	<input type="hidden" class = "header" value="${_csrf.headerName}"> 
 				<input type="hidden" class = "token" value="${_csrf.token}"> 
-	         	<input type="hidden" class="solo" value="2">
+	         	<input type="hidden" class="type" value="2">
 	          	<input type="button" class="button" value="가입">
 	         </div>
 	     </form>

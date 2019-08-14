@@ -61,15 +61,16 @@ public class EventController {
 	
 	@PostMapping("upload")
 	@ResponseBody
-	public String upload(MultipartFile file, HttpServletRequest request)
+	public String upload(MultipartFile[] file, HttpServletRequest request)
 			throws IOException {
 		System.out.println("여기왔지?");
 		String fileName;
 		String urlPath = "/upload";
 		String realPath = request.getServletContext().getRealPath(urlPath);
+if(file ==null)
+			System.out.println("data");
 
-		
-			fileName = file.getOriginalFilename();
+			fileName = file[0].getOriginalFilename();
 			String path = realPath + File.separator + fileName;
 
 			System.out.println(realPath);
@@ -99,7 +100,7 @@ public class EventController {
 					System.out.println(path);
 				}
 			
-			InputStream fis = file.getInputStream();
+			InputStream fis = file[0].getInputStream();
 			OutputStream fos = new FileOutputStream(path);
 
 			int j = 0;

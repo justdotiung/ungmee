@@ -1,6 +1,5 @@
 package ungmee.web.controller;
 
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ungmee.web.dao.PartnerDao;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Partner;
+import ungmee.web.entity.Solo;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
+import ungmee.web.service.MemberShipService;
 import ungmee.web.service.PushService;
 
 @Controller
@@ -29,7 +30,14 @@ public class RootController {
 	private PartnerDao partnerDao;
 	@Autowired
 	private PushService pushService;
-
+	@Autowired
+	private MemberShipService memberShipService;
+	
+	@PostMapping("signup")
+	public String signUp(User user, Solo solo) {
+		memberShipService.soloRegistration(user, solo);
+		return "redirect:/index";
+	}
 	
 	@GetMapping("login")
 	public String login() {
@@ -45,22 +53,22 @@ public class RootController {
 		return "root.signup";
 	}
 	
-	@PostMapping("signup")
-	public String signup(User user ,String echeck) {
-		if(echeck == null)
-			user.setEcheck("F");
-		String pwd = user.getPw();
-		System.out.println(pwd);
-		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-		pwd = pwdEncoder.encode(pwd);
-		
-		user.setPw(pwd);
-
-		userDao.insert(user);
-		System.out.println(user.getId());
-		return "redirect:/index" ; 
-		
-	}
+//	@PostMapping("signup")
+//	public String signup(User user ,String echeck) {
+//		if(echeck == null)
+//			user.setEcheck("F");
+//		String pwd = user.getPw();
+//		System.out.println(pwd);
+//		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+//		pwd = pwdEncoder.encode(pwd);
+//		
+//		user.setPw(pwd);
+//
+//		userDao.insert(user);
+//		System.out.println(user.getId());
+//		return "redirect:/index" ; 
+//		
+//	}
 	
 	@GetMapping("partner-signup")
 	public String partnersignup() {
@@ -107,6 +115,7 @@ public class RootController {
 		if(auth != null) {
 			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 			int userNum = user.getId();
+			System.out.println("userNum"+userNum);
 			int count = pushService.getNewPushCount(userNum);
 		
 			model.addAttribute("count", count);

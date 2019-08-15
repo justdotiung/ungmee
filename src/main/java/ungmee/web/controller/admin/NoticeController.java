@@ -69,7 +69,8 @@ public class NoticeController {
 		// UserDetails p.640
 		// System.out.println(principal.getName());
 		//noticeDao.insert(notice);
-
+		System.out.println("post"+notice.getContent());
+		System.out.println("post tostring"+notice.toString());
 		noticeService.regNotice(notice);
 		return "redirect:list";
 	}

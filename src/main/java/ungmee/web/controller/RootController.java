@@ -30,14 +30,8 @@ public class RootController {
 	private PartnerDao partnerDao;
 	@Autowired
 	private PushService pushService;
-	@Autowired
-	private MemberShipService memberShipService;
 	
-	@PostMapping("signup")
-	public String signUp(User user, Solo solo) {
-		memberShipService.soloRegistration(user, solo);
-		return "redirect:/index";
-	}
+	
 	
 	@GetMapping("login")
 	public String login() {

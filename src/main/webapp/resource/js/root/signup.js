@@ -2,6 +2,7 @@ window.addEventListener("load",function(){
     //프로토콜 토큰
     var header = this.document.querySelector(".header").value;
     var token = this.document.querySelector(".token").value;
+    var ctxNext = this.document.querySelector(".ctx-name").value;
     //영역
     var section = document.querySelector("#section");
     //회원가입 선택
@@ -191,10 +192,12 @@ window.addEventListener("load",function(){
         alert(queryString);
         var request = new XMLHttpRequest();
             request.addEventListener("load",function(){
-                Console.log(request.responseText);
+                alert("회원가입 완료")
+               // alert(request.responseText);
+                window.location.href = 'index';
                 
             })
-        request.open("POST","signup");
+        request.open("POST","solo-signup");
         request.setRequestHeader(header,token);
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.send(queryString);

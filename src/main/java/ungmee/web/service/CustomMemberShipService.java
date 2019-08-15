@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ungmee.web.dao.SoloDao;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Solo;
+import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
 
 
@@ -38,4 +39,11 @@ public class CustomMemberShipService implements MemberShipService {
 		return result;
 		
 	}
+
+	@Override
+	public SoloView getSoloInfo(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

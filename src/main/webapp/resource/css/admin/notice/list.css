@@ -15,24 +15,18 @@
 	--transform-origin: center top;
 	--transform:translateY(-1);
 	--transform: scaleY(0);
-	height: 0%;
-	overflow: hidden;
-	transition: height 500ms;
-
-	
-
-}
-.contentc{
-	
-	--transform-origin: center top;
-	--transform:translateY(-1);
-	--transform: scaleY(0);
 	height: 0px;
 	overflow: hidden;
 	transition: height 500ms;
 
 	
 
+}
+.writerId.current {
+	
+	height: 100px;
+	--transform:translateY(0);
+	--transform: scaleY(1);
 }
 
 .content.current {

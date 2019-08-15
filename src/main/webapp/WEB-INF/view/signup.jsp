@@ -52,6 +52,7 @@
 	         	<input type="radio" class="gender" name="gender" value="2">
 	         </div>
 	         <div>
+	        	<input type="hidden" class = "ctx-name" value="${ctxNext }"> 
 	        	<input type="hidden" class = "header" value="${_csrf.headerName}"> 
 				<input type="hidden" class = "token" value="${_csrf.token}"> 
 	         	<input type="hidden" class="type" value="2">

@@ -1,9 +1,11 @@
 /* ------------------list------------------ */
 
-.notice-list {
+.notice-list  {
 	border: 1px solid gray;
 }
-
+.notice-template-section  {
+	border: 1px solid gray;
+}
 .d-none {
 	display: none;
 }
@@ -16,16 +18,35 @@
 	height: 0%;
 	overflow: hidden;
 	transition: height 500ms;
+
+	
+
+}
+.contentc{
+	
+	--transform-origin: center top;
+	--transform:translateY(-1);
+	--transform: scaleY(0);
+	height: 0px;
+	overflow: hidden;
+	transition: height 500ms;
+
 	
 
 }
 
 .content.current {
-	height: 100%;
+	
+	height: 100px;
 	--transform:translateY(0);
 	--transform: scaleY(1);
 }
-
+.contentc.currentc {
+	
+	height: 100px;
+	--transform:translateY(0);
+	--transform: scaleY(1);
+}
 .btn-detail{
 }
 

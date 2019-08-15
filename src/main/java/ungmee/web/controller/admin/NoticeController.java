@@ -53,7 +53,7 @@ public class NoticeController {
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		model.addAttribute("time",sdf.format(date));
 		//model.addAttribute("notice",notice);
-		return "admin/notice/reg";
+		return "admin.notice.reg";
 	}
 
 	@PostMapping("reg")
@@ -80,7 +80,7 @@ public class NoticeController {
 		//System.out.println(noticeDao.get(eid));
 		
 		model.addAttribute("notice",noticeService.getNoticeView(id));
-		return "admin/notice/edit";
+		return "admin.notice.edit";
 	}
 
 	@PostMapping("edit")
@@ -117,7 +117,7 @@ public class NoticeController {
 		List<NoticeView> pageList = noticeService.getNoticeViewList(page);
 		model.addAttribute("noticeView", pageList);
 		
-		return "admin/notice/list";
+		return "admin.notice.list";
 	}
 	
 	@GetMapping("list-json")

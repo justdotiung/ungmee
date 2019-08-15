@@ -33,7 +33,7 @@
 					<div>
 						<input class="btn-detail" type="button" value="자세히">
 					</div>
-					<div class="content">${n.content}</div>
+					<div class="content">${n.content}컨텐츠</div>
 					<div>
 						<a href="del?id=${n.id}">삭제a</a> <a href="edit?id=${n.id}">수정</a>
 					</div>
@@ -49,9 +49,9 @@
 			<div class="regDate"></div>
 			<div class="title"></div>
 			<div>
-				<input class="btn-detail" type="button" value="자세히">
+				<input class="btn-detail1" type="button" value="자세히">
 			</div>
-			<div class="content"></div>
+			<div class="contentc"></div>
 			<div>
 				<a href="del?id=${n.id}">삭제a</a> <a href="edit?id=${n.id}">수정</a>
 			</div>

@@ -17,18 +17,33 @@ window.addEventListener("load",function(){
     var section = this.document.querySelector("#notice");
     //버튼이 여러개 -> 부모에게 걸어준다
     var noticeList = section.querySelector(".notice-lists")
+    var noticeTemplate = section.querySelector(".notice-template-section");
+    var detailButton = section.querySelector(".btn-detail")
+    var detailButton1 = section.querySelector(".btn-detail1")
     
     noticeList.onclick = function(e){
     	var detailButton = e.target;
         if(!detailButton.classList.contains("btn-detail"))
-       
             return;
     	
     	var contentDiv = detailButton.parentElement.nextElementSibling;
     	//console.log(typeof content);
     	contentDiv.classList.add("current");
+    	alert("내용을 불러옴");
     	
-    	//alert("내용을 불러옴");
+    	
+    	
+    }
+    noticeTemplate.onclick = function(t){
+    	alert("내용을 불러옴");
+    	var detailButton1 = t.target;
+        //if(!detailButton1.classList.contains("btn-detail1"))
+        //    return;
+    		if(event.target==detailButton1){
+    	var contentDiv1 = detailButton1.parentElement.nextElementSibling;
+    	//console.log(typeof content);
+    	contentDiv1.classList.add("currentc");
+    		}
     }
  
 });
@@ -46,14 +61,16 @@ window.addEventListener("scroll", function(e){
         //var x = 3 || 0;
         //alert(x);
         if (pageHeight <= windowHeight+scrollPosition+200) {
-            alert('At the bottom');
+            //alert('At the bottom');
             
              //var num = morepage.value;
              var request = new XMLHttpRequest();
              request.addEventListener("load" ,function() {
-                 var json = JSON.parse(request.responseText);
+                 //버튼이 여러개 -> 부모에게 걸어준다
+                 
+            	 var json = JSON.parse(request.responseText);
                  console.log(request.responseText);
-                 alert(json);
+                 //alert(json);
                  
                  var template = document.querySelector("main .notice-template");
                  //body.innerHTML = ""; //다 지우기
@@ -63,7 +80,7 @@ window.addEventListener("scroll", function(e){
                  var writerEl = cloneTr.querySelector(".writerId");
                  var regdateEl = cloneTr.querySelector(".regDate");
                  var titleEl = cloneTr.querySelector(".title");
-                 var contentEl = cloneTr.querySelector(".content");
+                 var contentEl = cloneTr.querySelector(".contentc");
                  categoryEl.innerText = json[i].categoryName;
                  writerEl.innerText = json[i].writerId;
                  regdateEl.innerText = json[i].regDate;
@@ -72,6 +89,9 @@ window.addEventListener("scroll", function(e){
                  console.log(json[i].id);
                  
                  notice.append(cloneTr);
+               
+                 
+             
                 }
             });
             request.open("GET", "list-json?p=" + (++pageLoaded));

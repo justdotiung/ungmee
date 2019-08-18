@@ -2,9 +2,9 @@ window.addEventListener("load",function(){
     //프로토콜 토큰
     var header = this.document.querySelector(".header").value;
     var token = this.document.querySelector(".token").value;
-    var ctxNext = this.document.querySelector(".ctx-name").value;
+    //var ctxNext = this.document.querySelector(".ctx-name").value;
     //영역
-    var section = document.querySelector("#section");
+    var section = document.querySelector("#signup");
     //회원가입 선택
     var user = section.querySelector(".user");
     var partner = section.querySelector(".partner");
@@ -18,24 +18,26 @@ window.addEventListener("load",function(){
     var birthday = section.querySelector(".birthday");
     var gender = section.querySelectorAll(".gender");//라디오버튼 배열로받음.
     var event = section.querySelector(".event");
-    var solo = section.querySelector(".type");
+    var roleId = section.querySelector(".roleid");
     //유효성체크 변수
     var isValid =false;//유효성 변수
+    var isunDuplicate = false;//이메일 유효성
     var sameValid = section.querySelector("#same-valid"); //비밀번호비교결과 문구
     var pwValid = section.querySelector("#pw-valid");//비밀번호 유효성
     var nameValid = section.querySelector("#name-valid");//이름 유효성
     var emailValid = section.querySelector("#email-valid");//이메일 유효성
     var birthdayValid = section.querySelector("#birthday-valied");//생일 유효성
-
+    var emailDuplicate = section.querySelector(".email-dup");//이메일 중복 체크
+    var genderValue = 1;
     var signUpBtn = section.querySelector(".button");
     //정규식 체크
     var regwhiteSpace = /\s/g;//공백체크 !공백없음
     var regName=/^[A-z|가-힣]{1,4}$/;//닉네임 정규식
     var regEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    var regPw = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-
-   //"^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$";
+    var regPw = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; //"^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$";
     var regBirthday = /^(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+   
+   
     //일반회원 선택
     user.onclick = function(){
         tag1.classList.remove("d-none");
@@ -60,7 +62,7 @@ window.addEventListener("load",function(){
             nameValid.classList.add("error");
             nameValid.innerText="공백없이 영문과 한글포함 최대 4자까지만가능합니다.";
             isvalid=false;
-            return;
+            return false;
         }
     }
     nickName.onblur = function(){
@@ -72,17 +74,36 @@ window.addEventListener("load",function(){
             emailValid.classList.add("error")
             emailValid.innerText="공백없이 이메일을 정확하게 입력하세요.";
             isValid = false;
-            return ;
+            return false;
         }
         else{
             emailValid.classList.remove("error");
             emailValid.innerText="";
             isValid = true;
-            return ;
+            return true;
         }
     }
     email.onblur = function(){
         isEmailValid();
+    }
+    //이메일 중복체크
+    emailDuplicate.onclick=function(){
+        if(!isEmailValid())
+            return ;
+        var request = new XMLHttpRequest();
+        request.addEventListener("load",function(){
+            //console.log(request.responseText);
+            if(request.responseText == 'true'){
+                alert("이미사용중인 이메일 입니다.")
+                isunDuplicate = false;
+            }
+            else{
+                alert("가능한 이메일 입니다.")
+                isunDuplicate = true;
+            }
+        });
+        request.open("GET","duplicate?email="+email.value);
+        request.send();
     }
     //비밀번호 유효성 체크    
     function pwLength(){
@@ -132,6 +153,7 @@ window.addEventListener("load",function(){
             }    
         }
     }
+    //=====================solo 회원 정보 ===========================================
     //생일날짜 체크
     function isBirthdayValied(){
         if(!birthday.value.match(regBirthday)){
@@ -151,17 +173,15 @@ window.addEventListener("load",function(){
         isBirthdayValied();
     }
     //성별 체크
-    function genderCheck(){     
+    function genderCheck(){  
         for ( var i = 0 ; i < gender.length ; i ++ ) {
-            if ( gender[i].checked == true ) {
-               // console.log(gender[i].value)
-                isvalid =true;
-                return gender[i].value;
-            }else{
-                isvalid=false;
-                return;
+            if(gender[i].checked == true){
+                isvalid=true;
+                return gender[i].value; 
             }
         }
+        isvalid=false;
+        return ;
     }
     //이벤트체크
     function eventCheck(){
@@ -176,11 +196,16 @@ window.addEventListener("load",function(){
     signUpBtn.onclick = function(){
         eventCheck();
         genderCheck();
+        if(!isunDuplicate){
+            alert("중복체크 확인을 안하셨습니다.");
+            return ;
+        }
+        
+        nicNameValid();
         if(!isValid){
             alert("잘못입력하셨습니다.");
             return ;
         }
-       
         var queryString ="email="+email.value+
                         "&pw="+pw.value+
                         "&roleId="+solo.value+

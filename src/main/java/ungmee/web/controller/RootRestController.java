@@ -2,6 +2,7 @@ package ungmee.web.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,5 +23,11 @@ public class RootRestController {
 	public String signUp(User user, Solo solo) {
 		memberShipService.soloRegistration(user, solo);
 		return "index";
+	}
+	
+	@GetMapping("duplicate")
+	public boolean duplicate(String email) {
+		boolean dup = memberShipService.duplicateUserEmail(email);
+		return dup;
 	}
 }

@@ -26,8 +26,11 @@ import com.google.gson.Gson;
 import ungmee.web.dao.CoupleDao;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Couple;
+import ungmee.web.entity.Solo;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
+import ungmee.web.service.CustomMemberShipService;
+import ungmee.web.service.MemberShipService;
 
 
 
@@ -39,7 +42,8 @@ public class InfoRestController {
 	private UserDao userdao;
 	@Autowired
 	private CoupleDao coupledao;
-
+	@Autowired
+	private MemberShipService msService;
 	
 	@GetMapping("get")
 	public String get(Authentication auto) {
@@ -51,6 +55,7 @@ public class InfoRestController {
 		
 		return json;
 	}
+
 	
 	@GetMapping("partner")
 	public String get(String email) {
@@ -66,7 +71,7 @@ public class InfoRestController {
 	}
 	
 	@PostMapping("upload")
-	public String upload(MultipartFile file,HttpServletRequest request,Authentication authentication) throws IOException {
+	public int upload(MultipartFile file,HttpServletRequest request,Authentication authentication) throws IOException {
 		System.out.println(file);
 		String urlPath="/upload";
 		String realPath =request.getServletContext().getRealPath(urlPath);
@@ -111,45 +116,37 @@ public class InfoRestController {
 		}
 		fos.close();
 		fis.close();
+		
 		CustomUserDetails details = (CustomUserDetails) authentication.getPrincipal();
 		System.out.println(fileName);
 		System.out.println(details.getId());
-		System.out.println("qlalfqjsgh"+details.getPw());
+		System.out.println(details.getRoleId());
+		System.out.println(userdao.get(details.getId()).toString());
 		
-		User user = userdao.get(details.getId());
-		System.out.println(user.toString());
-		user.setProfile(fileName);
-		userdao.edit(user);
-		return "변경되었습니다.";
+		int result = msService.editSoloProfile(details.getId(), fileName);
+		
+		return result;
 	}
 	
 	@GetMapping("nickname")
-	public String name(String nickName ,Authentication auth) {
+	public int name(String nickName ,Authentication auth) {
 		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
-		User user = userdao.get(details.getId());
-		user.setNickName(nickName);
-		userdao.edit(user);
-		System.out.println(user);
-		
-		return "변경되었습니다.";
+		int result = msService.editSoloNickName(details.getId(), nickName);		
+		return result;
 	}
 	
 	@PostMapping("password/update")
-	public String password(String pwd,Authentication auth) {
+	public int password(String pwd,Authentication auth) {
 		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
-		User user = userdao.get(details.getId());
-		System.out.println(pwd);
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		pwd = passwordEncoder.encode(pwd);
-		user.setPw(pwd);
-		System.out.println(user.getPw());
-		userdao.edit(user);
-		return "변경되었습니다.";
+		int result = msService.editSoloPassword(details.getId(), pwd);
+		return result;
 	}
 	
 	
 	@PostMapping("propose")
-	public String propose(Couple couple,@DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate, Authentication auth,Model model) {
+	public String propose(Solo solo,Couple couple,@DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate, Authentication auth,Model model) {
 		System.out.println("propose couple : "+couple.toString());
 		CustomUserDetails custom = (CustomUserDetails) auth.getPrincipal();
 		User user = userdao.getEmail(custom.getEmail());	

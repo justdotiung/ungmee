@@ -46,23 +46,7 @@ public class RootController {
 	public String signup() {
 		return "root.signup";
 	}
-	
-//	@PostMapping("signup")
-//	public String signup(User user ,String echeck) {
-//		if(echeck == null)
-//			user.setEcheck("F");
-//		String pwd = user.getPw();
-//		System.out.println(pwd);
-//		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-//		pwd = pwdEncoder.encode(pwd);
-//		
-//		user.setPw(pwd);
-//
-//		userDao.insert(user);
-//		System.out.println(user.getId());
-//		return "redirect:/index" ; 
-//		
-//	}
+
 	
 	@GetMapping("partner-signup")
 	public String partnersignup() {

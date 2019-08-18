@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ungmee.web.dao.UserDao;
+import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
 import ungmee.web.service.MemberShipService;
@@ -27,10 +28,9 @@ public class InfoController {
 	
 	@GetMapping("detail")
 	public String detail(Model model,Authentication auth) {
-		CustomUserDetails cUser = (CustomUserDetails) auth.getPrincipal();
-		User user = userdao.get(cUser.getId());
-	
-		model.addAttribute("user", user);
+		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+		SoloView solo =  service.getSoloInfo(user.getId());
+		model.addAttribute("solo", solo);
 		return "user.detail";
 	}
 	@GetMapping("sender")

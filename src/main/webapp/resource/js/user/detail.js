@@ -36,6 +36,12 @@ window.addEventListener("load", function() {
 			var request = new XMLHttpRequest();
 
 			request.addEventListener("load", function() {
+				if(request.responseText !=-1)
+					alert("변경되었습니다.");
+				else{
+					alert("실패");
+					return ;
+				}
 				//이미지 비동기 이루엄
 				/* ============================================ */
 				var reader = new FileReader();
@@ -44,7 +50,6 @@ window.addEventListener("load", function() {
 				//evt < 이벤트 객체 (필요에 따라서 쓰일수있다.)
 				reader.onload = function(evt) {
 					poto.src = evt.target.result;
-					alert(request.responseText);
 				}
 				//리더기 역할을 하게된다 시점을 모르게된다 읽는 시점
 				reader.readAsDataURL(file);
@@ -65,13 +70,21 @@ window.addEventListener("load", function() {
 	var nickName = nickNameDiv.querySelector("input[type=text]");
 	var nickNameBtn = nickNameDiv.querySelector(".eraser");
 
+	var regwhiteSpace = /\s/g;//공백체크 !공백없음
+    var regName=/^[A-z|가-힣]{1,4}$/;//닉네임 정규식
+	
 	nickNameBtn.onclick = function() {
-		//alert("들어옴");
-		//alert(nickName.value);
-		//rquest 가 로드될때 실행해 달라고 한것임
+	if(nickName.value == "" || nickName.value.match(regwhiteSpace)  || !nickName.value.match(regName)){
+		alert("공백없이 영문과 한글포함 최대 4자까지만가능합니다.");
+		isValid=true;
+		return;
+	}
 		var request = new XMLHttpRequest();
 		request.addEventListener("load", function() {
-			alert(request.responseText);
+			if(request.responseText !=-1)
+				alert("변경되었습니다.");
+			else
+				alert("실패");
 		})
 		request.open("GET", "nickname?nickName=" + nickName.value);
 		request.send();
@@ -94,7 +107,9 @@ window.addEventListener("load", function() {
 	// var div = select.parentElement.nextSibling;
 	this.console.log(select.nodeType);
 
-	select.onclick = function() {
+	select.onclick = function(e) {
+		if(e.target.type !='submit')
+			return;
 		if(div.className !='d-none current')
 			div.classList.add("current");
 		else
@@ -152,7 +167,7 @@ window.addEventListener("load",function(){
 	var findReceiver = infoDiv.querySelector(".find-receiver");//상대방이메일찾기버튼
 	var loveDate = infoDiv.querySelector(".love-date");//사귄날짜
 	var message = infoDiv.querySelector(".message");//커플상태메세지
-	var proposeId = infoDiv.querySelector(".hidden").value;//내아이디
+	var proposeId = infoDiv.querySelector(".solo-email").value;//내아이디
 	var submitBtn = infoDiv.querySelector(".btn");//보내기
 	
 	var proposeBtn = infoDiv.querySelector(".propose");//신청하기
@@ -170,7 +185,6 @@ window.addEventListener("load",function(){
 			infoForm.classList.add("current");
 		}
 	}
-
 	//커플이름 검사 검사. 유니크키만들까말까?
 	function nameValide(){
 		if(!coupleName.value){

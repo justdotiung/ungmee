@@ -10,7 +10,7 @@ public class SoloView {
 	   private Date regDate;
 	   private int enabled;
 	   private int roleId;
-	   private int echeck;
+	   private String echeck;
 	   private String nickname;
 	   private String profile;
 	   private int birthday;
@@ -58,12 +58,16 @@ public class SoloView {
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
-	public int getEcheck() {
+
+	
+	public String getEcheck() {
 		return echeck;
 	}
-	public void setEcheck(int echeck) {
+
+	public void setEcheck(String echeck) {
 		this.echeck = echeck;
 	}
+
 	public String getNickname() {
 		return nickname;
 	}

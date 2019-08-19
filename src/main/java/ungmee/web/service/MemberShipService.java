@@ -14,4 +14,6 @@ public interface MemberShipService {
 	public int editSoloNickName(int id, String nickName);
 	public int editSoloProfile(int id, String file);
 	public int editSoloPassword(int id, String pw);
+	public int editSoloEvent(int id, String e);
+	public User getEmail(String email);
 }

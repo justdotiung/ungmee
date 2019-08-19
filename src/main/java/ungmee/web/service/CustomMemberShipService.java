@@ -86,5 +86,20 @@ public class CustomMemberShipService implements MemberShipService {
 		user.setPw(pwd);
 		return userDao.edit(user);
 	}
+	
+	@Override
+	public int editSoloEvent(int id, String e) {
+		User user = userDao.get(id);
+		if(e.equals("T"))
+			user.setEcheck("F");
+		else
+			user.setEcheck("T");
+		return userDao.edit(user);
+	}
 
+	@Override
+	public User getEmail(String email) {
+		User user = userDao.getEmail(email);
+		return user;
+	}
 }

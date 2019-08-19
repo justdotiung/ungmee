@@ -172,7 +172,7 @@ window.addEventListener("load",function(){
 	
 	var proposeBtn = infoDiv.querySelector(".propose");//신청하기
 	var infoForm = infoDiv.querySelector("#info-form");//신청폼
-	
+	var proposeCancel = this.document.querySelector(".propose-cancel");//프로포즈취소
 	
 	var emailValide = false;//이메일 유효성
 	var isValide =false; //유효성 변수
@@ -185,7 +185,7 @@ window.addEventListener("load",function(){
 			infoForm.classList.add("current");
 		}
 	}
-	//커플이름 검사 검사. 유니크키만들까말까?
+	//커플이름 검사 검사
 	function nameValide(){
 		if(!coupleName.value){
 		//	coupleName.focus();
@@ -244,7 +244,7 @@ window.addEventListener("load",function(){
 				alert("존재하지않는 아이디입니다.");
 			}
 		});
-		request.open("GET","partner?email="+Receiver.value);
+		request.open("GET","get-email?email="+Receiver.value);
 		request.send();
 	}
 
@@ -280,40 +280,42 @@ window.addEventListener("load",function(){
 			alert("찾아보기 클릭하기");
 			return ;
 		}
-		var queryString = "coupleName="+coupleName.value+
+		var queryString ="coupleName="+coupleName.value+
 						"&accepterId="+partnerId+
 						"&sloveDate="+loveDate.value+
-						"&message="+message.value+
-						"&proposeId="+proposeId;
-		//alert(queryString);
+						"&message="+message.value;//+
+						//"&proposeId="+proposeId;
+		alert(queryString);
 		
 		var request = new XMLHttpRequest();
 		request.addEventListener("load",function(){
 	
 			infoForm.classList.remove("current");
-			if(request.responseText=='check'){
+			if(request.responseText > 0){
 				window.location.reload();
 				alert("신청완료");
 			}
 		});
-		request.open("POST","propose");
+		request.open("POST","propose/reg");
 		request.setRequestHeader(header,token);
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send(queryString);
 	}
 	
-});
-//프러포즈 취소
-window.addEventListener("load",function(){
-	var proposeCancel = this.document.querySelector(".propose-cancel");//프로포즈취소
+	//프러포즈 취소
 	if(proposeCancel != null){
 		proposeCancel.onclick = function(){
+			alert(proposeId);
 			var request = new XMLHttpRequest();
 			request.addEventListener("load",function(){
-				window.location.reload();
-				alert("프로포즈 실패");
+				if(request.responseText >0){
+					window.location.reload();
+					alert("프로포즈 취소완료");
+				}
+				else
+					alert("오류");
 			});
-			request.open("GET","propose/cancel");
+			request.open("GET","propose/cancel?pId="+proposeId);
 			request.send()
 		}
 	}
@@ -326,8 +328,11 @@ window.addEventListener("load", function() {
 	changBtn.onclick = function() {	
 		var request = new XMLHttpRequest();
 		request.addEventListener("load", function() {
-			window.location.reload();
-			alert('변경되었습니다.');
+			if(request.responseText >0){
+				window.location.reload();
+				alert('변경되었습니다.');
+
+			}
 		})
 		request.open("GET", "event/update?e=" + eState);
 		request.send();

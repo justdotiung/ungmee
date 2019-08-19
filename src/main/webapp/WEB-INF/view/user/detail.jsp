@@ -80,7 +80,7 @@
 						<span id="date-check" class="d-none">날짜를 선택해주세요.</span>
 					</li>
 					<li><input type="text" class="message" placeholder="커플 소개  20자  내외"></li>
-					<li><input type="hidden" class="solo-email" value="${solo.email }"></li>
+					<li><input type="hidden" class="solo-email" value="${solo.id}"></li>
 				</ul>
 				<div>
 					<button class="btn">보내기</button>
@@ -92,10 +92,10 @@
 			<span>이벤트</span>
 			<span class="event-state">
 			<c:choose>
-				<c:when test="${solo.echeck eq '1'}">
+				<c:when test="${solo.echeck eq 'T'}">
 					동의
 				</c:when>
-				<c:when test="${solo.echeck eq '2'}">
+				<c:when test="${solo.echeck eq 'F'}">
 					비동의
 				</c:when>
 			</c:choose>

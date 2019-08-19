@@ -28,7 +28,6 @@ window.addEventListener("load",function(){
     var emailValid = section.querySelector("#email-valid");//이메일 유효성
     var birthdayValid = section.querySelector("#birthday-valied");//생일 유효성
     var emailDuplicate = section.querySelector(".email-dup");//이메일 중복 체크
-    var genderValue = 1;
     var signUpBtn = section.querySelector(".button");
     //정규식 체크
     var regwhiteSpace = /\s/g;//공백체크 !공백없음
@@ -208,7 +207,7 @@ window.addEventListener("load",function(){
         }
         var queryString ="email="+email.value+
                         "&pw="+pw.value+
-                        "&roleId="+solo.value+
+                        "&roleId="+roleId.value+
                         "&nickName="+nickName.value+
                         "&gender="+genderCheck()+
                         "&echeck="+eventCheck()+

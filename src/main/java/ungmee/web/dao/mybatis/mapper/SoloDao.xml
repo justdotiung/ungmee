@@ -29,5 +29,15 @@
 		)
  	</insert>
  	
+ 	<update id="update" parameterType="ungmee.web.entity.Solo">
+ 		UPDATE solo
+		SET
+		  	c_state =#{cState},
+		    birthday = #{birthday},
+		    gender = #{gender}
+		WHERE
+		    id = #{id}
+		  
+ 	</update>
  	
  </mapper>

@@ -81,10 +81,11 @@ window.addEventListener("load", function() {
 	}
 		var request = new XMLHttpRequest();
 		request.addEventListener("load", function() {
+			//console.log("status : " + request.status);
 			if(request.responseText !=-1)
 				alert("변경되었습니다.");
 			else
-				alert("실패");
+			 	alert("실패");
 		})
 		request.open("GET", "nickname?nickName=" + nickName.value);
 		request.send();
@@ -167,7 +168,7 @@ window.addEventListener("load",function(){
 	var findReceiver = infoDiv.querySelector(".find-receiver");//상대방이메일찾기버튼
 	var loveDate = infoDiv.querySelector(".love-date");//사귄날짜
 	var message = infoDiv.querySelector(".message");//커플상태메세지
-	var proposeId = infoDiv.querySelector(".solo-email").value;//내아이디
+	var proposeId = infoDiv.querySelector(".solo-email").value;//내이메일 
 	var submitBtn = infoDiv.querySelector(".btn");//보내기
 	
 	var proposeBtn = infoDiv.querySelector(".propose");//신청하기
@@ -175,7 +176,7 @@ window.addEventListener("load",function(){
 	var proposeCancel = this.document.querySelector(".propose-cancel");//프로포즈취소
 	
 	var emailValide = false;//이메일 유효성
-	var isValide =false; //유효성 변수
+//	var isValide =false; //유효성 변수
 	var nameCheck = document.querySelector("#name-check");
 	var emailCheck = document.querySelector("#email-check");
 	var dateCheck = this.document.querySelector("#date-check");
@@ -190,12 +191,11 @@ window.addEventListener("load",function(){
 		if(!coupleName.value){
 		//	coupleName.focus();
 			nameCheck.classList.add("error");
-			isValide=false;
-			return ;
+			return false;
 		}
 		else{
 			nameCheck.classList.remove("error");
-			isValide= true;
+			return true;
 		}
 	}
 	coupleName.onblur = function(){
@@ -210,12 +210,11 @@ window.addEventListener("load",function(){
 		if(!Receiver.value){
 			//Receiver.focus();
 			emailCheck.classList.add("error");
-			isValide=false;
-			return ;
+			return false;
 		}
 		else{
 			emailCheck.classList.remove("error");
-			isValide= true;
+			return true;
 		}
 	}
 	Receiver.onblur = function(){
@@ -253,13 +252,11 @@ window.addEventListener("load",function(){
 		if(!loveDate.value){
 			//loveDate.focus();
 			dateCheck.classList.add("error");
-			isValide=false;
-			return ;
+			return false;
 		}
 		else{
 			dateCheck.classList.remove("error");
-			isValide= true;
-			return ;
+			return true;
 		}
 	}
 	loveDate.onblur = function(){
@@ -269,11 +266,13 @@ window.addEventListener("load",function(){
 	//커플정보 보내기
 	submitBtn.onclick = function(e){
 		e.preventDefault();
-		nameValide();
-		idValide();
-		dateValide();
-		
-		if(!isValide){
+		if(!nameValide()){
+			return ;
+		}
+		if(!idValide()){
+			return ;
+		}
+		if(!dateValide()){
 			return ;
 		}
 		if(!emailValide){
@@ -283,8 +282,7 @@ window.addEventListener("load",function(){
 		var queryString ="coupleName="+coupleName.value+
 						"&accepterId="+partnerId+
 						"&sloveDate="+loveDate.value+
-						"&message="+message.value;//+
-						//"&proposeId="+proposeId;
+						"&message="+message.value;
 		alert(queryString);
 		
 		var request = new XMLHttpRequest();

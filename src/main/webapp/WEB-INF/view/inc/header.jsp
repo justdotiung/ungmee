@@ -37,8 +37,10 @@
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
 				<security:authorize access="hasRole('USER')">
-				<li><a href="${ctxName}/user/detail">정보수정</a></li>
+				<c:if test="${user.cState eq '1' }">
 				<li><a href="${ctxName}/user/couple/index">커플페이지</a></li>
+				</c:if>
+				<li><a href="${ctxName}/user/detail">정보수정</a></li>
 				<li><a href="${ctxName}/user/alert/list">알람</a>새로운 쪽지${count}</li>
 				<li><a href="${ctxName}/member/withdraw">회원탈퇴</a></li>			
 				</security:authorize>

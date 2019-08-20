@@ -16,6 +16,7 @@ import ungmee.web.dao.PartnerDao;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Partner;
 import ungmee.web.entity.Solo;
+import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
 import ungmee.web.service.MemberShipService;
@@ -30,7 +31,8 @@ public class RootController {
 	private PartnerDao partnerDao;
 	@Autowired
 	private PushService pushService;
-	
+	@Autowired
+	private MemberShipService msService;
 	
 	
 	@GetMapping("login")
@@ -92,11 +94,11 @@ public class RootController {
 
 		if(auth != null) {
 			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-			int userNum = user.getId();
-			System.out.println("userNum"+userNum);
-			int count = pushService.getNewPushCount(userNum);
-		
+			int id = user.getId();
+			int count = pushService.getNewPushCount(id);
+			SoloView solo = msService.getSoloInfo(id);
 			model.addAttribute("count", count);
+			model.addAttribute("user", solo);
 		}
 //		int count = pushService.getNewPushedCount();
 

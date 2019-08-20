@@ -29,7 +29,7 @@
 					<li>
 						<a href="../sender?id=${i.senderId }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a>
 						<a href="detail?id=${i.id}">${i.writer}님이 프러포즈를 신청하셨습니다.</a>
-						<span><fmt:formatDate pattern="yyyy-MM-dd'T'HH:mm:ss" value="${i.regDate}"/></span>
+						<span><fmt:formatDate pattern="MM월dd일HH시mm분" value="${i.regDate}"/></span>
 					</li>
 				</c:forEach>
 				</ul>		

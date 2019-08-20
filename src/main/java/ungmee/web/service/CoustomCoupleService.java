@@ -23,19 +23,17 @@ public class CoustomCoupleService implements CoupleService {
 	private CoupleDao coupleDao;
 	@Autowired
 	private SoloDao soloDao;
-
-	public Couple getCoupleInfo(int id, int uId) {
-		User user = userDao.get(uId);
-	//	user.setcState(1);
-		userDao.edit(user);
-		Couple couple = coupleDao.get(id);
-		couple.setAccept("true");
-		return null;
+	
+	@Override
+	public Couple getCoupleInfo(int uId) {
+		Couple couple = coupleDao.get(uId);
+		return couple;
 	}
 
 	@Override
-	public int regInfo(Couple couple, @DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate) {
+	public int regInfo(Couple couple, @DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate,int id) {
 		couple.setLoveDate(sloveDate);
+		couple.setProposeId(id);
 		coupleDao.insert(couple);
 		Solo solo = soloDao.get(couple.getProposeId());
 		solo.setcState(0);
@@ -50,6 +48,17 @@ public class CoustomCoupleService implements CoupleService {
 		solo.setcState(-1);
 		int result = soloDao.update(solo);
 		
+		return result;
+	}
+
+	@Override
+	public int Accept(int uId) {
+		Solo solo = soloDao.get(uId);
+		solo.setcState(1);
+		soloDao.update(solo);
+		Couple couple = coupleDao.get(uId);
+		couple.setAccept("true");
+		int result  = coupleDao.edit(couple);
 		return result;
 	}
 

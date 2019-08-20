@@ -24,7 +24,7 @@
 				<span><fmt:formatDate pattern="YYYY-MM-dd" value="${couple.loveDate }"/></span>
 			</li>
 			<li>
-				<a href="../couple/index?id=${couple.id }">커플하기</a>
+				<button>커플하기</button>
 			</li>
 			
 		</ul>

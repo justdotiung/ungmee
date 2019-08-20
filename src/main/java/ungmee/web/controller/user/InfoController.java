@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.SoloView;
@@ -35,11 +36,10 @@ public class InfoController {
 	}
 	@GetMapping("sender")
 	public String index(Model model,int id) {
-		User user = service.getSenderDetails(id);
+		SoloView user = service.getSoloInfo(id);
 		model.addAttribute("user", user);
 		return "user/sender";
 	}
-	
 	
 }
 

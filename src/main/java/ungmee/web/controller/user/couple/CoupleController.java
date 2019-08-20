@@ -1,11 +1,13 @@
-package ungmee.web.controller.user;
+package ungmee.web.controller.user.couple;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ungmee.web.entity.Couple;
 import ungmee.web.security.CustomUserDetails;
 import ungmee.web.service.CoupleService;
 
@@ -18,10 +20,11 @@ public class CoupleController {
 	private CoupleService coupleService;
 
 	@RequestMapping("index")
-	public String index(int id,Authentication auth) {
+	public String index(Model model ,Authentication auth) {
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 		int uId = user.getId();
-		coupleService.getCoupleInfo(id, uId);
+		Couple couple = coupleService.getCoupleInfo(uId);
+		model.addAttribute("couple", couple);
 		return "user/couple/index";
 	}
 }

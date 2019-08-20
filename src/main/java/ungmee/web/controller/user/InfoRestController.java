@@ -131,18 +131,19 @@ public class InfoRestController {
 	}
 	
 	@PostMapping("password/update")
-	public int password(String pwd,Authentication auth) {
+	public int passwordUpdate(String pwd,Authentication auth) {
 		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		pwd = passwordEncoder.encode(pwd);
 		int result = msService.editSoloPassword(details.getId(), pwd);
 		return result;
 	}
-	
-	
+		
 	@PostMapping("propose/reg")
-	public int propose(Couple couple,@DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate) {
-		int result = coupleService.regInfo(couple,sloveDate);
+	public int proposeReg(Couple couple,@DateTimeFormat(pattern = "yyyy-MM-dd")Date sloveDate,Authentication auth) {
+		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
+		int id = details.getId();
+		int result = coupleService.regInfo(couple,sloveDate,id);
 		return result;
 	}
 	
@@ -152,7 +153,7 @@ public class InfoRestController {
 		return result;
 	}
 	@GetMapping("event/update")
-	public int event(String e ,Authentication auth) {
+	public int eventUpdate(String e ,Authentication auth) {
 		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
 		int result = msService.editSoloEvent(details.getId(), e);
 		

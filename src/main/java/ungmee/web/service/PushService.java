@@ -41,7 +41,7 @@ public class PushService {
 
 	public Couple getProposeDetail(int id) {
 		Couple couple = coupleDao.get(id);
-		couple.setRead("T");
+		couple.setRead("open");
 		coupleDao.edit(couple);
 		couple = coupleDao.get(id);
 		return couple;

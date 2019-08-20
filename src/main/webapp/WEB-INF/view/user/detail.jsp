@@ -80,7 +80,7 @@
 						<span id="date-check" class="d-none">날짜를 선택해주세요.</span>
 					</li>
 					<li><input type="text" class="message" placeholder="커플 소개  20자  내외"></li>
-					<li><input type="hidden" class="solo-email" value="${solo.id}"></li>
+					<li><input type="hidden" class="solo-email" value="${solo.email}"></li>
 				</ul>
 				<div>
 					<button class="btn">보내기</button>

@@ -1,17 +1,11 @@
 package ungmee.web.service;
 
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import ungmee.web.dao.SoloDao;
 import ungmee.web.dao.SoloViewDao;
@@ -19,7 +13,6 @@ import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Solo;
 import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
-import ungmee.web.security.CustomUserDetails;
 
 
 @Service
@@ -32,11 +25,6 @@ public class CustomMemberShipService implements MemberShipService {
 	private SoloViewDao soloViewDao; 
 	
 	
-	@Override
-	public User getSenderDetails(int id) {
-		User user = userDao.get(id);
-		return user;
-	}
 	
 	@Override
 	public int soloRegistration(User user, Solo solo) {

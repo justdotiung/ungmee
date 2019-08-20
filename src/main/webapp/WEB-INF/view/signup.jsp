@@ -48,7 +48,7 @@
               <div>
                <span>성별</span>
                <label>남자</label>
-               <input type="radio" class="gender" name="gender" value="1">
+               <input type="radio" class="gender" name="gender" value="1" checked="checked">
                <label>여자</label>
                <input type="radio" class="gender" name="gender" value="2">
             </div>

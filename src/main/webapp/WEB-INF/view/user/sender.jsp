@@ -21,7 +21,7 @@
 		</div>
 		<div id="nickname">
 			<span>닉네임</span>
-			<span>${user.nickName }</span>
+			<span>${user.nickname }</span>
 		</div>
 		<div>
 			<span>아이디</span>

@@ -4,9 +4,33 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="ungmee.web.dao.CoupleDao">
  	<select id="get" resultType="ungmee.web.entity.Couple">
-	 	SELECT * FROM couple WHERE propose_id = #{id} and old_data = 1
-	 	UNION
-	 	SELECT * FROM couple where accepter_id = #{id} and old-data = 1
+	 	SELECT 
+	 		id,  
+	 		propose_id proposeId,
+		    accepter_id accepterId, 
+		    couple_name coupleName,
+		    message,
+		    lovedate,
+		    couple_profile coupleProfile,
+		    old_data oldData,
+		    ask,
+		    read,
+		    accept 
+	    FROM couple WHERE propose_id = #{id} and old_data = 1
+ 		UNION
+	 	SELECT 
+			id,  
+	 		propose_id proposeId,
+		    accepter_id accepterId, 
+		    couple_name coupleName,
+		    message,
+		    lovedate,
+		    couple_profile coupleProfile,
+		    old_data oldData,
+		    ask,
+		    read,
+		    accept 
+		 FROM couple where accepter_id = #{id} and old_data = 1
  	</select>
  
  	<insert id="insert" parameterType="ungmee.web.entity.Couple">

@@ -11,50 +11,55 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/inc/header.css">
+<script src="${ctxName}/resource/js/inc/header.js"></script>
 
 </head>
 <body>
 	<div>
-
-		<a href="${ctxName}/index"><img
-			src="${ctxName}/resource/images/ummo/logo.jpg"></a>
-
+		<a href="${ctxName}/index"><img	src="${ctxName}/resource/images/ummo/logo.jpg"></a>
 	</div>
-	
-	for(공지목록)
-	<tr></tr>
-	
-	for(이벤트목록)
-	<tr></tr>
-	
-	
-	
+
 	<div class="member-state">
-		<ul>
-			<security:authorize access="!isAuthenticated()">
-			<li><a href="${ctxName}/login">로그인</a></li>			
-			<li><a href="${ctxName}/signup">회원가입</a></li>
-			</security:authorize>
-			<security:authorize access="isAuthenticated()">
-				<security:authorize access="hasRole('USER')">
+		<div>
+		<security:authorize access="!isAuthenticated()">
+			<a href="${ctxName}/login">로그인</a>			
+			<a href="${ctxName}/signup">회원가입</a>
+		</security:authorize>
+		</div>
+		<div class="member-info">
+		<security:authorize access="isAuthenticated()">
+			<div>
+			<security:authorize access="hasRole('USER')">
 				<c:if test="${user.cState eq '1' }">
-				<li><a href="${ctxName}/user/couple/index">커플페이지</a></li>
+				<a href="${ctxName}/user/couple/index">커플페이지</a>
 				</c:if>
-				<li><a href="${ctxName}/user/detail">정보수정</a></li>
-				<li><a href="${ctxName}/user/alert/list">알람</a>새로운 쪽지${count}</li>
-				<li><a href="${ctxName}/member/withdraw">회원탈퇴</a></li>			
-				</security:authorize>
-				 <security:authorize access="hasRole('ADMIN')"> 
-					<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
-				</security:authorize> 
-				<li>
-					<form action="${ctxName}/logout" method="post">
-						<input type="submit" value="로그아웃">
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-					</form>
-				</li>
+				<a href="${ctxName}/user/detail">정보수정</a>
+				<a href="${ctxName}/user/alert/list" class="toggle">알람</a>
+				<c:if test="${count > 0}">
+				<span>new${count}</span>
+				</c:if>
 			</security:authorize>
-		</ul>
+		 	<security:authorize access="hasRole('ADMIN')"> 
+				<a href="${ctxName}/admin/index">관리자페이지</a>
+			</security:authorize> 
+			</div>
+			<div>
+				<form action="${ctxName}/logout" method="post">
+					<input type="submit" value="로그아웃">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				</form>		
+			</div>
+		</security:authorize>
+		</div>
+	</div>
+	<div id="alert-list" class="d-none">
+	<c:if test="${count > 0}">
+		11
+	</c:if>
+	
+	<c:if test="${count == 0}">
+		내용이 없습니다.11
+	</c:if>
 	</div>
 	<nav>
 		<ul>

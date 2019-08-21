@@ -48,7 +48,7 @@ public class MyBatisCoupleDao implements CoupleDao{
 
 	@Override
 	public Couple get(int id) {
-		return get(id,0);
+		return get(id,-1);
 	}
 	
 	@Override

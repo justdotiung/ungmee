@@ -13,6 +13,9 @@
 </head>
 <body>
 	<div>
+		<img src="${ctxName }/upload/${couple.profile}">
+	</div>
+	<div>
 		<ul>
 			<li>
 				<span></span>

@@ -15,14 +15,13 @@ import ungmee.web.dao.UserDao;
 import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
+import ungmee.web.service.CoupleService;
 import ungmee.web.service.MemberShipService;
+import ungmee.web.service.PushService;
 
 @Controller
 @RequestMapping("/user/")
 public class InfoController {
-	
-	@Autowired
-	private UserDao userdao;
 	
 	@Autowired
 	private MemberShipService service;
@@ -34,12 +33,7 @@ public class InfoController {
 		model.addAttribute("solo", solo);
 		return "user.detail";
 	}
-	@GetMapping("sender")
-	public String index(Model model,int id) {
-		SoloView user = service.getSoloInfo(id);
-		model.addAttribute("user", user);
-		return "user/sender";
-	}
+	
 	
 }
 

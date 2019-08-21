@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ungmee.web.entity.Couple;
+import ungmee.web.entity.SoloView;
 import ungmee.web.security.CustomUserDetails;
 import ungmee.web.service.PushService;
 
@@ -22,11 +23,20 @@ public class AlertController {
 	@Autowired
 	private PushService pushService;
 
+	@GetMapping("sender")
+	public String sender(Model model,Authentication auth, int id) {
+		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+		SoloView sender = pushService.getSendUserDetails(id,user.getId());
+		model.addAttribute("user", sender);
+		return "user.sender";
+	}
+	
 	@GetMapping("detail")
-	private String detail(Model model , int id) {
-		Couple couple = pushService.getProposeDetail(id);
-		model.addAttribute("couple", couple);
-		return "user/alert/detail";
+	private String detail(Model model , Authentication auth, int id) {
+		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+		SoloView sender = pushService.getSendUserDetails(id,user.getId());
+		model.addAttribute("user", sender);
+		return "user.alert.detail";
 	}
 	
 	@GetMapping("list")
@@ -35,6 +45,6 @@ public class AlertController {
 		int userNum = cUser.getId();
 		List<Map<String,Object>> list = pushService.getNewPushList(userNum);
 		model.addAttribute("list", list);
-		return "user/alert/list";
+		return "user.alert.list";
 	}
 }

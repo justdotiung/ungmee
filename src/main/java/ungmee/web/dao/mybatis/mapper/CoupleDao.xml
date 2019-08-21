@@ -15,18 +15,16 @@
 		    old_data oldData,
 		    ask,
 		    read,
-	    <if test="accept != null">
 		    accept 
-	    </if>
 	    FROM couple WHERE id = #{param1}
-	    <if test="param2 != -1">
+	    <if test="param2 != '-1'">
 	    	and accepter_id = #{param2}
 	    </if>
  	</select>
 
  	<select id="getUser" resultType="ungmee.web.entity.Couple">
 	 	SELECT 
-	 		id,  
+	 		id, 
 	 		propose_id proposeId,
 		    accepter_id accepterId, 
 		    couple_name coupleName,
@@ -36,9 +34,7 @@
 		    old_data oldData,
 		    ask,
 		    read,
-	    <if test="accept != null">
 		    accept 
-	    </if>
 	    FROM couple WHERE propose_id = #{id} and old_data = 1
  		UNION
 	 	SELECT 
@@ -52,9 +48,7 @@
 		    old_data oldData,
 		    ask,
 		    read,
-	   <if test="accept != null">
 		    accept 
-	    </if> 
 		 FROM couple where accepter_id = #{id} and old_data = 1
  	</select>
  

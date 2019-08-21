@@ -59,8 +59,8 @@
 			<table class="alam-table">
 			<c:forEach var="i" items="${list}">
 				<tr>			
-					<td><a href="user/alert/sender?id=${i.id }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
-					<td><a class ="alam-title" href="user/alert/detail?id=${i.id}">${i.nickname}님 커플맺기를 신청하셨습니다.</a></td>
+					<td><a href="../sender?id=${i.senderId }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
+					<td><a class ="alam-title" href="user/alert/detail?id=${i.id}">${i.nickname}님이 프러포즈를 신청하셨습니다.</a></td>
 					<td><span><fmt:formatDate pattern="HH시mm분" value="${i.regDate }"/></span></td>
 				</tr>
 			</c:forEach>

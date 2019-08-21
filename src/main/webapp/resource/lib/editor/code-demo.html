@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="lib/codemirror.css">
+<script src="lib/codemirror.js"></script>
+<script>
+	window.addEventListener("load", function() {
+		var clickButton = document.querySelector("#btn-click");
+		var textarea = document.querySelector("textarea");
+		var div = document.querySelector("#div");
+		var editor = CodeMirror.fromTextArea(textarea, {
+			lineNumbers : true
+		});
+
+		clickButton.onclick = function(){
+			alert(editor.getValue());
+		};		
+	});
+</script>
+</head>
+<body>
+	<textarea rows="20" cols="80">
+	
+	</textarea>
+	<div id="div" style="width:500px;height: 300px;border:1px solid gray;">
+		int x;
+	</div>
+	<div>
+		<input id="btn-click" type="button" value="click">
+	</div>
+</body>
+</html>

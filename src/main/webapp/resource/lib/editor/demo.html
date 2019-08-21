@@ -3,11 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="editor.css" type="text/css" rel="stylesheet">
-<script src="util.js"></script>
+<link rel="stylesheet" href="lib/codemirror.css">
+<script src="lib/codemirror.js"></script>
 <script src="editor.js"></script>
+<script>
+
+	window.addEventListener("load", function(e){
+
+		var editor = new Editor("/ungmeespring/resource/lib/editor", ".textarea", "/webv1/upload");
+		
+	});
+
+	/* window.addEventListener("scroll", function(e){
+
+		var pageHeight=document.documentElement.offsetHeight,
+        windowHeight=window.innerHeight,
+        scrollPosition=window.scrollY || window.pageYOffset || document.body.scrollTop + (document.documentElement && document.documentElement.scrollTop || 0);
+
+        console.log("pageHeight:"+pageHeight+', windowHeight:'+windowHeight+','+"scrollPosition:"+scrollPosition);
+
+        if (pageHeight <= windowHeight+scrollPosition) {
+            alert('At the bottom');
+        }
+	}); */
+
+</script>
 </head>
-<body>
-	<textarea class="textarea" style="width:100%;height:300px;border:1px solid gray;"></textarea>
-</body>
+	<body style="text-align: center;">
+		<textarea class="textarea" style="width:100%;height:300px;border:1px solid gray;"></textarea>
+		
+	</body>
 </html>

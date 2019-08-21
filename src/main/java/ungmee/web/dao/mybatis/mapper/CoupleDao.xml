@@ -15,7 +15,30 @@
 		    old_data oldData,
 		    ask,
 		    read,
+	    <if test="accept != null">
 		    accept 
+	    </if>
+	    FROM couple WHERE id = #{param1}
+	    <if test="param2 != -1">
+	    	and accepter_id = #{param2}
+	    </if>
+ 	</select>
+
+ 	<select id="getUser" resultType="ungmee.web.entity.Couple">
+	 	SELECT 
+	 		id,  
+	 		propose_id proposeId,
+		    accepter_id accepterId, 
+		    couple_name coupleName,
+		    message,
+		    lovedate,
+		    couple_profile coupleProfile,
+		    old_data oldData,
+		    ask,
+		    read,
+	    <if test="accept != null">
+		    accept 
+	    </if>
 	    FROM couple WHERE propose_id = #{id} and old_data = 1
  		UNION
 	 	SELECT 
@@ -29,7 +52,9 @@
 		    old_data oldData,
 		    ask,
 		    read,
+	   <if test="accept != null">
 		    accept 
+	    </if> 
 		 FROM couple where accepter_id = #{id} and old_data = 1
  	</select>
  
@@ -62,7 +87,9 @@
 		</if>
 		    old_data = #{oldData},
 		    read = #{read},
+	     <if test="accept != null">
 		    accept = #{accept}   
+	    </if>
 		WHERE
 			id= #{id}
  	</update>
@@ -80,12 +107,19 @@
 	      ask,
 	      read,
 	      accept 
- 		FROM COUPLE WHERE accepter_id = #{accepterId}
+ 		FROM COUPLE WHERE accepter_id = #{param1}
+ 		<if test="param2 != 2">
+ 			AND read = #{param2}
+ 		</if>	
+ 	
  	</select>
  	
- 	<select id="getProposeCount" resultType="int">
- 		SElECT COUNT(ID) count FROM COUPLE where accepter_id = #{id} and read='close'
+ 	<select id="getNewProposeCount" resultType="int">
+ 		SElECT COUNT(ID) count FROM COUPLE where accepter_id = #{id}
+ 		
+ 		 and read= 0
  	</select>
+ 	
  	
  	
  </mapper>

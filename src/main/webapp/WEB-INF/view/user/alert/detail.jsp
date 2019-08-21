@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctxName" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/reset.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -24,10 +28,13 @@
 				<span><fmt:formatDate pattern="YYYY-MM-dd" value="${couple.loveDate }"/></span>
 			</li>
 			<li>
-				<button>커플하기</button>
+				<button>수락하기</button><span>&nbsp; or &nbsp;</span><button>yes</button>
 			</li>
-			
+			<li>
+				<button>거절하기 ㅠ</button>
+			</li>
 		</ul>
+			<input type="hidden" value = "${couple.id }">
 	</div>
 </body>
 </html>

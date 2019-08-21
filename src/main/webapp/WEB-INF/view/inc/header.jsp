@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
 
@@ -19,14 +20,14 @@
 		<a href="${ctxName}/index"><img	src="${ctxName}/resource/images/ummo/logo.jpg"></a>
 	</div>
 
-	<div class="member-state">
+	<div id="member-state">
 		<div>
 		<security:authorize access="!isAuthenticated()">
 			<a href="${ctxName}/login">로그인</a>			
 			<a href="${ctxName}/signup">회원가입</a>
 		</security:authorize>
 		</div>
-		<div class="member-info">
+		<div id="member-info">
 		<security:authorize access="isAuthenticated()">
 			<div>
 			<security:authorize access="hasRole('USER')">
@@ -34,9 +35,9 @@
 				<a href="${ctxName}/user/couple/index">커플페이지</a>
 				</c:if>
 				<a href="${ctxName}/user/detail">정보수정</a>
-				<a href="${ctxName}/user/alert/list" class="toggle">알람</a>
+				<button id="user-alert-toggle">알람</button>
 				<c:if test="${count > 0}">
-				<span>new${count}</span>
+				<span class="new-alert">new${count}</span>
 				</c:if>
 			</security:authorize>
 		 	<security:authorize access="hasRole('ADMIN')"> 
@@ -52,13 +53,22 @@
 		</security:authorize>
 		</div>
 	</div>
-	<div id="alert-list" class="d-none">
-	<c:if test="${count > 0}">
-		11
+	<div class="alert-box d-none">
+	<c:if test="${count >0}">
+		<div class="new-table">
+			<table class="alam-table">
+			<c:forEach var="i" items="${list}">
+				<tr>			
+					<td><a href="../sender?id=${i.senderId }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
+					<td><a class ="alam-title" href="user/alert/detail?id=${i.id}">${i.nickname}님이 프러포즈를 신청하셨습니다.</a></td>
+					<td><span><fmt:formatDate pattern="HH시mm분" value="${i.regDate }"/></span></td>
+				</tr>
+			</c:forEach>
+			</table>
+		</div>
 	</c:if>
-	
 	<c:if test="${count == 0}">
-		내용이 없습니다.11
+		<span>새로운 알림이 없습니다.</span>
 	</c:if>
 	</div>
 	<nav>

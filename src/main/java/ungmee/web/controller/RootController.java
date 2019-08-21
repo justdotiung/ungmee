@@ -1,6 +1,9 @@
 package ungmee.web.controller;
 
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -96,9 +99,11 @@ public class RootController {
 			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 			int id = user.getId();
 			int count = pushService.getNewPushCount(id);
+			List<Map<String,Object>> list = pushService.getNewPushList(id);
 			SoloView solo = msService.getSoloInfo(id);
 			model.addAttribute("count", count);
 			model.addAttribute("user", solo);
+			model.addAttribute("list", list);
 		}
 //		int count = pushService.getNewPushedCount();
 

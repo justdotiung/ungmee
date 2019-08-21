@@ -12,8 +12,9 @@ public class Couple {
 	 * "UNG"."COUPLE"."LOVEDATE" IS '사귄날짜'; COMMENT ON COLUMN
 	 * "UNG"."COUPLE"."COUPLE_PROFILE" IS '커플사진'; COMMENT ON COLUMN
 	 * "UNG"."COUPLE"."OLD_DATA" IS '1.현재커플유지중 0.헤어짐'; COMMENT ON COLUMN
-	 * "UNG"."COUPLE"."ASK" IS '신청날짜'; COMMENT ON COLUMN "UNG"."COUPLE"."READ" IS
-	 * '커프읽음/안읽음'; COMMENT ON COLUMN "UNG"."COUPLE"."ACCEPT" IS '커플수락/거절';
+	 * "UNG"."COUPLE"."ASK" IS '신청날짜'; COMMENT ON COLUMN 
+	 * "UNG"."COUPLE"."READ" IS '커프읽음/안읽음'; COMMENT ON COLUMN 
+	 * "UNG"."COUPLE"."ACCEPT" IS '커플수락/거절';
 	 */
 	
     private int id;
@@ -25,8 +26,8 @@ public class Couple {
     private String coupleProfile;
     private int oldData;
     private Date ask;
-    private String read;
-    private String accept;
+    private int read;
+    private int accept;
 	
 
 	public Couple() {}
@@ -103,19 +104,19 @@ public class Couple {
 		this.ask = ask;
 	}
 
-	public String getRead() {
+	public int getRead() {
 		return read;
 	}
 
-	public void setRead(String read) {
+	public void setRead(int read) {
 		this.read = read;
 	}
 
-	public String getAccept() {
+	public int getAccept() {
 		return accept;
 	}
 
-	public void setAccept(String accept) {
+	public void setAccept(int accept) {
 		this.accept = accept;
 	}
 

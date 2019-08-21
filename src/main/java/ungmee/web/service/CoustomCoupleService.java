@@ -52,13 +52,28 @@ public class CoustomCoupleService implements CoupleService {
 	}
 
 	@Override
-	public int Accept(int uId) {
-		Solo solo = soloDao.get(uId);
-		solo.setcState(1);
-		soloDao.update(solo);
-		Couple couple = coupleDao.get(uId);
-		couple.setAccept("true");
+	public int proposeAccept(int id,int uId) {
+		Solo acceptSolo = soloDao.get(uId); //수락자 아이디 
+		Couple couple = coupleDao.get(id,uId); //커플 수락 아이디
+		Solo proposeSolo = soloDao.get(couple.getProposeId());//프로포즈 아이디
+
+		acceptSolo.setcState(1);
+		soloDao.update(acceptSolo);
+		
+		proposeSolo.setcState(1);
+		soloDao.update(proposeSolo);
+		
+		couple.setAccept(1);
 		int result  = coupleDao.edit(couple);
+		
+		return result;
+	}
+
+	@Override
+	public int prposeRefuse(int coupleId, int id) {
+		Couple couple = coupleDao.get(coupleId,id); //커플 수락 아이디
+		couple.setAccept(0);
+		int result = coupleDao.edit(couple);
 		return result;
 	}
 

@@ -28,6 +28,7 @@ public class AlertController {
 		model.addAttribute("couple", couple);
 		return "user/alert/detail";
 	}
+	
 	@GetMapping("list")
 	public String propose(Model model,Authentication auth) {
 		CustomUserDetails cUser = (CustomUserDetails) auth.getPrincipal();

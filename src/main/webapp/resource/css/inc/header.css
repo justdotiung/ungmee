@@ -1,18 +1,35 @@
 @charset "UTF-8";
-.d-none{
-	display: none;
-}
-.d-none.inline{
-	display: inline;
+/* 알람 css */
+.alert-box{
 	position: absolute;
 	background: #e9e9e9;
+	
+	min-width: 380px;
+	height: auto;	
+	--overflow-y: auto;
+	z-index: 10;
 }
-.member-state{
+.alert-box img{
+	width: 30px;
+}
+
+th, td {
+	padding-left : 10px;
+	
+  }
+/*  */
+#user-alert-toggle{
+	background-color: none;
+}
+.new-alert{
+	color: red;
+}
+#member-state{
 	display: flex;
 }
-.member-state ul li{
-	margin-left: 10px;
-}
-.member-info{
+#member-info{
 	display: flex;
+}
+#alert-list a, span{
+	font-size: 14px;
 }

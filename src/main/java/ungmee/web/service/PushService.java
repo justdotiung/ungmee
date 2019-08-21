@@ -41,7 +41,7 @@ public class PushService {
 
 	public Couple getProposeDetail(int id) {
 		Couple couple = coupleDao.get(id);
-		couple.setRead("open");
+		couple.setRead(1);
 		coupleDao.edit(couple);
 		couple = coupleDao.get(id);
 		return couple;
@@ -49,27 +49,27 @@ public class PushService {
 	
 	public int getNewPushCount(int userNum) {	
 		System.out.println("service userNum : "+userNum);
-		int pCount = coupleDao.getProposeCount(userNum);
+		int pCount = coupleDao.getNewProposeCount(userNum);
 		System.out.println("pCount : "+pCount);
 		return pCount;
 	}
 
 	public List<Map<String,Object>> getNewPushList(int userNum){
 		List<Map<String, Object>> list = new ArrayList<>();
+		int newList = 0;
 		User user = new User();
-	//	System.out.println("AccepterId : "+userNum);
-		List<Couple> coupleList = coupleDao.getProposeList(userNum);
-//		System.out.println("list : "+coupleList.get(0).getAccepterId());
+	//System.out.println("AccepterId : "+userNum);
+		List<Couple> coupleList = coupleDao.getProposeList(userNum,newList);
+	//System.out.println("list : "+coupleList.get(0).getAccepterId());
 		Map<String,Object> couple ;
 		for(Couple c : coupleList) {
 			user = userDao.get(c.getProposeId());
 			couple = new HashMap<String, Object>();
-			couple.put("cName",c.getCoupleName());
 			couple.put("regDate",c.getAsk());
 			couple.put("id", c.getId());
-			couple.put("sender", user.getEmail());
 			couple.put("profile",user.getProfile());
 			couple.put("senderId", user.getId());
+			couple.put("nickname", user.getNickName());
 			list.add(couple);
 		}
 		return list;

@@ -14,17 +14,14 @@
 		    couple_profile coupleProfile,
 		    old_data oldData,
 		    ask,
-		    read,
+		    read,	  
 		    accept 
 	    FROM couple WHERE id = #{param1}
-	    <if test="param2 != '-1'">
-	    	and accepter_id = #{param2}
-	    </if>
  	</select>
 
  	<select id="getUser" resultType="ungmee.web.entity.Couple">
 	 	SELECT 
-	 		id, 
+	 		id,  
 	 		propose_id proposeId,
 		    accepter_id accepterId, 
 		    couple_name coupleName,
@@ -68,7 +65,7 @@
 		delete couple where propose_id = #{proposeId}
  	</delete>
  	
- 	<update id="edit" parameterType="ungmee.web.entity.Couple">
+ 	<update id="update" parameterType="ungmee.web.entity.Couple">
 	 	UPDATE 
 	 		couple
 		SET

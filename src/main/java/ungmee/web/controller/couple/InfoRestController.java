@@ -31,13 +31,13 @@ public class InfoRestController {
 		return "user/couple/index";
 	}
 	@PostMapping("accept")
-	public int accept(Authentication auth , int coupleId) {
-		CustomUserDetails cUser = (CustomUserDetails) auth.getPrincipal();
-		int id = cUser.getId();
-		int result = coupleService.proposeAccept(coupleId,id);
+	public int accept(Authentication auth , int cId) {
+		CustomUserDetails aUser = (CustomUserDetails) auth.getPrincipal();
+		int id = aUser.getId();
+		int result = coupleService.proposeAccept(cId,id);
 		return result;
 	}
-	@GetMapping("refuse")
+	@PostMapping("refuse")
 	public int reject(Authentication auth, int coupleId) {
 		CustomUserDetails cUser = (CustomUserDetails) auth.getPrincipal();
 		int id = cUser.getId();

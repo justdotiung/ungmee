@@ -16,7 +16,7 @@ public interface CoupleService {
 	//프로포즈 취소
 	public int proposeCancel(int pId);
 	//프로포즈 수락
-	public int proposeAccept(int coupleId, int uId);
+	public int proposeAccept(int coupleId, int aId);
 	//프로포즈 거절
 	public int prposeRefuse(int coupleId, int uId);
 

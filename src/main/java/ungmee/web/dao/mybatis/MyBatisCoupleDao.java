@@ -18,6 +18,24 @@ public class MyBatisCoupleDao implements CoupleDao{
 	private SqlSession sqlSession;
 
 	@Override
+	public Couple get(int id) {
+		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
+		return coupleDao.get(id);
+	}
+	
+	@Override
+	public Couple getUser(int id) {
+		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);	
+		return coupleDao.getUser(id);
+	}
+	
+	@Override
+	public int update(Couple couple) {
+		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
+		return coupleDao.update(couple);
+	}
+
+	@Override
 	public int insert(Couple couple) {
 		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
 		return coupleDao.insert(couple);
@@ -45,30 +63,5 @@ public class MyBatisCoupleDao implements CoupleDao{
 		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
 		return coupleDao.getNewProposeCount(accepterId);
 	}
-
-	@Override
-	public Couple get(int id) {
-		return get(id,-1);
-	}
-	
-	@Override
-	public Couple get(int id, int pId) {
-		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
-		return coupleDao.get(id,pId);
-	}
-
-	@Override
-	public Couple getUser(int id) {
-		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);	
-		return coupleDao.getUser(id);
-	}
-
-	@Override
-	public int edit(Couple couple) {
-		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
-		return coupleDao.edit(couple);
-	}
-
-
 	
 }

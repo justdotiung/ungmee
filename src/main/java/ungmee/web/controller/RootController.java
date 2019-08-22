@@ -100,10 +100,11 @@ public class RootController {
 			int id = user.getId();
 			int count = pushService.getNewPushCount(id);
 			List<Map<String,Object>> list = pushService.getNewPushList(id);
-			SoloView solo = msService.getSoloInfo(id);
 			model.addAttribute("count", count);
-			model.addAttribute("user", solo);
 			model.addAttribute("list", list);
+			
+			SoloView solo = msService.getSoloInfo(id);			
+			model.addAttribute("user", solo);
 		}
 //		int count = pushService.getNewPushedCount();
 

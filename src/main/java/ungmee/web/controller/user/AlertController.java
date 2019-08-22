@@ -9,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ungmee.web.entity.Couple;
 import ungmee.web.entity.SoloView;
 import ungmee.web.security.CustomUserDetails;
+import ungmee.web.service.MemberShipService;
 import ungmee.web.service.PushService;
 
 
@@ -22,20 +24,20 @@ public class AlertController {
 	
 	@Autowired
 	private PushService pushService;
+	@Autowired
+	private MemberShipService msService;
 
 	@GetMapping("sender")
-	public String sender(Model model,Authentication auth, int id) {
-		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-		SoloView sender = pushService.getSendUserDetails(id,user.getId());
+	public String sender(Model model,int id) {
+		SoloView sender = msService.getSoloInfo(id);
 		model.addAttribute("user", sender);
-		return "user.sender";
+		return "user.alert.sender";
 	}
 	
 	@GetMapping("detail")
-	private String detail(Model model , Authentication auth, int id) {
-		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-		SoloView sender = pushService.getSendUserDetails(id,user.getId());
-		model.addAttribute("user", sender);
+	private String detail(Model model , @RequestParam(name="t")String type,@RequestParam(name="n")int id) {		
+		Map<String,Object> detail = pushService.getPushDetails(type,id);
+		model.addAttribute("user", detail);
 		return "user.alert.detail";
 	}
 	

@@ -3,8 +3,9 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+	
 	<definition name="user.*.*"
-			template="/WEB-INF/view/user/inc/layout.jsp">
+			template="/WEB-INF/view/user/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="header"
 			value="/WEB-INF/view/user/inc/header.jsp" />
 		<put-attribute name="main"
@@ -14,7 +15,7 @@
 	</definition>
 	
 	<definition name="admin.*.*"
-			template="/WEB-INF/view/admin/inc/layout.jsp">
+			template="/WEB-INF/view/admin/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="header"
 			value="/WEB-INF/view/admin/inc/header.jsp" />
 		<put-attribute name="aside"
@@ -26,7 +27,7 @@
 	</definition>
 	
 	<definition name="admin.*"
-		template="/WEB-INF/view/admin/inc/layout.jsp">
+		template="/WEB-INF/view/admin/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="header"
 			value="/WEB-INF/view/admin/inc/header.jsp" />
 		<put-attribute name="aside"
@@ -38,7 +39,7 @@
 	</definition>
 
 	<definition name="root.*"
-		template="/WEB-INF/view/inc/root-layout.jsp">
+		template="/WEB-INF/view/inc/root-layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="header"
 			value="/WEB-INF/view/inc/header.jsp" />
 		<put-attribute name="main" value="/WEB-INF/view/{1}.jsp" />
@@ -47,7 +48,7 @@
 	</definition>
 
 	<definition name="*.*"
-		template="/WEB-INF/view/inc/layout.jsp">
+		template="/WEB-INF/view/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="header"
 			value="/WEB-INF/view/inc/header.jsp" />
 		<put-attribute name="main"

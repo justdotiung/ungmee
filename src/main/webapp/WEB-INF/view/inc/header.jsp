@@ -1,20 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/inc/header.css">
 <script src="${ctxName}/resource/js/inc/header.js"></script>
 
-</head>
+
 <body>
 	<div>
 		<a href="${ctxName}/index"><img	src="${ctxName}/resource/images/ummo/logo.jpg"></a>
@@ -35,7 +30,7 @@
 				<a href="${ctxName}/user/couple/index">커플페이지</a>
 				</c:if>
 				<a href="${ctxName}/user/detail">정보수정</a>
-				<button id="user-alert-toggle">알람</button>
+				<a href="" id="user-alert-toggle">알람</a>
 				<c:if test="${count > 0}">
 				<span class="new-alert">new${count}</span>
 				</c:if>
@@ -59,16 +54,25 @@
 			<table class="alam-table">
 			<c:forEach var="i" items="${list}">
 				<tr>			
-					<td><a href="user/alert/sender?id=${i.id }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
-					<td><a class ="alam-title" href="user/alert/detail?id=${i.id}">${i.nickname}님 커플맺기를 신청하셨습니다.</a></td>
+					<td><a href="${ctxName}/user/alert/sender?id=${i.sender }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
+					<td>
+						<a class ="alam-title" href="${ctxName}/user/alert/detail?t=${i.type}&n=${i.id}">${i.title}</a>
+					</td>
 					<td><span><fmt:formatDate pattern="HH시mm분" value="${i.regDate }"/></span></td>
 				</tr>
+				<input type="hidden" value="${i.id }">
 			</c:forEach>
 			</table>
 		</div>
 	</c:if>
 	<c:if test="${count == 0}">
-		<span>새로운 알림이 없습니다.</span>
+		<table class="alam-table">
+			<tr>
+				<td>
+					<span>새로운 알림이 없습니다.</span>
+				</td>
+			</tr>
+		</table>
 	</c:if>
 	</div>
 	<nav>
@@ -86,4 +90,3 @@
 	<div>현재 서울은 개맑음</div>
 
 </body>
-</html>

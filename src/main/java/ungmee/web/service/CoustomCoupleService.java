@@ -25,9 +25,9 @@ public class CoustomCoupleService implements CoupleService {
 	private SoloDao soloDao;
 	
 	@Override
-	public Couple getCoupleInfo(int uId) {
-		Couple couple = coupleDao.get(uId);
-		return couple;
+	public Couple getCoupleInfo(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -52,9 +52,9 @@ public class CoustomCoupleService implements CoupleService {
 	}
 
 	@Override
-	public int proposeAccept(int id,int uId) {
-		Solo acceptSolo = soloDao.get(uId); //수락자 아이디 
-		Couple couple = coupleDao.get(id,uId); //커플 수락 아이디
+	public int proposeAccept(int cId,int aId) {
+		Solo acceptSolo = soloDao.get(aId); //수락자 아이디 
+		Couple couple = coupleDao.get(cId); //커플 FK를 이용한 정보 아이디
 		Solo proposeSolo = soloDao.get(couple.getProposeId());//프로포즈 아이디
 
 		acceptSolo.setcState(1);
@@ -64,18 +64,19 @@ public class CoustomCoupleService implements CoupleService {
 		soloDao.update(proposeSolo);
 		
 		couple.setAccept(1);
-		int result  = coupleDao.edit(couple);
+		int result  = coupleDao.update(couple);
 		
 		return result;
 	}
 
 	@Override
 	public int prposeRefuse(int coupleId, int id) {
-		Couple couple = coupleDao.get(coupleId,id); //커플 수락 아이디
+		Couple couple = coupleDao.get(id); //커플 수락 아이디
 		couple.setAccept(0);
-		int result = coupleDao.edit(couple);
+		int result = coupleDao.update(couple);
 		return result;
 	}
+
 
 
 }

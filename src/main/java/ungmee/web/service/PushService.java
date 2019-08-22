@@ -11,11 +11,13 @@ import ungmee.web.entity.SoloView;
 public interface PushService {
 
 	//보낸사람 정보
-	public SoloView getSendUserDetails(int id, int pId);
+	//public SoloView getSendUserDetails(int id, int pId);
 	//보낸 내용중 프로포즈 정보
 	public Couple getProposeDetail(int id);
 	//새로운 알람 갯수
 	public int getNewPushCount(int userNum);
 	//새로운 알람 리스트
 	public List<Map<String,Object>> getNewPushList(int userNum);
+	//알람 내용 정보
+	public Map<String,Object> getPushDetails(String type, int id);
 }

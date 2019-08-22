@@ -11,7 +11,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.events.Event;
 
 import ungmee.web.dao.CoupleDao;
 import ungmee.web.dao.EventDao;
@@ -19,6 +18,7 @@ import ungmee.web.dao.NoticeDao;
 import ungmee.web.dao.SoloViewDao;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Couple;
+import ungmee.web.entity.Event;
 import ungmee.web.entity.Notice;
 import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
@@ -38,24 +38,52 @@ public class CoustomPushService implements PushService{
 	private SoloViewDao svDao;
 	
 	@Override
-	public SoloView getSendUserDetails(int id, int pId) {
-		Couple couple = coupleDao.get(id, pId);
-		SoloView sView = svDao.get(couple.getProposeId());
-		return sView;
-	}
-	@Override
 	public Couple getProposeDetail(int id) {
 		Couple couple = coupleDao.get(id);
 		couple.setRead(1);
-		coupleDao.edit(couple);
+		coupleDao.update(couple);
 		couple = coupleDao.get(id);
 		return couple;
+	
 	}
 	@Override
 	public int getNewPushCount(int userNum) {	
+		System.out.println(userNum);
 		int pCount = coupleDao.getNewProposeCount(userNum);
 		return pCount;
 	}
+
+	@Override
+	public Map<String,Object> getPushDetails(String type, int id) {
+		Notice notice = new Notice();
+		Event event = new Event();
+
+		Couple couple = new Couple();
+		SoloView sender = new SoloView();
+	
+		Map<String,Object> map = new HashMap<String, Object>();
+		if(type.equals("c")) {
+			couple = coupleDao.get(id);
+			couple.setRead(1);
+			coupleDao.update(couple);
+			couple = coupleDao.get(id);
+			sender = svDao.get(couple.getProposeId());
+			map.put("id", couple.getId());
+			map.put("profile",sender.getProfile());
+			map.put("nickName", sender.getNickname());
+
+			return map;
+		}
+		else if(type.equals("n")) {
+			return map;
+		}
+		else if(type.equals("e")) {
+			return map;
+		}
+		else
+			return null;
+	}
+	
 	@Override
 	public List<Map<String,Object>> getNewPushList(int userNum){
 		List<Map<String, Object>> list = new ArrayList<>();
@@ -71,7 +99,9 @@ public class CoustomPushService implements PushService{
 			couple.put("regDate",c.getAsk());
 			couple.put("id", c.getId());
 			couple.put("profile",user.getProfile());
-			couple.put("nickname", user.getNickName());
+			couple.put("sender",user.getId());
+			couple.put("title", user.getNickName()+"¥‘¿Ã ƒø«√∏Œ±‚∏¶ Ω≈√ª«œºÃΩ¿¥œ¥Ÿ.");
+			couple.put("type","c");
 			list.add(couple);
 		}
 		return list;

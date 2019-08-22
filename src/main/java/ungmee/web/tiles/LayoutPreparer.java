@@ -13,7 +13,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import ungmee.web.entity.SoloView;
 import ungmee.web.security.CustomUserDetails;
+import ungmee.web.service.MemberShipService;
 import ungmee.web.service.PushService;
 
 @Component
@@ -21,7 +23,9 @@ public class LayoutPreparer implements ViewPreparer{
 	
 	@Autowired
 	private PushService pushService;
-
+	@Autowired
+	private MemberShipService msService;
+	
 	@Override
 	public void execute(Request tilesRequest, AttributeContext attributeContext) {
 		
@@ -30,6 +34,7 @@ public class LayoutPreparer implements ViewPreparer{
 		if(!(auth instanceof AnonymousAuthenticationToken)) {
 			final CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 			final int id = user.getId();
+			SoloView solo = msService.getSoloInfo(id);
 			System.out.println("tiles id : " +id);
 			int count = pushService.getNewPushCount(id);
 			System.out.println(count);
@@ -38,6 +43,7 @@ public class LayoutPreparer implements ViewPreparer{
 			Map<String,Object> model = tilesRequest.getContext("request");
 			model.put("count", count);
 			model.put("list",list);
+			model.put("user",solo);
 		}
 	}
 }

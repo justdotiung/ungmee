@@ -22,7 +22,7 @@ import ungmee.web.entity.Notice;
 import ungmee.web.entity.NoticeCategory;
 import ungmee.web.entity.NoticeView;
 
-//@Service
+@Service
 public class DefaultNoticeService implements NoticeService{
 
 	@Autowired

@@ -95,22 +95,20 @@ public class RootController {
 	@RequestMapping("index")
 	public String index(Model model,Authentication auth) {
 
-		if(auth != null) {
-			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-			int id = user.getId();
-			int count = pushService.getNewPushCount(id);
-			List<Map<String,Object>> list = pushService.getNewPushList(id);
-			model.addAttribute("count", count);
-			model.addAttribute("list", list);
-			
-			SoloView solo = msService.getSoloInfo(id);			
-			model.addAttribute("user", solo);
-		}
+//		if(auth != null) {
+//			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+//			int id = user.getId();
+//			SoloView solo = msService.getSoloInfo(id);			
+//			int count = pushService.getNewPushCount(id);
+//			List<Map<String,Object>> list = pushService.getNewPushList(id);
+//			model.addAttribute("count", count);
+//			model.addAttribute("list", list);
+//			model.addAttribute("user", solo);
+//		}
 //		int count = pushService.getNewPushedCount();
 
 //		Map<String, Object> map = pushService.getNewPushedList();
 //		model.addAttribute("eventList", map.get("eventList"));
 		return "root.index";
 	}
-	
 }

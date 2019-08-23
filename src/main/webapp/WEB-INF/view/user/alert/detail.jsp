@@ -5,14 +5,14 @@
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
 <script src="${ctxName}/resource/js/user/alert/detail.js"></script>
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/reset.css">
-<body>
+<section id="section">
 	<div>
 		<img src="${ctxName }/upload/${user.profile}">
 	</div>
 	<div>
 		<ul>
 			<li>
-				<p><b>${user.nickName }</b>님이 커플맺기를 신청하셨습니다.</p>
+				<p><b>${cUser.nickname }</b>님이 커플맺기를 신청하셨습니다.</p>
 			</li>
 			<li>
 				<button	class="accept">수락하기</button><span>&nbsp; or &nbsp;</span><button class="accept">yes</button>
@@ -22,8 +22,9 @@
 			</li>
 		</ul>
 	</div>
-	<input type="hidden" class ="pid" value="${user.id }" >
+	<input type="hidden" class ="cid" value="${cUser.id }" >
 	<input type="hidden" class="ctx-name" value="${ctxName }">
 	<input type="hidden" class = "header" value="${_csrf.headerName}"> 
    	<input type="hidden" class = "token" value="${_csrf.token}"> 
-</body>
+</section>	
+

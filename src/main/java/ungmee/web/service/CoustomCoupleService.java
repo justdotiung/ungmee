@@ -17,8 +17,7 @@ import ungmee.web.entity.User;
 
 @Service
 public class CoustomCoupleService implements CoupleService {
-	@Autowired
-	private UserDao userDao;
+
 	@Autowired
 	private CoupleDao coupleDao;
 	@Autowired
@@ -26,8 +25,8 @@ public class CoustomCoupleService implements CoupleService {
 	
 	@Override
 	public Couple getCoupleInfo(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Couple couple = coupleDao.getUser(id);
+		return couple;
 	}
 
 	@Override
@@ -56,7 +55,14 @@ public class CoustomCoupleService implements CoupleService {
 		Solo acceptSolo = soloDao.get(aId); //수락자 아이디 
 		Couple couple = coupleDao.get(cId); //커플 FK를 이용한 정보 아이디
 		Solo proposeSolo = soloDao.get(couple.getProposeId());//프로포즈 아이디
-
+		Couple check = coupleDao.getUser(aId);//커플상태 인지아닌지 여부
+		
+		
+		if(check != null) {
+			System.out.println("이미커플상태");
+			return -2;
+		}
+		
 		acceptSolo.setcState(1);
 		soloDao.update(acceptSolo);
 		
@@ -64,6 +70,7 @@ public class CoustomCoupleService implements CoupleService {
 		soloDao.update(proposeSolo);
 		
 		couple.setAccept(1);
+		couple.setOldData(1);
 		int result  = coupleDao.update(couple);
 		
 		return result;
@@ -76,7 +83,5 @@ public class CoustomCoupleService implements CoupleService {
 		int result = coupleDao.update(couple);
 		return result;
 	}
-
-
 
 }

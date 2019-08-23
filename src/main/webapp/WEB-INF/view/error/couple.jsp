@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
- 커플인덱스
+이미커플상태입니다 양다리를 상대방이 싫어합니다.
 </body>
 </html>

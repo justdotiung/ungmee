@@ -16,6 +16,8 @@ public interface PushService {
 	public Couple getProposeDetail(int id);
 	//새로운 알람 갯수
 	public int getNewPushCount(int userNum);
+	//알람 리스트
+	public List<Map<String, Object>> getList(int accepterId);
 	//새로운 알람 리스트
 	public List<Map<String,Object>> getNewPushList(int userNum);
 	//알람 내용 정보

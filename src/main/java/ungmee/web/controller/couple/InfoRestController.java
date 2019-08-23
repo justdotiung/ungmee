@@ -22,14 +22,6 @@ public class InfoRestController {
 	@Autowired
 	private CoupleService coupleService;
 
-	@RequestMapping("index")
-	public String index(Model model ,Authentication auth) {
-		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-		int uId = user.getId();
-		Couple couple = coupleService.getCoupleInfo(uId);
-		model.addAttribute("couple", couple);
-		return "user/couple/index";
-	}
 	@PostMapping("accept")
 	public int accept(Authentication auth , int cId) {
 		CustomUserDetails aUser = (CustomUserDetails) auth.getPrincipal();
@@ -37,6 +29,7 @@ public class InfoRestController {
 		int result = coupleService.proposeAccept(cId,id);
 		return result;
 	}
+	
 	@PostMapping("refuse")
 	public int reject(Authentication auth, int coupleId) {
 		CustomUserDetails cUser = (CustomUserDetails) auth.getPrincipal();

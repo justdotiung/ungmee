@@ -27,7 +27,7 @@
 			<div>
 			<security:authorize access="hasRole('USER')">
 				<c:if test="${user.cState eq '1' }">
-				<a href="${ctxName}/couple/index">커플페이지</a>
+				<a href="${ctxName}/user/couple/index">커플페이지</a>
 				</c:if>
 				<a href="${ctxName}/user/detail">정보수정</a>
 				<a href="${ctxName}/user/alert/list" id="user-alert-toggle">알람</a>

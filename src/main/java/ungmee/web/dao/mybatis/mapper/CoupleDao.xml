@@ -99,7 +99,7 @@
 	      read,
 	      accept 
  		FROM COUPLE WHERE accepter_id = #{param1}
- 		<if test="param2 != 2">
+ 		<if test="param2 lt 2">
  			AND read = #{param2}
  		</if>	
  	
@@ -107,7 +107,6 @@
  	
  	<select id="getNewProposeCount" resultType="int">
  		SElECT COUNT(ID) count FROM COUPLE where accepter_id = #{id}
- 		
  		 and read= 0
  	</select>
  	

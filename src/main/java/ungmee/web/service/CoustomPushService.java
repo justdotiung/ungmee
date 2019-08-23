@@ -33,8 +33,6 @@ public class CoustomPushService implements PushService{
 	@Autowired
 	private CoupleDao coupleDao;
 	@Autowired
-	private UserDao userDao;
-	@Autowired
 	private SoloViewDao svDao;
 	
 	@Override
@@ -46,9 +44,34 @@ public class CoustomPushService implements PushService{
 		return couple;
 	
 	}
+	
+	@Override
+	public List<Map<String,Object>> getList(int accepterId){
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>(); 
+		SoloView user = null;
+		//noticeDao.getList(accepterId);
+		//eventDao.getList(accepterId);
+		List<Couple> coupleList = coupleDao.getProposeList(accepterId);
+		System.out.println("listsize " +coupleList.size());
+		Map<String,Object> couple ;
+		for(Couple c : coupleList) {
+			couple = new HashMap<String, Object>();
+			user = svDao.get(c.getProposeId());
+			couple.put("regDate",c.getAsk());
+			couple.put("id", c.getId());
+			couple.put("profile",user.getProfile());
+			couple.put("sender",user.getId());
+			couple.put("title", user.getNickname()+"¥‘¿Ã ƒø«√∏Œ±‚∏¶ Ω≈√ª«œºÃΩ¿¥œ¥Ÿ.");
+			couple.put("type","c");
+			list.add(couple);
+		}
+		System.out.println("list " +list.size());
+		return list;
+		
+		
+	}
 	@Override
 	public int getNewPushCount(int userNum) {	
-		System.out.println(userNum);
 		int pCount = coupleDao.getNewProposeCount(userNum);
 		return pCount;
 	}
@@ -60,13 +83,13 @@ public class CoustomPushService implements PushService{
 
 		Couple couple = new Couple();
 		SoloView sender = new SoloView();
-	
 		Map<String,Object> map = new HashMap<String, Object>();
 		if(type.equals("c")) {
 			couple = coupleDao.get(id);
 			couple.setRead(1);
 			coupleDao.update(couple);
 			couple = coupleDao.get(id);
+			System.out.println("durl : "+couple.getId());
 			sender = svDao.get(couple.getProposeId());
 			map.put("id", couple.getId());
 			map.put("profile",sender.getProfile());
@@ -88,22 +111,24 @@ public class CoustomPushService implements PushService{
 	public List<Map<String,Object>> getNewPushList(int userNum){
 		List<Map<String, Object>> list = new ArrayList<>();
 		int newList = 0;
-		User user = new User();
-	//System.out.println("AccepterId : "+userNum);
+		//User user = new User();
+		SoloView user = null;
+		//System.out.println("AccepterId : "+userNum);
 		List<Couple> coupleList = coupleDao.getProposeList(userNum,newList);
 	//System.out.println("list : "+coupleList.get(0).getAccepterId());
 		Map<String,Object> couple ;
 		for(Couple c : coupleList) {
-			user = userDao.get(c.getProposeId());
+			user = svDao.get(c.getProposeId());
 			couple = new HashMap<String, Object>();
 			couple.put("regDate",c.getAsk());
 			couple.put("id", c.getId());
 			couple.put("profile",user.getProfile());
 			couple.put("sender",user.getId());
-			couple.put("title", user.getNickName()+"¥‘¿Ã ƒø«√∏Œ±‚∏¶ Ω≈√ª«œºÃΩ¿¥œ¥Ÿ.");
+			couple.put("title", user.getNickname()+"¥‘¿Ã ƒø«√∏Œ±‚∏¶ Ω≈√ª«œºÃΩ¿¥œ¥Ÿ.");
 			couple.put("type","c");
 			list.add(couple);
 		}
+		System.out.println("new LIst"+list.size());
 		return list;
 	}
 //	public int getNewPushedCount() {

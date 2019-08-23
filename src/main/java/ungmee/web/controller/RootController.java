@@ -4,6 +4,8 @@ package ungmee.web.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -93,8 +95,9 @@ public class RootController {
 	}
 	
 	@RequestMapping("index")
-	public String index(Model model,Authentication auth) {
-
+	public String index(Model model,Authentication auth,HttpServletRequest req) {
+		
+		model.addAttribute("title","qkRNa");
 //		if(auth != null) {
 //			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 //			int id = user.getId();

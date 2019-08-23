@@ -3,8 +3,9 @@ window.addEventListener("load",function(){
     var ctxName = this.document.querySelector(".ctx-name").value;
     var header = this.document.querySelector(".header").value;
     var token = this.document.querySelector(".token").value;
+    var section = this.document.querySelector("#section");
     //신청자 정보
-    var cId = this.document.querySelector(".pid").value;
+    var cId = this.document.querySelector(".cid").value;
     //수락버튼 
     var accept = document.querySelector(".accept");
     //거절버튼
@@ -13,9 +14,14 @@ window.addEventListener("load",function(){
     accept.onclick = function(){
         var xhr = new XMLHttpRequest();
         var info = 'cId='+cId;
+        console.log(info);
         xhr.addEventListener("load",function(){
-            console.log(xhr.responseText);
-        });
+            if(xhr.responseText != -2)
+            window.location.href=ctxName+"/index";
+            else
+           //window.location.href=ctxName+"/index";
+            section.innerHTML="이미 커플상태입니다.";
+        }); 
         xhr.open("POST",ctxName+"/couple/info/accept")
         xhr.setRequestHeader(header,token);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

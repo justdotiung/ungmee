@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
 
+
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/inc/header.css">
 <script src="${ctxName}/resource/js/inc/header.js"></script>
 
@@ -26,10 +27,10 @@
 			<div>
 			<security:authorize access="hasRole('USER')">
 				<c:if test="${user.cState eq '1' }">
-				<a href="${ctxName}/user/couple/index">커플페이지</a>
+				<a href="${ctxName}/couple/index">커플페이지</a>
 				</c:if>
 				<a href="${ctxName}/user/detail">정보수정</a>
-				<button id="user-alert-toggle">알람</button>
+				<a href="${ctxName}/user/alert/list" id="user-alert-toggle">알람</a>
 				<c:if test="${count > 0}">
 				<span class="new-alert">new${count}</span>
 				</c:if>
@@ -53,7 +54,7 @@
 			<table class="alam-table">
 			<c:forEach var="i" items="${list}">
 				<tr>			
-					<td><a href="${ctxName}/user/alert/sender?id=${i.id }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
+					<td><a href="${ctxName}/user/alert/sender?id=${i.sender }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
 					<td>
 						<a class ="alam-title" href="${ctxName}/user/alert/detail?t=${i.type}&n=${i.id}">${i.title}</a>
 					</td>

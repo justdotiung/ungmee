@@ -3,16 +3,6 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="couple.*"
-			template="/WEB-INF/view/couple/inc/layout.jsp">
-		<put-attribute name="title" expression="${title}" /> 
-		<put-attribute name="header"
-			value="/WEB-INF/view/couple/inc/header.jsp" />
-		<put-attribute name="main"
-			value="/WEB-INF/view/couple/{1}.jsp" />
-		<put-attribute name="footer"
-			value="/WEB-INF/view/couple/inc/footer.jsp" />
-	</definition>
 	
 	<definition name="user.*.*"
 			template="/WEB-INF/view/user/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
@@ -59,6 +49,16 @@
 		<put-attribute name="main" value="/WEB-INF/view/{1}.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/view/inc/footer.jsp" />
+	</definition>
+	
+	<definition name="couple.*"
+		template="/WEB-INF/view/inc/root-layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		<put-attribute name="title" expression="${title}" /> 
+		<put-attribute name="header"
+			value="/WEB-INF/view/couple/inc/header.jsp" />
+		<put-attribute name="main" value="/WEB-INF/view/couple/{1}.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/couple/inc/footer.jsp" />
 	</definition>
 
 	<definition name="*.*"

@@ -20,6 +20,7 @@
 		<security:authorize access="!isAuthenticated()">
 			<a href="${ctxName}/login">로그인</a>			
 			<a href="${ctxName}/signup">회원가입</a>
+			<a href="${ctxName}/couple/info">코스보러가기</a>
 		</security:authorize>
 		</div>
 		<div id="member-info">
@@ -27,7 +28,10 @@
 			<div>
 			<security:authorize access="hasRole('USER')">
 				<c:if test="${user.cState eq '1' }">
-				<a href="${ctxName}/couple/index">커플페이지</a>
+				<a href="${ctxName}/couple/info">커플페이지</a>
+				<a href="${ctxName}/couple/info">커플정보 수정</a>
+				<a href="${ctxName}/couple/info">우리만의 비밀글</a>
+				<a href="${ctxName}/couple/info">스케줄러</a>
 				</c:if>
 				<a href="${ctxName}/user/detail">정보수정</a>
 				<a href="${ctxName}/user/alert/list" id="user-alert-toggle">알람</a>

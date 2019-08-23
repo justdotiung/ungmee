@@ -13,21 +13,21 @@ import ungmee.web.security.CustomUserDetails;
 import ungmee.web.service.CoupleService;
 
 
-@Controller("CoupleInfoController")
-@RequestMapping("/user/couple/")
+@Controller("coupleInfoController")
+@RequestMapping("/couple/")
 public class InfoController {
 	
 	@Autowired
 	private CoupleService coupleService;
 
-	@RequestMapping("index")
+	@RequestMapping("info")
 	public String index(Model model ,Authentication auth) {
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 		int uId = user.getId();
 		Couple couple = coupleService.getCoupleInfo(uId);
 		model.addAttribute("couple", couple);
 		model.addAttribute("title",couple.getCoupleName());
-		return "user.couple.index";
+		return "couple.info";
 	}
 }
 

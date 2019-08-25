@@ -121,7 +121,10 @@
 }
 
 .com.newlecture.single-editor>.toolbar .btn-html{
-	background: url("images/ic_format_bold_black_24px.svg") no-repeat center;		
+	background: url("images/outline-code-24px.svg") no-repeat center;		
+}
+.com.newlecture.single-editor>.toolbar .btn-code{
+	background: url("images/outline-insert_drive_file-24px.svg") no-repeat center;		
 }
 
 /* ----------------------------------------------------------- */
@@ -176,12 +179,16 @@
 
 .com.newlecture.single-editor>.option-bar>.font-color-box .btn-color,
 .com.newlecture.single-editor>.option-bar>.font-size-box .btn-size{
-	background: #e9e9e9;
+	background: #e9e9e9;	
 	width:20px;
 	height: 20px;
 	margin-left: 5px;
 }
 
+.com.newlecture.single-editor>.option-bar>.font-color-box .btn-color{
+	text-indent: -999px;
+	border: none;
+}
  .com.newlecture.single-editor>.option-bar>.font-color-box>.btn-color-warning{
  	background: #ff0000;
  }

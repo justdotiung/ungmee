@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="ungmee.web.dao.SoloViewDao">
+ 	<select id="get" resultType="ungmee.web.entity.SoloView">
+	 	SELECT
+		    id,
+		    email,
+		    pw,
+		    regdate,
+		    enabled,
+		    role_id roleId,
+		    echeck,
+		    nickname,
+		    profile,
+		    birthday,
+		    c_state cState,
+		    gender
+		FROM
+		    soloview
+		WHERE
+    		ID = #{id}
+ 	</select>
+ </mapper>

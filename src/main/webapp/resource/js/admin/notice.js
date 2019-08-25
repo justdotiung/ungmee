@@ -41,10 +41,12 @@ window.addEventListener("load",function(){
     //     // var detailButton = e.target;
     //    // if(!detailButton.classList.contains("btn-detail"))
     //     // return;
-       
-    //    // var contentDiv = detailButton.parentElement.nextElementSibling;
-    //    // //console.log(typeof content);
-    //    // contentDiv.classList.add("current");
+
+ 	
+    // 	// var contentDiv = detailButton.parentElement.nextElementSibling;
+    // 	// //console.log(typeof content);
+    // 	// contentDiv.classList.add("current");
+
     //     alert("내용을 불러옴");
     //     content.classList.add("current");
     // }

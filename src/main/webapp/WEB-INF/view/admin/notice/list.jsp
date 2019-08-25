@@ -22,6 +22,7 @@
       <li><a href="reg">관리자 등록버튼</a></li>
    </div>
 
+<<<<<<< HEAD
    <section id="reg-notice">
       <div class="notice-lists" id="notice-lists">
          <c:forEach var="n" items="${noticeView}">
@@ -41,7 +42,29 @@
          </c:forEach>
       </div>
    </section>
+=======
+	<section id="reg-notice">
+		<div class="notice-lists" id="notice-lists">
+			<c:forEach var="n" items="${noticeView}">
+				<div class="notice-list">
+					<div>${n.categoryName}</div>
+					<div>${writer}</div>
+					<div>${time}</div>
+					<div>${n.title}</div>
+					<div>
+						<input class="btn-detail" type="button" value="자세히">
+					</div>
+					<div class="content">${n.content}</div>
+					<div>
+						<a href="del?id=${n.id}">삭제a</a> <a href="edit?id=${n.id}">수정</a>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</section>
+>>>>>>> refs/remotes/origin/master
 
+<<<<<<< HEAD
    <template class="notice-template" id="notice-template">
       <section class="notice-template-section">
          <div class="categoryName"></div>
@@ -58,6 +81,24 @@
       </section>
    
    </template>
+=======
+	<template class="notice-template" id="notice-template">
+		<section class="notice-template-section">
+			<div class="categoryName"></div>
+			<div class="writerId"></div>
+			<div class="regDate"></div>
+			<div class="title"></div>
+			<div>
+				<input class="btn-detail" type="button" value="자세히">
+			</div>
+			<div class="content"></div>
+			<div>
+				<a href="del?id=${n.id}">삭제a</a> <a href="edit?id=${n.id}">수정</a>
+			</div>
+		</section>
+	
+	</template>
+>>>>>>> refs/remotes/origin/master
 
    <!-- <section class="page-index">
       <h1 class="d-none">페이지 정보</h1>

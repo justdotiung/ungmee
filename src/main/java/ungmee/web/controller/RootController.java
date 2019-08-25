@@ -1,6 +1,11 @@
 package ungmee.web.controller;
 
 
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +21,7 @@ import ungmee.web.dao.PartnerDao;
 import ungmee.web.dao.UserDao;
 import ungmee.web.entity.Partner;
 import ungmee.web.entity.Solo;
+import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
 import ungmee.web.service.MemberShipService;
@@ -31,13 +37,8 @@ public class RootController {
 	@Autowired
 	private PushService pushService;
 	@Autowired
-	private MemberShipService memberShipService;
+	private MemberShipService msService;
 	
-	@PostMapping("signup")
-	public String signUp(User user, Solo solo) {
-		memberShipService.soloRegistration(user, solo);
-		return "redirect:/index";
-	}
 	
 	@GetMapping("login")
 	public String login() {
@@ -52,23 +53,7 @@ public class RootController {
 	public String signup() {
 		return "root.signup";
 	}
-	
-//	@PostMapping("signup")
-//	public String signup(User user ,String echeck) {
-//		if(echeck == null)
-//			user.setEcheck("F");
-//		String pwd = user.getPw();
-//		System.out.println(pwd);
-//		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-//		pwd = pwdEncoder.encode(pwd);
-//		
-//		user.setPw(pwd);
-//
-//		userDao.insert(user);
-//		System.out.println(user.getId());
-//		return "redirect:/index" ; 
-//		
-//	}
+
 	
 	@GetMapping("partner-signup")
 	public String partnersignup() {
@@ -113,21 +98,23 @@ public class RootController {
 	}
 	
 	@RequestMapping("index")
-	public String index(Model model,Authentication auth) {
-
-		if(auth != null) {
-			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-			int userNum = user.getId();
-			System.out.println("userNum"+userNum);
-			int count = pushService.getNewPushCount(userNum);
+	public String index(Model model,Authentication auth,HttpServletRequest req) {
 		
-			model.addAttribute("count", count);
-		}
+		model.addAttribute("title","qkRNa");
+//		if(auth != null) {
+//			CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+//			int id = user.getId();
+//			SoloView solo = msService.getSoloInfo(id);			
+//			int count = pushService.getNewPushCount(id);
+//			List<Map<String,Object>> list = pushService.getNewPushList(id);
+//			model.addAttribute("count", count);
+//			model.addAttribute("list", list);
+//			model.addAttribute("user", solo);
+//		}
 //		int count = pushService.getNewPushedCount();
 
 //		Map<String, Object> map = pushService.getNewPushedList();
 //		model.addAttribute("eventList", map.get("eventList"));
 		return "root.index";
 	}
-	
 }

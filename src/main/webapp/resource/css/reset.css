@@ -1,9 +1,9 @@
 
 
-html,head,body,ul,li,section,div,h1,input{
+html,head,body,ul,li,section,div,h1,input,table{
     margin: 0;
     padding: 0;
-    --border: 0;
+    border: 0;
     border-radius: 0;
     --background: none;
     font-size: 100%;
@@ -12,8 +12,15 @@ html,head,body,ul,li,section,div,h1,input{
     color: inherit;
     line-height: 1;
     box-shadow: none;
+    border-collapse: collapse;
 }
-
+button{
+    border: 0;
+    font-size: 100%;
+    font-family: 'Malgun Gothic', san-serif;
+    padding: 0;
+    background-color: white;
+}
 ul, li{
     list-style: none;
 }
@@ -24,4 +31,11 @@ ul, li{
 
 .d-none.current{
     display: block;
+}
+
+th, td {
+    padding: 0;
+  }
+a{
+    text-decoration: none;
 }

@@ -36,6 +36,12 @@ window.addEventListener("load", function() {
 			var request = new XMLHttpRequest();
 
 			request.addEventListener("load", function() {
+				if(request.responseText !=-1)
+					alert("변경되었습니다.");
+				else{
+					alert("실패");
+					return ;
+				}
 				//이미지 비동기 이루엄
 				/* ============================================ */
 				var reader = new FileReader();
@@ -44,7 +50,6 @@ window.addEventListener("load", function() {
 				//evt < 이벤트 객체 (필요에 따라서 쓰일수있다.)
 				reader.onload = function(evt) {
 					poto.src = evt.target.result;
-					alert(request.responseText);
 				}
 				//리더기 역할을 하게된다 시점을 모르게된다 읽는 시점
 				reader.readAsDataURL(file);
@@ -65,13 +70,22 @@ window.addEventListener("load", function() {
 	var nickName = nickNameDiv.querySelector("input[type=text]");
 	var nickNameBtn = nickNameDiv.querySelector(".eraser");
 
+	var regwhiteSpace = /\s/g;//공백체크 !공백없음
+    var regName=/^[A-z|가-힣]{1,4}$/;//닉네임 정규식
+	
 	nickNameBtn.onclick = function() {
-		//alert("들어옴");
-		//alert(nickName.value);
-		//rquest 가 로드될때 실행해 달라고 한것임
+	if(nickName.value == "" || nickName.value.match(regwhiteSpace)  || !nickName.value.match(regName)){
+		alert("공백없이 영문과 한글포함 최대 4자까지만가능합니다.");
+		isValid=true;
+		return;
+	}
 		var request = new XMLHttpRequest();
 		request.addEventListener("load", function() {
-			alert(request.responseText);
+			//console.log("status : " + request.status);
+			if(request.responseText !=-1)
+				alert("변경되었습니다.");
+			else
+			 	alert("실패");
 		})
 		request.open("GET", "nickname?nickName=" + nickName.value);
 		request.send();
@@ -94,7 +108,9 @@ window.addEventListener("load", function() {
 	// var div = select.parentElement.nextSibling;
 	this.console.log(select.nodeType);
 
-	select.onclick = function() {
+	select.onclick = function(e) {
+		if(e.target.type !='submit')
+			return;
 		if(div.className !='d-none current')
 			div.classList.add("current");
 		else
@@ -152,15 +168,15 @@ window.addEventListener("load",function(){
 	var findReceiver = infoDiv.querySelector(".find-receiver");//상대방이메일찾기버튼
 	var loveDate = infoDiv.querySelector(".love-date");//사귄날짜
 	var message = infoDiv.querySelector(".message");//커플상태메세지
-	var proposeId = infoDiv.querySelector(".hidden").value;//내아이디
+	var proposeId = infoDiv.querySelector(".solo-email").value;//내이메일 
 	var submitBtn = infoDiv.querySelector(".btn");//보내기
 	
 	var proposeBtn = infoDiv.querySelector(".propose");//신청하기
 	var infoForm = infoDiv.querySelector("#info-form");//신청폼
-	
+	var proposeCancel = this.document.querySelector(".propose-cancel");//프로포즈취소
 	
 	var emailValide = false;//이메일 유효성
-	var isValide =false; //유효성 변수
+//	var isValide =false; //유효성 변수
 	var nameCheck = document.querySelector("#name-check");
 	var emailCheck = document.querySelector("#email-check");
 	var dateCheck = this.document.querySelector("#date-check");
@@ -170,18 +186,16 @@ window.addEventListener("load",function(){
 			infoForm.classList.add("current");
 		}
 	}
-
-	//커플이름 검사 검사. 유니크키만들까말까?
+	//커플이름 검사 검사
 	function nameValide(){
 		if(!coupleName.value){
 		//	coupleName.focus();
 			nameCheck.classList.add("error");
-			isValide=false;
-			return ;
+			return false;
 		}
 		else{
 			nameCheck.classList.remove("error");
-			isValide= true;
+			return true;
 		}
 	}
 	coupleName.onblur = function(){
@@ -196,12 +210,11 @@ window.addEventListener("load",function(){
 		if(!Receiver.value){
 			//Receiver.focus();
 			emailCheck.classList.add("error");
-			isValide=false;
-			return ;
+			return false;
 		}
 		else{
 			emailCheck.classList.remove("error");
-			isValide= true;
+			return true;
 		}
 	}
 	Receiver.onblur = function(){
@@ -230,7 +243,7 @@ window.addEventListener("load",function(){
 				alert("존재하지않는 아이디입니다.");
 			}
 		});
-		request.open("GET","partner?email="+Receiver.value);
+		request.open("GET","get-email?email="+Receiver.value);
 		request.send();
 	}
 
@@ -239,13 +252,11 @@ window.addEventListener("load",function(){
 		if(!loveDate.value){
 			//loveDate.focus();
 			dateCheck.classList.add("error");
-			isValide=false;
-			return ;
+			return false;
 		}
 		else{
 			dateCheck.classList.remove("error");
-			isValide= true;
-			return ;
+			return true;
 		}
 	}
 	loveDate.onblur = function(){
@@ -255,51 +266,54 @@ window.addEventListener("load",function(){
 	//커플정보 보내기
 	submitBtn.onclick = function(e){
 		e.preventDefault();
-		nameValide();
-		idValide();
-		dateValide();
-		
-		if(!isValide){
+		if(!nameValide()){
+			return ;
+		}
+		if(!idValide()){
+			return ;
+		}
+		if(!dateValide()){
 			return ;
 		}
 		if(!emailValide){
 			alert("찾아보기 클릭하기");
 			return ;
 		}
-		var queryString = "coupleName="+coupleName.value+
+		var queryString ="coupleName="+coupleName.value+
 						"&accepterId="+partnerId+
 						"&sloveDate="+loveDate.value+
-						"&message="+message.value+
-						"&proposeId="+proposeId;
+						"&message="+message.value;
 		//alert(queryString);
 		
 		var request = new XMLHttpRequest();
 		request.addEventListener("load",function(){
 	
 			infoForm.classList.remove("current");
-			if(request.responseText=='check'){
+			if(request.responseText > 0){
 				window.location.reload();
 				alert("신청완료");
 			}
 		});
-		request.open("POST","propose");
+		request.open("POST","propose/reg");
 		request.setRequestHeader(header,token);
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send(queryString);
 	}
 	
-});
-//프러포즈 취소
-window.addEventListener("load",function(){
-	var proposeCancel = this.document.querySelector(".propose-cancel");//프로포즈취소
+	//프러포즈 취소
 	if(proposeCancel != null){
 		proposeCancel.onclick = function(){
+			//alert(proposeId);
 			var request = new XMLHttpRequest();
 			request.addEventListener("load",function(){
-				window.location.reload();
-				alert("프로포즈 실패");
+				if(request.responseText >0){
+					window.location.reload();
+					alert("프로포즈 취소완료");
+				}
+				else
+					alert("오류");
 			});
-			request.open("GET","propose/cancel");
+			request.open("GET","propose/cancel?email="+proposeId);
 			request.send()
 		}
 	}
@@ -312,8 +326,11 @@ window.addEventListener("load", function() {
 	changBtn.onclick = function() {	
 		var request = new XMLHttpRequest();
 		request.addEventListener("load", function() {
-			window.location.reload();
-			alert('변경되었습니다.');
+			if(request.responseText >0){
+				window.location.reload();
+				alert('변경되었습니다.');
+
+			}
 		})
 		request.open("GET", "event/update?e=" + eState);
 		request.send();

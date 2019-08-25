@@ -3,8 +3,21 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+	
+	<definition name="user.*.*"
+			template="/WEB-INF/view/user/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		<put-attribute name="title" expression="${title}" /> 
+		<put-attribute name="header"
+			value="/WEB-INF/view/user/inc/header.jsp" />
+		<put-attribute name="main"
+			value="/WEB-INF/view/user/{1}/{2}.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/user/inc/footer.jsp" />
+	</definition>
+	
 	<definition name="admin.*.*"
-			template="/WEB-INF/view/admin/inc/layout.jsp">
+			template="/WEB-INF/view/admin/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
 			value="/WEB-INF/view/admin/inc/header.jsp" />
 		<put-attribute name="aside"
@@ -16,7 +29,8 @@
 	</definition>
 	
 	<definition name="admin.*"
-		template="/WEB-INF/view/admin/inc/layout.jsp">
+		template="/WEB-INF/view/admin/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
 			value="/WEB-INF/view/admin/inc/header.jsp" />
 		<put-attribute name="aside"
@@ -28,16 +42,28 @@
 	</definition>
 
 	<definition name="root.*"
-		template="/WEB-INF/view/inc/root-layout.jsp">
+		template="/WEB-INF/view/inc/root-layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
 			value="/WEB-INF/view/inc/header.jsp" />
 		<put-attribute name="main" value="/WEB-INF/view/{1}.jsp" />
 		<put-attribute name="footer"
 			value="/WEB-INF/view/inc/footer.jsp" />
 	</definition>
+	
+	<definition name="couple.*"
+		template="/WEB-INF/view/inc/root-layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		<put-attribute name="title" expression="${title}" /> 
+		<put-attribute name="header"
+			value="/WEB-INF/view/couple/inc/header.jsp" />
+		<put-attribute name="main" value="/WEB-INF/view/couple/{1}.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/view/couple/inc/footer.jsp" />
+	</definition>
 
 	<definition name="*.*"
-		template="/WEB-INF/view/inc/layout.jsp">
+		template="/WEB-INF/view/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
 			value="/WEB-INF/view/inc/header.jsp" />
 		<put-attribute name="main"

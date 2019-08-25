@@ -11,11 +11,11 @@
 	<div>
 		<div id="profile">
 		<c:choose>
-			<c:when test="${empty user.profile}">
+			<c:when test="${empty solo.profile}">
 			<img class="profile" src="${ctxName }/resource/images/icon/profile.png">
 			</c:when>
-			<c:when test="${!empty user.profile}">
-			<img class="profile" src="${ctxName }/upload/${user.profile}">
+			<c:when test="${!empty solo.profile}">
+			<img class="profile" src="${ctxName }/upload/${solo.profile}">
 			</c:when>
 		</c:choose>
 			<input class ="d-none" type="file" name ="file" >
@@ -23,12 +23,14 @@
 		</div>
 		<div id="nickname">
 			<span>닉네임</span>
-			<input type="text" value="${user.nickName }">
-			<img class="eraser" src="${ctxName }/resource/images/icon/eraser.png">
+			<input type="text" value="${solo.nickname }">
+			<button>
+				<img class="eraser" src="${ctxName }/resource/images/icon/eraser.png">
+			</button>
 		</div>
 		<div>
 			<span>아이디</span>
-			<span>${user.email }</span>
+			<span>${solo.email }</span>
 		</div>
 		<div id="change">
 			<div class="chage-button">
@@ -49,13 +51,13 @@
 				<div>커플상태 </div>
 				<div>
 				<c:choose>
-					<c:when test="${user.cState eq 1 }">
+					<c:when test="${solo.cState eq 1 }">
 						<span>사랑중</span>
 					</c:when>
-					<c:when test="${user.cState eq 0 }">
+					<c:when test="${solo.cState eq 0 }">
 						<span class="waiting">사랑대기중입니다.</span><input class="propose-cancel" type="button" value="취소하기">
 					</c:when>
-					 <c:when test="${user.cState eq -1 }">
+					 <c:when test="${solo.cState eq -1 }">
 						<button class="propose">신청하기</button>
 					</c:when>
 				</c:choose>
@@ -78,7 +80,7 @@
 						<span id="date-check" class="d-none">날짜를 선택해주세요.</span>
 					</li>
 					<li><input type="text" class="message" placeholder="커플 소개  20자  내외"></li>
-					<li><input type="hidden" class="hidden" value="${user.id }"></li>
+					<li><input type="hidden" class="solo-email" value="${solo.email}"></li>
 				</ul>
 				<div>
 					<button class="btn">보내기</button>
@@ -90,23 +92,23 @@
 			<span>이벤트</span>
 			<span class="event-state">
 			<c:choose>
-				<c:when test="${user.echeck eq 'T'}">
+				<c:when test="${solo.echeck eq 'T'}">
 					동의
 				</c:when>
-				<c:when test="${user.echeck eq 'F'}">
+				<c:when test="${solo.echeck eq 'F'}">
 					비동의
 				</c:when>
 			</c:choose>
 			</span>
 		
-			<input type="hidden" value="${user.echeck }">
+			<input type="hidden" value="${solo.echeck }">
 			<input type="button" value="변경하기">
 		</div>
 		
 		<div>
 			<span>가입일</span>
 			<span>
-				<fmt:formatDate pattern="yyyy-MM-dd'T'HH:mm:ss" value="${user.regDate}"/>
+				<fmt:formatDate pattern="yyyy-MM-dd'T'HH:mm:ss" value="${solo.regDate}"/>
 			</span>
 		</div>
 			<input type="hidden" name = "header" value="${_csrf.headerName}"> 

@@ -22,7 +22,7 @@ public class MyBatisUserDao implements UserDao{
 	}
 
 	@Override
-	public User get(Integer id) {
+	public User get(int id) {
 		UserDao dao = sqlSession.getMapper(UserDao.class);
 		return dao.get(id);
 	}
@@ -47,7 +47,7 @@ public class MyBatisUserDao implements UserDao{
 
 
 	@Override
-	public int delete(Integer id) {
+	public int delete(int id) {
 		UserDao dao = sqlSession.getMapper(UserDao.class);
 		return dao.delete(id);
 	}

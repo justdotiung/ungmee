@@ -22,4 +22,10 @@ public class MyBatisSoloDao implements SoloDao {
 		return soloDao.insert(solo);
 	}
 
+	@Override
+	public int update(Solo solo) {
+		SoloDao soloDao = sqlSession.getMapper(SoloDao.class);		
+		return soloDao.update(solo);
+	}
+
 }

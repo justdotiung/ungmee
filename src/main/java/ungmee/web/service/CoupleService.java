@@ -14,10 +14,10 @@ public interface CoupleService {
 	//커플등록
 	public int regInfo(Couple couple, Date sloveDate, int id);
 	//프로포즈 취소
-	public int proposeCancel(int pId);
+	public int proposeCancel(String email);
 	//프로포즈 수락
 	public int proposeAccept(int coupleId, int aId);
 	//프로포즈 거절
-	public int prposeRefuse(int coupleId, int uId);
+	public int prposeRefuse(int coupleId);
 
 }

@@ -30,6 +30,12 @@ public class MyBatisCoupleDao implements CoupleDao{
 	}
 	
 	@Override
+	public Couple getSender(int id) {
+		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);	
+		return coupleDao.getSender(id);
+	}
+
+	@Override
 	public int update(Couple couple) {
 		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
 		return coupleDao.update(couple);
@@ -42,9 +48,9 @@ public class MyBatisCoupleDao implements CoupleDao{
 	}
 
 	@Override
-	public int delete(int proposeid) {
+	public int delete(int coupleId) {
 		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
-		return coupleDao.delete(proposeid);
+		return coupleDao.delete(coupleId);
 	}
 
 	@Override
@@ -63,5 +69,7 @@ public class MyBatisCoupleDao implements CoupleDao{
 		CoupleDao coupleDao = sqlSession.getMapper(CoupleDao.class);
 		return coupleDao.getNewProposeCount(accepterId);
 	}
+
+
 	
 }

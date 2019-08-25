@@ -15,8 +15,9 @@
 		    old_data oldData,
 		    ask,
 		    read,	  
-		    accept 
-	    FROM couple WHERE id = #{param1}
+		    accept,
+		    pseudo 
+	    FROM couple WHERE id = #{id}
  	</select>
 
  	<select id="getUser" resultType="ungmee.web.entity.Couple">
@@ -31,7 +32,8 @@
 		    old_data oldData,
 		    ask,
 		    read,
-		    accept 
+		    accept,
+		    pseudo 
 	    FROM couple WHERE propose_id = #{id} and old_data = 1
  		UNION
 	 	SELECT 
@@ -45,10 +47,28 @@
 		    old_data oldData,
 		    ask,
 		    read,
-		    accept 
+		    accept,
+		    pseudo
 		 FROM couple where accepter_id = #{id} and old_data = 1
  	</select>
  
+ 	<select id="getSender" resultType="ungmee.web.entity.Couple">
+	 	SELECT 
+	 		id,  
+	 		propose_id proposeId,
+		    accepter_id accepterId, 
+		    couple_name coupleName,
+		    message,
+		    lovedate,
+		    couple_profile coupleProfile,
+		    old_data oldData,
+		    ask,
+		    read,	  
+		    accept,
+		    pseudo
+	    FROM couple WHERE propose_id = #{id} and accept = 0
+ 	</select>
+ 	
  	<insert id="insert" parameterType="ungmee.web.entity.Couple">
  		INSERT INTO couple
  		(
@@ -60,11 +80,7 @@
 				#{coupleName}, #{message}, #{loveDate}
 		)
  	</insert>
- 	
- 	<delete id="delete">
-		delete couple where propose_id = #{proposeId}
- 	</delete>
- 	
+ 
  	<update id="update" parameterType="ungmee.web.entity.Couple">
 	 	UPDATE 
 	 		couple
@@ -78,9 +94,7 @@
 		</if>
 		    old_data = #{oldData},
 		    read = #{read},
-	     <if test="accept != null">
 		    accept = #{accept}   
-	    </if>
 		WHERE
 			id= #{id}
  	</update>
@@ -97,7 +111,8 @@
 	      old_data oldData,
 	      ask,
 	      read,
-	      accept 
+	      accept,
+	      pseudo 
  		FROM COUPLE WHERE accepter_id = #{param1}
  		<if test="param2 lt 2">
  			AND read = #{param2}
@@ -110,6 +125,8 @@
  		 and read= 0
  	</select>
  	
- 	
- 	
+ 	<delete id="delete">
+ 		delete from couple where id= #{coupleId}
+ 	</delete>
+
  </mapper>

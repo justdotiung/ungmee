@@ -27,4 +27,16 @@ window.addEventListener("load",function(){
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send(info);
     }
+
+    refuse.onclick = function(){
+        alert("gkdl")
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener("load",function(){
+            if(xhr.responseText != -1)
+                window.location.href=ctxName+"/index";
+        });
+        xhr.open("GET",ctxName+"/couple/info/refuse?coupleId="+cId );
+        xhr.send();
+
+    }
 });

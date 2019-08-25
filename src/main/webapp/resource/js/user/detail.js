@@ -283,7 +283,7 @@ window.addEventListener("load",function(){
 						"&accepterId="+partnerId+
 						"&sloveDate="+loveDate.value+
 						"&message="+message.value;
-		alert(queryString);
+		//alert(queryString);
 		
 		var request = new XMLHttpRequest();
 		request.addEventListener("load",function(){
@@ -303,7 +303,7 @@ window.addEventListener("load",function(){
 	//프러포즈 취소
 	if(proposeCancel != null){
 		proposeCancel.onclick = function(){
-			alert(proposeId);
+			//alert(proposeId);
 			var request = new XMLHttpRequest();
 			request.addEventListener("load",function(){
 				if(request.responseText >0){
@@ -313,7 +313,7 @@ window.addEventListener("load",function(){
 				else
 					alert("오류");
 			});
-			request.open("GET","propose/cancel?pId="+proposeId);
+			request.open("GET","propose/cancel?email="+proposeId);
 			request.send()
 		}
 	}

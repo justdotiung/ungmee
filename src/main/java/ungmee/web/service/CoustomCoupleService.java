@@ -22,6 +22,9 @@ public class CoustomCoupleService implements CoupleService {
 	private CoupleDao coupleDao;
 	@Autowired
 	private SoloDao soloDao;
+	@Autowired
+	private UserDao userDao;
+	
 	
 	@Override
 	public Couple getCoupleInfo(int id) {
@@ -41,11 +44,15 @@ public class CoustomCoupleService implements CoupleService {
 	}
 
 	@Override
-	public int proposeCancel(int pId) {
-		coupleDao.delete(pId);
-		Solo solo = soloDao.get(pId);
+	public int proposeCancel(String email) {
+		User user = userDao.getEmail(email);
+		Solo solo = soloDao.get(user.getId());
+		Couple couple = coupleDao.getSender(solo.getId());
+
 		solo.setcState(-1);
-		int result = soloDao.update(solo);
+		soloDao.update(solo);
+		
+		int result = coupleDao.delete(couple.getId());
 		
 		return result;
 	}
@@ -53,13 +60,13 @@ public class CoustomCoupleService implements CoupleService {
 	@Override
 	public int proposeAccept(int cId,int aId) {
 		Solo acceptSolo = soloDao.get(aId); //수락자 아이디 
-		Couple couple = coupleDao.get(cId); //커플 FK를 이용한 정보 아이디
+		Couple couple = coupleDao.get(cId); //커플 pk를 이용한 정보 아이디
 		Solo proposeSolo = soloDao.get(couple.getProposeId());//프로포즈 아이디
 		Couple check = coupleDao.getUser(aId);//커플상태 인지아닌지 여부
 		
 		
 		if(check != null) {
-			System.out.println("이미커플상태");
+			//System.out.println("이미커플상태");
 			return -2;
 		}
 		
@@ -71,16 +78,21 @@ public class CoustomCoupleService implements CoupleService {
 		
 		couple.setAccept(1);
 		couple.setOldData(1);
+		couple.setPseudo(1);
 		int result  = coupleDao.update(couple);
 		
 		return result;
 	}
 
 	@Override
-	public int prposeRefuse(int coupleId, int id) {
-		Couple couple = coupleDao.get(id); //커플 수락 아이디
-		couple.setAccept(0);
-		int result = coupleDao.update(couple);
+	public int prposeRefuse(int coupleId) {
+		Couple couple = coupleDao.get(coupleId); //커플 수락 아이디
+		Solo solo = soloDao.get(couple.getProposeId());//프로포즈 아이디
+		
+		solo.setcState(-1);
+		soloDao.update(solo);
+		
+		int result = coupleDao.delete(coupleId);
 		return result;
 	}
 

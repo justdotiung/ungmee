@@ -52,7 +52,7 @@ public class CoustomPushService implements PushService{
 		//noticeDao.getList(accepterId);
 		//eventDao.getList(accepterId);
 		List<Couple> coupleList = coupleDao.getProposeList(accepterId);
-		System.out.println("listsize " +coupleList.size());
+		//System.out.println("listsize " +coupleList.size());
 		Map<String,Object> couple ;
 		for(Couple c : coupleList) {
 			couple = new HashMap<String, Object>();

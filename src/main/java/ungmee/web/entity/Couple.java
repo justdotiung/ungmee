@@ -28,7 +28,15 @@ public class Couple {
     private Date ask;
     private int read;
     private int accept;
-	
+	private int pseudo;
+
+	public int getPseudo() {
+		return pseudo;
+	}
+
+	public void setPseudo(int pseudo) {
+		this.pseudo = pseudo;
+	}
 
 	public Couple() {}
 
@@ -124,8 +132,11 @@ public class Couple {
 	public String toString() {
 		return "Couple [id=" + id + ", proposeId=" + proposeId + ", accepterId=" + accepterId + ", coupleName="
 				+ coupleName + ", message=" + message + ", loveDate=" + loveDate + ", coupleProfile=" + coupleProfile
-				+ ", oldData=" + oldData + ", ask=" + ask + ", read=" + read + ", accept=" + accept + "]";
+				+ ", oldData=" + oldData + ", ask=" + ask + ", read=" + read + ", accept=" + accept + ", pseudo="
+				+ pseudo + "]";
 	}
+
+
 
 	
 	

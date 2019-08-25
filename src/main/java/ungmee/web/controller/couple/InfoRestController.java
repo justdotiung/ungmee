@@ -4,6 +4,7 @@ package ungmee.web.controller.couple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,11 +28,10 @@ public class InfoRestController {
 		return result;
 	}
 	
-	@PostMapping("refuse")
-	public int reject(Authentication auth, int coupleId) {
-		CustomUserDetails cUser = (CustomUserDetails) auth.getPrincipal();
-		int id = cUser.getId();
-		int result = coupleService.prposeRefuse(coupleId, id);
+	@GetMapping("refuse")
+	public int reject( int coupleId) {
+		
+		int result = coupleService.prposeRefuse(coupleId);
 		return result;
 	}
 }

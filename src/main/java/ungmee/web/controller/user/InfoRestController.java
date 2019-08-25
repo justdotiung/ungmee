@@ -148,8 +148,8 @@ public class InfoRestController {
 	}
 	
 	@GetMapping("propose/cancel")
-	public int proposeCancel(int pId) {
-		int result = coupleService.proposeCancel(pId);
+	public int proposeCancel(String email) {
+		int result = coupleService.proposeCancel(email);
 		return result;
 	}
 	@GetMapping("event/update")

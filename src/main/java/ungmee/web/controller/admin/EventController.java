@@ -48,14 +48,14 @@ public class EventController {
 	}
 
 	@PostMapping("reg")
-	public String reg(Event event, Authentication auth, String category, MultipartFile[] file, HttpServletRequest request)
+	public String reg(Event event, EventFile eventFile, Authentication auth, String category, MultipartFile[] file, HttpServletRequest request)
 			throws IOException {
 		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
 		int id = details.getId();
 		event.setAdminId(id);
 		System.out.println(event);
 		eventDao.insert(event);
-
+		eventFileDao.insert(eventFile);
 		return "redirect:list";
 	}
 	
@@ -67,7 +67,7 @@ public class EventController {
 		String fileName;
 		String urlPath = "/upload";
 		String realPath = request.getServletContext().getRealPath(urlPath);
-if(file ==null)
+			if(file ==null)
 			System.out.println("data");
 
 			fileName = file[0].getOriginalFilename();
@@ -140,6 +140,7 @@ if(file ==null)
 	public String list(Model model) {
 
 		List<Event> events = eventDao.getList();
+		
 		for (Event e : events) {
 			List<EventFile> efiles = eventFileDao.getListByEventId(e.getId());
 			System.out.println("filesize:" + efiles.size());

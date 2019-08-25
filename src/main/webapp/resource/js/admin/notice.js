@@ -16,35 +16,39 @@
 window.addEventListener("load",function(){
     var section = this.document.querySelector("#notice");
     //버튼이 여러개 -> 부모에게 걸어준다
-    var noticeList = section.querySelector(".notice-lists")
-    var noticeTemplate = section.querySelector(".notice-template-section");
-    var detailButton = section.querySelector(".btn-detail")
-    var detailButton1 = section.querySelector(".btn-detail1")
-    
-    noticeList.onclick = function(e){
-    	var detailButton = e.target;
-        if(!detailButton.classList.contains("btn-detail"))
-            return;
-    	
-    	var contentDiv = detailButton.parentElement.nextElementSibling;
-    	//console.log(typeof content);
-    	contentDiv.classList.add("current");
-    	alert("내용을 불러옴");
-    	
-    	
-    	
-    }
-    noticeTemplate.onclick = function(t){
-    	alert("내용을 불러옴");
-    	var detailButton1 = t.target;
-        //if(!detailButton1.classList.contains("btn-detail1"))
-        //    return;
-    		if(event.target==detailButton1){
-    	var contentDiv1 = detailButton1.parentElement.nextElementSibling;
-    	//console.log(typeof content);
-    	contentDiv1.classList.add("currentc");
-    		}
-    }
+    var noticeLists = section.querySelector(".notice-lists");
+    noticeLists.onclick = function(e){
+        var contentDiv = e.target.parentElement.nextElementSibling;
+        console.log("00"+e.target);
+        console.log("00"+e.target.className);
+        contentDiv.classList.add("current");
+    };
+//    noticeLists.addEventListener("click",function(e){
+//        console.log("gma")
+//         if(e.target.type !='button')
+//             return;
+//             console.log("gkgk")
+//         for(var i = 0; i<detailButton.length; i++){
+//             if(detailButton[i].onclick)
+//             console.log("gpgp")
+//                 content[i].classList.add("current");
+//         }
+//    })
+   
+    //     console.log('e'+e.currentTarget);
+    //     for(var i =0; i<detailButtons.length; i++)
+    //    console.log(detailButtons.length);
+    //     // var detailButton = e.target;
+    //    // if(!detailButton.classList.contains("btn-detail"))
+    //     // return;
+       
+    //    // var contentDiv = detailButton.parentElement.nextElementSibling;
+    //    // //console.log(typeof content);
+    //    // contentDiv.classList.add("current");
+    //     alert("내용을 불러옴");
+    //     content.classList.add("current");
+    // }
+  
  
 });
 
@@ -68,7 +72,7 @@ window.addEventListener("scroll", function(e){
              request.addEventListener("load" ,function() {
                  //버튼이 여러개 -> 부모에게 걸어준다
                  
-            	 var json = JSON.parse(request.responseText);
+                var json = JSON.parse(request.responseText);
                  console.log(request.responseText);
                  //alert(json);
                  
@@ -80,7 +84,7 @@ window.addEventListener("scroll", function(e){
                  var writerEl = cloneTr.querySelector(".writerId");
                  var regdateEl = cloneTr.querySelector(".regDate");
                  var titleEl = cloneTr.querySelector(".title");
-                 var contentEl = cloneTr.querySelector(".contentc");
+                 var contentEl = cloneTr.querySelector(".content");
                  categoryEl.innerText = json[i].categoryName;
                  writerEl.innerText = json[i].writerId;
                  regdateEl.innerText = json[i].regDate;
@@ -89,10 +93,22 @@ window.addEventListener("scroll", function(e){
                  console.log(json[i].id);
                  
                  notice.append(cloneTr);
-               
-                 
-             
                 }
+                 
+                 
+                 var noticeLists = document.querySelectorAll(".notice-template-section");
+                 
+                 for(var i =0;  i < noticeLists.length; i++){
+                    noticeLists[i].onclick =function(e){
+
+                        var contentDiv = e.target.parentElement.nextElementSibling;
+                        // console.log("00"+e.target);
+                        // console.log("00"+e.target.className);
+                        contentDiv.classList.add("current");
+                    }
+                }
+                
+                   
             });
             request.open("GET", "list-json?p=" + (++pageLoaded));
             request.send();
@@ -139,14 +155,14 @@ window.addEventListener("scroll", function(e){
 
 
 
-	// alert("온스크롤");
+   // alert("온스크롤");
     // var section = document.querySelector("#reg-notice");
     // var notice = section.querySelector("#notice-lists");
     // var maxHeight = document.height();
     // var currentScroll = window.scrollTop() + window.height();
     
     // if(maxHeight <= currentScroll + 100){
-    // 	notice.append("notice");
+    //    notice.append("notice");
     // }
     
 //    if(window.scrollTop() == document.height() - window.height()){

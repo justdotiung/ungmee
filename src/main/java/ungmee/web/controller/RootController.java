@@ -74,20 +74,23 @@ public class RootController {
 	public String partnersignup() {
 		return "partner/signup";
 	}
-	
+//스프링만 사용할 때 ENTITY와 JSP 변수명 연결해주기 1
+//	@PostMapping("partner-signup")
+//	public String partnersignup(User user, Partner partner, @RequestParam("boss-name")String bName, 
+//			@RequestParam("partner-name")String pName, @RequestParam("partner-type")String pType ) {
 	@PostMapping("partner-signup")
-	public String partnersignup(User user, Partner partner, @RequestParam("boss-name")String bName, 
-			@RequestParam("partner-name")String pName, @RequestParam("partner-type")String pType ) {
-		
+	public String partnersignup(User user, Partner partner) {	
 		String pwd = user.getPw();
 		System.out.println("signup-pwd:"+ pwd);
 		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
 		pwd = pwdEncoder.encode(pwd);
 		
 		user.setPw(pwd);
-		partner.setbName(bName); //사장님이름
-		partner.setpName(pName); //상호명
-		partner.setpType(pType); //업종
+		
+//스프링만 사용할 때 ENTITY와 JSP 변수명 연결해주기 2		
+//		partner.setbName(bName); //사장님이름
+//		partner.setpName(pName); //상호명
+//		partner.setpType(pType); //업종
 		
 		
 		//user는 공통회원정보를 담고있는 객체(이메일,비번,닉네임) db 커밋되기 객체 다. 

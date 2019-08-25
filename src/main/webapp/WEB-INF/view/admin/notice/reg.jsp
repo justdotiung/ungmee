@@ -13,10 +13,11 @@
 
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/admin/notice/reg.css">
-<script src="${ctxName}/resource/lib/editor/editor.js"></script>
+<script src="${ctxName}/resource/lib/neweditor/editor.js"></script>
+<script src="${ctxName}/resource/lib/neweditor/util.js"></script>
 <script>
 window.addEventListener("load",function(){
-	var editor = new Editor("../../resource/lib/editor", ".textarea");
+	var editor = new Editor("../../resource/lib/neweditor", ".textarea", "/ungmeespring/upload");
 	/*에디터 하나 더 추가하고 싶을 때 */
 	/* var editor2 = new Editor("../../resource/lib/editor", ".textarea2"); */
 });
@@ -52,6 +53,5 @@ window.addEventListener("load",function(){
 	<input type="submit" value="저장"> <a href="list">취소</a>
 </div>
 </form>
-
 </main>
 </html>

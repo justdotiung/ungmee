@@ -16,7 +16,7 @@
 <script src="${ctxName}/resource/lib/neweditor/util.js"></script>
 <script>
 window.addEventListener("load",function(){
-	var editor = new Editor("../../resource/lib/neweditor", ".textarea", "/ungmeespring/upload");
+	var editor = new Editor("../../resource/lib/neweditor", ".textarea", "/ungmeespring/upload");	
 	/*에디터 하나 더 추가하고 싶을 때 */
 	/* var editor2 = new Editor("../../resource/lib/editor", ".textarea2"); */
 });
@@ -46,7 +46,7 @@ window.addEventListener("load",function(){
 			<div class="file"><input type="file" name="file" multiple="multiple"></div>
 			<div class="content">
 				<textarea class="textarea" name="content" id="content"></textarea>
-				 <input name="content" placeholder="내용은 입력안하려구? >3<">
+				<%--  <input name="content" placeholder="내용은 입력안하려구? >3<"> --%>
 			</div>
 			<div>
 			<input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />

@@ -18,7 +18,7 @@
 	<div id="member-state">
 		<div>
 		<security:authorize access="!isAuthenticated()">
-			<a href="${ctxName}/couple/info">코스보기</a>
+			<a href="${ctxName}/course/list">코스보기</a>
 			<a href="${ctxName}/login">로그인</a>			
 			<a href="${ctxName}/signup">회원가입</a>
 		</security:authorize>
@@ -27,10 +27,10 @@
 		<security:authorize access="isAuthenticated()">
 			<div>
 			<security:authorize access="hasRole('USER')">
+				<a href="${ctxName}/course/list">코스보기</a>
 				<c:if test="${user.cState eq '1' }">
 				<button class="couple-btx">커플정보</button>
 				</c:if>
-				<a href="${ctxName}/user/detail">정보수정</a>
 				<a href="${ctxName}/user/alert/list" id="user-alert-toggle">알람</a>
 				<c:if test="${count > 0}">
 				<span class="new-alert">new${count}</span>
@@ -42,6 +42,7 @@
 			</div>
 			<div>
 				<form action="${ctxName}/logout" method="post">
+				<a href="${ctxName}/user/detail">정보수정</a>
 					<input type="submit" value="로그아웃">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				</form>		
@@ -51,7 +52,7 @@
 	</div>
 	<div class="couple-info-toggle d-none">
 		<a href="${ctxName}/couple/info/index">커플페이지</a>
-		<a href="${ctxName}/couple/info">커플정보 수정</a>
+		<a href="${ctxName}/couple/info/detail">커플정보 수정</a>
 		<a href="${ctxName}/couple/info">우리만의 비밀글</a>
 		<a href="${ctxName}/couple/info">스케줄러</a>
 	</div>

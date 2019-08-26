@@ -20,10 +20,10 @@ public class Couple {
     private int id;
     private int proposeId;
     private int accepterId;
-    private String coupleName;
+    private String name;
     private String message;
     private Date loveDate;
-    private String coupleProfile;
+    private String profile;
     private int oldData;
     private Date ask;
     private int read;
@@ -64,14 +64,6 @@ public class Couple {
 		this.accepterId = accepterId;
 	}
 
-	public String getCoupleName() {
-		return coupleName;
-	}
-
-	public void setCoupleName(String coupleName) {
-		this.coupleName = coupleName;
-	}
-
 	public String getMessage() {
 		return message;
 	}
@@ -88,12 +80,20 @@ public class Couple {
 		this.loveDate = loveDate;
 	}
 
-	public String getCoupleProfile() {
-		return coupleProfile;
+	public String getName() {
+		return name;
 	}
 
-	public void setCoupleProfile(String coupleProfile) {
-		this.coupleProfile = coupleProfile;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 
 	public int getOldData() {
@@ -130,10 +130,9 @@ public class Couple {
 
 	@Override
 	public String toString() {
-		return "Couple [id=" + id + ", proposeId=" + proposeId + ", accepterId=" + accepterId + ", coupleName="
-				+ coupleName + ", message=" + message + ", loveDate=" + loveDate + ", coupleProfile=" + coupleProfile
-				+ ", oldData=" + oldData + ", ask=" + ask + ", read=" + read + ", accept=" + accept + ", pseudo="
-				+ pseudo + "]";
+		return "Couple [id=" + id + ", proposeId=" + proposeId + ", accepterId=" + accepterId + ", name=" + name
+				+ ", message=" + message + ", loveDate=" + loveDate + ", profile=" + profile + ", oldData=" + oldData
+				+ ", ask=" + ask + ", read=" + read + ", accept=" + accept + ", pseudo=" + pseudo + "]";
 	}
 
 

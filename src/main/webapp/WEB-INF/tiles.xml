@@ -18,14 +18,14 @@
 	</definition>
 	
 	<definition name="*.*.*"
-			template="/WEB-INF/view/user/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+			template="/WEB-INF/view/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
-			value="/WEB-INF/view/user/inc/header.jsp" />
+			value="/WEB-INF/view/inc/header.jsp" />
 		<put-attribute name="main"
 			value="/WEB-INF/view/{1}/{2}/{3}.jsp" />
 		<put-attribute name="footer"
-			value="/WEB-INF/view/user/inc/footer.jsp" />
+			value="/WEB-INF/view/inc/footer.jsp" />
 	</definition>
 
 	<definition name="admin.*"

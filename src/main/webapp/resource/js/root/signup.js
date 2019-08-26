@@ -506,31 +506,38 @@ window.addEventListener("load",function(){
 	 //입력여부
 	    if(email.value==""){
 	    	alert("이메일을 입력해주세요");
-	    	email.focus();
+            email.focus();
+            return;
 		}
 		if(password.value==""){
 			alert("비밀번호를 입력해주세요");
-			password.focus();
+            password.focus();
+            return;
 		}
 	    if(nickname.value==""){
 	    	alert("닉네임을 입력해주세요");
-	    	nickname.focus();
+            nickname.focus();
+            return;
 	    }	
 	    if(bossName.value==""){
 	    	alert("이름을 입력해주세요");
-	    	bossName.focus();
+            bossName.focus();
+            return;
 	    }
 	    if(phone.value==""){
 	    	alert("전화번호를 입력해주세요");
-	    	phone.focus();
+            phone.focus();
+            return;
 	    }
 	    if(partnerName.value==""){
 	    	alert("상호명을 입력해주세요");
-	    	partnerName.focus();
+            partnerName.focus();
+            return;
 	    }
 	    if(partnerType.value==""){
 	    	alert("업종을 입력해주세요");
-	    	partnerType.focus();
+            partnerType.focus();
+            return;
 	    }
 	    
 	    
@@ -549,7 +556,9 @@ window.addEventListener("load",function(){
        alert(queryString);
        var request = new XMLHttpRequest();
            request.addEventListener("load",function(){
-               Console.log(request.responseText);
+             //  console.log(request.responseText);
+             alert("회원가입 완료")
+               window.location.href = 'index';
                
         });
        request.open("POST","partner-signup");

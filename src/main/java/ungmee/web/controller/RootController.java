@@ -55,22 +55,16 @@ public class RootController {
 	}
 
 	
-	@GetMapping("partner-signup")
-	public String partnersignup() {
-		return "partner/signup";
-	}
-//스프링만 사용할 때 ENTITY와 JSP 변수명 연결해주기 1
+
+	
+	//스프링만 사용할 때 ENTITY와 JSP 변수명 연결해주기 1
 //	@PostMapping("partner-signup")
 //	public String partnersignup(User user, Partner partner, @RequestParam("boss-name")String bName, 
-//			@RequestParam("partner-name")String pName, @RequestParam("partner-type")String pType ) {
-	@PostMapping("partner-signup")
-	public String partnersignup(User user, Partner partner) {	
-		String pwd = user.getPw();
-		System.out.println("signup-pwd:"+ pwd);
-		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-		pwd = pwdEncoder.encode(pwd);
-		
-		user.setPw(pwd);
+
+//		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+//		pwd = pwdEncoder.encode(pwd);
+//		
+//		user.setPw(pwd);
 		
 //스프링만 사용할 때 ENTITY와 JSP 변수명 연결해주기 2		
 //		partner.setbName(bName); //사장님이름
@@ -81,22 +75,10 @@ public class RootController {
 		//user는 공통회원정보를 담고있는 객체(이메일,비번,닉네임) db 커밋되기 객체 다. 
 		//insertUser 는 지금 회원 가입한 사람의 정보를 담고 있는 객체 db 커밋된 객체 를 가져온다.
 		
-		
-		// 공통 회원 정보 삽입
-		userDao.insertPartner(user);
-		// 방금 가입 회원 정보 가져오기
-		User insertUser = userDao.getEmail(user.getEmail());
-		//등록된 회원의 ID 가져온다 
-		insertUser.getId();
-		System.out.println("인서트전 유저아이디" + insertUser.getId());
-		partner.setUserId(insertUser.getId());
-		System.out.println("인서트후 유저아이디" + partner.getUserId());
-		partnerDao.insert(partner);
-		
-		
-		return "redirect:/index" ; 	
-	}
-	
+
+//		
+//		return "redirect:/index" ; 	
+//	}
 	@RequestMapping("index")
 	public String index(Model model,Authentication auth,HttpServletRequest req) {
 		

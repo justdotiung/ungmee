@@ -5,11 +5,14 @@ package ungmee.web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import ungmee.web.dao.PartnerDao;
 import ungmee.web.dao.SoloDao;
 import ungmee.web.dao.SoloViewDao;
 import ungmee.web.dao.UserDao;
+import ungmee.web.entity.Partner;
 import ungmee.web.entity.Solo;
 import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
@@ -23,7 +26,8 @@ public class CustomMemberShipService implements MemberShipService {
 	private SoloDao soloDao;
 	@Autowired
 	private SoloViewDao soloViewDao; 
-	
+	@Autowired
+	private PartnerDao partnerDao;
 	
 	
 	@Override
@@ -89,5 +93,27 @@ public class CustomMemberShipService implements MemberShipService {
 	public User getEmail(String email) {
 		User user = userDao.getEmail(email);
 		return user;
+	}
+	@Override
+	public int partnerReg(User user, Partner partner) {
+		String pwd = user.getPw();
+		System.out.println("signup-pwd:"+ pwd);
+		PasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
+		pwd = pwdEncoder.encode(pwd);
+		
+		user.setPw(pwd);
+		
+		// 공통 회원 정보 삽입
+		userDao.insert(user);
+		// 방금 가입 회원 정보 가져오기
+		User insertUser = userDao.getEmail(user.getEmail());
+		//등록된 회원의 ID 가져온다 
+		insertUser.getId();
+		//System.out.println("인서트전 유저아이디" + insertUser.getId());
+		partner.setUserId(insertUser.getId());
+		//System.out.println("인서트후 유저아이디" + partner.getUserId());
+		int result = partnerDao.insert(partner);
+		
+		return result;
 	}
 }

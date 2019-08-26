@@ -38,13 +38,6 @@
  		 	(#{email},#{pw},#{echeck},#{roleId},#{nickName})
  	</insert>
  	
- 	<insert id="insertPartner" parameterType="ungmee.web.entity.User">
- 		INSERT INTO "USER" 
- 			(email, pw, nickname)
- 		 VALUES 
- 		 	(#{email},#{pw},#{nickName})
- 	</insert>
- 	
 	<update id="edit" parameterType="ungmee.web.entity.User">
 		UPDATE "USER" SET
 			  email = #{email}, pw= #{pw}, regdate= #{regDate}, enabled= #{enabled}, ROLE_ID= #{roleId},

@@ -2,12 +2,14 @@ package ungmee.web.service;
 
 
 
+import ungmee.web.entity.Partner;
 import ungmee.web.entity.Solo;
 import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
 
 public interface MemberShipService {
 	public int soloRegistration(User user, Solo solo);
+	public int partnerReg(User user, Partner partner);
 	public SoloView getSoloInfo(int id);
 	boolean duplicateUserEmail(String email);
 	

@@ -12,7 +12,6 @@ public interface UserDao {
 	public User getEmail(String email);
 	
 	public int insert(User user);
-	public int insertPartner(User user);
 	public int edit(User user);
 	public int delete(int id);
 }

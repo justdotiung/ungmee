@@ -113,11 +113,11 @@
 	      read,
 	      accept,
 	      pseudo 
- 		FROM COUPLE WHERE accepter_id = #{param1}
+ 		FROM COUPLE WHERE accepter_id = #{param1} 
  		<if test="param2 lt 2">
  			AND read = #{param2}
  		</if>	
- 	
+ 		AND pseudo = 0
  	</select>
  	
  	<select id="getNewProposeCount" resultType="int">

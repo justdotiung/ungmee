@@ -14,20 +14,23 @@ import ungmee.web.service.CoupleService;
 
 
 @Controller("coupleInfoController")
-@RequestMapping("/couple/")
+@RequestMapping("/couple/info/")
 public class InfoController {
 	
 	@Autowired
 	private CoupleService coupleService;
 
-	@RequestMapping("info")
+	@RequestMapping("index")
 	public String index(Model model ,Authentication auth) {
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 		int uId = user.getId();
 		Couple couple = coupleService.getCoupleInfo(uId);
-		model.addAttribute("couple", couple);
-		model.addAttribute("title",couple.getCoupleName());
-		return "couple.info";
+		if(couple != null) {
+			model.addAttribute("couple", couple);
+			model.addAttribute("title",couple.getCoupleName());
+			return "couple.info.index";
+		}
+		return "redirect:/error/solo";
 	}
 }
 

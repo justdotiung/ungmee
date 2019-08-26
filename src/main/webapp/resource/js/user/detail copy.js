@@ -377,12 +377,10 @@ window.addEventListener("load", function() {
 window.addEventListener("load",function(){
 	var cState = this.document.querySelector("#couple-state");
 	var proposeBtn = cState.querySelector("input[name=propose]");
-
 	proposeBtn.onclick = function(e){
 		e.preventDefault();
 	
 		var ws = new WebSocket("ws://localhost:8080/ungmeespring/user/detail");
-
 		ws.onopen = function(){
 			console.log("info : connection opend");
 			setTimeout(function(){connection();},1000)
@@ -396,7 +394,6 @@ window.addEventListener("load",function(){
 		// ws.onmessage = function(event){
 		// 	console.log(event.data+'\n');
 		// }
-
 		ws.onclose = function(event) {console.log('info.closed')};
 		ws.onerror = function(err) {console.log('info error',err)};
 	}

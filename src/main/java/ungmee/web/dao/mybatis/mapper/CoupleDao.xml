@@ -73,11 +73,11 @@
  		INSERT INTO couple
  		(
 		    	PROPOSE_ID, ACCEPTER_ID, 
-		    	couple_name,	message, lovedate
+		    	name,	message, lovedate
 		)
 		VALUES
 		(	#{proposeId}, #{accepterId},	
-				#{coupleName}, #{message}, #{loveDate}
+				#{name}, #{message}, #{loveDate}
 		)
  	</insert>
  
@@ -94,7 +94,8 @@
 		</if>
 		    old_data = #{oldData},
 		    read = #{read},
-		    accept = #{accept}   
+		    accept = #{accept},
+		    pseudo = #{pseudo}  
 		WHERE
 			id= #{id}
  	</update>

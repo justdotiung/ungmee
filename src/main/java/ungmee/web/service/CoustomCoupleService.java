@@ -130,18 +130,25 @@ public class CoustomCoupleService implements CoupleService {
 	}
 
 	@Override
-	public int messageUpdate(String name, int id) {
+	public int messageUpdate(String message, int id) {
 		Couple couple = coupleDao.getUser(id);
-		couple.setName(name);
+		couple.setMessage(message);
 		int result= coupleDao.update(couple);
 		return result;
 	}
 
 	@Override
-	public int editSoloProfile(int id, String fileName) {
-		Couple couple = coupleDao.get(id);
+	public int editProfile(int id, String fileName) {
+		Couple couple = coupleDao.getUser(id);
 		couple.setProfile(fileName);
 		int result = coupleDao.update(couple);
+		return result;
+	}
+
+	@Override
+	public int breakUp(int id) {
+		Couple couple = coupleDao.getUser(id);
+		int result = coupleDao.delete(couple.getId());
 		return result;
 	}
 

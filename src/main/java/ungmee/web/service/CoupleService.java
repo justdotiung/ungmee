@@ -25,8 +25,10 @@ public interface CoupleService {
 	//이름 변경
 	public int nameUpdate(String name, int id);
 	//상태 변경
-	public int messageUpdate(String name, int id);
+	public int messageUpdate(String message, int id);
 	//프로필 변경
-	public int editSoloProfile(int id, String fileName);
+	public int editProfile(int id, String fileName);
+	//커플 헤어지기
+	public int breakUp(int id);
 
 }

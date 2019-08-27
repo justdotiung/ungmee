@@ -34,6 +34,7 @@ public class InfoRestController {
 	@Autowired
 	private CoupleService coupleService;
 	
+	//날짜별 폴더생성 
 	private String getFolder() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
@@ -59,7 +60,7 @@ public class InfoRestController {
 		return result;
 	}
 	
-	@PostMapping("name-update")
+	@GetMapping("name-update")
 	public int nameUpdate(Authentication auth, String name) {
 		CustomUserDetails aUser = (CustomUserDetails) auth.getPrincipal();
 		int id = aUser.getId();
@@ -67,11 +68,11 @@ public class InfoRestController {
 		return result;
 	}
 	
-	@PostMapping("message-update")
-	public int messageUpdate(Authentication auth, String name) {
+	@GetMapping("message-update")
+	public int messageUpdate(Authentication auth, String message) {
 		CustomUserDetails aUser = (CustomUserDetails) auth.getPrincipal();
 		int id = aUser.getId();
-		int result = coupleService.messageUpdate(name,id);
+		int result = coupleService.messageUpdate(message,id);
 		return result;
 	}
 	
@@ -80,11 +81,9 @@ public class InfoRestController {
 		UUID uuid = UUID.randomUUID();
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 		int id = user.getId();
-		Couple couple = coupleService.get(id);
 		
-
 		String url = "/upload";
-		String realPath =req.getServletContext().getRealPath(url)+File.separator+getFolder();
+		String realPath =req.getServletContext().getRealPath(url);
 		String fileName=uuid.toString() + "_" + file.getOriginalFilename();//고유값을 가진 파일이름
 		String path= realPath+File.separator+fileName;
 	System.out.println(req.getServletContext());
@@ -112,8 +111,15 @@ public class InfoRestController {
 		
 		System.out.println(fileName);
 		
-		int result = coupleService.editSoloProfile(couple.getId(), fileName);
+		int result = coupleService.editProfile(id, fileName);
 		
+		return result;
+	}	
+	@GetMapping("breakup")
+	public int leave(Authentication auth) {
+		CustomUserDetails aUser = (CustomUserDetails) auth.getPrincipal();
+		int id = aUser.getId();
+		int result = coupleService.breakUp(id);
 		return result;
 	}
 }

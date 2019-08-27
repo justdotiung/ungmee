@@ -279,7 +279,7 @@ window.addEventListener("load",function(){
 			alert("찾아보기 클릭하기");
 			return ;
 		}
-		var queryString ="coupleName="+coupleName.value+
+		var queryString ="name="+coupleName.value+
 						"&accepterId="+partnerId+
 						"&sloveDate="+loveDate.value+
 						"&message="+message.value;

@@ -11,18 +11,18 @@
 
 
 <body>
-	<div>
-		<a href="${ctxName}/index"><img	src="${ctxName}/resource/images/ummo/logo.jpg"></a>
+<div class="page-header index">
+  <h1><a href="${ctxName}/index">PlanD</a><small>데이트 짜고 갈래?</small></h1>
+  
+  <div class="icon-bar">
+  <security:authorize access="!isAuthenticated()">
+			<span class="glyphicon glyphicon-search"><a href="${ctxName}/course/list?type=search">검색</a></span>
+			<span class="glyphicon glyphicon-log-in"><a href="${ctxName}/login">로그인</a></span>		
+			<span class="glyphicon glyphicon-user"><a href="${ctxName}/signup">회원가입</a></span>	
+	</security:authorize>
 	</div>
-
+</div>
 	<div id="member-state">
-		<div>
-		<security:authorize access="!isAuthenticated()">
-			<a href="${ctxName}/login">로그인</a>			
-			<a href="${ctxName}/signup">회원가입</a>
-			<a href="${ctxName}/couple/info">코스보러가기</a>
-		</security:authorize>
-		</div>
 		<div id="member-info">
 		<security:authorize access="isAuthenticated()">
 			<div>
@@ -79,18 +79,14 @@
 		</table>
 	</c:if>
 	</div>
+	
+
 	<nav>
-		<ul>
-			<li><a href="${ctxName}/course/list?type=who">CourseWho</a></li>
-			<li><a href="${ctxName}/course/list?type=what">CourseWhat</a></li>
-			<li><a href="${ctxName}/course/list?type=where">CourseWhere</a></li>
-			<li><a href="${ctxName}/course/list?type=search">CourseSearch</a></li>
+		<ul class="nav nav-pills">
+		  <li role="presentation" class="active"><a href="${ctxName}/course/list?type=who">DateDeal</a></li>
+		  <li role="presentation"><a href="${ctxName}/course/list?type=what">DateCourse</a></li>
+		  <li role="presentation"><a href="${ctxName}/course/list?type=where">DateMap</a></li>
+		  <li role="presentation"><a href="${ctxName}/course/list?type=search">DateSearch</a></li>
 		</ul>
 	</nav>
-	<div id="weather">
-		<a href="">날씨API</a><img
-			src="${ctxName}/resource/images/img/2x/baseline_cloud_black_18dp.png">
-	</div>
-	<div>현재 서울은 개맑음</div>
-
 </body>

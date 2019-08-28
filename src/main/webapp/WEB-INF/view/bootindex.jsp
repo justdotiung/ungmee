@@ -4,39 +4,35 @@
 <c:set var="ctxName" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/member/index.css">
+<!-- 부트스트랩 -->
+ <link href="${ctxName}/resource/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 
     <main>
-    	<div id="title">
-    	<h1>현재 100쌍의 커플이 열렬히 데이트 중입니다요 :)</h1>
-    	</div>
-    
-        <div id="couple-best">
-            <h1>Weekly Best Couple</h1>
-            <ul>
-                <li><a href="${ctxName}/couple/detail">1</a></li>
-                <li><a href="couple/detail">2</a></li>
-                <li><a href="couple/detail">3</a></li>
-                <li><a href="couple/detail">4</a></li>
-                <li><a href="couple/detail">5</a></li>
-            </ul>
-        </div>
+        <section id="couple-best">
+            <h3>Weekly Best Couple</h3>
+            <div class="images-couple">
+                <div class="couple-wrap"><img src="../../../../resource/images/index/c1.jpg" alt="best-couple img" class="img-rounded img-couple"><a href="${ctxName}/couple/detail"></a></div>
+                <div class="couple-wrap"><img src="${ctxName}/resource/images/index/c2.jpg" alt="best-couple img" class="img-rounded img-couple"><a href="couple/detail"></a></div>
+                <div class="couple-wrap"><img src="${ctxName}/resource/images/index/c3.jpg" alt="best-couple img" class="img-rounded img-couple"><a href="couple/detail"></a></div>
+                <div class="couple-wrap"><img src="${ctxName}/resource/images/index/c4.jpg" alt="best-couple img" class="img-rounded img-couple"><a href="couple/detail"></a></div>
+                <div class="couple-wrap"><img src="${ctxName}/resource/images/index/c5.jpg" alt="best-couple img" class="img-rounded img-couple"><a href="couple/detail"></a></div>
+            </div>
+        </section>
 
 
         <section id="course-best">
-            <h1>주간베스트코스</h1>
-            <ul>
+            <h3>주간베스트코스</h3>
+            <div class="images-course">
             <!--다오만들때 뷰 best 아이디 값으로 넣준다.  -->
-                <li><a href="course/list">더보기</a></li>
-                <li><a href="course/detail">코스1</a></li>
-                <li><a href="course/detail">코스2</a></li>
-                <li><a href="course/detail">코스3</a></li>
-                <li><a href="course/detail">코스4</a></li>
-                <li><a href="course/detail">코스5</a></li>
-            </ul>
+                <div class="course-wrap"><img src="${ctxName}/resource/images/index/course1.PNG" alt="best-course img" class="img-thumbnail img-course"><a href="${ctxName}/course/detail"></a></div>
+                <div class="course-wrap"><img src="${ctxName}/resource/images/index/course2.PNG" alt="best-course img" class="img-thumbnail img-course"><a href="${ctxName}/course/detail"></a></div>
+                <div class="course-wrap"><img src="${ctxName}/resource/images/index/course3.PNG" alt="best-course img" class="img-thumbnail img-course"><a href="${ctxName}/course/detail"></a></div>
+            </div>
         </section>
 
         <section id="partner">
-            <h1>제휴사 딜</h1>
+            <h3>제휴사 딜</h3>
              <div id="first-deal">
              	<ul>
              		<li>노보텔엠배서더 시울 동대문</li>
@@ -67,7 +63,7 @@
         </section>
 
         <section id="event">
-            <h1>이벤트</h1>
+            <h3>이벤트</h3>
             <ul>
                 <li><a href="/notice/detail">사내이벤트1</a></li>
                 <li><a href="/notice/detail">사내이벤트2</a></li>
@@ -78,7 +74,7 @@
         </section>
 
         <section id="notice">
-            <h1>공지사항</h1>
+            <h3>공지사항</h3>
             <div>
             	<ul>
             		<li> <a href="/notice/detail">공지글1</a></li>
@@ -87,3 +83,5 @@
             <div><a href="${ctxName}/notice/list">더보기</a></div>
         </section>
     </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="${ctxName}/resource/bootstrap/js/bootstrap.min.js"></script>

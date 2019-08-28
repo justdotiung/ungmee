@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/reset.css">
  
-<title>Document</title>
+<title><tiles:insertAttribute name="title" ignore="true"/></title>
 </head>
 <body>
 	<!-- header -->

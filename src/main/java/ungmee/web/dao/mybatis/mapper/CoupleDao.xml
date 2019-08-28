@@ -8,10 +8,10 @@
 	 		id,  
 	 		propose_id proposeId,
 		    accepter_id accepterId, 
-		    couple_name coupleName,
+		    name,
 		    message,
 		    lovedate,
-		    couple_profile coupleProfile,
+		    profile,
 		    old_data oldData,
 		    ask,
 		    read,	  
@@ -22,31 +22,31 @@
 
  	<select id="getUser" resultType="ungmee.web.entity.Couple">
 	 	SELECT 
-	 		id,  
+ 			id,  
 	 		propose_id proposeId,
 		    accepter_id accepterId, 
-		    couple_name coupleName,
+		    name,
 		    message,
 		    lovedate,
-		    couple_profile coupleProfile,
+		    profile,
 		    old_data oldData,
 		    ask,
-		    read,
+		    read,	  
 		    accept,
-		    pseudo 
+		    pseudo
 	    FROM couple WHERE propose_id = #{id} and old_data = 1
  		UNION
 	 	SELECT 
 			id,  
 	 		propose_id proposeId,
 		    accepter_id accepterId, 
-		    couple_name coupleName,
+		    name,
 		    message,
 		    lovedate,
-		    couple_profile coupleProfile,
+		    profile,
 		    old_data oldData,
 		    ask,
-		    read,
+		    read,	  
 		    accept,
 		    pseudo
 		 FROM couple where accepter_id = #{id} and old_data = 1
@@ -57,10 +57,10 @@
 	 		id,  
 	 		propose_id proposeId,
 		    accepter_id accepterId, 
-		    couple_name coupleName,
+		    name,
 		    message,
 		    lovedate,
-		    couple_profile coupleProfile,
+		    profile,
 		    old_data oldData,
 		    ask,
 		    read,	  
@@ -73,11 +73,11 @@
  		INSERT INTO couple
  		(
 		    	PROPOSE_ID, ACCEPTER_ID, 
-		    	couple_name,	message, lovedate
+		    	name,	message, lovedate
 		)
 		VALUES
 		(	#{proposeId}, #{accepterId},	
-				#{coupleName}, #{message}, #{loveDate}
+				#{name}, #{message}, #{loveDate}
 		)
  	</insert>
  
@@ -85,39 +85,40 @@
 	 	UPDATE 
 	 		couple
 		SET
-		    couple_name = #{coupleName},
+		    name = #{name},
 	    <if test="message != null">
 		    message = #{message},
 	    </if>
-      	<if test="coupleProfile != null">
-		    couple_profile = #{coupleProfile} ,
+      	<if test="profile != null">
+		    profile = #{profile} ,
 		</if>
 		    old_data = #{oldData},
 		    read = #{read},
-		    accept = #{accept}   
+		    accept = #{accept},
+		    pseudo = #{pseudo}  
 		WHERE
 			id= #{id}
  	</update>
  	
  	<select id="getProposeList" resultType="ungmee.web.entity.Couple">
  		SELECT 
- 		  id,
-	  	  propose_id proposeId,
-	      accepter_id accepterId,
-	      couple_name coupleName,
-	      message,
-	      lovedate,
-	      couple_profile coupleProfile,
-	      old_data oldData,
-	      ask,
-	      read,
-	      accept,
-	      pseudo 
- 		FROM COUPLE WHERE accepter_id = #{param1}
+ 			id,  
+	 		propose_id proposeId,
+		    accepter_id accepterId, 
+		    name,
+		    message,
+		    lovedate,
+		    profile,
+		    old_data oldData,
+		    ask,
+		    read,	  
+		    accept,
+		    pseudo
+ 		FROM COUPLE WHERE accepter_id = #{param1} 
  		<if test="param2 lt 2">
  			AND read = #{param2}
  		</if>	
- 	
+ 		AND pseudo = 0
  	</select>
  	
  	<select id="getNewProposeCount" resultType="int">

@@ -32,6 +32,10 @@
 
 		<intercept-url pattern="/user/**"
 			access="hasRole('ROLE_USER')" />
+			
+		<intercept-url pattern="/couple/**"
+			access="hasRole('ROLE_USER')" />
+				
 		<form-login login-page="/login" 
 					default-target-url="/index" />
 		

@@ -70,32 +70,33 @@
          <div>
          	<label>이메일</label>
          	<input type="email" name="email" placeholder="아이디*이메일형식으로 입력해주세요">
-         	<span id="email-valid"></span>
+         	<span id="email-valid" class="same"></span>
+         	<input type="button" class="email-dup" value="중복확인">
          </div>
          <div>
          	<label>비밀번호</label>
          	<input type="password" name="password" maxlength="12" placeholder="비밀번호*(영문+숫자, 8~20자)">
-         	<span id="pw-valid"></span>
+         	<span id="pw-valid" class="same"></span>
          </div>
          <div>
          	<label>비밀번호 확인</label>
          	<input type="password" name="pw-check" maxlength="12" placeholder="비밀번호 확인*">
-         	<span id="pwc-valid"></span>
+         	<span id="pwc-valid" class="same"></span>
          </div>
          <div>
          	<label>닉네임</label>
          	<input type="text" name="nickname" placeholder="웅미에서 활동할 닉네임*">
-         	<span id="nickname-valid"></span>
+         	<span id="nickname-valid" class="same"></span>
          </div>
          <div>
          	<label>사장님 이름</label>
          	<input type="text" name="boss-name" placeholder="이름*">
-         	<span id="bossname-valid"></span>
+         	<span id="bossname-valid" class="same"></span>
          </div>
          <div>
          	<label>휴대폰</label>
          	<input type="text" name="phone" placeholder="휴대폰*">
-         	<span id="phone-valid"></span>
+         	<span id="phone-valid" class="same"></span>
          </div>
          <div>
          	<label>상호명</label>         	

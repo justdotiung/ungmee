@@ -87,3 +87,31 @@ section div{
    color: #58666e;
    background-color: #d6d6d6;
 }
+
+
+/* ---------------------------------------------------------- */
+
+.images-couple{
+	display: flex;
+}
+.couple-wrap{
+	width:70%;
+	text-align:center;
+	margin: 0px auto;
+}
+.img-couple{
+	max-width: 75%;
+	height: auto;
+}
+.images-course{
+	display: flex;
+}
+.course-wrap{
+	width:70%;
+	text-align:center;
+	margin: 0px auto;
+}
+.img-course{
+	max-width: 75%;
+	height: auto;
+}

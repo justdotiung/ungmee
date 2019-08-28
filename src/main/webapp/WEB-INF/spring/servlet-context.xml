@@ -18,7 +18,9 @@
         
          http://www.springframework.org/schema/mvc
         https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        
         ">
+        
 	<context:component-scan
 		base-package="ungmee.web.controller"></context:component-scan>
 	<context:component-scan
@@ -69,8 +71,8 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 	<mvc:default-servlet-handler />
-	<mvc:resources location="/resource/"
-		mapping="/resource/**" />
+	<mvc:resources mapping="/resource/**" location="/resource/" />
+	<mvc:resources mapping="/upload/**" location="/upload/" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />

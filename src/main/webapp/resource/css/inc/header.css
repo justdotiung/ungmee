@@ -12,6 +12,16 @@
 .alert-box img{
 	width: 30px;
 }
+.page-header index{
+	background-color: beige;
+}
+.icon-bar{
+	display:flex;
+	padding-left: 800px;
+}
+
+
+
 
 th, td {
 	padding-left : 10px;

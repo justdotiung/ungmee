@@ -53,7 +53,10 @@ public class RootController {
 	public String signup() {
 		return "root.signup";
 	}
-
+	@GetMapping("map")
+	public String map() {
+		return "root.map";
+	}
 	
 
 	

@@ -240,7 +240,7 @@ window.addEventListener("load",function(){
 //파트너 =====
 
 window.addEventListener("load",function(){
-	  //프로토콜 토큰
+	//프로토콜 토큰
     var header = this.document.querySelector(".header").value;
     var token = this.document.querySelector(".token").value;
 	//사용자 입력칸에 대한 변수
@@ -253,12 +253,15 @@ window.addEventListener("load",function(){
     var phone = section.querySelector("input[name=phone]");
     //유효성검사 span태그 변수
     var emailValid = section.querySelector("#email-valid");
+    var emailDuplicate = section.querySelector(".email-dup");//이메일 중복 체크
     var pwVaild = section.querySelector("#pw-valid");
     var pwcVaild = section.querySelector("#pwc-valid");
     var nicknameValid = section.querySelector("#nickname-valid");
     var bossNameValid = section.querySelector("#bossname-valid");
     var phoneValid = section.querySelector("#phone-valid");
     //사용자 입력 여부 확인에 대한 변수
+    var isValid = false;//유효성 변수
+    var isunDuplicate = false;//이메일 유효성
     var nickname = section.querySelector("input[name=nickname]");
     var bossName = section.querySelector("input[name=boss-name]");
     var phone = section.querySelector("input[name=phone]");
@@ -283,69 +286,109 @@ window.addEventListener("load",function(){
     
     
     //아이디
-    email.onkeyup = function(){
-        if(!email.value.match(regWhitespace) && email.value.match(regEmail)){
-          emailValid.innerText="올바른 입력입니다.";
-          emailValid.style.color = "green";
+    function emailf(){
+        if(email.value != "" && !email.value.match(regWhitespace) && email.value.match(regEmail)){
+          emailValid.classList.remove("error");
+          emailValid.innerText="";
+          return true;
         }else{
+          emailValid.classList.add("error");
     	  emailValid.innerText="공백을 포함하지 않은 유효한 이메일 형식으로 입력부탁드립니다.";
-    	  emailValid.style.color = "orangered";
     	  email.focus();
+    	  return false;
         }
     }
-
+    email.onblur = function(){
+    	emailf();
+    }
+    //이메일 중복체크
+    emailDuplicate.onclick=function(){
+        var request = new XMLHttpRequest();
+        request.addEventListener("load",function(){
+            //console.log(request.responseText);
+            if(request.responseText == 'true'){
+                alert("이미사용중인 이메일 입니다.")
+                isunDuplicate = false;
+            }
+            else{
+                alert("가능한 이메일 입니다.")
+                isunDuplicate = true;
+            }
+        });
+        request.open("GET","duplicate?email="+email.value);
+        request.send();
+    }
     //비밀번호
-    password.onkeyup = function(){
-    	if(pwCheck.value != ""){
-    			if(password.value != pwCheck.value){
-    				pwcVaild.innerText="비밀번호가 정말 일치하지 않습니다.";
-    				pwcVaild.style.color = "orangered";
-    				pwCheck.focus();
-    			}
-    			else{
-    				pwcVaild.innerText="일치합니다.";
-    				pwcVaild.style.color = "green";
-    				pwCheck.focus();
-    			}
+    function passwordf(){
+    	if(!password.value.match(regPw) || password.match(regWhitespace)){
+            pwVaild.classList.add("error");
+    		pwValid.innerText="비밀번호는 공백없이 4~12자리의 영대소문자 또는 숫자로 입력부탁드립니다.";
+    		password.focus();
+    		return false;
     	}
-    	if(!password.value.match(regWhitespace) && password.value.match(regPw)){
-    		pwVaild.innerText="올바른 입력입니다.";
-    		pwVaild.style.color = "green";
-        }
     	else{
-        	pwVaild.innerText="비밀번호는 공백 미포함, 4~12자의 영대소문자와 숫자로 입력부탁드립니다";
-        	pwVaild.style.color = "orangered";
-        	password.focus();
-        }
- };
+    		pwValid.classList.add("same");
+    		pwValid.innerText="";
+    		return true;
+    	}
+    }
+
+    password.onblur = function(){
+    	passwordf();
+    }
+    
     //비밀번호 일치여부
-    pwCheck.onkeyup =function(){
+    pwCheck.oninput =function(){
         if(password.value != pwCheck.value){
+        	pwcVaild.style.color = "orangered";
             pwcVaild.innerText="비밀번호가 일치하지 않습니다.";
-            pwcVaild.style.color = "orangered";
+            isValid=false;
             pwCheck.focus();
+            return ;
         }
         else{
             pwcVaild.innerText="일치합니다.";
             pwcVaild.style.color = "green";
+            isValid=true;
+            return ;
         }
    };
+   
+   password.onchange =function(){
+       if(pwCheck.value != null && pwCheck.value !=''){
+       	if(password.value != pwCheck.value){
+       		pwcVaild.classList.add("error");
+       		pwcVaild.innerText="비밀번호가 일치하지 않습니다.";
+       		isValid=false;
+            return ;
+       		}
+       	else{
+            pwcVaild.classList.add("same");
+            pwcVaild.innerText="일치합니다.";
+            isValid=true;
+            return ;
+       	}
+     }
   
    //닉네임 
-   nickname.onkeyup = function(){
-   	if(!nickname.value.match(regWhitespace) && nickname.value.match(regNickname)){
+   function nicknamef(){
+   	if(nickname.value != "" && !nickname.value.match(regWhitespace) && nickname.value.match(regNickname)){
    		nicknameValid.innerText="올바른 입력입니다.";
    		nicknameValid.style.color = "green";
-       }else{
+    }
+   	else{
     	nicknameValid.innerText="닉네임은 공백없이 영문과 한글포함 최대 10자까지만 가능합니다.";
         nicknameValid.style.color = "orangered";
         nickname.focus();
-       }
+    }
   }
-   
+
+  nickname.onblur = function(){
+    nicknamef();
+}
    //사장님 이름 
-   bossName.onkeyup = function(){
-   	if(!bossName.value.match(regWhitespace) && bossName.value.match(regBossName)){
+   function bossNamef(){
+   	if(bossName.value != "" && !bossName.value.match(regWhitespace) && bossName.value.match(regBossName)){
    		bossNameValid.innerText="올바른 입력입니다.";
    		bossNameValid.style.color = "green";
        }else{
@@ -354,10 +397,12 @@ window.addEventListener("load",function(){
     	bossName.focus();
        }
   }
-   
+  bossName.onblur = function(){
+    bossNamef();
+}
    //핸드폰
-   phone.onkeyup = function(){
-	   	if(!phone.value.match(regWhitespace) && phone.value.match(regPhone)){
+   function phonef(){
+	   	if(phone.value != "" && !phone.value.match(regWhitespace) && phone.value.match(regPhone)){
 	   		phoneValid.innerText="올바른 입력입니다.";
 	   		phoneValid.style.color = "green";
 	       }else{
@@ -366,18 +411,11 @@ window.addEventListener("load",function(){
 	    	phone.focus();
 	       }
 	  }
-   
+    phone.onblur = function(){
+    phonef();
+}
    //약관동의 체크
-   function checkAll(){
-       if(checkAll.checked == true){
-           return checkAll.value;
-       }else{
-    	   checkAll.value= "2"; 
-           return checkAll.value;
-       }  
-   }
-   
-   function checkSelect(){
+   function checkSelectf(){
        if(checkSelect.checked == true){
            return checkSelect.value;
        }else{
@@ -492,7 +530,7 @@ window.addEventListener("load",function(){
 //};
 
   //이벤트체크
-  function eventCheck(){
+  function eventCheckf(){
       if(checkSelect.checked == true){
           return checkSelect.value;
       }else{
@@ -503,29 +541,31 @@ window.addEventListener("load",function(){
   
  //전송버튼
 	joinButton.onclick = function(){
+		eventCheckf();
+	
 	 //입력여부
-	    if(email.value==""){
-	    	alert("이메일을 입력해주세요");
+	    if(!emailf()){
+	    	alert("이메일을 올바르게 입력해주세요");
             email.focus();
             return;
 		}
-		if(password.value==""){
-			alert("비밀번호를 입력해주세요");
+		if(!passwordf()){
+			alert("비밀번호를 올바르게 입력해주세요");
             password.focus();
             return;
 		}
-	    if(nickname.value==""){
-	    	alert("닉네임을 입력해주세요");
+	    if(!nicknamef()){
+	    	alert("닉네임을 올바르게 입력해주세요");
             nickname.focus();
             return;
 	    }	
-	    if(bossName.value==""){
-	    	alert("이름을 입력해주세요");
+	    if(!bossNamef()){
+	    	alert("이름을 올바르게 입력해주세요");
             bossName.focus();
             return;
 	    }
-	    if(phone.value==""){
-	    	alert("전화번호를 입력해주세요");
+	    if(!phonef()){
+	    	alert("전화번호를 올바르게 입력해주세요");
             phone.focus();
             return;
 	    }
@@ -540,7 +580,7 @@ window.addEventListener("load",function(){
             return;
 	    }
 	    
-	    
+	
        var queryString ="email="+email.value+
                        "&pw="+password.value+
                        "&roleId="+roleId.value+
@@ -549,7 +589,7 @@ window.addEventListener("load",function(){
                        "&phone="+phone.value+
                        "&pName="+partnerName.value+
                        "&pType="+partnerType.value+
-                       "&echeck="+eventCheck()+
+                       "&echeck="+eventCheckf()+
                        "&address="+address.value
                        ;
       
@@ -565,6 +605,6 @@ window.addEventListener("load",function(){
        request.setRequestHeader(header,token);
        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
        request.send(queryString);
+	};
    };
-
 });

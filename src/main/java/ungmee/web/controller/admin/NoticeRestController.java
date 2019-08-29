@@ -27,7 +27,7 @@ import com.google.gson.Gson;
 import ungmee.web.dao.mybatis.MyBatisNoticeDao;
 import ungmee.web.service.NoticeService;
 
-@RestController("NoticeRestController")
+@RestController("adminNoticeRestController")
 @RequestMapping("/notice/")
 
 

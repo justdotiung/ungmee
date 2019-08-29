@@ -53,11 +53,11 @@ public class RootController {
 	public String signup() {
 		return "root.signup";
 	}
-	@GetMapping("map")
-	public String map() {
-		return "root.map";
-	}
-	
+//	@GetMapping("map")
+//	public String map() {
+//		return "root.map";
+//	}
+//	
 
 	
 	//스프링만 사용할 때 ENTITY와 JSP 변수명 연결해주기 1

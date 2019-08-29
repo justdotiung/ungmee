@@ -11,6 +11,7 @@
 
 
 <section>
+		<div> 데이트 코스를 정의해 주세요. </div>
 		<div id="map" style="width:500px;height:400px;"></div>
 		<span id="centerAddr"></span>
 	<h1>우리들의 행복한 시간을 올려주세요</h1>
@@ -21,9 +22,9 @@
 			<li id="clickLatlng">이용수단</li>
 		</ul>
 	</div>
-	
-	<button id="mark">마커 보이기</button>
-	<button id="mark1">마커 보기</button>
+	키워드입력	<button class="key-button">검색하기</button>
+	<input class="keyword-text" type="text">
+	<button id="mark">전으로 되돌리기</button>
 	<div>
 		<input type="text" >
 	</div>

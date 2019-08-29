@@ -9,19 +9,17 @@
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/inc/header.css">
 <script src="${ctxName}/resource/js/inc/header.js"></script>
 
-
-<body>
-<div class="page-header index">
-  <h1><a href="${ctxName}/index">PlanD</a><small>데이트 짜고 갈래?</small></h1>
-  
-  <div class="icon-bar">
-  <security:authorize access="!isAuthenticated()">
-			<span class="glyphicon glyphicon-search"><a href="${ctxName}/course/list?type=search">검색</a></span>
-			<span class="glyphicon glyphicon-log-in"><a href="${ctxName}/login">로그인</a></span>		
-			<span class="glyphicon glyphicon-user"><a href="${ctxName}/signup">회원가입</a></span>	
-	</security:authorize>
+	<div class="page-header index">
+	  <h1><a href="${ctxName}/index">PlanD</a><small>데이트 짜고 갈래?</small></h1>
+	  
+	  <div class="icon-bar">
+	  <security:authorize access="!isAuthenticated()">
+				<span class="glyphicon glyphicon-search"><a href="${ctxName}/course/list?type=search">검색</a></span>
+				<span class="glyphicon glyphicon-log-in"><a href="${ctxName}/login">로그인</a></span>		
+				<span class="glyphicon glyphicon-user"><a href="${ctxName}/signup">회원가입</a></span>	
+		</security:authorize>
+		</div>
 	</div>
-</div>
 	<div id="member-state">
 		<div id="member-info">
 		<security:authorize access="isAuthenticated()">
@@ -83,6 +81,7 @@
 		</table>
 	</c:if>
 	</div>
+
 	
 
 	<nav>
@@ -93,4 +92,4 @@
 		  <li role="presentation"><a href="${ctxName}/course/list?type=search">DateSearch</a></li>
 		</ul>
 	</nav>
-</body>
+

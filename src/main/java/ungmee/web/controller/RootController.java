@@ -24,6 +24,7 @@ import ungmee.web.entity.Solo;
 import ungmee.web.entity.SoloView;
 import ungmee.web.entity.User;
 import ungmee.web.security.CustomUserDetails;
+import ungmee.web.service.KakaoAPI;
 import ungmee.web.service.MemberShipService;
 import ungmee.web.service.PushService;
 
@@ -38,8 +39,16 @@ public class RootController {
 	private PushService pushService;
 	@Autowired
 	private MemberShipService msService;
+	@Autowired
+	private KakaoAPI api;
 	
-	
+	@GetMapping("kakao-login")
+	public String login(String code) {
+		String token = api.getAccessToken(code);
+		System.out.println("code : "+code);
+		System.out.println("token : "+token);
+		return "root.index";
+	}
 	@GetMapping("login")
 	public String login() {
 		return "root.login";

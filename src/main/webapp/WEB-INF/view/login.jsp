@@ -16,7 +16,13 @@
 		<h1 class="d-none">로그인 폼</h1>
 		<div class="api-login">
 			<ul>
-				<li><a href="kakao"><img src="">카카오</a></li>
+				<li>
+					<a href="https://kauth.kakao.com/oauth/authorize?client_id=142c1874f0e3f2e854e05c6e992adf26
+							&redirect_uri=http://localhost:8080${ctxName}/kakao-login
+							&response_type=code">
+						<img src="${ctxName}/resource/images/icon/kakaolink_btn.png">
+					</a>
+				</li>
 				<li><a href="facebook"><img src="">페이스북</a></li>
 				<li><a href="naver"><img src="">네이버</a></li>
 			</ul>

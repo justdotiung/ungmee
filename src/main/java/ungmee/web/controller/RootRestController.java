@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ungmee.web.entity.Partner;
 import ungmee.web.entity.Solo;
 import ungmee.web.entity.User;
+import ungmee.web.service.KakaoAPI;
 import ungmee.web.service.MemberShipService;
 
 //return값이 html이 아닌 text 형태로 responseBody해줌

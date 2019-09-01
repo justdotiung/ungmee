@@ -11,7 +11,6 @@
 
 
 <section id="section">
-	<div id="spot-div">
 		<div>
 			<ul>
 				<li id="result">총시간</li>
@@ -19,10 +18,11 @@
 				<li id="clickLatlng">이용수단</li>
 			</ul>
 		</div>
+	<div id="spot-div">
 		<div id="drop-zone" class="trigger-button">
 			<img src="${ctxName}/resource/images/icon/material.png">
 		</div>
-			<input type="file" id="file" class="d-none">
+			<input type="file" id="file" class="d-none" multiple="multiple">
 		<div>
 			<input type="text" placeholder="비용">
 			<textarea rows="8" cols="40"></textarea>
@@ -31,6 +31,9 @@
 	<button id="add-button">스팟추가</button>
 	<div id="tag-list">
 		<input type="text">
+	</div>
+	<div>
+		<button id="reg-btn">등록하기</button>
 	</div>
 	<input type="hidden" class="ctx" value="${ctxName}">
 	<input type="hidden" class= "header" value="${_csrf.headerName}"> 

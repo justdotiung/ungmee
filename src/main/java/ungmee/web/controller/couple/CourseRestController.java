@@ -14,11 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import ungmee.web.security.CustomUserDetails;
 
-@Controller("coupleCourseController")
+@RestController
 @RequestMapping("/couple/course/")
 public class CourseRestController {
 	@PostMapping("spot-img")

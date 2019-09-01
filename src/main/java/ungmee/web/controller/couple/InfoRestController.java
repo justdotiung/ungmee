@@ -86,8 +86,8 @@ public class InfoRestController {
 		String realPath =req.getServletContext().getRealPath(url);
 		String fileName=uuid.toString() + "_" + file.getOriginalFilename();//고유값을 가진 파일이름
 		String path= realPath+File.separator+fileName;
-	System.out.println(req.getServletContext());
-	System.out.println(req.getServletContext().getRealPath("/"));
+		System.out.println(req.getServletContext());
+		System.out.println(req.getServletContext().getRealPath("/"));
 		System.out.println(realPath);
 		
 		File filePath = new File(realPath);

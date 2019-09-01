@@ -5,32 +5,69 @@ window.addEventListener("load",function(){
 
     var section = document.querySelector("#section");
     var triggerBtx = section.querySelector(".trigger-button");
-    var fileBtn = section.querySelector("#file");
-    var dropZone = section.querySelector("#drop-zone");
+    var file = section.querySelector("#file");
+	var dropZone = section.querySelector("#drop-zone");
+	var imgForm = dropZone.querySelector("img");
     var addBtn = section.querySelector("#add-button");
     var spotDiv = section.querySelector("#spot-div");
-    var tagList = section.querySelector(".tag-list");
-
+	var tagList = section.querySelector(".tag-list");
+	//최대 이미지 파일 업로더 갯수 
+	var maxImgList = [];
     triggerBtx.onclick = function(e){
-       // console.log(e.target.tagName)
+		if(maxImgList.length>=2){
+			console.log("더이상 파일업로드가 불가능합니다.");
+			return;
+		}
+		console.log(maxImgList.length);
+		// console.log(e.target.tagName)
         if(e.target.tagName !='IMG'){
-            console.log("aa");
+			// console.log("aa");
             return;
         }
-
+		
         var event = new MouseEvent("click",{
-            view: window,
+			view: window,
             bubbles:true,
             cancelable:true
-        });
-        fileBtn.dispatchEvent(event);
-       
-        fileBtn.onchange = function(){
-            xhr = new XMLHttpRequest();
-            xhr.open("POST","");
-            xhr.send();
-        }
-    }
+		});
+        file.dispatchEvent(event);
+		
+        file.onchange = function(){
+			if(maxImgList.length>=2){
+				console.log("더이상 파일업로드가 불가능합니다.");
+				return;
+			}
+			//멀티파일 리스트
+			var getFiles = file.files;
+			//한번에 올릴수있는 파일 갯수
+			if(getFiles.length>=3){
+				console.log("최대 2장까지 가능합니다.")
+				return;
+			}
+
+			console.log(getFiles.length);
+			//멀티파일 배열만큼 돌아서 이미지인지 판별
+			for(var i = 0; i<getFiles.length; i++){
+				var getFile = getFiles[i];
+				console.log(getFile.type);
+				//이미지파일 우뮤 확인
+				if(!getFile.type.match(/image.*/)){
+					console.log("이미지파일만 가능");
+					return ;
+				}
+				maxImgList.push(file);	
+				//비동기 파일리더기 						
+				var reader = new FileReader();
+				console.log("된다");
+				//이미지 로드시 추가 적으로 연산
+				reader.onload = function(e) {
+					console.log(e.target.result);
+					dropZone.innerHTML +='<img src="'+e.target.result+'"/>'; 
+				}
+				reader.readAsDataURL(getFile);
+			}
+		}
+	}
 	dropZone.addEventListener("dragenter", function(e) {
 		e.preventDefault();
 
@@ -119,9 +156,14 @@ window.addEventListener("load",function(){
 		});
 		request.open("POST", "../../../upload");
 		request.send(formData);
-    });
-    addBtn.onclick = function(){
-       var clonDiv = spotDiv.cloneNode(true);
-        section.insertBefore(clonDiv, addBtn);
+	});
+	var addList =[] ;
+    addBtn.onclick = function(e){
+		addList.push(addBtn);
+		if(addList.length >2){
+			return;
+		}
+		var clonDiv = spotDiv.cloneNode(true);
+		 section.insertBefore(clonDiv, addBtn);
     }
 });

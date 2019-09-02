@@ -5,21 +5,21 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ungmee.web.dao.CoupleDao;
-import ungmee.web.dao.SoloDao;
-import ungmee.web.dao.UserDao;
-import ungmee.web.entity.Couple;
-import ungmee.web.entity.Solo;
-import ungmee.web.entity.User;
-import ungmee.web.service.CoupleService;
-import ungmee.web.service.CoustomCoupleService;
+import com.ungmee.web.dao.CoupleDao;
+import com.ungmee.web.dao.SoloDao;
+import com.ungmee.web.dao.UserDao;
+import com.ungmee.web.entity.Couple;
+import com.ungmee.web.entity.Solo;
+import com.ungmee.web.entity.User;
+import com.ungmee.web.service.CoupleService;
+import com.ungmee.web.service.CoustomCoupleService;
 
 public class TestUnit {
 
 	
 	@Test
 	public void cancel() {
-		String testEmail = "ssong3@c.com";
+		String testEmail = "ssong7@c.com";
 		CoupleService cTest = new CoustomCoupleService();	
 		assertEquals(1, cTest.proposeCancel(testEmail));
 	}

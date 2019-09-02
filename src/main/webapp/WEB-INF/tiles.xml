@@ -5,7 +5,7 @@
 <tiles-definitions>
 	
 	<definition name="admin.*.*"
-			template="/WEB-INF/view/admin/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+			template="/WEB-INF/view/admin/inc/layout.jsp" preparer="com.ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
 			value="/WEB-INF/view/admin/inc/header.jsp" />
@@ -18,7 +18,7 @@
 	</definition>
 	
 	<definition name="*.*.*"
-			template="/WEB-INF/view/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+			template="/WEB-INF/view/inc/layout.jsp" preparer="com.ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
 			value="/WEB-INF/view/inc/header.jsp" />
@@ -29,7 +29,7 @@
 	</definition>
 
 	<definition name="admin.*"
-		template="/WEB-INF/view/admin/inc/layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		template="/WEB-INF/view/admin/inc/layout.jsp" preparer="com.ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
 			value="/WEB-INF/view/admin/inc/header.jsp" />
@@ -42,7 +42,7 @@
 	</definition>
 
 	<definition name="root.*"
-		template="/WEB-INF/view/inc/root-layout.jsp" preparer="ungmee.web.tiles.LayoutPreparer">
+		template="/WEB-INF/view/inc/root-layout.jsp" preparer="com.ungmee.web.tiles.LayoutPreparer">
 		<put-attribute name="title" expression="${title}" /> 
 		<put-attribute name="header"
 			value="/WEB-INF/view/inc/header.jsp" />

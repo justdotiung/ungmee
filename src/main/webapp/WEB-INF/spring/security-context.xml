@@ -17,9 +17,9 @@
         http://www.springframework.org/schema/security
         https://www.springframework.org/schema/security/spring-security.xsd">
 
-	<beans:bean id="customUserDetailsService" class="ungmee.web.security.CustomUserDetailsService"/>
+	<beans:bean id="customUserDetailsService" class="com.ungmee.web.security.CustomUserDetailsService"/>
 	<!-- 에러페이지 access-denied-handler 구현체 빈등록 -->
-	<beans:bean id="customAccessDeniedHandler" class="ungmee.web.security.CustomAccessDeniedHandler"></beans:bean>
+	<beans:bean id="customAccessDeniedHandler" class="com.ungmee.web.security.CustomAccessDeniedHandler"></beans:bean>
 	
 	<!-- 인증과 권한 체크 -->
 	<!-- <http auto-config="true"> -->

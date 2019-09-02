@@ -1,7 +1,7 @@
-//스마트에디터
 window.addEventListener("load", function() {
-	var ctxName = document.querySelector("input[name=ctx-name]").value;
-	
+	var ctx = document.querySelector(".ctx").value;
+	var saveBtn = document.querySelector(".save-btn");
+	//스마트에디터
     var oEditors = [];
 	
 	//추가 글꼴 목록
@@ -10,7 +10,7 @@ window.addEventListener("load", function() {
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
 		elPlaceHolder: "content",
-		sSkinURI: "${pageContext.request.contextPath}/SmartEditor/SmartEditor2Skin.html",	
+		sSkinURI: ctx+"/resource/lib/SmartEditor/SmartEditor2Skin.html",	
 		htParams : {
 			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 			bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
@@ -36,12 +36,12 @@ window.addEventListener("load", function() {
 		var sHTML = oEditors.getById["content"].getIR();
 		alert(sHTML);
 	}
-		
+
 	function submitContents(elClickedObj) {
 		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
 		
 		// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-		
+		console.log( document.getElementById("content").value);
 		try {
 			elClickedObj.form.submit();
 		} catch(e) {}
@@ -51,5 +51,8 @@ window.addEventListener("load", function() {
 		var sDefaultFont = '궁서';
 		var nFontSize = 24;
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
+	}
+	saveBtn.onclick = function(){
+		submitContents(saveBtn);
 	}
 });

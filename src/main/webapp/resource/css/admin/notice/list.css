@@ -57,15 +57,17 @@
 
 .content.current {
    
-   height: 100px;
+   height: 100%;
    --transform:translateY(0);
    --transform: scaleY(1);
+   transition: height 500ms;
 }
 .contentc.currentc {
    
    height: 100px;
    --transform:translateY(0);
    --transform: scaleY(1);
+   transition: height 500ms;
 }
 .btn-detail{
 }

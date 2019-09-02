@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,11 +57,10 @@ public class NoticeController {
 	}
 
 	@PostMapping("reg")
-	public String reg(Notice notice, Authentication auth)
-			throws IOException {
+	public String reg(Notice notice, Authentication auth) throws IOException {
 		CustomUserDetails details = (CustomUserDetails) auth.getPrincipal();
-		int id = details.getId();//?��???��?��?��( �?리자 ?��?��?�� primaryKey )
-		notice.setWriterId(id); //notice 객체?��  ?��?��?�� ?��?��?�� ?��?�� ?���?.
+		int id = details.getId();
+		notice.setWriterId(id);
 		/* ,Authentication auth */
 		//notice.setAdminId(61);
 		// CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
@@ -73,66 +73,6 @@ public class NoticeController {
 		noticeService.regNotice(notice);
 		return "redirect:list";
 	}
-	
-	@PostMapping("upload")
-	@ResponseBody
-	public String upload(MultipartFile[] file, HttpServletRequest request)
-			throws IOException {
-		System.out.println("?��기왔�??");
-		String fileName;
-		String urlPath = "/upload";
-		String realPath = request.getServletContext().getRealPath(urlPath);
-			if(file ==null)
-			System.out.println("data");
-
-			fileName = file[0].getOriginalFilename();
-			String path = realPath + File.separator + fileName;
-
-			System.out.println(realPath);
-
-			File filePath = new File(realPath);
-			if (!filePath.exists())
-				filePath.mkdirs();
-
-			File sameFile = new File(path);
-			if (sameFile.exists()) {
-				int ne = fileName.lastIndexOf(".");
-				String name = fileName.substring(0, ne);
-				String suffix = fileName.substring(ne);
-				int parenS = name.lastIndexOf("(");
-				int parenE = name.lastIndexOf(")");
-
-				if (parenE == -1) {
-					fileName = name + "(" + 1 + ")" + suffix;
-					path = realPath + File.separator + fileName;
-					System.out.println(path);
-				} else {
-					String indexC = name.substring(parenS + 1, parenE);
-					int indexN = Integer.parseInt(indexC);
-					indexN++;
-					fileName = fileName.substring(0, parenS + 1) + indexN + ")" + suffix;
-					path = realPath + File.separator + fileName;
-					System.out.println(path);
-				}
-			
-			InputStream fis = file[0].getInputStream();
-			OutputStream fos = new FileOutputStream(path);
-
-			int j = 0;
-			byte[] arr = new byte[1024];
-
-			while ((j = fis.read(arr)) != -1) {
-				fos.write(arr, 0, j);
-			}
-			
-
-			fos.close();
-			fis.close();
-
-		}
-		return "/upload/"+ fileName;
-	}
-
 	
 	@GetMapping("edit")
 	public String edit(int id, Model model) {

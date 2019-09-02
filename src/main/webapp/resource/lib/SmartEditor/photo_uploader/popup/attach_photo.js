@@ -331,10 +331,15 @@
      * @return
      */
     function html5Upload() {	
-    	var tempFile,
-    		sUploadURL;
-    	
-    	sUploadURL= 'file_uploader_html5.jsp'; 	//upload URL
+    	 var header = this.document.querySelector(".header").value;
+		 var token = this.document.querySelector(".token").value;
+		
+    	 
+		 var tempFile,
+		 sUploadURL;
+		 
+		 sUploadURL= 'file_uploader_html5.jsp'; 	//upload URL
+    	 console.log(sUploadURL);
     	
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
@@ -342,7 +347,7 @@
     		try{
 	    		if(!!tempFile){
 	    			//Ajax통신하는 부분. 파일과 업로더할 url을 전달한다.
-	    			callAjaxForHTML5(tempFile,sUploadURL);
+	    			callAjaxForHTML5(tempFile,sUploadURL,header,token);
 	    			k += 1;
 	    		}
 	    	}catch(e){}
@@ -350,7 +355,7 @@
     	}
 	}
     
-    function callAjaxForHTML5 (tempFile, sUploadURL){
+    function callAjaxForHTML5 (tempFile,sUploadURL,header,token){
     	var oAjax = jindo.$Ajax(sUploadURL, {
 			type: 'xhr',
 			method : "post",
@@ -373,6 +378,7 @@
 		oAjax.header("file-name",encodeURIComponent(tempFile.name));
 		oAjax.header("file-size",tempFile.size);
 		oAjax.header("file-Type",tempFile.type);
+		oAjax.header(header,token);
 		oAjax.request(tempFile);
     }
     

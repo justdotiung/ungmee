@@ -1,29 +1,13 @@
 package com.ungmee.web.controller.admin;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
-import com.ungmee.web.dao.mybatis.MyBatisNoticeDao;
 import com.ungmee.web.service.NoticeService;
 
 @RestController("adminNoticeRestController")
@@ -36,7 +20,7 @@ public class NoticeRestController{
 	private NoticeService ns;
 	
 	@GetMapping("list/ajax")
-	public String list(Model model, @RequestParam(name="p", defaultValue="1") Integer page) {
+	public String list(Model model, @RequestParam(name="p", defaultValue="1") int page) {
 		Gson gson = new Gson();
 		
 		ns.getNoticeViewList(page);

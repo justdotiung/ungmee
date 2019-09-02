@@ -2,23 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="ungmee.web.dao.EventFileDao">
+ <mapper namespace="com.ungmee.web.dao.EventFileDao">
  
-	 <select id="getListByEventId" resultType="ungmee.web.entity.EventFile">
+	 <select id="getListByEventId" resultType="com.ungmee.web.entity.EventFile">
 		SELECT * FROM EVENT_FILE WHERE EVENT_ID=#{eventId}
 	</select>
 
  
-	<select id="getList" resultType="ungmee.web.entity.EventFile">
+	<select id="getList" resultType="com.ungmee.web.entity.EventFile">
 		SELECT * FROM EVENT_FILE WHERE EVENT_ID=#{eventId}
 	</select>
 	
- 	<insert id="insert" parameterType="ungmee.web.entity.EventFile">
+ 	<insert id="insert" parameterType="com.ungmee.web.entity.EventFile">
 		INSERT INTO EVENT_FILE(FILENAME,EVENT_ID)
 		VALUES(#{fileName},#{eventId})
 	</insert>
 	
-	<update id="update" parameterType="ungmee.web.entity.EventFile">
+	<update id="update" parameterType="com.ungmee.web.entity.EventFile">
 		UPDATE EVENT_FILE 
 		SET 
 			FILENAME=#{fileName} 

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="ungmee.web.dao.UserDao">
- 	<select id="getEmail" resultType="ungmee.web.entity.User">
+ <mapper namespace="com.ungmee.web.dao.UserDao">
+ 	<select id="getEmail" resultType="com.ungmee.web.entity.User">
 	  	 SELECT
 		    id,
 		    email,
@@ -17,7 +17,7 @@
 		 from "USER" where email = #{email}
  	</select>
 
- 	<select id="get" resultType="ungmee.web.entity.User">
+ 	<select id="get" resultType="com.ungmee.web.entity.User">
  		select 
  			id,
 		    email,
@@ -31,14 +31,14 @@
  		 from "USER" where id = #{id}
  	</select>
 
- 	<insert id="insert" parameterType="ungmee.web.entity.User">
+ 	<insert id="insert" parameterType="com.ungmee.web.entity.User">
  		INSERT INTO "USER" 
  			(email, pw, echeck,ROLE_ID, nickname)
  		 VALUES 
  		 	(#{email},#{pw},#{echeck},#{roleId},#{nickName})
  	</insert>
  	
-	<update id="edit" parameterType="ungmee.web.entity.User">
+	<update id="edit" parameterType="com.ungmee.web.entity.User">
 		UPDATE "USER" SET
 			  email = #{email}, pw= #{pw}, regdate= #{regDate}, enabled= #{enabled}, ROLE_ID= #{roleId},
   			  echeck= #{echeck}, nickname= #{nickName}
@@ -47,7 +47,7 @@
   			  </if>
   			where id = #{id} 
     </update>
-	<update id="delet" parameterType="ungmee.web.entity.User">
+	<update id="delet" parameterType="com.ungmee.web.entity.User">
 		UPDATE "USER" SET
 			  email = #{email}, pw= #{pw}, regdate= #{regDate}, enabled= #{enabled}, ROLE_ID= #{roleId},
   			   nickname= #{nickName}

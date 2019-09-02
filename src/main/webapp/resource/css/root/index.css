@@ -1,0 +1,54 @@
+/* 부트스트랩 reset */
+ul{
+    margin-bottom: 0px;
+}
+/* weekly best couple */
+/* 중앙정렬 */
+#couple-best{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+/* 일렬배치 */
+.images-couple{
+    display: flex;
+}
+/* 사이 간격 */
+.images-couple div{
+    margin-left: 10px;
+}
+/* 마지막 자식노드 오른쪽 간격 맞추기 */
+.images-couple>:last-child{
+    margin-right: 10px;
+}
+/* weekly best course */
+#course-best{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;  
+}
+.images-course{
+    display: flex;
+}
+.images-course div{
+    margin-left: 10px;
+}
+.images-course>:last-child{
+    margin-right: 10px;
+}
+/* hot deal */
+#partner{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;  
+}
+#deal-list{
+    display: flex;
+}
+#deal-list div{
+    margin-left: 10px;
+}
+#deal-list>:last-child{
+    margin-right: 10px;
+}

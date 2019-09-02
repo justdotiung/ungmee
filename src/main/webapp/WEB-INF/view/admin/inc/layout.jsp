@@ -10,17 +10,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 부트스트랩 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="${ctxName}/resource/bootstrap/js/bootstrap.min.js"></script>
+<link href="${ctxName}/resource/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- 자체 css -->
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/reset.css">
+<link rel="stylesheet" type="text/css"
+	href="${ctxName}/resource/css/admin/layout.css">
 <title>Document</title>
 </head>
 <body>
 	<!-- header -->
 	<tiles:insertAttribute name="header" />
-	<!-- aside -->
-	<tiles:insertAttribute name="aside"/>
-	<!-- body -->
-	<tiles:insertAttribute name="main" />
+	<!-- main -->
+	<div id="layuout-main">
+		<div id="layout-aside">
+			<!-- aside -->
+			<tiles:insertAttribute name="aside"/>
+		</div>
+		<div id="layout-main">
+			<!-- body -->
+			<tiles:insertAttribute name="main" />
+		</div>
+	</div>
 	<!-- footer -->
 	<tiles:insertAttribute name="footer" />
 </body>

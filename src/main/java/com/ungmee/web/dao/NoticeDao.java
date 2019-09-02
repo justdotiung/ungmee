@@ -11,7 +11,9 @@ import com.ungmee.web.entity.NoticeView;
 
 public interface NoticeDao {
 	public NoticeView getView(int id);
+
 	public Notice get(int id);
+	
 	public int insert(Notice notice);
 	public int detail(Notice notice);
 	public int update(Notice notice);

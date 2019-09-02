@@ -1,5 +1,23 @@
-/* ------------------list------------------ */
+/* 공지 구분 및 등록 배치*/
+#notice-btn {
+   display: flex;
+}
+#notice-btn>.notice-division ul{
+   display: flex;
+}
+/* 자식노드 사이 공간추가 */
+#notice-btn>.notice-division ul>:last-child{
+   margin-left: 10px;
+}
+#notice-btn>.notice-reg{
+   margin-left: auto;
+}
+/* 오른쪽에 공간추가 */
+#notice-btn>.notice-reg>a{
+   margin-right: 10px;
+}
 
+/* ------------------list------------------ */
 .notice-list  {
    border: 1px solid gray;
 }

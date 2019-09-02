@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+    
 <%@page import="java.io.*"%>
 <%@page import="java.util.UUID"%>
 <%@page import="java.text.SimpleDateFormat"%>
  
 <%
-
     //파일정보
     String sFileInfo = "";
     //파일명을 받는다 - 일반 원본파일명
@@ -67,13 +66,6 @@
         out.println(sFileInfo);
     }
 %>
-
-
-
-
-
-
- --%>%>
 
 
 

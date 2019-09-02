@@ -18,35 +18,12 @@ import com.ungmee.web.service.NoticeService;
 @RequestMapping("/notice/")
 public class NoticeController  {
 	
-//	@Autowired
-//	private NoticeService noticeService;
-//	//private NoticeDao noticeDao;
-//	
-//	@RequestMapping("list")
-//	public String list(HttpServletRequest request){
-//		noticeService.getPageList(request);
-//		return "notice/list";
-//	}
-//	
-//	@RequestMapping("detail")
-//	public String detail(Notice notice) {
-//		noticeService.getDetail(notice);
-//		return "notice/detail";
-//	}
-	
-//	@RequestMapping("list")
-//	public String list(Model model) {	
-//		List<Notice> notice = noticeDao.getList();
-//		model.addAttribute("notice", notice);
-//		return "notice/list";
-//	}
-	
-//	@RequestMapping("detail")
-//	public String detail(Integer id, Model model) {
-//		
-//		Notice notice = noticeDao.get(id);
-//		model.addAttribute("notice", notice);
-//		
-//		return "notice/detail";
-//	}
+	@RequestMapping("list")
+	public String list() {
+		return "notice.list";
+	}
+	@RequestMapping("detail")
+	public String detail() {
+		return "notice.detail";
+	}
 }

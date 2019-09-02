@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="ungmee.web.dao.CoupleDao">
- 	<select id="get" resultType="ungmee.web.entity.Couple">
+ <mapper namespace="com.ungmee.web.dao.CoupleDao">
+ 	<select id="get" resultType="com.ungmee.web.entity.Couple">
 	 	SELECT 
 	 		id,  
 	 		propose_id proposeId,
@@ -20,7 +20,7 @@
 	    FROM couple WHERE id = #{id}
  	</select>
 
- 	<select id="getUser" resultType="ungmee.web.entity.Couple">
+ 	<select id="getUser" resultType="com.ungmee.web.entity.Couple">
 	 	SELECT 
  			id,  
 	 		propose_id proposeId,
@@ -52,7 +52,7 @@
 		 FROM couple where accepter_id = #{id} and old_data = 1
  	</select>
  
- 	<select id="getSender" resultType="ungmee.web.entity.Couple">
+ 	<select id="getSender" resultType="com.ungmee.web.entity.Couple">
 	 	SELECT 
 	 		id,  
 	 		propose_id proposeId,
@@ -69,7 +69,7 @@
 	    FROM couple WHERE propose_id = #{id} and accept = 0
  	</select>
  	
- 	<insert id="insert" parameterType="ungmee.web.entity.Couple">
+ 	<insert id="insert" parameterType="com.ungmee.web.entity.Couple">
  		INSERT INTO couple
  		(
 		    	PROPOSE_ID, ACCEPTER_ID, 
@@ -81,7 +81,7 @@
 		)
  	</insert>
  
- 	<update id="update" parameterType="ungmee.web.entity.Couple">
+ 	<update id="update" parameterType="com.ungmee.web.entity.Couple">
 	 	UPDATE 
 	 		couple
 		SET
@@ -100,7 +100,7 @@
 			id= #{id}
  	</update>
  	
- 	<select id="getProposeList" resultType="ungmee.web.entity.Couple">
+ 	<select id="getProposeList" resultType="com.ungmee.web.entity.Couple">
  		SELECT 
  			id,  
 	 		propose_id proposeId,

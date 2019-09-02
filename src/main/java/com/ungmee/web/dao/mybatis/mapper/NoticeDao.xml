@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="ungmee.web.dao.NoticeDao">
- 	<select id="get" resultType="ungmee.web.entity.Notice">
+ <mapper namespace="com.ungmee.web.dao.NoticeDao">
+ 	<select id="get" resultType="com.ungmee.web.entity.Notice">
 		SELECT   
 			ID
 			WRITER_ID as writerId
@@ -17,7 +17,7 @@
 		WHERE 
 		 	id = #{id}
 	</select>
- 	<select id="getView" resultType="ungmee.web.entity.NoticeView">
+ 	<select id="getView" resultType="com.ungmee.web.entity.NoticeView">
 		SELECT   
 			id,
 		    title,
@@ -33,7 +33,7 @@
 		 	id = #{id}
 	</select>
 	
-	<select id="getList" resultType="ungmee.web.entity.NoticeView" parameterType="Integer">
+	<select id="getList" resultType="com.ungmee.web.entity.NoticeView" parameterType="Integer">
 	<!-- 페이징처리구문 -->
 		SELECT * FROM NOTICE_VIEW 
 		
@@ -43,7 +43,7 @@
 		
 	</select>
 	
- 	<insert id="insert" parameterType="ungmee.web.entity.Notice">
+ 	<insert id="insert" parameterType="com.ungmee.web.entity.Notice">
 		<!-- <selectKey keyProperty="id" resultType="Integer">
 		select nvl(id,0)+1 id from (select * from NOTICE order by regDate desc) where rownum = 1
 		</selectKey> -->
@@ -51,7 +51,7 @@
 		VALUES(#{categoryId},#{title},#{content},#{writerId})
 	</insert>
 	
-	<update id="update" parameterType="ungmee.web.entity.Notice">
+	<update id="update" parameterType="com.ungmee.web.entity.Notice">
 		UPDATE NOTICE
 		SET 
 			category_id=#{categoryId},

@@ -16,8 +16,8 @@
         http://www.springframework.org/schema/mvc
         https://www.springframework.org/schema/mvc/spring-mvc.xsd
         ">
-     <context:component-scan base-package="ungmee.web.dao.mybatis"/>
-   	 <context:component-scan base-package="ungmee.web.service"/>
+     <context:component-scan base-package="com.ungmee.web.dao.mybatis"/>
+   	 <context:component-scan base-package="com.ungmee.web.service"/>
     
       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
@@ -28,7 +28,7 @@
        <!-- 설정만 하는  -->
         <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         	<property name="dataSource" ref="dataSource"/>
-        	<property name="mapperLocations" value="classpath:ungmee/web/dao/mybatis/mapper/*.xml"/>
+        	<property name="mapperLocations" value="classpath:com/ungmee/web/dao/mybatis/mapper/*.xml"/>
         </bean>
         
         <!-- 공장에서 매퍼 객체를 얻기 위한 도구를 매번 생성하지않고 공유 -->

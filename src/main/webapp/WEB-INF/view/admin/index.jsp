@@ -8,10 +8,7 @@
 </head>
 <body>
 	<div>
-		<ul>
-		메인페이지
-<!-- 이벤트관리가 무엇일까?<li><a href="event/list">이벤트관리</a></li>-->
-		</ul>	
+	여러가지 통계 상황 을 나타내면 좋을거같다.
 	</div>
 </body>
 </html>

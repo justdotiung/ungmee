@@ -22,18 +22,18 @@
         ">
         
 	<context:component-scan
-		base-package="ungmee.web.controller"></context:component-scan>
+		base-package="com.ungmee.web.controller"></context:component-scan>
 	<context:component-scan
-		base-package="ungmee.web.controller.admin"></context:component-scan>
+		base-package="com.ungmee.web.controller.admin"></context:component-scan>
 	<context:component-scan
-		base-package="ungmee.web.controller.user"></context:component-scan>
+		base-package="com.ungmee.web.controller.user"></context:component-scan>
 	<context:component-scan
-		base-package="ungmee.web.error"></context:component-scan>
+		base-package="com.ungmee.web.error"></context:component-scan>
  	<context:component-scan 
-		base-package="ungmee.web.tiles"></context:component-scan>
+		base-package="com.ungmee.web.tiles"></context:component-scan>
 	
 	<!-- 웹소켓 설정 -->
-	<bean id="replyEchoHandler" class="ungmee.web.websocket.ReplyEchoHandler"/>
+	<bean id="replyEchoHandler" class="com.ungmee.web.websocket.ReplyEchoHandler"/>
 	
 	<websocket:handlers>
 		<websocket:mapping handler="replyEchoHandler" path="/replyEcho"/>

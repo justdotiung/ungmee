@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.ungmee.web.dao.SoloDao">
+ 	<select id="get" resultType="com.ungmee.web.entity.Solo">
+	 	SELECT
+		    id,
+		    birthday,
+		    gender,
+		    c_state cState
+		FROM
+    		solo
+    	WHERE
+    		ID = #{id}
+ 	</select>
+ 
+ 	<insert id="insert" parameterType="com.ungmee.web.entity.Solo">
+ 		INSERT INTO	solo 
+ 		(
+		    id,
+		    birthday,
+		    gender
+		) 
+		VALUES (
+		    #{id},
+		    #{birthday},
+		    #{gender}
+		)
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.ungmee.web.entity.Solo">
+ 		UPDATE solo
+		SET
+		  	c_state =#{cState},
+		    birthday = #{birthday},
+		    gender = #{gender}
+		WHERE
+		    id = #{id}
+		  
+ 	</update>
+ 	
+ </mapper>

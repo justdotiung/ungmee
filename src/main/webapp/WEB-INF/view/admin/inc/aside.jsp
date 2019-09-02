@@ -2,13 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctxName" value="${pageContext.request.contextPath}"/>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<link rel="stylesheet" type="text/css"
+	href="${ctxName}/resource/css/admin/aside.css">
 	<section id="aside">
 		<div>
 			<ul>
@@ -20,5 +15,3 @@
 			</ul>
 		</div>
 	</section>
-</body>
-</html>

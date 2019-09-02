@@ -3,17 +3,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>관리자 공지사항 REG 페이지</title>
+
+
+
+
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/reset.css">
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/admin/notice/reg.css">
-<script src="${ctxName}/resource/js/admin/notice.js"></script>
+<script src="${ctxName}/resource/js/admin/notice/reg.js"></script>
 <script src="${ctxName}/resource/lib/SmartEditor/js/HuskyEZCreator.js"></script>
 
-</head>
+
 <main>
 <form action="reg?${_csrf.parameterName}=${_csrf.token}" method="post"
 	enctype="multipart/form-data">
@@ -31,9 +30,15 @@
 		<div class="file">
 			<input type="file" name="file">파일첨부
 		</div>
-		<div class="content">
+		<div>
 			<textarea class="textarea" name="content"
-				style="width: 100%; height: 300px; border: 1px solid gray;"></textarea>
+				style="width: 100%; height: 300px; display: none;"></textarea>
+			<div>
+				<input type="button" onclick="pasteHTML();" value="본문에 내용 넣기" />
+				<input type="button" onclick="showHTML();" value="본문 내용 가져오기" />
+				<input type="button" onclick="submitContents(this);" value="서버로 내용 전송" />
+				<input type="button" onclick="setDefaultFont();" value="기본 폰트 지정하기 (궁서_24)" />
+			</div>
 		</div>
 	</div>
 		<!-- <textarea class="textarea2"
@@ -43,4 +48,4 @@
 </div>
 </form>
 </main>
-</html>
+

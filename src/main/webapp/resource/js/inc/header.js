@@ -27,24 +27,24 @@ window.addEventListener("load", function() {
 	var logoutBtn = document.querySelector(".logout-btn");
 
 	//알림 마우스over필요한지안한지 (데스크탑만 onmouseover 가능)
-	if(uAtoggle != null){
-		uAtoggle.onmouseover = function(e) {
-			e.preventDefault();
-			alertBox.classList.toggle("d-none");
+	// if(uAtoggle != null){
+	// 	uAtoggle.onmouseover = function(e) {
+	// 		e.preventDefault();
+	// 		alertBox.classList.toggle("d-none");
 
-			uAtoggle.onmouseout = function() {
-				alertBox.classList.toggle("d-none");
-			}
-		}
-		newTable.onmouseover = function(e) {
-			e.preventDefault();
-			alertBox.classList.toggle("d-none");
+	// 		uAtoggle.onmouseout = function() {
+	// 			alertBox.classList.toggle("d-none");
+	// 		}
+	// 	}
+	// 	newTable.onmouseover = function(e) {
+	// 		e.preventDefault();
+	// 		alertBox.classList.toggle("d-none");
 
-			newTable.onmouseout = function() {
-				alertBox.classList.toggle("d-none");
-			}
-		}
-	}
+	// 		newTable.onmouseout = function() {
+	// 			alertBox.classList.toggle("d-none");
+	// 		}
+	// 	}
+	// }
 	if(coupleBtn != null){
 		coupleBtn.onclick = function(e){
 			e.preventDefault();
@@ -94,8 +94,8 @@ window.addEventListener("load", function() {
 			return;
 		}
 
-		if(isOutside(e.target, coupleList)){
-			coupleList.classList.add("d-none");
+		if(isOutside(e.target, coupleBtn)){
+			coupleList.classList.toggle("d-none");
 		}
 	};
 });

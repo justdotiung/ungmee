@@ -4,9 +4,6 @@
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
-
-<link rel="stylesheet" type="text/css"
-	href="${ctxName}/resource/css/reset.css">
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/root/login.css">
 <script src="${ctxName}/resource/js/root/login.js"></script>

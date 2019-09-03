@@ -1,13 +1,16 @@
 #layuout-main{
     display: flex;
 }
+
 /* aside 너비와 영역 */
 #layout-aside{
+    margin-left: auto;
     background-color: yellow; 
-    width: 250px;
+    width: 200px;
 }
 /* main 너비와 영역 */
 #layout-main{
+    margin-right: auto;
     --background-color: cornflowerblue; 
     width: 850px;
 }

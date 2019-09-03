@@ -1,4 +1,4 @@
-
+/*
 //사용자 위치정보 위도 경도 
 window.addEventListener("load",findLocation());
 	function findLocation() {
@@ -12,28 +12,19 @@ window.addEventListener("load",findLocation());
 		var po = "lat : "+ position.coords.latitude +", long :"+ position.coords.longitude;
 		console.log(po);
 	}
+*/
 window.addEventListener("load", function() {
+	var ctx = document.querySelector(".ctx").value;
+	var token = document.querySelector(".token").value;
+    var header = document.querySelector(".header").value;
 	//커플 페이지 노출
-	var coupleBtn = this.document.querySelector(".couple-btx");
-	var coupleList = this.document.querySelector(".couple-info-toggle");
+	var coupleBtn = document.querySelector(".couple-btx");
+	var coupleList = document.querySelector(".couple-info-toggle");
 	//알림리스트 노출
-	var uAtoggle = this.document.querySelector("#user-alert-toggle");
-	var alertBox = this.document.querySelector(".alert-box");
-	var newTable = this.document.querySelector(".alam-table");
-	//html gps 라이브러리
-	findLocation();
-	//미세먼지 api
-	// var key = "Vk0LBbN0X7MW7cwfHY1cB%2BDgKhHubcpgmLXX8NFZm0kjKG%2FKBw%2F1z2UgplRmAxnRVOvVn%2FbgzjOTxIJjc7YYGw%3D%3D";
-	// var queryString = "?regId=11A00101&&Servicekey="+key;
-	// var url = "http://newsky2.kma.go.kr/service/VilageFrcstDspthDocInfoService/WidOverlandForecast";
-	
-	// var xhr = new XMLHttpRequest();
-	// xhr.addEventListener("load",function(){
-	// 	console.log(xhr.responseText);
-	// });
-	// xhr.open("GET",url+queryString);
-	// xhr.send();
-	
+	var uAtoggle = document.querySelector("#user-alert-toggle");
+	var alertBox = document.querySelector(".alert-box");
+	var newTable = document.querySelector(".alam-table");
+	var logoutBtn = document.querySelector(".logout-btn");
 
 	//알림 마우스over필요한지안한지 (데스크탑만 onmouseover 가능)
 	if(uAtoggle != null){
@@ -55,8 +46,56 @@ window.addEventListener("load", function() {
 		}
 	}
 	if(coupleBtn != null){
-		coupleBtn.onclick = function(){
+		coupleBtn.onclick = function(e){
+			e.preventDefault();
 			coupleList.classList.toggle("d-none");
 		}
 	}
+	
+	if(logoutBtn != null){
+		logoutBtn.onclick = function(e){
+			e.preventDefault();
+			var xhr = new XMLHttpRequest();
+			xhr.addEventListener("load",function(){
+				console.log("로그아웃");
+				window.location.reload();
+			});
+			xhr.open("POST","logout");
+			xhr.setRequestHeader(header,token);
+			xhr.send()
+		}
+	}
+
+	var isInside = function(target, element){
+        
+        var currentElement = target;
+        do{
+
+            if(currentElement == element){
+                console.log("inside");
+                return true;
+            }
+
+            currentElement = currentElement.parentElement;
+            
+        }while(currentElement);
+
+        console.log("outside");
+
+		return false;
+	};
+
+	var isOutside = function(target, element){
+		return !isInside(target, element);
+	};
+	document.onclick =function(e){
+
+		if(coupleList.classList.contains("d-none")){
+			return;
+		}
+
+		if(isOutside(e.target, coupleList)){
+			coupleList.classList.add("d-none");
+		}
+	};
 });

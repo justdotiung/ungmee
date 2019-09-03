@@ -5,3 +5,7 @@
 .pencil{
 	width: 20px;
 }
+/* spring boot 시 트리거 시키기위한 장치 */
+input[type=file]{
+	display: none;
+}

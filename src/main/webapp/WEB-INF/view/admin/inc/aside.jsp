@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${ctxName}/resource/css/admin/aside.css">
 	<section id="aside">
-		<div>
+		<div id="aside-list">
 			<ul>
 				<li><a href="${ctxName }/admin/member/list">회원관리</a></li>
 				<li>파트너 관리</li>

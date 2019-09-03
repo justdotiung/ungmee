@@ -1,9 +1,90 @@
 @charset "UTF-8";
-/* 알람 css */
+/* ---------헤더영역-----------------------------------------------  */
+
+/* 공백제거 */
+.page-header.index{
+	margin-top: 0px;
+	margin-bottom: 0;
+	background-color:#FDF5E6 ;
+	padding-bottom: 0px;
+
+}
+/* ------- logo ------------------------------------------------------ */
+/* 위치 및 선택  */
+#logo{
+	color: black;
+	font-size: 60px;
+}
+.position-logo{
+	--position: relative;
+	top:18px;
+}
+.sub-title{
+	--position: relative;
+	top:18px;
+}
+.menu-list{
+	width: 800px;
+	display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* nav 영역 */
+#nav-menu{
+	display: flex;
+}
+/*----  회원상태 nav ----------------------------------------------------- */
+#member-state{
+	display: flex;
+	margin-left: auto;
+}
+#member-info{
+	display: flex;
+}
+/*  오른쪽 위치 상단위치 */
+#member-nav{
+	margin-left: auto;
+}
+#member-nav>ul{
+	display: flex;
+}
+#member-nav>ul>li{
+	font-size: 16px;
+	padding: 7px;
+}
+/* ----데이트 선택 nav --------------------------------------------------- */
+#date-how{
+	border-top: 1px solid orange;
+}
+#date-how>ul{
+	display: flex;
+}
+/* 구분선  */
+#date-menu{
+	width: 100%;
+	border-top: 1px solid orange;
+}
+/*-- 일반회원 커플 정보 position ------------------------------------*/
+.couple-info-toggle{
+	position: absolute;
+    margin-left: 140px;
+    /* border-top: 1px solid orange; */
+}
+.couple-info-toggle>ul{
+	display: flex;
+}
+.couple-info-toggle>ul>li{
+	padding: 6px;
+    padding-left: 12px;
+}
+/* ---알람 box ---------------------------------------------------*/
+#alert-list a, span{
+	font-size: 14px;
+}
 .alert-box{
 	position: absolute;
-	background: #e9e9e9;
-	
+	background: #FDF5E6;
+	margin-left: 100px;
 	min-width: 380px;
 	height: auto;	
 	--overflow-y: auto;
@@ -12,34 +93,13 @@
 .alert-box img{
 	width: 30px;
 }
-.page-header index{
-	background-color: beige;
-}
-.icon-bar{
-	display:flex;
-	padding-left: 800px;
-}
-
-
-
-
 th, td {
 	padding-left : 10px;
 	
   }
-/*  */
 #user-alert-toggle{
 	background-color: none;
 }
 .new-alert{
 	color: red;
-}
-#member-state{
-	display: flex;
-}
-#member-info{
-	display: flex;
-}
-#alert-list a, span{
-	font-size: 14px;
 }

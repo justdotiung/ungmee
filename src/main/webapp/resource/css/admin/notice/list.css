@@ -17,9 +17,12 @@
    margin-right: 10px;
 }
 
+
 /* ------------------list------------------ */
 .notice-list  {
    border: 1px solid gray;
+   /* 리스트들 사이에 공간 추가  */
+   margin-bottom: 1px;
 }
 .notice-template-section  {
    border: 1px solid gray;

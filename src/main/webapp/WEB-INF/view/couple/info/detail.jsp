@@ -8,6 +8,7 @@
 <link href="${ctxName }/resource/css/couple/info/detail.css" type="text/css" rel="stylesheet">
 <script src="${ctxName }/resource/js/couple/info/detail.js"></script> 
 <script src="${ctxName}/resource/lib/modal/modal.js"></script>
+
 <body>
 	<section id="section">
 		<div id="couple-profile">
@@ -19,7 +20,7 @@
 			<img class="profile" src="${ctxName }/upload/${couple.info.profile}">
 			</c:when>
 		</c:choose>
-			<input class ="d-none" type="file" name ="file" >
+			<input class ="trigger" type="file" name ="file" >
 		</div>
 		<div id="couple-name">
 			<input type="text" name="name" value="${couple.info.name }">

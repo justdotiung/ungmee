@@ -11,10 +11,7 @@
 }
 /* ------- logo ------------------------------------------------------ */
 /* 위치 및 선택  */
-#logo{
-	color: black;
-	font-size: 60px;
-}
+
 .position-logo{
 	--position: relative;
 	top:18px;

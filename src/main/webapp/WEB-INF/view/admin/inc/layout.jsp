@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctxName" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -26,6 +25,11 @@
 	<tiles:insertAttribute name="header" />
 	<!-- main -->
 	<div id="layuout-main">
+		<!--사이드 메뉴 오픈버튼-->
+	     <div class="right">
+	        <a href="javascript:void(0)" id="open_sidebar" onclick="sidebar_open()">
+	        	<img src="${ctxName}/resource/images/icon/adminaside.png"></a>
+	     </div>
 		<div id="layout-aside">
 			<!-- aside -->
 			<tiles:insertAttribute name="aside"/>
@@ -37,5 +41,23 @@
 	</div>
 	<!-- footer -->
 	<tiles:insertAttribute name="footer" />
+	
+	<!-- 사이드바 감추기 나타내기 -->
+	<script>
+     var sidebar = document.getElementById("layout-aside");
+
+     function sidebar_open() {
+         "use strict";
+         if (sidebar.style.display === 'block') {
+             sidebar.style.display = "none";
+          } else {
+             sidebar.style.display = 'block';
+         }
+     }          
+
+     function sidebar_close() {
+          sidebar.style.display = "none"; 
+      }
+</script>
 </body>
 </html>

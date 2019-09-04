@@ -12,7 +12,7 @@
 	<div class="page-header index">
 		<div class="menu-list">
 			<div>
-				<a class="position-logo" style="text-decoration:none" href="${ctxName}/index"><span id="logo">PlanD</span></a><span class="sub-title">데이트 짜고 갈래?</span>
+				<a class="position-logo" style="text-decoration:none" href="${ctxName}/index"><img src="${ctxName}/resource/images/img/logo.png"></a><span class="sub-title">데이트 짜고 갈래?</span>
 			</div>
 			<div id="member-state">
 				<div id="member-nav">

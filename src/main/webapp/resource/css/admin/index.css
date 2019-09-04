@@ -1,0 +1,30 @@
+#event,#notice,#couple,#partner{
+    display: table;
+    margin-left: 0;
+    margin-right: 0;  
+}
+.list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    border:1px dotted #FF00FF;
+}
+.flex-items{
+   flex: auto;
+   min-width:300px;
+   height: 200px;
+   background:#999;
+   border-radius: 2px; 
+   margin:3px;
+}
+.add{
+    /* �삤瑜몄そ 遺숈씠湲� */
+    float: right;
+}
+.upper{
+	display: flex;
+}
+.down{
+	display: flex;
+}

@@ -1,14 +1,42 @@
 #layuout-main{
     display: flex;
 }
+/*@992 이하일때 : aside 숨기기, 오픈버튼 나오기*/
+@media (max-width:992px){
+    #layout-aside {
+        display: none;
+    }
+    main, footer {
+        margin-left: 0;
+    }
+    #open_sidebar {
+        display: block;
+    }
+}
+/*@992 이상이면 : aside 부활, X버튼/open버튼 숨기기*/
+ 
+@media (min-width:993px){
+    #layout-aside {
+        우선순위 높여줌(버튼 클릭시 js에 의해 display:none된게 회복이 안되서)
+        display:block!important
+    }
+    #open_sidebar, #close_sidebar {
+        display: none;
+    }
+    main, footer {
+        margin-left: 250px;
+    }
+} 
 
-/* aside 너비와 영역 */
+
+/* aside �꼫鍮꾩� �쁺�뿭 */
 #layout-aside{
     margin-left: auto;
-    background-color: yellow; 
+    background-color: #FFEBCD;
+    min-height: 500px; 
     width: 200px;
 }
-/* main 너비와 영역 */
+/* main �꼫鍮꾩� �쁺�뿭 */
 #layout-main{
     margin-right: auto;
     --background-color: cornflowerblue; 

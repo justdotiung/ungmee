@@ -8,7 +8,7 @@
 
     <section id="contents">
         <section id="couple-best">
-            <h3>Weekly Best Couple</h3>
+            <h4><b>Weekly Best Couple</b></h4>
             <div class="images-couple">
                 <div><img src="${ctxName}/resource/images/index/c1.jpg" alt="best-couple img" class="img-rounded img-couple"><a href="${ctxName}/couple/detail"></a></div>
                 <div><img src="${ctxName}/resource/images/index/c2.jpg" alt="best-couple img" class="img-rounded img-couple"><a href="couple/detail"></a></div>
@@ -20,7 +20,7 @@
 
 
         <section id="course-best">
-            <h3>주간베스트코스</h3>
+            <h4><b>주간베스트코스</b></h4>
             <div class="images-course">
             <!--다오만들때 뷰 best 아이디 값으로 넣준다.  -->
                 <div><img src="${ctxName}/resource/images/index/course1.PNG" alt="best-course img" class="img-thumbnail img-course"><a href="${ctxName}/course/detail"></a></div>
@@ -30,7 +30,7 @@
         </section>
 
         <section id="partner">
-            <h3>Hot Deal</h3>
+            <h4><b>Hot Deal</b></h4>
             <div id="deal-list">
 	            <div id="first-deal">
 	            	<ul>
@@ -63,7 +63,7 @@
         </section>
 
         <section id="event">
-            <h3>이벤트</h3>
+            <h4><b>이벤트</b></h4>
             <div class="event-add"><a href="/notice/list">더보기</a></div>
           	<div class="event-list">
           		<div class="flex-items">
@@ -85,7 +85,7 @@
         </section>
 
         <section id="notice">
-            <h3>공지사항</h3>
+            <h4><b>공지사항</b></h4>
             <div>
             	<ul>
             		<li> <a href="${ctxName}/notice/detail">공지글1</a></li>

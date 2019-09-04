@@ -12,8 +12,7 @@
 	<div class="main-div">
 
 		<div class="logo">
-			<a href="index"><img
-				src="${ctxName}/resource/images/ummo/logo.jpg"></a>
+			<a href="index"><img src="${ctxName}/resource/images/img/logo.png"></a>
 		</div>
 
 		<section class="login-form">

@@ -65,10 +65,10 @@
 			<div id="nav-menu">
 				<nav id="date-how">
 					<ul class="nav nav-pills">
-					  <li role="presentation"><a href="${ctxName}/course/list?type=who">DateDeal</a></li>
-					  <li role="presentation"><a href="${ctxName}/course/list?type=what">DateCourse</a></li>
-					  <li role="presentation"><a href="${ctxName}/course/list?type=where">DateMap</a></li>
-					  <li role="presentation"><a href="${ctxName}/course/list?type=search">DateSearch</a></li>
+					  <li><a href="${ctxName}/course/list?type=who">DateDeal</a></li>
+					  <li><a href="${ctxName}/course/list?type=what">DateCourse</a></li>
+					  <li><a href="${ctxName}/course/list?type=where">DateMap</a></li>
+					  <li><a href="${ctxName}/course/list?type=search">DateSearch</a></li>
 					</ul>
 				</nav>
 			</div>

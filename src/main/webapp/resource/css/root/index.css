@@ -1,6 +1,6 @@
-/* 부트스트랩 reset */
-ul{
-    margin-bottom: 0px;
+/* 푸터고정을 위한 높이값 */
+#contents{
+    padding-bottom: 6rem;
 }
 /*---------- weekly best couple ----------------------------*/
 /* 중앙정렬 */

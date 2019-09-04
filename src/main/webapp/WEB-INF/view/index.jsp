@@ -6,7 +6,7 @@
 	href="${ctxName}/resource/css/root/index.css">
 
 
-    <main>
+    <section id="contents">
         <section id="couple-best">
             <h3>Weekly Best Couple</h3>
             <div class="images-couple">
@@ -93,5 +93,5 @@
             </div>
             <div><a href="${ctxName}/notice/list">더보기</a></div>
         </section>
-    </main>
+    </section>>
     

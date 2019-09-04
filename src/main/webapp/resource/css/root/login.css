@@ -7,33 +7,49 @@
 }
 /* ---body---------------- */
 #main{
-   display: flex;
+   display: table;
    margin: auto;
 }
-
+.main-div{
+   display: flex;
+   width: 940px;
+   min-height: 100%;
+   flex-direction: column;
+}
 .login-form{
+
+}
+.user-login{
+   display: table;
+   margin: auto;
 }
 .login-id>form{
    display: inline-block;
 }
-.login-id>form>input{
-   text-align: center;
-   width: 300px;
-   margin-bottom: 5px;
-   border: 1px solid gray;
-   border-radius: 7px / 6px;
-}
 
-.login-id>form>input:nth-child(3){
-  
-   background:  gray;
+input{
+   border-bottom: 1px solid gray;
 }
 .api-login>ul{
    display: flex;
+   margin: auto;
+   margin-right: 15px;
 }
-#main .logo a img{
-   margin-left: 50px;
-   width: 50px;
-   margin: 0px;
+.api-login>ul>li{
+   padding-left: 15px;
 }
-/* ---footer-------------------------- */
+.api-login{
+   display: table;
+   margin: auto;
+   margin-top: 29px;
+   margin-bottom: 86px;
+}
+.logo{
+   width: 40%;
+   display: table;
+   margin: auto;
+   text-align: center;
+   height: 298px;
+   padding: 52px;
+   margin-top: 100px;
+}

@@ -78,7 +78,7 @@ window.addEventListener("load", function() {
 				console.log("로그아웃");
 				window.location.reload();
 			});
-			xhr.open("POST","logout");
+			xhr.open("POST",ctx+"/logout");
 			xhr.setRequestHeader(header,token);
 			xhr.send()
 		}

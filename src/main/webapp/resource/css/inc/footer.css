@@ -1,3 +1,35 @@
+/* ---------footer----------------------- */
+/*  영역 중앙배치 및 바닥고정 */
 #footer{
+	display: table;
+	margin: auto;
+	width: 940px;
+	--position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+}
+/* 중앙배치 */
+.footer-div{
+	display: table;
+	margin: auto;
+}
+/*  일렬배치 */
+.footer-social>ul{
+	display: flex;
+}
+/* ----------footer 소셜 ---------------------- */
+/* 소셜 중앙 배치 */
+.footer-social{
+	margin: auto;
+	display: table;
+}
+/* 사이간격 주기 */
+.footer-social>ul>li{
+	padding-left: 10px;
+}
+/* 문단 중앙 배치 */
+.footer-content>p{
 	text-align: center;
 }

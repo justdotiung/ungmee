@@ -1,4 +1,8 @@
 @charset "UTF-8";
+/* 부트스트랩 reset */
+ul{
+    margin-bottom: 0px;
+}
 /* ---------헤더영역-----------------------------------------------  */
 
 /* 공백제거 */
@@ -29,9 +33,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-
-
-
 /* nav 영역 */
 #nav-menu{
 	display: flex;
@@ -69,7 +70,7 @@
 }
 .couple-info-toggle>ul{
 	display: flex;
-	margin-top: 10px;
+	margin-top: 13px;
 	margin-left: -4px;
 }
 .couple-info-toggle>ul>li{
@@ -81,8 +82,8 @@
 .alert-list{
 	display: flex;
 	position: absolute;
-	margin-top: 16px;
-    margin-left: -67px;
+	margin-top: 19px;
+	margin-left: -87px;
 }
 .alert-list>li{
 	font-size: 13px;
@@ -91,28 +92,23 @@
 
 
 /* 반응형 css 정의 */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 376px) {
 	.menu-list{
-		width: 800px;
-		background:pink;
+		width: 940px;
+
 	}
 
 	.alert-list{
-		display: flex;
-		position: absolute;
-		margin-top: 16px;
-		margin-left: -67px;
+		
 	}
 	.alert-list>li{
-		font-size: 13px;
-		padding-left: 12px;
+
 	}
 	
 }
 
 @media screen and (min-width: 1200px) {
 	.menu-list{
-		
-		background:blue;
+	
 	}
 }

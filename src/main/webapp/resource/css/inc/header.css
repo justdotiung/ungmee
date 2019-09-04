@@ -24,11 +24,14 @@
 	top:18px;
 }
 .menu-list{
-	width: 800px;
+	width: 100%;
 	display: table;
     margin-left: auto;
     margin-right: auto;
 }
+
+
+
 /* nav 영역 */
 #nav-menu{
 	display: flex;
@@ -86,3 +89,30 @@
 	padding-left: 12px;
 }
 
+
+/* 반응형 css 정의 */
+@media screen and (min-width: 800px) {
+	.menu-list{
+		width: 800px;
+		background:pink;
+	}
+
+	.alert-list{
+		display: flex;
+		position: absolute;
+		margin-top: 16px;
+		margin-left: -67px;
+	}
+	.alert-list>li{
+		font-size: 13px;
+		padding-left: 12px;
+	}
+	
+}
+
+@media screen and (min-width: 1200px) {
+	.menu-list{
+		
+		background:blue;
+	}
+}

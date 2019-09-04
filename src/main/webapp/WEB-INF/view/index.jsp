@@ -64,13 +64,24 @@
 
         <section id="event">
             <h3>이벤트</h3>
-            <ul>
-                <li><a href="/notice/detail">사내이벤트1</a></li>
-                <li><a href="/notice/detail">사내이벤트2</a></li>
-                <li><a href="/notice/detail">외부이벤트1</a></li>
-                <li><a href="/notice/detail">외부이벤트2</a></li>
-            </ul>
-            <div><a href="/notice/list">더보기</a></div>
+            <div class="event-add"><a href="/notice/list">더보기</a></div>
+          	<div class="event-list">
+          		<div class="flex-items">
+	          		<a href=""><img src="">이것이다1</a>
+          		</div>
+          		<div class="flex-items">
+	          		<a href=""><img src="">이것이다2</a>
+          		</div>
+          		<div class="flex-items">
+	          		<a href=""><img src="">이것이다3</a>
+          		</div>
+          		<div class="flex-items">
+	          		<a href=""><img src="">이것이다4</a>
+          		</div>
+          		<div class="flex-items">
+	          		<a href=""><img src="">이것이다5</a>
+          		</div>
+          	</div>
         </section>
 
         <section id="notice">

@@ -2,7 +2,7 @@
 ul{
     margin-bottom: 0px;
 }
-/* weekly best couple */
+/*---------- weekly best couple ----------------------------*/
 /* 중앙정렬 */
 #couple-best{
     display: table;
@@ -21,33 +21,72 @@ ul{
 .images-couple>:last-child{
     margin-right: 10px;
 }
-/* weekly best course */
+/*----------- weekly best course ------------------------- */
+/* 중앙정렬 */
 #course-best{
     display: table;
     margin-left: auto;
     margin-right: auto;  
 }
+/* 일렬배치 */
 .images-course{
     display: flex;
 }
+/* 사이간격 */
 .images-course div{
     margin-left: 10px;
 }
+/* 마지막 자식노드 오른쪽 간격 맞추기 */
 .images-course>:last-child{
     margin-right: 10px;
 }
-/* hot deal */
+/*-------- hot deal ------------------ ----------------------*/
+/* 중앙정렬 */
 #partner{
     display: table;
     margin-left: auto;
     margin-right: auto;  
 }
+/* 일렬배치 */
 #deal-list{
     display: flex;
 }
+/* 사이간격 */
 #deal-list div{
     margin-left: 10px;
 }
+/* 마지막 자식노드 오른쪽 간격 맞추기 */
 #deal-list>:last-child{
     margin-right: 10px;
+}
+/* -------- evnet ---------------------------------------------*/
+#event{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;  
+}
+.event-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 90%;
+    border:1px dotted #FF00FF;
+}
+.flex-items{
+   flex: auto;
+   min-width:110px;
+   height: 50px;
+   background:#999;
+   border-radius: 2px; 
+   margin:3px;
+}
+.event-add{
+    /* 오른쪽 붙이기 */
+    float: right;
+}
+/* ------ notice----------------------------------------------- */
+#notice{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;  
 }

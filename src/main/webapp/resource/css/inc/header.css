@@ -53,53 +53,36 @@
 	padding: 7px;
 }
 /* ----데이트 선택 nav --------------------------------------------------- */
-#date-how{
+/* 구분선  */
+#nav-menu{
 	border-top: 1px solid orange;
 }
 #date-how>ul{
 	display: flex;
 }
-/* 구분선  */
-#date-menu{
-	width: 100%;
-	border-top: 1px solid orange;
-}
 /*-- 일반회원 커플 정보 position ------------------------------------*/
 .couple-info-toggle{
 	position: absolute;
-    margin-left: 140px;
-    /* border-top: 1px solid orange; */
 }
 .couple-info-toggle>ul{
 	display: flex;
+	margin-top: 10px;
+	margin-left: -4px;
 }
 .couple-info-toggle>ul>li{
+	font-size: 13px;
 	padding: 6px;
     padding-left: 12px;
 }
 /* ---알람 box ---------------------------------------------------*/
-#alert-list a, span{
-	font-size: 14px;
-}
-.alert-box{
+.alert-list{
+	display: flex;
 	position: absolute;
-	background: #FDF5E6;
-	margin-left: 100px;
-	min-width: 380px;
-	height: auto;	
-	--overflow-y: auto;
-	z-index: 10;
+	margin-top: 16px;
+    margin-left: -67px;
 }
-.alert-box img{
-	width: 30px;
+.alert-list>li{
+	font-size: 13px;
+	padding-left: 12px;
 }
-th, td {
-	padding-left : 10px;
-	
-  }
-#user-alert-toggle{
-	background-color: none;
-}
-.new-alert{
-	color: red;
-}
+

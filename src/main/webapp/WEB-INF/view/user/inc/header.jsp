@@ -8,85 +8,74 @@
 
 <link rel="stylesheet" type="text/css" href="${ctxName}/resource/css/inc/header.css">
 <script src="${ctxName}/resource/js/inc/header.js"></script>
-
-
-<body>
-	<div>
-		<a href="${ctxName}/index"><img	src="${ctxName}/resource/images/ummo/logo.jpg"></a>
-	</div>
-
-	<div id="member-state">
-		<div>
-		<security:authorize access="!isAuthenticated()">
-			<a href="${ctxName}/login">로그인</a>			
-			<a href="${ctxName}/signup">회원가입</a>
-		</security:authorize>
-		</div>
-		<div id="member-info">
-		<security:authorize access="isAuthenticated()">
+<div>
+	<div class="page-header index">
+		<div class="menu-list">
 			<div>
-			<security:authorize access="hasRole('USER')">
-				<c:if test="${user.cState eq '1' }">
-				<a href="${ctxName}/couple/info">커플페이지</a>
-				</c:if>
-				<a href="${ctxName}/user/detail">정보수정</a>
-				<a href="${ctxName}/user/alert/list" id="user-alert-toggle">알람</a>
-				<c:if test="${count > 0}">
-				<span class="new-alert">new${count}</span>
-				</c:if>
-			</security:authorize>
-		 	<security:authorize access="hasRole('ADMIN')"> 
-				<a href="${ctxName}/admin/index">관리자페이지</a>
-			</security:authorize> 
+				<a class="position-logo" style="text-decoration:none" href="${ctxName}/index"><span id="logo">PlanD</span></a><span class="sub-title">데이트 짜고 갈래?</span>
 			</div>
-			<div>
-				<form action="${ctxName}/logout" method="post">
-					<input type="submit" value="로그아웃">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				</form>		
+			<div id="member-state">
+				<div id="member-nav">
+					<ul id="user-menu">
+						<security:authorize access="!isAuthenticated()">
+						<li><a href="${ctxName}/login" class="login">로그인</a></li>
+						<li><a href="${ctxName}/signup">회원가입</a></li>	
+						</security:authorize>
+					<security:authorize access="isAuthenticated()">
+						<security:authorize access="hasRole('USER')">
+						<c:if test="${user.cState eq '1' }">
+						<li>
+							<a href="#tab1" class="couple-btn tab-btn">커플정보</a>
+							<div id="tab1" class="couple-info-toggle tab d-none">
+								<ul>
+									<li><a href="${ctxName}/couple/info/index">페이지</a></li>
+									<li><a href="${ctxName}/couple/info/detail">수정</a></li>
+									<li><a href="${ctxName}/couple/info">비밀글</a></li>
+									<li><a href="${ctxName}/couple/info">스케줄러</a></li>
+								</ul>
+							</div>
+						</li>
+						</c:if>
+						<li>
+							<a href="#tab2" class="user-alert-toggle tab-btn">
+								알람
+								<c:if test="${count > 0}">
+								<span class="new-alert">new${count}</span>
+								</c:if>
+							</a>
+							<div id="tab2" class="alert-box tab d-none">
+								<ul class="alert-list">
+									<li><a href="">커플자님1</a></li>
+									<li><a href="">이벤트3</a></li>
+									<li><a href="">파트너1</a></li>
+									<li><a href="">팔로워0</a></li>
+								</ul>
+							</div>
+						</li>
+					</security:authorize>
+				 	<security:authorize access="hasRole('ADMIN')"> 
+						<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
+					</security:authorize> 
+						<li><a href="${ctxName}/user/detail">정보수정</a></li>
+						<li><a class="logout-btn" href="${ctxName}/logout">로그아웃</a></li>
+				</security:authorize>
+					</ul>
+				</div>
 			</div>
-		</security:authorize>
+			<div id="nav-menu">
+				<nav id="date-how">
+					<ul class="nav nav-pills">
+					  <li role="presentation"><a href="${ctxName}/course/list?type=who">DateDeal</a></li>
+					  <li role="presentation"><a href="${ctxName}/course/list?type=what">DateCourse</a></li>
+					  <li role="presentation"><a href="${ctxName}/course/list?type=where">DateMap</a></li>
+					  <li role="presentation"><a href="${ctxName}/course/list?type=search">DateSearch</a></li>
+					</ul>
+				</nav>
+			</div>
 		</div>
+	<input type="hidden" class = "header" value="${_csrf.headerName}"> 
+	<input type="hidden" class = "token" value="${_csrf.token}">
+	<input type="hidden" class = "ctx" value="${ctxName}">
 	</div>
-	<div class="alert-box d-none">
-	<c:if test="${count >0}">
-		<div class="new-table">
-			<table class="alam-table">
-			<c:forEach var="i" items="${list}">
-				<tr>			
-					<td><a href="${ctxName}/user/alert/sender?id=${i.sender }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
-					<td>
-						<a class ="alam-title" href="${ctxName}/user/alert/detail?t=${i.type}&n=${i.id}">${i.title}</a>
-					</td>
-					<td><span><fmt:formatDate pattern="HH시mm분" value="${i.regDate }"/></span></td>
-				</tr>
-				<input type="hidden" value="${i.id }">
-			</c:forEach>
-			</table>
-		</div>
-	</c:if>
-	<c:if test="${count == 0}">
-		<table class="alam-table">
-			<tr>
-				<td>
-					<span>새로운 알림이 없습니다.</span>
-				</td>
-			</tr>
-		</table>
-	</c:if>
-	</div>
-	<nav>
-		<ul>
-			<li><a href="${ctxName}/course/list?type=who">CourseWho</a></li>
-			<li><a href="${ctxName}/course/list?type=what">CourseWhat</a></li>
-			<li><a href="${ctxName}/course/list?type=where">CourseWhere</a></li>
-			<li><a href="${ctxName}/course/list?type=search">CourseSearch</a></li>
-		</ul>
-	</nav>
-	<div id="weather">
-		<a href="">날씨API</a><img
-			src="${ctxName}/resource/images/img/2x/baseline_cloud_black_18dp.png">
-	</div>
-	<div>현재 서울은 개맑음</div>
+</div>
 
-</body>

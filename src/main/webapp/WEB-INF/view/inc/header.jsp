@@ -16,20 +16,42 @@
 			</div>
 			<div id="member-state">
 				<div id="member-nav">
-					<ul>
+					<ul id="user-menu">
 						<security:authorize access="!isAuthenticated()">
-						<li><a href="${ctxName}/login">로그인</a></li>
+						<li><a href="${ctxName}/login" class="login">로그인</a></li>
 						<li><a href="${ctxName}/signup">회원가입</a></li>	
 						</security:authorize>
 					<security:authorize access="isAuthenticated()">
 						<security:authorize access="hasRole('USER')">
 						<c:if test="${user.cState eq '1' }">
-						<li><a href="" class="couple-btx">커플정보</a></li>
+						<li>
+							<a href="#tab1" class="couple-btn tab-btn">커플정보</a>
+							<div id="tab1" class="couple-info-toggle tab d-none">
+								<ul>
+									<li><a href="${ctxName}/couple/info/index">페이지</a></li>
+									<li><a href="${ctxName}/couple/info/detail">수정</a></li>
+									<li><a href="${ctxName}/couple/info">비밀글</a></li>
+									<li><a href="${ctxName}/couple/info">스케줄러</a></li>
+								</ul>
+							</div>
+						</li>
 						</c:if>
-						<li><a href="${ctxName}/user/alert/list" id="user-alert-toggle">알람</a></li>
-						<c:if test="${count > 0}">
-						<li><span class="new-alert">new${count}</span></li>
-						</c:if>
+						<li>
+							<a href="#tab2" class="user-alert-toggle tab-btn">
+								알람
+								<c:if test="${count > 0}">
+								<span class="new-alert">new${count}</span>
+								</c:if>
+							</a>
+							<div id="tab2" class="alert-box tab d-none">
+								<ul class="alert-list">
+									<li><a href="">커플자님1</a></li>
+									<li><a href="">이벤트3</a></li>
+									<li><a href="">파트너1</a></li>
+									<li><a href="">팔로워0</a></li>
+								</ul>
+							</div>
+						</li>
 					</security:authorize>
 				 	<security:authorize access="hasRole('ADMIN')"> 
 						<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
@@ -43,49 +65,12 @@
 			<div id="nav-menu">
 				<nav id="date-how">
 					<ul class="nav nav-pills">
-					  <li role="presentation" class="active"><a href="${ctxName}/course/list?type=who">DateDeal</a></li>
+					  <li role="presentation"><a href="${ctxName}/course/list?type=who">DateDeal</a></li>
 					  <li role="presentation"><a href="${ctxName}/course/list?type=what">DateCourse</a></li>
 					  <li role="presentation"><a href="${ctxName}/course/list?type=where">DateMap</a></li>
 					  <li role="presentation"><a href="${ctxName}/course/list?type=search">DateSearch</a></li>
 					</ul>
 				</nav>
-				<div id="date-menu">
-					<div class="couple-info-toggle d-none">
-					<ul>
-						<li><a href="${ctxName}/couple/info/index">페이지</a></li>
-						<li><a href="${ctxName}/couple/info/detail">수정</a></li>
-						<li><a href="${ctxName}/couple/info">비밀글</a></li>
-						<li><a href="${ctxName}/couple/info">스케줄러</a></li>
-					</ul>
-					</div>
-					<div class="alert-box d-none">
-					<c:if test="${count >0}">
-						<div class="new-table">
-							<table class="alam-table">
-							<c:forEach var="i" items="${list}">
-								<tr>			
-									<td><a href="${ctxName}/user/alert/sender?id=${i.sender }"><img class="profile" src="${ctxName }/upload/${i.profile}"></a></td>
-									<td>
-										<a class ="alam-title" href="${ctxName}/user/alert/detail?t=${i.type}&n=${i.id}">${i.title}</a>
-									</td>
-									<td><span><fmt:formatDate pattern="HH시mm분" value="${i.regDate }"/></span></td>
-								</tr>
-								<input type="hidden" value="${i.id }">
-							</c:forEach>
-							</table>
-						</div>
-					</c:if>
-					<c:if test="${count == 0}">
-						<table class="alam-table">
-							<tr>
-								<td>
-									<span>새로운 알림이 없습니다.</span>
-								</td>
-							</tr>
-						</table>
-					</c:if>
-					</div>
-				</div>
 			</div>
 		</div>
 	<input type="hidden" class = "header" value="${_csrf.headerName}"> 

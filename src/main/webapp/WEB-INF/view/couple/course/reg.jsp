@@ -18,11 +18,28 @@
 				<li id="clickLatlng">이용수단</li>
 			</ul>
 		</div>
-	<div id="spot-div">
-		<div id="drop-zone" class="trigger-button">
-			<img src="${ctxName}/resource/images/icon/material.png">
+	<template class="upload-template">
+		<div class="spot-div">
+			<div id="drop-zone" class="trigger-button">
+				<button class="img-btn">
+					<img src="${ctxName}/resource/images/icon/material.png">
+				</button>
+			</div>
+				<input type="file" id="file" name="file" class="d-none" multiple="multiple">
+			<div>
+				<input type="text" placeholder="비용">
+				<textarea rows="8" cols="40"></textarea>
+			</div>
 		</div>
-			<input type="file" id="file" class="d-none" multiple="multiple">
+	</template>
+	
+	<div class="spot-div" >
+		<div id="drop-zone" class="trigger-button">
+			<button class="img-btn">
+				<img src="${ctxName}/resource/images/icon/material.png">
+			</button>
+		</div>
+			<input type="file" name="file" class="d-none" multiple="multiple">
 		<div>
 			<input type="text" placeholder="비용">
 			<textarea rows="8" cols="40"></textarea>
@@ -38,4 +55,5 @@
 	<input type="hidden" class="ctx" value="${ctxName}">
 	<input type="hidden" class= "header" value="${_csrf.headerName}"> 
 	<input type="hidden" class= "token" value="${_csrf.token}"> 
+
 </section>

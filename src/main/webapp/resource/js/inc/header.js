@@ -89,7 +89,7 @@ window.addEventListener("load", function() {
         var currentElement = target;
         do{
 
-            if(currentElement == element){
+            if(currentElement === element){
                 console.log("inside");
                 return true;
             }
@@ -98,7 +98,7 @@ window.addEventListener("load", function() {
             
         }while(currentElement);
 
-        console.log("outside");
+        //console.log("outside");
 
 		return false;
 	};

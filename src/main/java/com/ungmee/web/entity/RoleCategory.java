@@ -2,7 +2,7 @@ package com.ungmee.web.entity;
 
 public class RoleCategory {
 	private int id;
-	private String name;
+	private String auth;
 	
 	
 	public RoleCategory() {
@@ -14,12 +14,12 @@ public class RoleCategory {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getAuth() {
+		return auth;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setAuth(String auth) {
+		this.auth = auth;
 	}
-	
+
 	
 }

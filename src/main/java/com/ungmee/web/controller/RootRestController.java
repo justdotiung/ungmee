@@ -25,6 +25,8 @@ public class RootRestController {
 	
 	@PostMapping("solo-signup")
 	public String signUp(User user, Solo solo) {
+		System.out.println(user.toString());
+		System.out.println(solo.toString());
 		memberShipService.soloRegistration(user, solo);
 		return "index";
 	}

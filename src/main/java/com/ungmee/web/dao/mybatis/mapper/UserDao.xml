@@ -33,9 +33,9 @@
 
  	<insert id="insert" parameterType="com.ungmee.web.entity.User">
  		INSERT INTO "USER" 
- 			(email, pw, echeck,ROLE_ID, nickname)
+ 			(id, email, pw, echeck,ROLE_ID, nickname)
  		 VALUES 
- 		 	(#{email},#{pw},#{echeck},#{roleId},#{nickName})
+ 		 	(USER_SEQ.NEXTval ,#{email},#{pw},#{echeck},#{roleId},#{nickName})
  	</insert>
  	
 	<update id="edit" parameterType="com.ungmee.web.entity.User">

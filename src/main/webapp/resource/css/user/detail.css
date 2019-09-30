@@ -28,3 +28,8 @@
 input[type=file]{
 	display: none;
 }
+/* 가운데 정렬 */
+#contents{
+	display: table;
+	margin: auto;
+}

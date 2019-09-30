@@ -1,8 +1,13 @@
 window.addEventListener("load",function(){
-	var imgCount = null;
-	var imgFileHandler = function(){
+
+	function imgFileHandler(e,imgCount){
+		var parentNode = e.target.parentNode;
+		var pParentNode = parentNode.parentNode;
+		var file = pParentNode.nextElementSibling;
+		console.log(file.type);
 		//멀티파일 리스트
-		getFiles = file.files;
+		console.log(pParentNode.tagName);
+		var getFiles = file.files;
 		//한번에 올릴수있는 파일 갯수
 		if(imgCount+getFiles.length>=3){
 			console.log("최대 2장까지 가능합니다.")
@@ -28,7 +33,7 @@ window.addEventListener("load",function(){
 				var imgTag = document.createElement("img");
 				imgTag.classList.add("img");
 				imgTag.src = e.target.result;
-				dropZone.append(imgTag);
+				pParentNode.append(imgTag);
 			}
 			reader.readAsDataURL(getFile);
 		}
@@ -37,6 +42,8 @@ window.addEventListener("load",function(){
 	var imgBtnClickHandler = function (e){
 		var parentNode = e.target.parentNode;
 		var pParentNode = parentNode.parentNode;
+		var file = pParentNode.nextElementSibling;
+		console.log(file.type);
 		console.log(pParentNode.tagName);
 		//비동기로 읽어온 이미지 파일수.
 		imgCount = pParentNode.querySelectorAll(".img").length;
@@ -60,9 +67,12 @@ window.addEventListener("load",function(){
 		});
         file.dispatchEvent(event);
 		
-        file.onchange = imgFileHandler;
+		//file.onchange = imgFileHandler;
+		file.onchange = function(){
+			imgFileHandler(e,imgCount);
+		};
 	};
-	
+
     var ctx = this.document.querySelector(".ctx");
     var header = this.document.querySelector(".header").value;
     var token = this.document.querySelector(".token").value;
@@ -142,7 +152,7 @@ window.addEventListener("load",function(){
 		// alert("유효하지않은 파일형식입ㄴ미다")
 		// return;
 		// }
-		//    
+		//     
 
 		if (file.size > 10 * 1024 * 1024) {
 			alert("10메가 이상의 파일은 업로드 할 수 없습니다.");
@@ -180,7 +190,7 @@ window.addEventListener("load",function(){
 	var addList =[] ;
 	var uTemplate = section.querySelector(".upload-template");
 	
-	addBtn.onclick = function(e){
+	addBtn.onclick = function(){
 		// 함수가 실행될때마다 몇개가있는지 묻는다.
 		var spotDiv = section.querySelectorAll(".spot-div");
 		addList.push(addBtn);
@@ -190,10 +200,10 @@ window.addEventListener("load",function(){
 		}
 		var clonDiv = document.importNode(uTemplate.content,true);
 		var clonFile = clonDiv.querySelector("input[name=file]");
-		var clonBrn = clonDiv.querySelector(".img-btn");	 
+		var clonBtn = clonDiv.querySelector(".img-btn");	 
 		clonFile.style.display="none";
 		clonFile.onchange = imgFileHandler;
-		clonBrn.onclick  = imgBtnClickHandler;
+		clonBtn.onclick  = imgBtnClickHandler;
 		 section.insertBefore(clonDiv, addBtn);
 	}
 	regBtn.onclick = function(){

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ungmee.web.dao.PartnerDao;
 import com.ungmee.web.dao.SoloDao;
@@ -30,6 +31,7 @@ public class CustomMemberShipService implements MemberShipService {
 	private PartnerDao partnerDao;
 	
 	
+	@Transactional
 	@Override
 	public int soloRegistration(User user, Solo solo) {
 		int result = 0;

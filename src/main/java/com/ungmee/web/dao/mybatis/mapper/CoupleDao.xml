@@ -72,11 +72,11 @@
  	<insert id="insert" parameterType="com.ungmee.web.entity.Couple">
  		INSERT INTO couple
  		(
-		    	PROPOSE_ID, ACCEPTER_ID, 
+		    	ID,PROPOSE_ID, ACCEPTER_ID, 
 		    	name,	message, lovedate
 		)
 		VALUES
-		(	#{proposeId}, #{accepterId},	
+		(	couple_seq.nextval, #{proposeId}, #{accepterId},	
 				#{name}, #{message}, #{loveDate}
 		)
  	</insert>

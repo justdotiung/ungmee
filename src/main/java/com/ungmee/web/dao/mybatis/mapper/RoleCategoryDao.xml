@@ -6,7 +6,7 @@
  	<select id="get" resultType="com.ungmee.web.entity.RoleCategory">
 	 	SELECT
 		    id,
-		    name
+		    auth
 		FROM
 		    role_category
 		WHERE 

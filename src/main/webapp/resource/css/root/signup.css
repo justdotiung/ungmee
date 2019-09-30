@@ -1,43 +1,34 @@
-
-/* ----header------------- */
-#header{
-   height: 300px;
+/* body 위치 */
+html{
+   height: 100%;
 }
-/* ---body---------------- */
-#main{
+/* tab버튼  */
+.tab-btn>ul{
    display: flex;
-   margin: auto;
 }
+.tab-btn>ul>:last-child{
+   padding-left: 10px;
+}
+/*tab form */
+#partner-section{
+   width: 299px;
+}
+form div>span{
+   display: flex;
+   width: 100%;
+   
+}
+#signup{
+   display: table;
+   margin-left: auto;
+   margin-right: auto;
+   margin: auto;
+   height: 100%;
+}
+/* error 처리 */
 .same.error{
    color: red;
 }
 .same{
    color: green;
 }
-
-.login-form{
-}
-.login-id>form{
-   display: inline-block;
-}
-.login-id>form>input{
-   text-align: center;
-   width: 300px;
-   margin-bottom: 5px;
-   border: 1px solid gray;
-   border-radius: 7px / 6px;
-}
-
-.login-id>form>input:nth-child(3){
-  
-   background:  gray;
-}
-.api-login>ul{
-   display: flex;
-}
-#main .logo a img{
-   margin-left: 50px;
-   width: 50px;
-   margin: 0px;
-}
-/* ---footer-------------------------- */

@@ -42,7 +42,7 @@ public class CustomUserDetails extends User implements UserDetails {
 		RoleCategory category = categoryDao.get(getRoleId());
 		
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(category.getName()));
+		authorities.add(new SimpleGrantedAuthority(category.getAuth()));
 		return authorities;
 	}
 

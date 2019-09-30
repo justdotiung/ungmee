@@ -25,7 +25,7 @@
 					<img src="${ctxName}/resource/images/icon/material.png">
 				</button>
 			</div>
-				<input type="file" id="file" name="file" class="d-none" multiple="multiple">
+			<input type="file" id="file" name="file" class="d-none" multiple="multiple">
 			<div>
 				<input type="text" placeholder="비용">
 				<textarea rows="8" cols="40"></textarea>
@@ -39,7 +39,7 @@
 				<img src="${ctxName}/resource/images/icon/material.png">
 			</button>
 		</div>
-			<input type="file" name="file" class="d-none" multiple="multiple">
+		<input type="file" name="file" class="d-none" multiple="multiple">
 		<div>
 			<input type="text" placeholder="비용">
 			<textarea rows="8" cols="40"></textarea>

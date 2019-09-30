@@ -20,7 +20,7 @@
 						<security:authorize access="!isAuthenticated()">
 						<li><a href="${ctxName}/login" class="login">로그인</a></li>
 						<li><a href="${ctxName}/signup">회원가입</a></li>	
-						</security:authorize>
+					</security:authorize>
 					<security:authorize access="isAuthenticated()">
 						<security:authorize access="hasRole('USER')">
 						<c:if test="${user.cState eq '1' }">
@@ -52,13 +52,13 @@
 								</ul>
 							</div>
 						</li>
-					</security:authorize>
-				 	<security:authorize access="hasRole('ADMIN')"> 
+					 </security:authorize>
+				 	<security:authorize access="hasRole('ADMIN')">  
 						<li><a href="${ctxName}/admin/index">관리자페이지</a></li>
-					</security:authorize> 
+					 </security:authorize>  
 						<li><a href="${ctxName}/user/detail">정보수정</a></li>
 						<li><a class="logout-btn" href="${ctxName}/logout">로그아웃</a></li>
-				</security:authorize>
+					</security:authorize> 
 					</ul>
 				</div>
 			</div>

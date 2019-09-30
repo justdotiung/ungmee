@@ -46,14 +46,16 @@ public class CoustomPushService implements PushService{
 	}
 	
 	@Override
+	//푸쉬알림 리스트 
 	public List<Map<String,Object>> getList(int accepterId){
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>(); 
 		SoloView user = null;
-		//noticeDao.getList(accepterId);
-		//eventDao.getList(accepterId);
+		
+		//프로포즈한 상대리스트 
 		List<Couple> coupleList = coupleDao.getProposeList(accepterId);
-		//System.out.println("listsize " +coupleList.size());
+		
 		Map<String,Object> couple ;
+		//원하는 정보만 가져온다.
 		for(Couple c : coupleList) {
 			couple = new HashMap<String, Object>();
 			user = svDao.get(c.getProposeId());

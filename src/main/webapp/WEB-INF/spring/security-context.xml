@@ -24,7 +24,7 @@
 	<!-- 인증과 권한 체크 -->
 	<!-- <http auto-config="true"> -->
 	<http>
-		<headers>
+	<headers>
 			<frame-options disabled="true"/>
 		</headers>
 		<intercept-url pattern="/admin/**"
@@ -34,7 +34,7 @@
 			access="hasRole('ROLE_USER')" />
 			
 		<intercept-url pattern="/couple/**"
-			access="hasRole('ROLE_USER')" />
+			access="hasRole('ROLE_USER')" /> 
 				
 		<form-login login-page="/login" 
 					default-target-url="/index" />

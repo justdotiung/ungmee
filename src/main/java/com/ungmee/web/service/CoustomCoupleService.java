@@ -10,6 +10,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ungmee.web.dao.CoupleDao;
 import com.ungmee.web.dao.SoloDao;
@@ -67,13 +68,13 @@ public class CoustomCoupleService implements CoupleService {
 		int result = soloDao.update(solo);
 		return result;
 	}
-
+	@Transactional
 	@Override
 	public int proposeCancel(String email) {
 		User user = userDao.getEmail(email);
 		Solo solo = soloDao.get(user.getId());
 		Couple couple = coupleDao.getSender(solo.getId());
-
+		System.out.println(couple.toString());
 		solo.setcState(-1);
 		soloDao.update(solo);
 		

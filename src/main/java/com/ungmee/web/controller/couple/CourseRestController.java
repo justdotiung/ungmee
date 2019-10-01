@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,37 +23,56 @@ import com.ungmee.web.security.CustomUserDetails;
 @RequestMapping("/couple/course/")
 public class CourseRestController {
 	@PostMapping("spot-img")
-	public String reg(MultipartFile[] file,HttpServletRequest req,Authentication auth) throws IOException {
+	public String reg(MultipartFile[] files,HttpServletRequest req,Authentication auth) throws IOException {
 		UUID uuid = UUID.randomUUID();
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+		
 		int id = user.getId();
-		for(int i = 0; i<file.length; i++) {
-			String url = "/upload";
-			String realPath =req.getServletContext().getRealPath(url);
-			String fileName=uuid.toString() + "_" + file[i].getOriginalFilename();//고유값을 가진 파일이름
-			String path= realPath+File.separator+fileName;
-			System.out.println(req.getServletContext());
-			System.out.println(req.getServletContext().getRealPath("/"));
-			System.out.println(realPath);
+	
+		String url = "/upload";
+		// 기존방식의 업로드
+		/*
+				for(int i = 0; i<files.length; i++) {
+					String realPath =req.getServletContext().getRealPath(url);
+					String fileName=uuid.toString() + "_" + files[i].getOriginalFilename();//고유값을 가진 파일이름
+					String path= realPath+File.separator+fileName;
+					//실제 디렉토리 경로
+					System.out.println(req.getServletContext().getRealPath("/"));
+					//upload 까지의 실제경로
+					System.out.println(realPath);
+					System.out.println(files[i].getSize());
+					
+					File filePath = new File(realPath);
+					if(!filePath.exists())
+						filePath.mkdirs();
+					
+					
+					
+					InputStream fis =files[i].getInputStream();
+					OutputStream fos =new FileOutputStream(path);
+					
+					int j= 0;
+					byte[] arr = new byte[1024];
+					
+					while((j=fis.read(arr)) != -1) {
+						fos.write(arr, 0, i);
+					}
+					fos.close();
+					fis.close();
+				}
+		 */
+		// 더 쉬운방식의 업로드
+				for(MultipartFile file : files ) {
+					System.out.println("여기");
+					String realPath =req.getServletContext().getRealPath(url);
+					String fileName=uuid.toString() + "_" + file.getOriginalFilename();//고유값을 가진 파일이름
+					String path= realPath+File.separator+fileName;
+					System.out.println(path);
+					File uploadFile = new File(path);
+					
+					file.transferTo(uploadFile);
+				}
 			
-			File filePath = new File(realPath);
-			if(!filePath.exists())
-				filePath.mkdirs();
-			
-			
-			
-			InputStream fis =file[i].getInputStream();
-			OutputStream fos =new FileOutputStream(path);
-			
-			int j= 0;
-			byte[] arr = new byte[1024];
-			
-			while((j=fis.read(arr)) != -1) {
-				fos.write(arr, 0, i);
-			}
-			fos.close();
-			fis.close();
-		}
 		return "couple.course.reg";
 	}
 }

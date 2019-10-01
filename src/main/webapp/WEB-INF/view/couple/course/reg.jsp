@@ -22,7 +22,7 @@
 		<div class="spot-div">
 			<div id="drop-zone" class="trigger-button">
 				<button class="img-btn">
-					<img src="${ctxName}/resource/images/icon/material.png">
+					<img class="initial-img" src="${ctxName}/resource/images/icon/material.png">
 				</button>
 			</div>
 			<input type="file" id="file" name="file" class="d-none" multiple="multiple">
@@ -36,7 +36,7 @@
 	<div class="spot-div" >
 		<div id="drop-zone" class="trigger-button">
 			<button class="img-btn">
-				<img src="${ctxName}/resource/images/icon/material.png">
+				<img class="initial-img" src="${ctxName}/resource/images/icon/material.png">
 			</button>
 		</div>
 		<input type="file" name="file" class="d-none" multiple="multiple">

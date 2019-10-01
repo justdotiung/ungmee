@@ -40,7 +40,7 @@ public class AlertController {
 		model.addAttribute("cUser", detail);
 		return "user.alert.detail";
 	}
-	
+	//
 	@GetMapping("list")
 	public String list(Model model,Authentication auth) {
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();

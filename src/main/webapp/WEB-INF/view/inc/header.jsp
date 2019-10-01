@@ -37,18 +37,19 @@
 						</li>
 						</c:if>
 						<li>
-							<a href="#tab2" class="user-alert-toggle tab-btn">
-								알람
+							<a href="${ctxName}/user/alert/list" class="user-alert-toggle">
+								<c:if test="${count ==0}">
+								알림
+								</c:if>
 								<c:if test="${count > 0}">
-								<span class="new-alert">new${count}</span>
+								알림new${count}
 								</c:if>
 							</a>
 							<div id="tab2" class="alert-box tab d-none">
 								<ul class="alert-list">
-									<li><a href="">커플자님1</a></li>
-									<li><a href="">이벤트3</a></li>
-									<li><a href="">파트너1</a></li>
-									<li><a href="">팔로워0</a></li>
+									<li><a href="${ctxName}/user/alert/list">내커플</a></li>
+									<li><a href="">이벤트</a></li>
+									<li><a href="">팔로워</a></li>
 								</ul>
 							</div>
 						</li>

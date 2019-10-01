@@ -21,10 +21,6 @@ window.addEventListener("load", function() {
 	var userList = document.querySelector("#user-menu");
 	//class명에 tab 들어간것을 다 선택
 	var tabDivs = document.querySelectorAll(".tab");
-	
-	//커플 페이지 노출
-	var coupleBtn = document.querySelector(".couple-btx");
-	var coupleList = document.querySelector(".couple-info-toggle");
 	//알림리스트 노출
 	var alertBox = document.querySelector(".alert-box");//알람박스
 	//로그아웃버튼
@@ -49,26 +45,27 @@ window.addEventListener("load", function() {
 	// 		}
 	// 	}
 	// }
-// 로그인시 메뉴 선택 이벤트
+
+// 로그인시 메뉴 선택 이벤트 
+	/*
 	userList.onclick = function(e){
-		//console.log(e.target.tagName);
+		//그룹화된 타겟이거나 A태그가 아니면 
 		if(e.target.tagName != 'A' || !e.target.classList.contains("tab-btn"))
 			return;
 		
 		e.preventDefault();
 		
-		//타겟 접근 더 간단하게 한다.
+		//타겟 접근 더 간단하게 한다. 선택된 타겟의 다음 노드...
 		e.target.nextElementSibling.classList.toggle("d-none");
-
+		//조건문반복
 		for(var i = 0; i<tabDivs.length; i++){
+			//엘리먼트가 같지않다면 
 			if(e.target.nextElementSibling !== tabDivs[i])
+				//가려준다
 				tabDivs[i].classList.add("d-none");
 		}
-		// var contentId = e.target.href.split("#")[1];
-		// var cotentIdDiv = userList.querySelector("#"+contentId);
-		// cotentIdDiv.classList.remove("d-none");
-		
 	}
+	*/
 // 로그아웃 버튼 이벤트
 	if(logoutBtn != null){
 		logoutBtn.onclick = function(e){
@@ -110,7 +107,7 @@ window.addEventListener("load", function() {
 	document.onclick =function(e){
 		//리스트영역밖이면 상관없이 사라짐		
 		if(isOutside(e.target, userList)){
-			coupleList.classList.add("d-none");
+			//coupleList.classList.add("d-none");
 			alertBox.classList.add("d-none");
 			return;
 		}

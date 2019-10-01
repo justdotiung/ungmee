@@ -47,7 +47,7 @@ window.addEventListener("load", function() {
 	// }
 
 // 로그인시 메뉴 선택 이벤트 
-	/*
+	
 	userList.onclick = function(e){
 		//그룹화된 타겟이거나 A태그가 아니면 
 		if(e.target.tagName != 'A' || !e.target.classList.contains("tab-btn"))
@@ -65,7 +65,7 @@ window.addEventListener("load", function() {
 				tabDivs[i].classList.add("d-none");
 		}
 	}
-	*/
+	
 // 로그아웃 버튼 이벤트
 	if(logoutBtn != null){
 		logoutBtn.onclick = function(e){

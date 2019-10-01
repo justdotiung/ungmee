@@ -24,12 +24,12 @@ import com.ungmee.web.security.CustomUserDetails;
 public class CourseRestController {
 	@PostMapping("spot-img")
 	public String reg(MultipartFile[] files,HttpServletRequest req,Authentication auth) throws IOException {
-		UUID uuid = UUID.randomUUID();
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 		
 		int id = user.getId();
 	
 		String url = "/upload";
+
 		// 기존방식의 업로드
 		/*
 				for(int i = 0; i<files.length; i++) {
@@ -63,16 +63,18 @@ public class CourseRestController {
 		 */
 		// 더 쉬운방식의 업로드
 				for(MultipartFile file : files ) {
+					//업로드시마다 난수생성
+					UUID uuid = UUID.randomUUID();
 					System.out.println("여기");
 					String realPath =req.getServletContext().getRealPath(url);
 					String fileName=uuid.toString() + "_" + file.getOriginalFilename();//고유값을 가진 파일이름
 					String path= realPath+File.separator+fileName;
 					System.out.println(path);
 					File uploadFile = new File(path);
-					
-					file.transferTo(uploadFile);
+					//파일 업로더
+					file.transferTo(uploadFile);			
 				}
 			
-		return "couple.course.reg";
+		return "okay";
 	}
 }

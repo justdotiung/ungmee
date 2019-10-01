@@ -226,11 +226,11 @@ window.addEventListener("load",function(){
 	}
 	regBtn.onclick = function(){
 		var formData = new FormData();
-		//file 추가 작업
+		//formData 추가 
 		for(var i = 0; i<uploadAddCount; i++){
 			formData.append("files",uploadFileList[i]);
 		}
-
+		console.log(formData.getAll("files"));
 		var xhr = new XMLHttpRequest();
 		xhr.addEventListener("load", function(){
 			console.log(xhr.responseText);
